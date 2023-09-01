@@ -28,7 +28,7 @@
             class="mt-1 flex justify-between rounded px-1 py-1 md:mb-1 {docPage.slug ==
             activeSlug
               ? activeStyle
-              : otherStyle} md:block md:hover:bg-green"
+              : otherStyle} md:block md:hover:bg-green transition-colors duration-200"
           >
             <div>
               {docPage.title}
@@ -40,7 +40,7 @@
             >
               <img
                 src={chevron}
-                class="h-4 w-4 {showMenu ? '' : 'rotate-180'}"
+                class="h-4 w-4 {showMenu ? '' : 'rotate-180'} transition-transform duration-700"
                 alt="Chevron"
               />
             </div>

@@ -28,9 +28,9 @@
   </div>
 
   <div
-    class="pt-4 sm:hidden {showMenu
+    class="pt-4 sm:hidden transition-transform duration-700 {showMenu
       ? 'rotate-180'
-      : 'rotate-0'} transition-transform"
+      : 'rotate-0'} "
   >
     <button
       on:click={toggleNavbar}

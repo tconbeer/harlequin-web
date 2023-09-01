@@ -11,7 +11,7 @@
 </h2>
 <p class="text-center">A drop-in replacement for the DuckDB CLI.</p>
 <div
-  class="mx-auto w-fit py-6 hover:scale-105 active:translate-x-1 active:translate-y-1"
+  class="mx-auto w-fit py-6 hover:scale-105 active:translate-x-1 active:translate-y-1 transition-transform duration-200"
 >
   <a
     href="/docs/getting-started"
