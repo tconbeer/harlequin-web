@@ -9,9 +9,9 @@ const mdsvexOptions = {
   highlight: {
     highlighter: (code, lang) => {
       if (lang == "bash") {
-        return `<Components.pre><code><span class="text-purple font-bold">$ </span>${code}</code></Components.pre>`;
+        return `<Components.pre><span class="text-purple font-bold">$ </span>${code}</Components.pre>`;
       } else {
-        return `<Components.pre><code>${code}</code></Components.pre>`;
+        return `<Components.pre>${code}</Components.pre>`;
       }
     },
   },

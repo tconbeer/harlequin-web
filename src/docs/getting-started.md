@@ -3,6 +3,10 @@ title: Getting Started
 menuOrder: 0
 ---
 
+<script>
+    import Key from "$lib/components/key.svelte"
+</script>
+
 ## Installing Harlequin
 
 After installing Python 3.8 or above, install Harlequin using `pip` or `pipx` with:
@@ -39,4 +43,4 @@ To view all command-line options for Harlequin, after installation, simply type:
 harlequin -h
 ```
 
-To view a list of all key bindings (keyboard shortcuts) within the app, press <kbd class="bg-pink border-purple border-b-2 border-r-2 px-2 py-1 text-xs font-bold rounded">F1</kbd>. You can also view this list outside the app [here](bindings).
+To view a list of all key bindings (keyboard shortcuts) within the app, press <Key>F1</Key>. You can also view this list outside the app [here](bindings).

@@ -1,15 +1,17 @@
 <script lang="ts">
   import * as config from "$lib/config";
   import duck from "$lib/assets/icons/icons8-duck-50.png";
+  import { navigating } from "$app/stores";
 
   let showMenu = false;
+  $: if ($navigating) showMenu = false;
 
   function toggleNavbar() {
     showMenu = !showMenu;
   }
 </script>
 
-<nav class="my-4 flex flex-wrap justify-between">
+<nav class="my-4 flex w-full flex-wrap justify-between">
   <div>
     <div>
       <a href="/" class="font-display text-4xl text-inherit">{config.title}</a>

@@ -5,11 +5,11 @@
 </script>
 
 <div
-  class="mx-auto grid h-full max-w-screen-lg grid-rows-[auto_1fr_auto] px-6 selection:bg-pink lg:px-0"
+  class="mx-auto grid max-w-screen-lg grid-rows-[auto_1fr_auto] px-6 selection:bg-pink lg:px-0"
 >
   <Header />
 
-  <main>
+  <main class="overflow-x-auto">
     <slot />
   </main>
 

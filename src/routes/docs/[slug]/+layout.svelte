@@ -1,29 +1,49 @@
-<script>
+<script lang="ts">
+  import type { LayoutData } from "./$types";
   import { page } from "$app/stores";
-  /** @type {import('./$types').LayoutData} */
-  export let data;
-  const active = "bg-purple font-bold";
+  import chevron from "$lib/assets/icons/icons8-chevron-50.png";
+  let showMenu = false;
+  function toggleMenu() {
+    showMenu = !showMenu;
+  }
+  $: activeSlug = $page.url.pathname.split("/").at(-1);
+  const activeStyle = "bg-purple font-bold";
+  $: otherStyle = showMenu ? "block" : "hidden";
+
+  export let data: LayoutData;
 </script>
 
-<div class="mt-6 flex">
-  <nav class="w-1/4 max-w-[160px]">
+<div class="mt-6 flex w-full flex-wrap overflow-x-auto">
+  <nav class="w-full md:w-1/4">
     <ul>
       {#each data.pages as docPage}
-        <a href={docPage.slug}
+        <a href={docPage.slug} on:click={toggleMenu} on:keypress={toggleMenu}
           ><li
-            class="my-1 rounded px-1 py-1 {$page.url.pathname
-              .split('/')
-              .at(-1) == docPage.slug
-              ? active
-              : ''} hover:bg-green"
+            class="mt-1 flex justify-between rounded px-1 py-1 md:mb-1 {docPage.slug ==
+            activeSlug
+              ? activeStyle
+              : otherStyle} md:block md:hover:bg-green"
           >
-            {docPage.title}
+            <div>
+              {docPage.title}
+            </div>
+            <div
+              class="my-auto mr-2 md:hidden {docPage.slug == activeSlug
+                ? 'block'
+                : 'hidden'}"
+            >
+              <img
+                src={chevron}
+                class="h-4 w-4 {showMenu ? '' : 'rotate-180'}"
+                alt="Chevron"
+              />
+            </div>
           </li></a
         >
       {/each}
     </ul>
   </nav>
-  <div class="ml-4 w-3/4">
-    <slot />
+  <div class="mt-4 w-full overflow-x-auto md:mt-0 md:w-3/4">
+    <div class="md:ml-4"><slot /></div>
   </div>
 </div>
