@@ -1,15 +1,17 @@
 <script lang="ts">
-	import Footer from './footer.svelte';
-	import Header from './header.svelte';
-	import '../app.css';
+  import Footer from "./footer.svelte";
+  import Header from "./header.svelte";
+  import "../app.css";
 </script>
 
-<div class="h-full grid grid-rows-[auto_1fr_auto] max-w-screen-lg mx-auto px-6 lg:px-0">
-	<Header />
+<div
+  class="mx-auto grid h-full max-w-screen-lg grid-rows-[auto_1fr_auto] px-6 lg:px-0"
+>
+  <Header />
 
-	<main>
-		<slot />
-	</main>
+  <main>
+    <slot />
+  </main>
 
-	<Footer />
+  <Footer />
 </div>
