@@ -53,7 +53,7 @@ menuOrder: 40
 - <Key>PgUp</Key> Move the cursor up one screen.
 - <Key>PgDn</Key> Move the cursor down one screen.
 - <Key>ctrl+up</Key> Scroll up one line.
-- <Key>ctrl+down</Key> Scroll up one line.
+- <Key>ctrl+down</Key> Scroll down one line.
 - <Key>ctrl+left</Key> Move the cursor to the start of the current token.
 - <Key>ctrl+right</Key> Move the cursor to the end of the current token.
 - <Key>shift+[any]</Key>: Select text while moving the cursor.
