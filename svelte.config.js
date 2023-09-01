@@ -1,6 +1,7 @@
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-vercel";
 import { vitePreprocess } from "@sveltejs/kit/vite";
 import { mdsvex } from "mdsvex";
+import rehypeSlug from "rehype-slug";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
@@ -15,6 +16,7 @@ const mdsvexOptions = {
       }
     },
   },
+  rehypePlugins: [rehypeSlug],
 };
 
 /** @type {import('@sveltejs/kit').Config} */
