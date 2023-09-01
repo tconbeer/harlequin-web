@@ -11,6 +11,10 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write --plugin prettier-plugin-svelte --plugin prettier-plugin-organize-imports --plugin prettier-plugin-tailwindcss ."
   },
+  "pre-commit": [
+    "format",
+    "lint"
+  ],
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.20.4",
@@ -21,6 +25,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte": "^2.30.0",
     "postcss": "^8.4.29",
+    "pre-commit": "^1.2.2",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-svelte": "^3.0.0",
