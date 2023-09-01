@@ -9,7 +9,7 @@
   }
 </script>
 
-<nav class="mt-4 flex flex-wrap justify-between">
+<nav class="my-4 flex flex-wrap justify-between">
   <div>
     <div>
       <a href="/" class="font-display text-4xl text-inherit">{config.title}</a>
@@ -46,14 +46,14 @@
   <ul class="mt-4 sm:mt-0 {showMenu ? 'flex' : 'hidden'} gap-8 sm:flex sm:pt-2">
     <li>
       <a
-        href="/start"
+        href="/docs/getting-started"
         class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
         >Get Started</a
       >
     </li>
     <li>
       <a
-        href="/docs"
+        href="/docs/getting-started"
         class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
         >Docs</a
       >
@@ -70,8 +70,8 @@
         href="https://github.com/tconbeer/harlequin"
         target="_blank"
         class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
-        >GitHub</a
-      >
+        >GitHub
+      </a>
     </li>
   </ul>
 </nav>

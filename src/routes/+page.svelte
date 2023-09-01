@@ -10,9 +10,11 @@
   Portable, powerful, colorful.
 </h2>
 <p class="text-center">A drop-in replacement for the DuckDB CLI.</p>
-<div class="mx-auto w-fit py-6 hover:scale-110">
+<div
+  class="mx-auto w-fit py-6 hover:scale-105 active:translate-x-1 active:translate-y-1"
+>
   <a
-    href="/start"
+    href="/docs/getting-started"
     class="rounded-full bg-green px-6 py-3 text-center font-bold shadow-lg"
     >Get Started</a
   >
@@ -29,7 +31,7 @@
 <h2 class="mt-12 text-center font-accent text-3xl">Does SQL IDE Stuff.</h2>
 <Features />
 
-<h2 class="mt-12 text-center font-accent text-3xl">Looks nice.</h2>
+<h2 class="mt-12 text-center font-accent text-3xl" id="themes">Looks nice.</h2>
 <Themes />
 
 <h2 class="mt-12 text-center font-accent text-3xl">Join the Flock.</h2>

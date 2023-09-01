@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,svelte,ts}"],
+  content: ["./src/**/*.{html,js,svelte,ts,md}"],
   theme: {
     fontFamily: {
       display: ["Rye"],
       accent: ["Contrail One"],
       body: ["Quicksand"],
-      mono: ["Inconsolata"],
+      mono: ["JetBrains Mono"],
     },
     extend: {
       colors: {

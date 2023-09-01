@@ -1,6 +1,6 @@
 <p class="text-center">
-  Thousands are using Harlequin. Join them with <span
-    class="bg-pink px-1 py-1 font-mono">pipx install harlequin</span
+  Thousands are using Harlequin. Join them with <code
+    class="language-bash bg-pink px-1 py-1">pipx install harlequin</code
   >.
 </p>
 <ul class="mt-4 flex flex-wrap justify-center gap-4">
