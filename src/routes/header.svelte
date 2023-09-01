@@ -28,7 +28,7 @@
   </div>
 
   <div
-    class="pt-4 sm:hidden transition-transform duration-700 {showMenu
+    class="pt-4 transition-transform duration-700 sm:hidden {showMenu
       ? 'rotate-180'
       : 'rotate-0'} "
   >
