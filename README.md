@@ -1,38 +1,32 @@
-# create-svelte
+# Harlequin-Web
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is the code behind [harlequin.sh](https://harlequin.sh), the website for [Harlequin](https://www.github.com/tconbeer/harlequin).
 
-## Creating a project
+It uses SvelteKit, with TailwindCSS and MDSVex for parsing markdown files into the docs pages. It is hosted on Vercel.
 
-If you're seeing this, you've probably already done this step. Congrats!
+It was created and is maintained by [Ted Conbeer](https://tedconbeer.com).
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Contributing
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Use Node v18 with pnpm to install deps and build the site:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm i
+pnpm dev
 ```
 
-## Building
-
-To create a production version of your app:
+Format and lint:
 
 ```bash
-npm run build
+pnpm format
+pnpm lint
 ```
 
-You can preview the production build with `npm run preview`.
+When installing dependencies, pnpm should also install git pre-hooks for formatting and linting.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+There are no tests. Vercel will build a preview in CI; if you want to build and preview a prod version locally you can with:
+
+```bash
+pnpm build
+pnpm preview
+```
