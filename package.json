@@ -25,7 +25,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte": "^2.30.0",
     "postcss": "^8.4.29",
-    "pre-commit": "^1.2.2",
+    "@fastify/pre-commit": "^2.0.0",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-svelte": "^3.0.0",
