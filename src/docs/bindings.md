@@ -72,3 +72,11 @@ menuOrder: 40
 - <Key>end</Key>: Move the cursor to the bottom of the current column.
 - <Key>PgUp</Key>: Move the cursor up one screen.
 - <Key>PgDn</Key>: Move the cursor down one screen.
+
+## Data Catalog Bindings
+
+- <Key>enter</Key>: Select the current item.
+- <Key>space</Key>: Toggle the expand/collapses state of the current item.
+- <Key>up</Key>: Move the cursor up.
+- <Key>down</Key>: Move the cursor down.
+- <Key>ctrl+enter</Key>, <Key>ctrl+j</Key>: Insert the current name into the Query Editor.
