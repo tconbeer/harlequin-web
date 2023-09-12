@@ -12,7 +12,6 @@
     "format": "prettier --write --plugin prettier-plugin-svelte --plugin prettier-plugin-organize-imports --plugin prettier-plugin-tailwindcss ."
   },
   "pre-commit": [
-    "format",
     "lint"
   ],
   "devDependencies": {
