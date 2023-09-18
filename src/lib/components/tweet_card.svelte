@@ -21,11 +21,7 @@
         <span class="text-sm text-gray-500">@{tweet.profile.handle}</span>
       </div>
     </div>
-    <LazyImage
-      src={x_icon}
-      alt="X (Twitter) Icon"
-      className="w-6 h-6"
-    />
+    <LazyImage src={x_icon} alt="X (Twitter) Icon" className="w-6 h-6" />
   </div>
   <a href={tweet.src} target="_blank">
     <!-- eslint-disable no-at-html-tags -->
