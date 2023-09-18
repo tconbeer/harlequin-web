@@ -7,22 +7,24 @@
 </script>
 
 <div class="max-w-md rounded border bg-white px-6 py-4 font-body">
-  <div class="flex items-center">
-    <LazyImage
-      src={tweet.profile.img_src}
-      className="h-12 w-12 rounded-full"
-      alt="Twitter profile image for {tweet.profile.name}."
-    />
-    <div class="ml-4 flex flex-col">
-      <a class="font-bold text-black" href={tweet.profile.src}
-        >{tweet.profile.name}</a
-      >
-      <span class="text-sm text-gray-500">@{tweet.profile.handle}</span>
+  <div class="flex justify-between">
+    <div class="flex">
+      <LazyImage
+        src={tweet.profile.img_src}
+        className="h-12 w-12 rounded-full"
+        alt="Twitter profile image for {tweet.profile.name}."
+      />
+      <div class="ml-4 flex flex-col">
+        <a class="font-bold text-black" href={tweet.profile.src}
+          >{tweet.profile.name}</a
+        >
+        <span class="text-sm text-gray-500">@{tweet.profile.handle}</span>
+      </div>
     </div>
     <LazyImage
       src={x_icon}
       alt="X (Twitter) Icon"
-      className="w-6 h-6 ml-auto"
+      className="w-6 h-6"
     />
   </div>
   <a href={tweet.src} target="_blank">
