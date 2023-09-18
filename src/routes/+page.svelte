@@ -1,5 +1,6 @@
 <script lang="ts">
-  import hero from "$lib/assets/hero.svg";
+  import hero from "$lib/assets/hero.webm";
+  import hero_mp4 from "$lib/assets/hero.mp4";
   import Platforms from "./platforms.svelte";
   import Features from "./features.svelte";
   import Themes from "./themes.svelte";
@@ -19,11 +20,10 @@
     >Get Started</a
   >
 </div>
-<img
-  src={hero}
-  alt="An animated GIF showing the interface and features of Harlequin."
-  class="mx-auto max-w-screen-sm py-2 drop-shadow-lg"
-/>
+<video autoplay loop muted playsinline class="mx-auto max-w-screen-sm py-2 drop-shadow-lg">
+  <source src="{hero}" type="video/mebm">
+  <source src="{hero_mp4}" type="video/mp4">
+</video>
 
 <h2 class="mt-12 text-center font-accent text-3xl">Runs Anywhere.</h2>
 <Platforms />

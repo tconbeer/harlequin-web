@@ -9,7 +9,8 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
-    "format": "prettier --write --plugin prettier-plugin-svelte --plugin prettier-plugin-organize-imports --plugin prettier-plugin-tailwindcss ."
+    "format": "prettier --write --plugin prettier-plugin-svelte --plugin prettier-plugin-organize-imports --plugin prettier-plugin-tailwindcss .",
+    "hero": "ffmpeg -i src/lib/assets/hero.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 src/lib/assets/hero.webm"
   },
   "pre-commit": [
     "lint"
