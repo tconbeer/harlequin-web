@@ -57,6 +57,10 @@ Modern terminals can display different fonts. Harlequin looks great in a number 
 
 To use a different font with Harlequin, download and install the font, and then configure your terminal to use that font.
 
+<span class="text-purple italic font-bold">Note for Mac Terminal.app Users:</span>
+
+Only some fonts render right with the default Terminal app. [See here](https://textual.textualize.io/FAQ/#why-doesnt-textual-look-good-on-macos) for a workaround.
+
 <span class="text-purple italic font-bold">Note for WSL2 and Windows Terminal users:</span>
 
 Windows Terminal runs in Windows and attaches your Linux shell over the WSL network. You need to install your font in **Windows** for this to work.
