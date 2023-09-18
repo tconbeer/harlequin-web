@@ -1,4 +1,5 @@
 <script>
+  import LazyImage from "$lib/components/lazy_image.svelte";
   import windows from "$lib/assets/platforms/icons8-windows-50.png";
   import mac from "$lib/assets/platforms/icons8-mac-50.png";
   import linux from "$lib/assets/platforms/icons8-linux-50.png";
@@ -34,11 +35,11 @@
 </p>
 <ul class="my-4 flex flex-wrap justify-between gap-2 md:px-16">
   {#each platforms as platform}
-    <li class="h-12 w-12">
-      <img
+    <li class="h-[50px] w-[50px]">
+      <LazyImage
         src={platform}
         alt="Icon for an OS, Shell, or Terminal."
-        class="object-fit grayscale"
+        className="object-fit grayscale"
       />
     </li>
   {/each}

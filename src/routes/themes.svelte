@@ -1,4 +1,6 @@
 <script lang="ts">
+  import LazyImage from "$lib/components/lazy_image.svelte";
+
   import arduino from "$lib/assets/themes/arduino.svg";
   import dracula from "$lib/assets/themes/dracula.svg";
   import emacs from "$lib/assets/themes/emacs.svg";
@@ -60,10 +62,10 @@
   {#each themes as [name, src]}
     <li class="transition-transform hover:scale-250">
       <a href={src} target="_blank"
-        ><img
+        ><LazyImage
           {src}
           alt="Screenshot of Harlequin with the {name} theme."
-          class="w-40 shadow-lg"
+          className="w-40 shadow-lg"
         /></a
       >
     </li>
