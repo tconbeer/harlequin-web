@@ -1,5 +1,5 @@
 <script lang="ts">
-  import hero from "$lib/assets/hero.svg";
+  import hero from "$lib/assets/themes/monokai.svg";
   import Platforms from "./platforms.svelte";
   import Features from "./features.svelte";
   import Themes from "./themes.svelte";
@@ -21,7 +21,7 @@
 </div>
 <img
   src={hero}
-  alt="An animated GIF showing the interface and features of Harlequin."
+  alt="A screenshot showing the interface and features of Harlequin."
   class="mx-auto max-w-screen-sm py-2 drop-shadow-lg"
 />
 

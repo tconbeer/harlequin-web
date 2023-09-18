@@ -52,9 +52,9 @@
     </ul>
   </nav>
   <div class="mt-4 w-full overflow-x-auto md:mt-0 md:w-3/4">
-    <div class="md:ml-4">
+    <article class="md:ml-4">
       <slot />
-      <div class="mb-4 flex justify-center gap-4 md:gap-8">
+      <nav class="mb-4 flex justify-center gap-4 md:gap-8">
         {#if data.pages && activeIndex > 0}
           <a href={data.pages[activeIndex - 1].slug}>
             <div
@@ -79,7 +79,7 @@
             </div>
           </a>
         {/if}
-      </div>
-    </div>
+      </nav>
+    </article>
   </div>
 </div>

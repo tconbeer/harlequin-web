@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as config from "$lib/config";
+  import { title, subtitle } from "$lib/config";
   import duck from "$lib/assets/icons/icons8-duck-50.png";
   import { navigating } from "$app/stores";
 
@@ -14,7 +14,7 @@
 <nav class="my-4 flex w-full flex-wrap justify-between">
   <div>
     <div>
-      <a href="/" class="font-display text-4xl text-inherit">{config.title}</a>
+      <a href="/" class="font-display text-4xl text-inherit">{title}</a>
     </div>
     <div class="mt-1">
       <span class="relative">
@@ -22,7 +22,7 @@
           class="absolute -inset-1 block -skew-y-3 bg-pink"
           aria-hidden="true"
         />
-        <span class="relative text-sm text-black">{config.description}</span>
+        <span class="relative text-sm text-black">{subtitle}</span>
       </span>
     </div>
   </div>
