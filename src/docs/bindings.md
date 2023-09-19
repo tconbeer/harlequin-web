@@ -35,7 +35,7 @@ menuOrder: 40
 - <Key>ctrl+a</Key>: Select all, move the cursor to the end of the query.
 - <Key>ctrl+x</Key>: Cut selected text.
 - <Key>ctrl+c</Key>: Copy selected text.
-- <Key>ctrl+v</Key>, <Key>ctrl+u</Key>: Paste selected text.
+- <Key>ctrl+v</Key>, <Key>ctrl+u</Key>, <Key>shift+insert</Key>, <Key>Right Click</Key>: Paste selected text.
 - <Key>ctrl+z</Key>: Undo.
 - <Key>ctrl+y</Key>: Redo.
 - <Key>ctrl+/</Key>, <Key>ctrl+\_</Key>: Toggle comments on selected line(s).
