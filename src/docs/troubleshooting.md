@@ -40,7 +40,7 @@ VS Code intercepts a large number of key presses before they make it to the term
 &lbrace;
     "terminal.integrated.allowChords": false,
     "terminal.integrated.sendKeybindingsToShell": true,
-&lbrace;
+&rbrace;
 ```
 
 Otherwise, you can press <Key>F1</Key> to open the command palette, then type and select "Terminal: Configure Terminal Settings". Then make the following changes:
