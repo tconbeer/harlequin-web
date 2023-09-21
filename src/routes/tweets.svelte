@@ -7,7 +7,6 @@
   import nletcher from "$lib/assets/tweets/nletcher.jpg";
   import willmcgugan from "$lib/assets/tweets/willmcgugan.jpg";
   import _TylerHillery from "$lib/assets/tweets/_TylerHillery.jpg";
-  
 
   const tweets: Tweet[] = [
     {
@@ -91,7 +90,7 @@
       body: `<p lang="en" dir="ltr">So much awesome! 😀💪 <a style="color: blue" href="https://t.co/D5eBrRGDK9">https://t.co/D5eBrRGDK9</a>`,
       created_at: "11:27 AM · Sep 20, 2023",
       src: "https://twitter.com/willmcgugan/status/1704547880202051694",
-    }
+    },
   ];
 </script>
 

@@ -42,6 +42,9 @@ const config = {
         "report-to": ["self"],
       },
     },
+    prerender: {
+      handleMissingId: "ignore",
+    },
   },
 };
 

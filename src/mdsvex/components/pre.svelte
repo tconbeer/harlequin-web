@@ -1,5 +1,5 @@
 <pre
-  class="my-1 w-full overflow-x-auto rounded border border-purple bg-pink selection:bg-purple px-4 py-4 text-sm"><slot
+  class="my-1 w-full overflow-x-auto rounded border border-purple bg-pink px-4 py-4 text-sm selection:bg-purple"><slot
   /></pre>
 
 <style>
