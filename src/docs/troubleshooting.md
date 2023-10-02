@@ -68,6 +68,7 @@ There are two mechanisms for Harlequin to receive clipboard data when you initia
     - Copy some text outside of Harlequin.
     - Focus on the Harlequin query editor, then press <Key>ctrl+u</Key> (`u`, not `v` for this step!).
     - If Harlequin does not paste anything, or if it pastes something different from what you just copied, Harlequin cannot access the system clipboard. You can work around this by pasting using your terminal's built-in paste functionality, or by fixing its access to the system clipboard (keep reading).
+    - Starting in Harlequin v1.1, you should see a notification pop-up if Harlequin cannot access your system clipboard.
 
 2.  Harlequin receives a native `Paste` message from the terminal. To trigger a `Paste` message, you want to use the same keys that you would to paste into your shell. This might be <Key>ctrl+v</Key>, <Key>shift+insert</Key>, or a right click of your mouse. When Harlequin receives a `Paste` message, it will insert the contents of that message into the query editor. Since this doesn't rely on the clipboard, this should work on nearly any terminal, whether Harlequin and the terminal share a host or not. Many terminals allow you to configure the key or mouse bindings for `Paste`.
 
