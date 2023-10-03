@@ -9,8 +9,9 @@
   import ol from "./components/ol.svelte";
   import p from "./components/p.svelte";
   import pre from "./components/pre.svelte";
+  import strong from "./components/strong.svelte";
   import ul from "./components/ul.svelte";
-  export { a, code, h2, h3, h4, li, img, ol, p, pre, ul };
+  export { a, code, h2, h3, h4, li, img, ol, p, pre, strong, ul };
 </script>
 
 <!-- pre component styles might get pruned, since the pre component is
