@@ -8,7 +8,7 @@
   import willmcgugan from "$lib/assets/tweets/willmcgugan.jpg";
   import _TylerHillery from "$lib/assets/tweets/_TylerHillery.jpg";
   import archieemwood from "$lib/assets/tweets/archieemwood.jpg";
-  
+
   const tweets: Tweet[] = [
     {
       profile: {
@@ -90,7 +90,7 @@
         img_src: archieemwood,
       },
       body: `<p lang="en" dir="ltr">Oh <a style="color: blue" href="https://twitter.com/davidgasquez?ref_src=twsrc%5Etfw">@davidgasquez</a> I love this so much<br/><a style="color: blue" href="https://harlequin.sh">harlequin.sh</a> - the terminal IDE for duckdb <br/> <img src="https://pbs.twimg.com/media/F8xAu05bsAAGlzd?format=jpg&name=4096x4096"></p>`,
-      created_at: "7:32 PM · October 19, 2023", 
+      created_at: "7:32 PM · October 19, 2023",
       src: "https://twitter.com/archieemwood/status/1714816865246310489?s=20",
     },
     {
@@ -112,7 +112,7 @@
     class="language-bash bg-pink px-1 py-1 text-sm">pipx install harlequin</code
   >.
 </p>
-<ul class="mt-4 flex flex-wrap justify-center align-middle gap-2">
+<ul class="mt-4 flex flex-wrap justify-center gap-2 align-middle">
   {#each tweets as tweet}
     <li class="max-w-xs">
       <TweetCard {tweet} />

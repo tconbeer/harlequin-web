@@ -51,3 +51,24 @@
     >GitHub</a
   >.
 </p>
+
+<h2 class="mt-8 font-accent text-2xl">Where</h2>
+<p class="mt-2">Harlequin has been featured around the internet:</p>
+<ul class="mb-2 ml-5 list-outside list-disc space-y-1 marker:text-pink">
+  <li>
+    <a
+      href="https://news.ycombinator.com/item?id=37588526"
+      target="_blank"
+      class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
+      >Hacker News</a
+    >, where the v1.0 announcement peaked at #2 on the front page.
+  </li>
+  <li>
+    <a
+      href="https://www.ilsoftware.it/duckdb-cose-come-funziona-e-come-gestire-i-database-con-harlequin/"
+      target="_blank"
+      class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
+      >ilSoftware</a
+    >, where Harlequin was covered alongside DuckDB.
+  </li>
+</ul>
