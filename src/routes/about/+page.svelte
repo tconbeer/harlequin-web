@@ -16,7 +16,13 @@
     target="_blank"
     class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
     >DuckDB</a
-  > that runs in your Terminal.
+  >,
+  <a
+    href="https://sqlite.org/"
+    target="_blank"
+    class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
+    >SQLite</a
+  >, and other databases that runs in your Terminal.
 </p>
 <p class="mt-2">
   A harlequin is also a <a
