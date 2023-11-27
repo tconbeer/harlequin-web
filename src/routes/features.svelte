@@ -35,12 +35,6 @@
   </li>
   <li>
     <Feature
-      title="MotherDuck Support"
-      body="Connect to any MotherDuck database in local or SaaS mode."
-    />
-  </li>
-  <li>
-    <Feature
       title="Full Screen"
       body="Need more room? Press F10 to view the Editor or Results in full-screen mode."
       src={full_screen}

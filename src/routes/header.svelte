@@ -1,6 +1,6 @@
 <script lang="ts">
   import { title, subtitle } from "$lib/config";
-  import duck from "$lib/assets/icons/icons8-duck-50.png";
+  import hamburger from "$lib/assets/icons/icons8-database-50.png";
   import { navigating } from "$app/stores";
 
   let showMenu = false;
@@ -38,9 +38,9 @@
       aria-label="Click for nav menu."
     >
       <img
-        src={duck}
+        src={hamburger}
         class="h-8 w-8"
-        alt="A line drawing of a duck, in lieu of a hamburger."
+        alt="A line drawing of a database, in lieu of a hamburger."
       />
     </button>
   </div>

@@ -1,6 +1,6 @@
 ---
 title: Loading Extensions
-menuOrder: 20
+menuOrder: 22
 ---
 
 You can install and load [DuckDB extensions](https://duckdb.org/docs/extensions/overview.html) when starting Harlequin, by passing the `-e` or `--extension` flag one or more times:
