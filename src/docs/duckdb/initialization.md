@@ -1,6 +1,6 @@
 ---
 title: Initialization Scripts
-menuOrder: 5
+menuOrder: 21
 ---
 
 Each time you start Harlequin, it will execute commands from a DuckDB [initialization script](https://duckdb.org/docs/api/cli#configuring-the-cli). Such a script can contain both SQL and DuckDB CLI [dot commands](https://duckdb.org/docs/api/cli#special-commands-dot-commands). For example:

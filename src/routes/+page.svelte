@@ -11,7 +11,7 @@
   Portable, powerful, colorful.
 </h2>
 <p class="text-center">
-  An easy, fast, and beautiful alternative to clunky GUIs.
+  An easy, fast, and beautiful database client for the terminal.
 </p>
 <div
   class="mx-auto w-fit py-6 transition-transform duration-200 hover:scale-105 active:translate-x-1 active:translate-y-1"

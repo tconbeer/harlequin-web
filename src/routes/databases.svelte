@@ -23,7 +23,7 @@
   >
   or
   <a
-    href="/docs/writing-adapter"
+    href="/docs/contributing/adapter-guide"
     class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
     >create your own adapter</a
   >.
