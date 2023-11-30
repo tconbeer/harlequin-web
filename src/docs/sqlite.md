@@ -24,7 +24,7 @@ harlequin -a sqlite
 You can also open databases in read-only mode:
 
 ```bash
-harlequin -a sqlite -r "path/to/duck.db"
+harlequin -a sqlite -r "path/to/sqlite.db"
 ```
 
 As an alternative to the `-r` flag, you can specify a mode parameter directly using the `--mode` option:
