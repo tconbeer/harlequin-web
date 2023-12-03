@@ -46,10 +46,10 @@
   </div>
 
   <ul class="mt-4 sm:mt-0 {showMenu ? 'flex' : 'hidden'} gap-8 sm:flex sm:pt-2">
-    <li>
+    <li class="hidden sm:block">
       <a
         href="/docs/getting-started"
-        class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
+        class="font-bold text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
         >Get Started</a
       >
     </li>
@@ -58,6 +58,13 @@
         href="/docs/getting-started"
         class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
         >Docs</a
+      >
+    </li>
+    <li>
+      <a
+        href="/blog"
+        class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
+        >Blog</a
       >
     </li>
     <li>
