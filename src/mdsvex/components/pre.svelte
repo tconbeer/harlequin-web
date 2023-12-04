@@ -1,6 +1,7 @@
 <pre
-  class="my-1 w-full overflow-x-auto rounded border border-purple bg-pink px-4 py-4 text-sm selection:bg-purple"><slot
-  /></pre>
+  class="my-1 w-full overflow-x-auto rounded border border-purple bg-pink px-4 py-4 text-sm selection:bg-purple"><code
+    ><slot /></code
+  ></pre>
 
 <style>
   /* Firefox */

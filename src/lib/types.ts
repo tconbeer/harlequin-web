@@ -4,6 +4,13 @@ export type DocsPage = {
   menuOrder: number;
 };
 
+export type BlogPage = {
+  title: string;
+  slug: string;
+  publishedAt: Date;
+  lede: string;
+};
+
 export type TweetProfile = {
   name: string;
   handle: string;
