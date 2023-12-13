@@ -25,13 +25,19 @@ The primary purpose of an adapter is to provide its `connect()` method, which cr
 
 A connection must provide two methods: `get_catalog` and `execute`.
 
-`get_catalog()` introspects the connection and returns a `Catalog`, whose items represent each database, relation, column, etc. available through the connection. The information in the `Catalog` is displayed to users in the Data Catalog sidebar in Harlequin. The schema for `Catalog` and `CatalogItem` are found in the [`harlequin.catalog`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/catalog.py) module.
+`get_catalog()` introspects the connection and returns a `Catalog`, whose items represent each database, relation, column, etc. available through the connection. The information in the `Catalog` is displayed to users in the Data Catalog sidebar in Harlequin, and is made available as autocomplete options. The schema for `Catalog` and `CatalogItem` are found in the [`harlequin.catalog`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/catalog.py) module.
 
 `execute(query)` runs a query in the connected database. If the query returns data (like a select statement), `execute` returns a `HarlequinCursor`. Otherwise, it returns `None`.
 
 `get_catalog` and `execute` are called by Harlequin in **different threads**, and those calls may overlap. If multiple queries are run by the user, `execute` may be called many times **serially**, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
 
-A connection may also provide `copy` and `validate_sql` methods. `copy` should use the database's native capabilities to export the results of a query; `validate_sql` should very quickly parse the passed query: it is used to validate the selected text in Harlequin and determine whether the selection or entire query should be executed.
+A connection may also provide `get_completions`, `copy` and `validate_sql` methods.
+
+`get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
+
+`copy(query, path, format_name, options)` should use the database's native capabilities to export the results of a query. It will receive a `format_name` and dict of `options` that are defined by the adapter's `COPY_FORMATS` class variable (more [below](#copy-formats)).
+
+`validate_sql(query)` should very quickly parse the passed query: it is used to validate the selected text in Harlequin and determine whether the selection or entire query should be executed. If it is implemented, Harlequin will not attempt to execute the selected text if it is not a valid query; otherwise, Harlequin will always execute the selected text.
 
 The transaction behavior of an adapter is undefined, and is up to the adapter author. The SQLite and Postgres adapters both use auto-commit mode on their connections. If desired, you may create an Adapter Option to configure this at Harlequin start-up; in the [future](https://github.com/tconbeer/harlequin/issues/334), we may standardize this behavior and add a UI element to change the transaction behavior.
 
@@ -48,8 +54,8 @@ A cursor must provide three methods: `columns`, `set_limit`, and `fetchall`.
 `fetchall()` should return all of the data returned by the query, in one of several accepted formats. It will be called exactly once on each cursor. The acceptable formats are declared by the `AutoBackendType` of Harlequin's Data Table widget (source [here](https://github.com/tconbeer/textual-fastdatatable/blob/a64308ea7e2e6de24df2f1d9c6cc1d024b2a6395/src/textual_fastdatatable/backend.py#L20-L27)). They are:
 
 1. A PyArrow [`Table`](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) or [`RecordBatch`](https://arrow.apache.org/docs/python/generated/pyarrow.RecordBatch.html).
-1. A `Sequence` of `Iterable`s, like a `list` of `tuple`s, representing rows of data (or records). Such a sequence MUST NOT contain a header row.
 1. A `Mapping` of `str` to `Sequence`, where keys represent column names and the sequences are the data in each column. For example: `{"col_a": [1, 2, 3], "col_b": ["a", "b", "c"]}`
+1. A `Sequence` of `Iterable`s, like a `list` of `tuple`s, representing rows of data (or records). Such a sequence **MUST NOT** contain a header row.
 1. A `pathlib.Path` or `str` path to a local Parquet file.
 
 ### Adapter Options
@@ -62,7 +68,7 @@ Beyond that, adapters can declare CLI options by setting the `ADAPTER_OPTIONS` c
 
 Some adapters may facilitate exporting data locally. By setting the `COPY_FORMATS` class variable on their subclass of `HarlequinAdapter` and implementing `HarlequinConnection.copy()`, they can enable their users to use Harlequin's Data Exporter UI.
 
-`COPY_FORMATS` is a list of `HarlequinCopyFormat` instances, which define a name, label, one or more file extensions associated with the format, and a list of `AbstractOption` instances that define options for the format. For more information, see the source in the [`harlequin.options`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/options.py) module, or the [DuckDB implementation](https://github.com/tconbeer/harlequin/blob/main/src/harlequin_duckdb/copy_formats.py).
+`COPY_FORMATS` is a list of `HarlequinCopyFormat` instances, which define a name, label, one or more file extensions associated with the format, and a list of `AbstractOption` subclass instances that define options for the format. For more information, see the source in the [`harlequin.options`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/options.py) module, or the [DuckDB implementation](https://github.com/tconbeer/harlequin/blob/main/src/harlequin_duckdb/copy_formats.py).
 
 ## Packaging and Distributing Adapters
 

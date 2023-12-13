@@ -24,7 +24,7 @@
     <LazyImage src={x_icon} alt="X (Twitter) Icon" className="w-6 h-6" />
   </div>
   <a href={tweet.src} target="_blank">
-    <!-- eslint-disable no-at-html-tags -->
+    <!-- eslint-disable-next-line no-at-html-tags -->
     <div class="text-md mb-1 mt-3 leading-normal">{@html tweet.body}</div>
     <div class="mb-3 text-sm text-gray-500">{tweet.created_at}</div>
   </a>

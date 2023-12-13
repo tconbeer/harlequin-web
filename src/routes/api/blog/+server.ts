@@ -17,7 +17,10 @@ async function getPosts() {
     }
   }
 
-  // pages = pages.sort((first, second) => first.publishedAt - second.publishedAt);
+  pages.sort(
+    (first, second) =>
+      new Date(second.publishedAt) - new Date(first.publishedAt),
+  );
 
   return pages;
 }

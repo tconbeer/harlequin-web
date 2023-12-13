@@ -22,14 +22,14 @@
   <li>
     <Feature
       title="Query Editor"
-      body="A full-featured editor: open, save, format, cut, copy, paste, and more. Supports multiple tabbed buffers!"
+      body="A full-featured editor: autocomplete, open, save, format, cut, copy, paste, and more. Supports multiple tabbed buffers!"
       src={editor}
     />
   </li>
   <li>
     <Feature
       title="Results Viewer"
-      body="View up to 10k results in an interactive table. Multiple queries loaded into separate tabs."
+      body="View 1M+ results in an interactive table. Multiple queries loaded into separate tabs."
       src={results}
     />
   </li>

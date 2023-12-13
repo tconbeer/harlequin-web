@@ -1,5 +1,5 @@
 <script lang="ts">
-  import hero from "$lib/assets/themes/monokai.svg";
+  import hero from "$lib/assets/themes/harlequin.svg?raw";
   import Platforms from "./platforms.svelte";
   import Databases from "./databases.svelte";
   import Features from "./features.svelte";
@@ -22,11 +22,9 @@
     >Get Started</a
   >
 </div>
-<img
-  src={hero}
-  alt="A screenshot showing the interface and features of Harlequin."
-  class="mx-auto max-w-screen-sm py-2 drop-shadow-lg"
-/>
+<figure class="mx-auto max-w-screen-lg py-2 drop-shadow-lg">
+  {@html hero} <!-- eslint-disable-line -->
+</figure>
 
 <h2 class="mt-12 text-center font-accent text-3xl">Runs Anywhere.</h2>
 <Platforms />
