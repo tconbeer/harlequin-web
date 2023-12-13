@@ -15,8 +15,6 @@ After installing Python 3.8 or above, install Harlequin using `pip` or `pipx` wi
 pipx install harlequin
 ```
 
-If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](troubleshooting/duckdb-version-mismatch) page.
-
 ## Using Harlequin with DuckDB
 
 From any shell, to open one or more DuckDB database files:
@@ -30,6 +28,8 @@ To open an in-memory DuckDB session, run Harlequin with no arguments:
 ```bash
 harlequin
 ```
+
+If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](troubleshooting/duckdb-version-mismatch) page.
 
 ## Using Harlequin with SQLite and Other Adapters
 

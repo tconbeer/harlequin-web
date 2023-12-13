@@ -7,7 +7,7 @@ export type DocsPage = {
 export type BlogPage = {
   title: string;
   slug: string;
-  publishedAt: Date;
+  publishedAt: string;
   lede: string;
 };
 

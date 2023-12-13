@@ -8,6 +8,7 @@
   import github_dark from "$lib/assets/themes/github-dark.svg";
   import gruvbox_dark from "$lib/assets/themes/gruvbox-dark.svg";
   import gruvbox_light from "$lib/assets/themes/gruvbox-light.svg";
+  import harlequin from "$lib/assets/themes/harlequin.svg";
   import igor from "$lib/assets/themes/igor.svg";
   import inkpot from "$lib/assets/themes/inkpot.svg";
   import lightbulb from "$lib/assets/themes/lightbulb.svg";
@@ -32,6 +33,7 @@
     ["github_dark", github_dark],
     ["gruvbox_dark", gruvbox_dark],
     ["gruvbox_light", gruvbox_light],
+    ["harlequin", harlequin],
     ["igor", igor],
     ["inkpot", inkpot],
     ["lightbulb", lightbulb],

@@ -45,7 +45,11 @@
     </button>
   </div>
 
-  <ul class="mt-4 sm:mt-0 {showMenu ? 'flex' : 'hidden'} gap-8 sm:flex sm:pt-2">
+  <ul
+    class="mt-4 sm:mt-0 {showMenu
+      ? 'flex'
+      : 'hidden'} mx-auto gap-8 sm:mx-0 sm:flex sm:pt-2"
+  >
     <li class="hidden sm:block">
       <a
         href="/docs/getting-started"
