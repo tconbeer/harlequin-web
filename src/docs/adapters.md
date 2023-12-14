@@ -20,7 +20,7 @@ Core adapters are created and maintained by the maintainers of Harlequin.
 - [DuckDB](duckdb/index)
 - [SQLite](sqlite)
 - [Postgres](postgres/index)
-- MySQL (Coming Soon!)
+- [MySQL](mysql/index)
 
 ## Community Adapters
 
