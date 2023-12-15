@@ -1,6 +1,6 @@
 <pre
   class="my-1 w-full overflow-x-auto rounded border border-purple bg-pink px-4 py-4 text-sm selection:bg-purple"><code
-    ><slot /></code
+    class="inline-block overflow-x-auto"><slot /></code
   ></pre>
 
 <style>
