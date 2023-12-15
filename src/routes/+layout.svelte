@@ -10,12 +10,10 @@
   <meta name="description" content={description} />
 </svelte:head>
 
-<div
-  class="mx-auto grid h-screen max-w-screen-lg grid-rows-[auto_1fr_auto] px-6 selection:bg-pink"
->
+<div class="mx-auto max-w-screen-lg px-6 selection:bg-pink">
   <Header />
 
-  <main class="mb-auto overflow-x-visible">
+  <main class="overflow-x-auto">
     <slot />
   </main>
 

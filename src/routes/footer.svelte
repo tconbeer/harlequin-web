@@ -2,7 +2,7 @@
   import * as config from "$lib/config";
 </script>
 
-<footer class="mt-12 border-t border-t-pink">
+<footer class="mt-6 border-t border-t-pink">
   <nav class="my-4 flex w-full flex-wrap">
     <ul class="mx-auto mt-4 flex gap-8 sm:mt-0 sm:pt-2">
       <li>
