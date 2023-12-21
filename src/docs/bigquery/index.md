@@ -3,6 +3,8 @@ title: "Adapter: BigQuery"
 menuOrder: 100
 ---
 
+The BigQuery adapter was contributed by community member Josh Temple. You can view the source for the adapter on [GitHub](https://github.com/joshtemple/harlequin-bigquery).
+
 ## Installation
 
 `harlequin-bigquery` depends on `harlequin`, so installing `harlequin-bigquery` will also install Harlequin.
@@ -58,6 +60,8 @@ You can open Harlequin with the BigQuery adapter by selecting it with the `-a` o
 ```bash
 harlequin -a bigquery --project my-gcp-project --location us-west1
 ```
+
+**See the [next page](/docs/bigquery/auth) for information on authentication and authorization for BigQuery.**
 
 ## Configuration
 
