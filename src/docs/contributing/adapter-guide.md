@@ -91,7 +91,7 @@ The template repo includes a test to ensure that your adapter is discoverable as
 
 ### Adding Your Adapter a Harlequin Extra
 
-If you would like your adapter installable as a Harlequin extra (e.g., `pip install harlequin[my-adapter]`), open a PR against [`tconbeer/harlequin`](https://github.com/tconbeer/harlequin) that adds the extra **and** the optional dependency.
+If you would like your adapter installable as a Harlequin extra (e.g., `pip install harlequin[my-adapter]`), open a PR against [`tconbeer/harlequin`](https://github.com/tconbeer/harlequin) that adds the extra **and** the optional dependency to Harlequin's `pyproject.toml` file.
 
 ```toml
 [tool.poetry.dependencies]
@@ -105,6 +105,40 @@ my-adapter = ["my-adapter-pypi-distribution"]
 
 ```
 
+After updating `pyproject.toml`, you must run `poetry lock` to regenerate the lockfile so it includes the new dependencies. Both `pyproject.toml` and `poetry.lock` should be included in your PR.
+
 ## Testing Adapters
 
 The [harlequin-adapter-template](https://github.com/tconbeer/harlequin-adapter-template) repo provides a small set of tests that cover the basic functionality of an adapter. You will need to replace references to `MyAdapter`, `MyConnection`, and `MyCursor` with imports of your actual classes. Then you can run the tests with `pytest`. You are encouraged to add tests that are specific to the functionality of your adapter.
+
+## Documenting Adapters
+
+You should add basic docs for your adapter (installation and usage) in the README of your adapter's project. See [`harlequin-postgres`](https://github.com/tconbeer/harlequin-postgres) as an example.
+
+In addition, if you would like your adapter to appear in these docs, open a PR against [`tconbeer/harlequin-web`](https://github.com/tconbeer/harlequin-web) that makes the following changes:
+
+1. Add a directory with your adapter's name to `/src/docs/`.
+1. Add a file called `index.md` inside that new directory. Add basic installation and usage info in that file (you can probably copy-paste this from your README). Link to your project's repo at the top of the page (see `/src/docs/bigquery/index.md` for an example). This file should start with frontmatter that defines the title and sets the menu sort order; your menuOrder value should be between 100 and 200; `index.md` files should be divisible by 10.
+
+```md
+---
+title: "Adapter: BigQuery"
+menuOrder: 100
+---
+```
+
+1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit here. Link to the docs page you just created.
+1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each file should again have frontmatter; the menuOrder should be one higher than the last page (your index page or another additional page):
+
+```md
+---
+title: "Auth and Permissions"
+menuOrder: 101
+---
+```
+
+1. (Optional) Add your database's icon to the front page of this site. Find or create a PNG icon with a transparent background. Then resize it to 50x50 and convert it to greyscale, and place it in the `/src/lib/assets/databases/` directory. On Linux, using ImageMagick, that looks like this:
+
+```bash
+convert my_db_icon.png -resize 50x50 -colorspace gray ./src/lib/assets/databases/my_db_icon.png
+```

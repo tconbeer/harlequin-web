@@ -1,13 +1,9 @@
 <script>
   import LazyImage from "$lib/components/lazy_image.svelte";
-  import duckdb from "$lib/assets/databases/duckdb.png";
-  import sqlite from "$lib/assets/databases/sqlite.png";
-  import postgres from "$lib/assets/databases/icons8-postgres-50.png";
-  import mysql from "$lib/assets/databases/icons8-mysql-50.png";
-  import bigquery from "$lib/assets/databases/bigquery.png";
-  import clickhouse from "$lib/assets/databases/clickhouse.png";
-
-  const databases = [duckdb, sqlite, postgres, mysql, bigquery, clickhouse];
+  const databases = import.meta.glob("$lib/assets/databases/*.{svg,png}", {
+    as: "url",
+    eager: true,
+  });
 </script>
 
 <p class="text-center">
@@ -30,7 +26,7 @@
   >.
 </p>
 <ul class="my-4 flex flex-wrap justify-center gap-2 md:px-16">
-  {#each databases as database}
+  {#each Object.values(databases) as database}
     <li class="h-[50px] w-[50px]">
       <LazyImage
         src={database}
