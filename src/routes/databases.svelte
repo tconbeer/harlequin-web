@@ -4,7 +4,7 @@
   import sqlite from "$lib/assets/databases/sqlite.png";
   import postgres from "$lib/assets/databases/icons8-postgres-50.png";
   import mysql from "$lib/assets/databases/icons8-mysql-50.png";
-  import bigquery from "$lib/assets/databases/bigquery.png"
+  import bigquery from "$lib/assets/databases/bigquery.png";
   import clickhouse from "$lib/assets/databases/clickhouse.png";
 
   const databases = [duckdb, sqlite, postgres, mysql, bigquery, clickhouse];

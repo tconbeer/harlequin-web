@@ -61,6 +61,8 @@ You can open Harlequin with the BigQuery adapter by selecting it with the `-a` o
 harlequin -a bigquery --project my-gcp-project --location us-west1
 ```
 
+**See the [next page](/docs/bigquery/auth) for information on authentication and authorization for BigQuery.**
+
 ## Configuration
 
 This adapter supports the following options:
@@ -68,13 +70,3 @@ This adapter supports the following options:
 - `project`: The ID of the Google Cloud project to run Harlequin against. Defaults to whatever it can infer from the user's environment, i.e. `gcloud config list project`.
 
 - `location`: The [location](https://cloud.google.com/compute/docs/regions-zones#available) used to run the catalog queries, which [must be region-qualified](https://cloud.google.com/bigquery/docs/information-schema-intro#syntax). Defaults to `US`.
-
-## Authentication
-
-This adapter will use [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials) to authenticate with BigQuery and run queries, including both the queries necessary to populate the data catalog and the queries you type into Harlequin. You can use the `gcloud` CLI to pass user credentials to ADC by running:
-
-```bash
-gcloud auth application-default login
-```
-
-To install the `gcloud` CLI, see [here](https://cloud.google.com/sdk/docs/install).
