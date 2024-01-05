@@ -80,7 +80,7 @@ adapter = "postgres"
 host = "localhost"
 user = "postgres"
 password = "secretadminpassword"
-database = "postgres"
+dbname = "postgres"
 port = 5432
 ```
 
