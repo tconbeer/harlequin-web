@@ -27,4 +27,5 @@ Core adapters are created and maintained by the maintainers of Harlequin.
 Community adapters are created and maintained by other members of the Harlequin community. To add your adapter to this list, please [open a PR](https://github.com/tconbeer/harlequin-web).
 
 - [BigQuery](bigquery/index), contributed by [Josh Temple](https://github.com/joshtemple)
+- [Trino](trino/index), contributed by [Tyler Hillery](https://github.com/TylerHillery)
 - ClickHouse (Coming Soon!)

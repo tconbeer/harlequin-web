@@ -129,7 +129,7 @@ In addition, if you would like your adapter to appear in these docs, open a PR a
 
 1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit here. Link to the docs page you just created.
 1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each file should again have frontmatter; the menuOrder should be one higher than the last page (your index page or another additional page):
-
+2. 
    ```md
    ---
    title: "Auth and Permissions"
