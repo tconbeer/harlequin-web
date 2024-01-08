@@ -120,25 +120,25 @@ In addition, if you would like your adapter to appear in these docs, open a PR a
 1. Add a directory with your adapter's name to `/src/docs/`.
 1. Add a file called `index.md` inside that new directory. Add basic installation and usage info in that file (you can probably copy-paste this from your README). Link to your project's repo at the top of the page (see `/src/docs/bigquery/index.md` for an example). This file should start with frontmatter that defines the title and sets the menu sort order; your menuOrder value should be between 100 and 200; `index.md` files should be divisible by 10.
 
-```md
----
-title: "Adapter: BigQuery"
-menuOrder: 100
----
-```
+   ```md
+   ---
+   title: "Adapter: BigQuery"
+   menuOrder: 100
+   ---
+   ```
 
 1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit here. Link to the docs page you just created.
 1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each file should again have frontmatter; the menuOrder should be one higher than the last page (your index page or another additional page):
 
-```md
----
-title: "Auth and Permissions"
-menuOrder: 101
----
-```
+   ```md
+   ---
+   title: "Auth and Permissions"
+   menuOrder: 101
+   ---
+   ```
 
 1. (Optional) Add your database's icon to the front page of this site. Find or create a PNG icon with a transparent background. Then resize it to 50x50 and convert it to greyscale, and place it in the `/src/lib/assets/databases/` directory. On Linux, using ImageMagick, that looks like this:
 
-```bash
-convert my_db_icon.png -resize 50x50 -colorspace gray ./src/lib/assets/databases/my_db_icon.png
-```
+   ```bash
+   convert my_db_icon.png -resize 50x50 -colorspace gray ./src/lib/assets/databases/my_db_icon.png
+   ```
