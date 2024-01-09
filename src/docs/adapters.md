@@ -21,6 +21,7 @@ Core adapters are created and maintained by the maintainers of Harlequin.
 - [SQLite](sqlite)
 - [Postgres](postgres/index)
 - [MySQL](mysql/index)
+- [ODBC](odbc/index)
 
 ## Community Adapters
 
