@@ -30,7 +30,7 @@
     <li class="h-[50px] w-[50px]">
       <LazyImage
         src={database}
-        alt="Icon for a supported database."
+        alt={database.split("/").pop()?.split(".")[0]}
         className="object-fit grayscale"
       />
     </li>
