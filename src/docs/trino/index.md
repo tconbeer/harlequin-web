@@ -36,6 +36,7 @@ pipx inject harlequin harlequin-trino
 ```
 
 ### As an Extra
+
 Alternatively, you can install Harlequin with the `trino` extra:
 
 ```bash
@@ -51,18 +52,21 @@ pipx install harlequin[trino]
 ```
 
 ## Usage and Configuration
-For a minimum connection you are going to need: 
+
+For a minimum connection you are going to need:
+
 - host
 - port
 - user
 
 ```bash
-harlequin -a trino -h localhost -p 8080 -U my_user 
+harlequin -a trino -h localhost -p 8080 -U my_user
 ```
 
 If your trino instance requires a password you can set the `--require_auth` flag to password and use the `--password` flag for your password
+
 ```bash
-harlequin -a trino -h localhost -p 8080 -U my_user --password my-pass --require_auth password 
+harlequin -a trino -h localhost -p 8080 -U my_user --password my-pass --require_auth password
 ```
 
 Many more options are available; to see the full list, run:
