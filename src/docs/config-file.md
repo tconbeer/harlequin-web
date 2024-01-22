@@ -1,6 +1,6 @@
 ---
 title: Using Config Files
-menuOrder: 3
+menuOrder: 6
 ---
 
 <script>

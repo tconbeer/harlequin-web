@@ -15,7 +15,7 @@
   <li>
     <Feature
       title="Data Catalog"
-      body="View tables, columns, and their types across one or more attached databases."
+      body="View tables, columns, and their types across one or more attached databases. Optionally view local files or S3 objects."
       src={catalog}
     />
   </li>

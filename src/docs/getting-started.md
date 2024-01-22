@@ -15,7 +15,15 @@ After installing Python 3.8 or above, install Harlequin using `pip` or `pipx` wi
 pipx install harlequin
 ```
 
+You may want to install Harlequin with one or more extras, which provide additional features like [additional database support](adapters) or [remote file viewing](files/remote). That would look like this:
+
+```bash
+pipx install harlequin[postgres,s3]
+```
+
 ## Using Harlequin with DuckDB
+
+Harlequin defaults to using its DuckDB database adapter.
 
 From any shell, to open one or more DuckDB database files:
 

@@ -17,6 +17,7 @@ menuOrder: 200
 - <Key>F9</Key>, <Key>ctrl+b</Key> Toggle the sidebar.
 - <Key>F10</Key> Toggle full screen mode for the current widget.
 - <Key>ctrl+e</Key> Write the returned data to a CSV, Parquet, or JSON file.
+- <Key>ctrl+r</Key> Refresh the Data Catalog.
 
 ## Query Editor Bindings
 
@@ -83,8 +84,15 @@ _With the autocomplete list open:_
 
 ## Data Catalog Bindings
 
-- <Key>enter</Key> Select the current item.
-- <Key>space</Key> Toggle the expand/collapses state of the current item.
-- <Key>up</Key> Move the cursor up.
-- <Key>down</Key> Move the cursor down.
-- <Key>ctrl+enter</Key>, <Key>ctrl+j</Key> Insert the current name into the Query Editor.
+- <Key>ctrl+enter</Key>,<Key>ctrl+j</Key> Insert the current name into the Query Editor.
+- <Key>ctrl+c</Key> Copy the current name to the clipboard.
+
+### Switching Tabs
+
+- <Key>j</Key> Switch to the previous tab.
+- <Key>k</Key> Switch to the next tab.
+
+### Moving the Cursor
+
+- <Key>up</Key>,<Key>down</Key> Move the cursor one row.
+- <Key>enter</Key>,<Key>space</Key> Toggle the expand/collapsed state of the current item.
