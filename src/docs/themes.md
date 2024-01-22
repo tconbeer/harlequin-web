@@ -1,6 +1,6 @@
 ---
 title: Choosing a Theme
-menuOrder: 2
+menuOrder: 5
 ---
 
 You can set a theme for Harlequin, passing the name of any [Pygments style](https://pygments.org/styles/) to the `--theme` or `-t` option.
