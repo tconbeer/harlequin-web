@@ -13,7 +13,7 @@
 <div class="mx-auto max-w-screen-lg px-6 selection:bg-pink">
   <Header />
 
-  <main class="overflow-x-auto">
+  <main>
     <slot />
   </main>
 

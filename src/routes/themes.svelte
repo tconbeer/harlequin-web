@@ -62,7 +62,7 @@
 </p>
 <ul class="mt-4 flex flex-wrap justify-center gap-4 overflow-visible">
   {#each themes as [name, src]}
-    <li class="transition-transform hover:scale-250">
+    <li class="overflow-visible transition-transform hover:scale-250">
       <a href={src} target="_blank"
         ><LazyImage
           {src}

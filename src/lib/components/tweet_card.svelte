@@ -6,7 +6,7 @@
   /* eslint svelte/no-at-html-tags: "off" */
 </script>
 
-<div class="max-w-md rounded border bg-white px-6 py-4 font-body">
+<div class="w-80 rounded border bg-white px-6 py-4 font-body">
   <div class="flex justify-between">
     <div class="flex">
       <LazyImage
