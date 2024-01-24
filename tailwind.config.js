@@ -18,6 +18,21 @@ export default {
       scale: {
         250: "2.5",
       },
+      animation: {
+        "horizontal-scroll": "horizontal-scroll 30s linear infinite",
+      },
+      keyframes: {
+        "horizontal-scroll": {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform:
+              // 328px (320 + 8 gap) * n cards
+              "translateX(-3280px)",
+          },
+        },
+      },
     },
   },
   plugins: [],

@@ -8,6 +8,9 @@
   import willmcgugan from "$lib/assets/tweets/willmcgugan.jpg";
   import _TylerHillery from "$lib/assets/tweets/_TylerHillery.jpg";
   import archieemwood from "$lib/assets/tweets/archieemwood.jpg";
+  import _WaylonWalker from "$lib/assets/tweets/_WaylonWalker.jpg";
+  import KhuyenTran16 from "$lib/assets/tweets/KhuyenTran16.jpg";
+  import joshptemple from "$lib/assets/tweets/joshptemple.png";
 
   const tweets: Tweet[] = [
     {
@@ -23,7 +26,7 @@
         >
         and retro/efficient text interfaces Harlequin is pretty cool!
         <a style="color: blue" href="https://t.co/4tNKmt1yT4">https://t.co/4tNKmt1yT4</a>
-        <a style="color: blue" href="https://t.co/5Upic8iPXv">pic.twitter.com/5Upic8iPXv</a>
+        <img src="https://pbs.twimg.com/tweet_video_thumb/FxS6gBKWcAMR0X4.jpg">
       </p>`,
       created_at: "6:24 AM · May 29, 2023",
       src: "https://twitter.com/AlexVianaPro/status/1663159262971936770",
@@ -84,6 +87,17 @@
     },
     {
       profile: {
+        name: "Will McGugan",
+        handle: "willmcgugan",
+        src: "https://twitter.com/willmcgugan",
+        img_src: willmcgugan,
+      },
+      body: `<p lang="en" dir="ltr">So much awesome! 😀💪 <a style="color: blue" href="https://t.co/D5eBrRGDK9">https://t.co/D5eBrRGDK9</a>`,
+      created_at: "11:27 AM · Sep 20, 2023",
+      src: "https://twitter.com/willmcgugan/status/1704547880202051694",
+    },
+    {
+      profile: {
         name: "Archie",
         handle: "archieemwood",
         src: "https://twitter.com/archieemwood",
@@ -95,14 +109,36 @@
     },
     {
       profile: {
-        name: "Will McGugan",
-        handle: "willmcgugan",
-        src: "https://twitter.com/willmcgugan",
-        img_src: willmcgugan,
+        name: "Waylon Walker",
+        handle: "_WaylonWalker",
+        src: "https://twitter.com/_WaylonWalker",
+        img_src: _WaylonWalker,
       },
-      body: `<p lang="en" dir="ltr">So much awesome! 😀💪 <a style="color: blue" href="https://t.co/D5eBrRGDK9">https://t.co/D5eBrRGDK9</a>`,
-      created_at: "11:27 AM · Sep 20, 2023",
-      src: "https://twitter.com/willmcgugan/status/1704547880202051694",
+      body: `<p lang="en" dir="ltr">harlequin now has sqlite support <img src="https://pbs.twimg.com/ext_tw_video_thumb/1735672960684335104/pu/img/tTTvSglcje0e1NOw.jpg"></p>`,
+      created_at: "7:48 AM · Dec 15, 2023",
+      src: "https://twitter.com/_WaylonWalker/status/1735673098580488533",
+    },
+    {
+      profile: {
+        name: "Josh Temple",
+        handle: "joshptemple",
+        src: "https://twitter.com/joshptemple",
+        img_src: joshptemple,
+      },
+      body: `<p lang="en" dir="ltr">Loving <a style="color: blue" href="https://twitter.com/tedconbeer?ref_src=twsrc%5Etfw">@tedconbeer</a>’s snappy terminal SQL IDE — Harlequin. Had a blast writing a BigQuery adapter for it last weekend. Try it out and find all the bugs! <a style="color: blue" href="https://t.co/M3LvDpTupQ">https://t.co/M3LvDpTupQ</a></p>`,
+      created_at: "5:34 PM · Dec 21, 2023",
+      src: "https://twitter.com/joshptemple/status/1737994913109713280",
+    },
+    {
+      profile: {
+        name: "Khuyen Tran",
+        handle: "KhuyenTran16",
+        src: "https://twitter.com/KhuyenTran16",
+        img_src: KhuyenTran16,
+      },
+      body: `<p lang="en" dir="ltr">To have a <a style="color: blue" href="https://twitter.com/sql?ref_src=twsrc%5Etfw">@SQL</a> IDE directly on your <a style="color: blue" href="https://twitter.com/terminal?ref_src=twsrc%5Etfw">@terminal</a>, use Harlequin.<br><br>Command-line database operations are resource-efficient and often quicker than switching between multiple apps. <a style="color: blue" href="https://t.co/Fdn5ufImK7">github.com/tconbeer/harlequin</a> <img src="https://pbs.twimg.com/media/GDFzeyBXkAAUMgL?format=png&name=small">`,
+      created_at: "9:01 AM · Jan 5, 2024",
+      src: "https://twitter.com/KhuyenTran16/status/1743301579669696758",
     },
   ];
 </script>
@@ -112,10 +148,12 @@
     class="language-bash bg-pink px-1 py-1 text-sm">pipx install harlequin</code
   >.
 </p>
-<ul class="mt-4 flex flex-wrap justify-center gap-2 align-middle">
-  {#each tweets as tweet}
-    <li class="max-w-xs">
-      <TweetCard {tweet} />
-    </li>
+<ul class="relative mt-4 flex gap-2 overflow-hidden">
+  {#each { length: 2 } as _}
+    {#each tweets as tweet}
+      <li class="shrink-0 animate-horizontal-scroll overflow-visible">
+        <TweetCard {tweet} />
+      </li>
+    {/each}
   {/each}
 </ul>
