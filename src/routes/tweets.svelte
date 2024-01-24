@@ -148,10 +148,14 @@
     class="language-bash bg-pink px-1 py-1 text-sm">pipx install harlequin</code
   >.
 </p>
-<ul class="relative mt-4 flex gap-2 overflow-hidden">
-  {#each { length: 2 } as _}  <!-- eslint-disable-line -->
+<ul
+  class="relative mt-4 flex gap-2 motion-safe:overflow-x-hidden motion-reduce:overflow-x-scroll"
+>
+  {#each { length: 2 } as _} <!-- eslint-disable-line -->
     {#each tweets as tweet}
-      <li class="shrink-0 animate-horizontal-scroll overflow-visible">
+      <li
+        class="shrink-0 overflow-hidden motion-safe:animate-horizontal-scroll"
+      >
         <TweetCard {tweet} />
       </li>
     {/each}
