@@ -24,7 +24,7 @@
     >
   </div>
   <figure class="mx-auto max-w-screen-lg py-2 drop-shadow-lg">
-    {@html hero} <!-- eslint-disable-line -->    
+    {@html hero} <!-- eslint-disable-line -->
   </figure>
 
   <h2 class="mt-12 text-center font-accent text-3xl">Runs Anywhere.</h2>
