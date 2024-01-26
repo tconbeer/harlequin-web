@@ -14,6 +14,7 @@ menuOrder: 200
 - <Key>F2</Key> Focus on the Query Editor.
 - <Key>F5</Key> Focus on the Results Viewer.
 - <Key>F6</Key> Focus on the Data Catalog.
+- <Key>F8</Key> Show the Query History Viewer.
 - <Key>F9</Key>, <Key>ctrl+b</Key> Toggle the sidebar.
 - <Key>F10</Key> Toggle full screen mode for the current widget.
 - <Key>ctrl+e</Key> Write the returned data to a CSV, Parquet, or JSON file.
@@ -96,3 +97,10 @@ _With the autocomplete list open:_
 
 - <Key>up</Key>,<Key>down</Key> Move the cursor one row.
 - <Key>enter</Key>,<Key>space</Key> Toggle the expand/collapsed state of the current item.
+
+## Query History Viewer Bindings
+
+- <Key>up</Key>,<Key>down</Key>,<Key>PgUp</Key>,<Key>PgDn</Key> Change selection and scroll.
+- <Key>tab</Key> Change focus between the history list and the query preview pane.
+- <Key>enter</Key> Create a new Editor buffer and insert the highlighted query.
+- <Key>escape</Key> Return to the main screen.
