@@ -26,7 +26,7 @@ poetry add harlequin-postgres
 If you do not already have Harlequin installed:
 
 ```bash
-pip install harlequin-postgres
+pipx install harlequin-postgres
 ```
 
 If you would like to add the Postgres adapter to an existing Harlequin installation:

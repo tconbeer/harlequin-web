@@ -26,7 +26,7 @@ poetry add harlequin-mysql
 If you do not already have Harlequin installed:
 
 ```bash
-pip install harlequin-mysql
+pipx install harlequin-mysql
 ```
 
 If you would like to add the mysql adapter to an existing Harlequin installation:
