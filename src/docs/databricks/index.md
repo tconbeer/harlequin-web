@@ -1,6 +1,6 @@
 ---
 title: "Adapter: Databricks"
-menuOrder: 110
+menuOrder: 120
 ---
 
 ## Installation
