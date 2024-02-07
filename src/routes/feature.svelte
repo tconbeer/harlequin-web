@@ -7,7 +7,7 @@
 </script>
 
 <div
-  class="mx-auto my-6 flex max-w-2xl flex-wrap bg-pink px-6 py-6 shadow-lg shadow-purple"
+  class="mx-auto my-6 flex max-w-2xl flex-wrap bg-pink px-6 py-6 shadow-lg shadow-purple selection:bg-purple"
 >
   {#if src}
     <div class="w-full pr-4 md:w-1/3">

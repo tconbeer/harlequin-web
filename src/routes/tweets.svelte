@@ -145,7 +145,8 @@
 
 <p class="text-center">
   Thousands are using Harlequin. Join them with <code
-    class="language-bash bg-pink px-1 py-1 text-sm">pipx install harlequin</code
+    class="language-bash bg-pink px-1 py-1 text-sm selection:bg-purple"
+    >pipx install harlequin</code
   >.
 </p>
 <ul
