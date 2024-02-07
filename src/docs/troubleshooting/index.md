@@ -10,6 +10,7 @@ Sorry to see you here. Terminals can be finicky.
 1. [Key Bindings](key-bindings)
 1. [Copy-Paste](copying-and-pasting)
 1. [Appearance (Colors and Fonts)](appearance)
+1. [Locale (Number formatting)](locale)
 1. [Windows Timezone Database](timezone-windows)
 1. [DuckDB Version Mismatch](duckdb-version-mismatch)
 
