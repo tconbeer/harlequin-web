@@ -81,6 +81,24 @@ For more details on command line options, run:
 harlequin --help
 ```
 
+## Using Unity Catalog and experiencing slow legacy `hive_metastore` indexing?
+
+Indexing legacy metastores is slow on Databricks because it requires a SQL call for every table in
+the legacy metastore to extract column metadata. This means refreshing Harlequin's Data Catalog
+pane takes a long time for Databricks instances with lots of tables in legacy metastores like
+`hive_metastore`.
+
+If your Databricks instance runs Unity Catalog, and you only want the Unity Catalog assets
+listed in the Data Catalog pane, supply the `--skip-legacy-indexing` CLI flag when loading
+Harlequin.
+
+This flag means only Unity Catalogs will be indexed - legacy metastores will not appear.
+
+Indexing Unity Catalogs is a super-fast operation requiring Harlequin to send only two SQL queries
+to Databricks because of
+[Information Schema](https://docs.databricks.com/en/sql/language-manual/sql-ref-information-schema.html).
+
+
 ## Issues and Contributing
 
 Head over to the [alexmalins/harlequin-databricks](https://github.com/alexmalins/harlequin-databricks/) repo on GitHub.
