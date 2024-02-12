@@ -17,7 +17,7 @@ There are three interfaces defined as abstract base classes in the [`harlequin.a
 
 ### HarlequinAdapter
 
-The first is the `HarlequinAdapter`, which is initialized with `conn_str` (a tuple of connection strings) and any options passed into Harlequin at the command line or through a config file. The adapter declares its options via the `ADAPTER_OPTIONS` and `COPY_FORMATS` class variables (more info [below](#adapter-options)).
+The first is the `HarlequinAdapter`, which is initialized with `conn_str` (a tuple of connection strings) and any options passed into Harlequin at the command line or through a config file. The adapter declares its options via the `ADAPTER_OPTIONS` class variable (more info [below](#adapter-options)).
 
 The primary purpose of an adapter is to provide its `connect()` method, which creates and returns an instance of `HarlequinConnection`.
 
@@ -31,11 +31,9 @@ A connection must provide two methods: `get_catalog` and `execute`.
 
 `get_catalog` and `execute` are called by Harlequin in **different threads**, and those calls may overlap. If multiple queries are run by the user, `execute` may be called many times **serially**, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
 
-A connection may also provide `get_completions`, `copy` and `validate_sql` methods.
+A connection may also provide `get_completions` and `validate_sql` methods.
 
 `get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
-
-`copy(query, path, format_name, options)` should use the database's native capabilities to export the results of a query. It will receive a `format_name` and dict of `options` that are defined by the adapter's `COPY_FORMATS` class variable (more [below](#copy-formats)).
 
 `validate_sql(query)` should very quickly parse the passed query: it is used to validate the selected text in Harlequin and determine whether the selection or entire query should be executed. If it is implemented, Harlequin will not attempt to execute the selected text if it is not a valid query; otherwise, Harlequin will always execute the selected text.
 
@@ -64,12 +62,6 @@ Adapters will be initialized with `conn_str`, a sequence of connection strings. 
 
 Beyond that, adapters can declare CLI options by setting the `ADAPTER_OPTIONS` class variable on their subclass of `HarlequinAdapter`. The class variable should be a list of instances of subclasses of [`AbstractOption`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/options.py), like `TextOption`, `FlagOption`, `SelectOption`, etc. Each `Option` instance must have a name and description. See the [`harlequin.options`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/options.py) module or the implementations by the [DuckDB](https://github.com/tconbeer/harlequin/blob/main/src/harlequin_duckdb/cli_options.py) and [SQLite](https://github.com/tconbeer/harlequin/blob/main/src/harlequin_sqlite/cli_options.py) adapters for more information.
 
-### Copy Formats
-
-Some adapters may facilitate exporting data locally. By setting the `COPY_FORMATS` class variable on their subclass of `HarlequinAdapter` and implementing `HarlequinConnection.copy()`, they can enable their users to use Harlequin's Data Exporter UI.
-
-`COPY_FORMATS` is a list of `HarlequinCopyFormat` instances, which define a name, label, one or more file extensions associated with the format, and a list of `AbstractOption` subclass instances that define options for the format. For more information, see the source in the [`harlequin.options`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/options.py) module, or the [DuckDB implementation](https://github.com/tconbeer/harlequin/blob/main/src/harlequin_duckdb/copy_formats.py).
-
 ## Packaging and Distributing Adapters
 
 You can use the [harlequin-adapter-template](https://github.com/tconbeer/harlequin-adapter-template) repo as a starting point for your adapter. It uses `MyAdapter` as a placeholder class name (along with `MyConnection` and `MyCursor`) and creates a plugin registered as `my-adapter`.
@@ -85,7 +77,7 @@ Your adapter must register an [entry point](https://packaging.python.org/en/late
 my-adapter = "my_package_name:MyAdapter"
 ```
 
-In this example, `my-adapter` is the _name_ of the plugin. Harlequin users will select this adapter with `--adapter my-adapter`. `my_package_name` is the import name of your package (which may or may not be the same name as your _distribution_ or PyPI name). Finally, `MyAdapter` is the subclass of `HarlequinAdapter`, which is available in the `my_package_name` namespace, probably because it was imported into the top-level `__init__.py` file.
+In this example, `my-adapter` is the _name_ of the plugin. Harlequin users will select this adapter with `harlequin --adapter my-adapter`. `my_package_name` is the import name of your package (which may or may not be the same name as your _distribution_ or PyPI name). Finally, `MyAdapter` is a subclass of `HarlequinAdapter` that is available in the `my_package_name` namespace, probably because it was imported into the top-level `__init__.py` file.
 
 The template repo includes a test to ensure that your adapter is discoverable as a plug-in.
 
@@ -105,7 +97,7 @@ my-adapter = ["my-adapter-pypi-distribution"]
 
 ```
 
-After updating `pyproject.toml`, you must run `poetry lock` to regenerate the lockfile so it includes the new dependencies. Both `pyproject.toml` and `poetry.lock` should be included in your PR.
+After updating `pyproject.toml`, you must run `poetry lock --no-update` to regenerate the lockfile so it includes the new dependencies. Both `pyproject.toml` and `poetry.lock` should be included in your PR.
 
 ## Testing Adapters
 
@@ -127,7 +119,7 @@ In addition, if you would like your adapter to appear in these docs, open a PR a
    ---
    ```
 
-1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit here. Link to the docs page you just created.
+1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit there. Link to the docs page you just created.
 1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each file should again have frontmatter; the menuOrder should be one higher than the last page (your index page or another additional page):
 
    ```md

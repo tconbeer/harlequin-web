@@ -98,7 +98,6 @@ Indexing Unity Catalogs is a super-fast operation requiring Harlequin to send on
 to Databricks because of
 [Information Schema](https://docs.databricks.com/en/sql/language-manual/sql-ref-information-schema.html).
 
-
 ## Issues and Contributing
 
 Head over to the [alexmalins/harlequin-databricks](https://github.com/alexmalins/harlequin-databricks/) repo on GitHub.
