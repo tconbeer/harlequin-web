@@ -12,7 +12,8 @@ Harlequin can only react to key presses that are sent to it from the Terminal it
 If you don't want to [upgrade your terminal](terminal-recommendations), you can use the following aliases, which should be supported everywhere (if not, [open an issue](https://github.com/tconbeer/harlequin/issues)):
 
 - Run query: use <Key>ctrl+j</Key>, not <Key>ctrl+enter</Key>.
-- Comment line: use <Key>ctrl+\_</Key> (underscore), not <Key>ctrl+/</Key>.
+<!-- prettier-ignore -->
+- Comment line: use <Key>ctrl+_</Key> (underscore), not <Key>ctrl+/</Key>.
 - On a Mac: For all bindings, use <Key>^ Control</Key>, not <Key>⌘ Command</Key>.
 
 [See here](copying-and-pasting) for copy and paste.

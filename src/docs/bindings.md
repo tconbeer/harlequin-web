@@ -40,7 +40,8 @@ menuOrder: 200
 - <Key>ctrl+v</Key>, <Key>ctrl+u</Key>, <Key>shift+insert</Key>, <Key>Right Click</Key> Paste selected text.
 - <Key>ctrl+z</Key> Undo.
 - <Key>ctrl+y</Key> Redo.
-- <Key>ctrl+/</Key>, <Key>ctrl+\_</Key> Toggle comments on selected line(s).
+<!-- prettier-ignore -->
+- <Key>ctrl+/</Key>, <Key>ctrl+_</Key> Toggle comments on selected line(s).
 - <Key>tab</Key> Insert spaces at cursor to move the cursor to the next tab stop, or indent the selected line(s) to the next tab stop.
 - <Key>shift+tab</Key> Dedent the selected line(s) to the next tab stop.
 - <Key>shift+delete</Key> Delete the current line.
