@@ -7,17 +7,17 @@
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #d67bff inherit;
+    scrollbar-color: #d67bff #ffb6d9;
   }
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
   }
 
   *::-webkit-scrollbar-track {
-    background: inherit;
+    background: #ffb6d9;
     border-radius: 5px;
   }
 
