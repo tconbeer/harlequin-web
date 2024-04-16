@@ -31,11 +31,13 @@ A connection must provide two methods: `get_catalog` and `execute`.
 
 `get_catalog` and `execute` are called by Harlequin in **different threads**, and those calls may overlap. If multiple queries are run by the user, `execute` may be called many times **serially**, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
 
-A connection may also provide `get_completions` and `validate_sql` methods.
+A connection may also provide `get_completions`, `validate_sql`, and `close` methods.
 
 `get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
 
 `validate_sql(query)` should very quickly parse the passed query: it is used to validate the selected text in Harlequin and determine whether the selection or entire query should be executed. If it is implemented, Harlequin will not attempt to execute the selected text if it is not a valid query; otherwise, Harlequin will always execute the selected text.
+
+`close()` can be implemented by an adapter to gracefully close the connection to the underlying database when Harlequin quits, if necessary.
 
 The transaction behavior of an adapter is undefined, and is up to the adapter author. The SQLite and Postgres adapters both use auto-commit mode on their connections. If desired, you may create an Adapter Option to configure this at Harlequin start-up; in the [future](https://github.com/tconbeer/harlequin/issues/334), we may standardize this behavior and add a UI element to change the transaction behavior.
 
