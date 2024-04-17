@@ -28,7 +28,7 @@ poetry add harlequin-bigquery
 If you do not already have Harlequin installed:
 
 ```bash
-pipx install harlequin-bigquery
+pipx install harlequin[bigquery]
 ```
 
 If you would like to add the BigQuery adapter to an existing Harlequin installation:

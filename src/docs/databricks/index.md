@@ -26,7 +26,7 @@ poetry add harlequin-databricks
 If you do not already have Harlequin installed:
 
 ```bash
-pipx install harlequin-databricks
+pipx install harlequin[databricks]
 ```
 
 If you would like to add the Databricks adapter to an existing Harlequin installation:

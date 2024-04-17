@@ -26,7 +26,7 @@ poetry add harlequin-trino
 If you do not already have Harlequin installed:
 
 ```bash
-pipx install harlequin-trino
+pipx install harlequin[trino]
 ```
 
 If you would like to add the Trino adapter to an existing Harlequin installation:

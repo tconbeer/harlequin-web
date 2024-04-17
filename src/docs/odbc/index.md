@@ -34,7 +34,7 @@ poetry add harlequin-odbc
 If you do not already have Harlequin installed:
 
 ```bash
-pipx install harlequin-odbc
+pipx install harlequin[odbc]
 ```
 
 If you would like to add the ODBC adapter to an existing Harlequin installation:
