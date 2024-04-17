@@ -48,9 +48,9 @@
   </div>
 
   <ul
-    class="mt-4 sm:mt-0 {showMenu
+    class="mt-6 sm:mt-0 {showMenu
       ? 'flex'
-      : 'hidden'} mx-auto gap-8 sm:mx-0 sm:flex sm:pt-2"
+      : 'hidden'} mx-auto gap-4 sm:mx-0 sm:flex sm:gap-8 sm:pt-2"
   >
     <li class="hidden sm:block">
       <a
@@ -79,6 +79,14 @@
         class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
         >About</a
       >
+    </li>
+    <li>
+      <a
+        href="https://github.com/sponsors/tconbeer"
+        target="_blank"
+        class="text-inherit no-underline decoration-green decoration-4 underline-offset-4 hover:underline"
+        >Sponsor
+      </a>
     </li>
     <li>
       <a
