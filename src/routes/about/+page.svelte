@@ -67,7 +67,31 @@
       target="_blank"
       class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
       >Hacker News</a
-    >, where the v1.0 announcement peaked at #2 on the front page.
+    >, where the v1.0 announcement peaked at #2 on the front page, and the
+    <a
+      href="https://news.ycombinator.com/item?id=38882526"
+      target="_blank"
+      class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
+      >adapters release</a
+    > peaked at #10.
+  </li>
+  <li>
+    <a
+      href="https://terminaltrove.com/tool-of-the-week/#:~:text=January%209%2C%202024-,harlequin,-%2D"
+      target="_blank"
+      class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
+      >Terminal Trove</a
+    >, where Harlequin was featured as the Terminal Tool of the Week in January,
+    2024.
+  </li>
+  <li>
+    <a
+      href="https://www.textualize.io/projects/#:~:text=See%20in%20GitHub-,Harlequin.sh,-The%20DuckDB%20IDE"
+      target="_blank"
+      class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
+      >Textualize.io</a
+    >, where Harlequin is a featured project, highlighting the capabilities of
+    the framework.
   </li>
   <li>
     <a
