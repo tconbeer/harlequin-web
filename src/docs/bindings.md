@@ -26,11 +26,17 @@ menuOrder: 200
 
 - <Key>F4</Key> Format the query.
 - <Key>ctrl+enter</Key>, <Key>ctrl+j</Key> Run the query.
+
 - <Key>ctrl+o</Key> Open a text file in the Query Editor.
 - <Key>ctrl+s</Key> Save the contents of the Query Editor to a file.
+
 - <Key>ctrl+n</Key> Create a new buffer (editor tab).
 - <Key>ctrl+w</Key> Close the current buffer (editor tab).
 - <Key>ctrl+k</Key> View the next buffer (editor tab).
+
+- <Key>ctrl+g</Key> Go to line
+- <Key>ctrl+f</Key> Find
+- <Key>F3</Key> Find next (like Find, but uses previous value).
 
 ### Editing Text
 
