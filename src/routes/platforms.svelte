@@ -14,19 +14,19 @@
   import iterm from "$lib/assets/platforms/iterm2.png";
   import tmux from "$lib/assets/platforms/tmux.png";
 
-  const platforms = [
-    windows,
-    mac,
-    linux,
-    bash,
-    zsh,
-    fish,
-    cmd,
-    powershell,
-    terminal,
-    iterm,
-    tmux,
-  ];
+  const platforms = {
+    windows: windows,
+    mac: mac,
+    linux: linux,
+    bash: bash,
+    zsh: zsh,
+    fish: fish,
+    cmd: cmd,
+    powershell: powershell,
+    terminal: terminal,
+    iterm: iterm,
+    tmux: tmux,
+  };
 </script>
 
 <p class="text-center">
@@ -34,11 +34,12 @@
   Windows cmd? Yep.
 </p>
 <ul class="my-4 flex flex-wrap justify-between gap-2 md:px-16">
-  {#each platforms as platform}
+  {#each Object.entries(platforms) as [platform_name, img_src]}
     <li class="h-[50px] w-[50px]">
       <LazyImage
-        src={platform}
-        alt="Icon for an OS, Shell, or Terminal."
+        src={img_src}
+        title={platform_name}
+        alt="Icon for a {platform_name}."
         className="object-fit grayscale"
       />
     </li>
