@@ -1,5 +1,6 @@
 <script lang="ts">
   export let src = "";
+  export let title = "";
   export let alt = "";
   export let className = "";
 
@@ -17,6 +18,6 @@
 
 <IntersectionObserver once={true} let:intersecting>
   {#if intersecting || nativeLoading}
-    <img {src} {alt} class={className} loading="lazy" />
+    <img {src} {title} {alt} class={className} loading="lazy" />
   {/if}
 </IntersectionObserver>

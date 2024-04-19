@@ -30,6 +30,7 @@
     <li class="h-[50px] w-[50px]">
       <LazyImage
         src={database}
+        title={database.split("/").pop()?.split(".")[0]}
         alt={database.split("/").pop()?.split(".")[0]}
         className="object-fit grayscale"
       />
