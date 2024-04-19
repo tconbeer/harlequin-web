@@ -1,7 +1,7 @@
 <script>
   import LazyImage from "$lib/components/lazy_image.svelte";
   const databases = import.meta.glob("$lib/assets/databases/*.{svg,png}", {
-    as: "url",
+    query: "?url",
     eager: true,
   });
 </script>
@@ -26,12 +26,12 @@
   >.
 </p>
 <ul class="my-4 flex flex-wrap justify-center gap-2 md:px-16">
-  {#each Object.values(databases) as database}
+  {#each Object.entries(databases) as [db_url, db]}
     <li class="h-[50px] w-[50px]">
       <LazyImage
-        src={database}
-        title={database.split("/").pop()?.split(".")[0]}
-        alt={database.split("/").pop()?.split(".")[0]}
+        src={db.default}
+        title={db_url.split("/").pop()?.split(".")[0]}
+        alt={db_url.split("/").pop()?.split(".")[0]}
         className="object-fit grayscale"
       />
     </li>
