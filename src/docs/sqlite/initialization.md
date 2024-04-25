@@ -36,6 +36,6 @@ Most SQLite CLI dot commands affect the behavior of the CLI, like the format of 
 Currently Harlequin rewrites the following dot commands to SQL and executes the SQL:
 
 - `.open` is rewritten to an `attach ...` statement.
-- `.load` is rewritten to a `select load_extension(...)` statement.
+- `.load` is rewritten to a `select load_extension(...)` statement. Note: Loading extensions may not be possible with your Python's SQLite distribution. See [extensions](extensions) for more info.
 
 To request additional dot command support in Harlequin, [open an issue](https://github.com/tconbeer/harlequin/issues/new/choose).
