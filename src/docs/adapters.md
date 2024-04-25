@@ -18,7 +18,7 @@ Each adapter has its own configuration options, detailed in their own section in
 Core adapters are created and maintained by the maintainers of Harlequin.
 
 - [DuckDB](duckdb/index)
-- [SQLite](sqlite)
+- [SQLite](sqlite/index)
 - [Postgres](postgres/index) (also supports Redshift)
 - [MySQL](mysql/index)
 - [ODBC](odbc/index) (supports MS SQL Server, Oracle, and others)
