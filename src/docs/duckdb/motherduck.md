@@ -1,6 +1,6 @@
 ---
 title: MotherDuck
-menuOrder: 23
+menuOrder: 24
 ---
 
 You can use Harlequin with [MotherDuck](https://motherduck.com/), just as you would use the DuckDB CLI:

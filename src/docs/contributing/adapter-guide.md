@@ -2,6 +2,9 @@
 title: Creating an Adapter
 menuOrder: 2100
 ---
+<script>
+    import tx_manual from "$lib/assets/docs/tx-manual.png"
+</script>
 
 Database adapters enable Harlequin to work with any relational database by abstracting the actual interface into a standard that Harlequin can use. The interface is minimal: adapters were designed to be easy to implement and maintain. Adapter authors only need familiarity with Python and the database they wish to use; no knowledge of Textual, user interfaces, or async programming is required.
 
@@ -25,21 +28,30 @@ The primary purpose of an adapter is to provide its `connect()` method, which cr
 
 A connection must provide two methods: `get_catalog` and `execute`.
 
-`get_catalog()` introspects the connection and returns a `Catalog`, whose items represent each database, relation, column, etc. available through the connection. The information in the `Catalog` is displayed to users in the Data Catalog sidebar in Harlequin, and is made available as autocomplete options. The schema for `Catalog` and `CatalogItem` are found in the [`harlequin.catalog`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/catalog.py) module.
+- `get_catalog()` introspects the connection and returns a `Catalog`, whose items represent each database, relation, column, etc. available through the connection. The information in the `Catalog` is displayed to users in the Data Catalog sidebar in Harlequin, and is made available as autocomplete options. The schema for `Catalog` and `CatalogItem` are found in the [`harlequin.catalog`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/catalog.py) module.
 
-`execute(query)` runs a query in the connected database. If the query returns data (like a select statement), `execute` returns a `HarlequinCursor`. Otherwise, it returns `None`.
+- `execute(query)` runs a query in the connected database. If the query returns data (like a select statement), `execute` returns a `HarlequinCursor`. Otherwise, it returns `None`.
 
 `get_catalog` and `execute` are called by Harlequin in **different threads**, and those calls may overlap. If multiple queries are run by the user, `execute` may be called many times **serially**, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
 
-A connection may also provide `get_completions`, `validate_sql`, and `close` methods.
+A connection may also provide `close`, `get_completions`, and `validate_sql` methods; to support multiple transaction modes, it may also implement the `toggle_transaction_mode` method and the `transaction_mode` property.
 
-`get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
+- `close()` can be implemented by an adapter to gracefully close the connection to the underlying database when Harlequin quits, if necessary.
 
-`validate_sql(query)` should very quickly parse the passed query: it is used to validate the selected text in Harlequin and determine whether the selection or entire query should be executed. If it is implemented, Harlequin will not attempt to execute the selected text if it is not a valid query; otherwise, Harlequin will always execute the selected text.
+- `get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
 
-`close()` can be implemented by an adapter to gracefully close the connection to the underlying database when Harlequin quits, if necessary.
+- `validate_sql(query)` should very quickly parse the passed query: it is used to validate the selected text in Harlequin and determine whether the selection or entire query should be executed. If it is implemented, Harlequin will not attempt to execute the selected text if it is not a valid query; otherwise, Harlequin will always execute the selected text.
 
-The transaction behavior of an adapter is undefined, and is up to the adapter author. The SQLite and Postgres adapters both use auto-commit mode on their connections. If desired, you may create an Adapter Option to configure this at Harlequin start-up; in the [future](https://github.com/tconbeer/harlequin/issues/334), we may standardize this behavior and add a UI element to change the transaction behavior.
+The transaction behavior of an adapter is undefined, and is up to the adapter author. Optionally, an adapter can declare one or more transaction modes, which will cause Harlequin to display buttons to toggle the modes (and optionally) commit and roll back transactions.
+
+<div class="flex flex-wrap justify-center py-2">
+    <figure>
+        <img src={tx_manual} alt="Screenshot of the Run Query bar with manual transaction mode enabled."  class="h-auto w-full max-h-80">
+        <figcaption class="text-center text-sm text-purple font-bold">Screenshot of the Run Query bar with manual transaction mode enabled.</figcaption>
+    </figure>
+</div>
+
+To enable this, you must implement the `transaction_mode` property and the `toggle_transaction_mode()` method on the connection. Both return a `HarlequinTransactionMode` data class with a string `label` and optional callables to `commit` and `rollback` a transaction, which will be invoked by Harlequin if the user clicks those buttons.
 
 It is not possible for Harlequin to cancel queries it has submitted for execution. Research on this is planned in the future; please comment on [this issue](https://github.com/tconbeer/harlequin/issues/333) if you would like to contribute to this feature.
 
@@ -47,16 +59,16 @@ It is not possible for Harlequin to cancel queries it has submitted for executio
 
 A cursor must provide three methods: `columns`, `set_limit`, and `fetchall`.
 
-`columns()` returns a list of tuples; each tuple is a `(column_name, column_type)` pair. The name and type will be printed in the column header in Harlequin's Results Viewer. The column type should be abbreviated to 1-3 characters: for example, the built-in adapters use `s` for string/varchar fields, `##` for integer fields, and `#.#` for floating-point fields.
+- `columns()` returns a list of tuples; each tuple is a `(column_name, column_type)` pair. The name and type will be printed in the column header in Harlequin's Results Viewer. The column type should be abbreviated to 1-3 characters: for example, the built-in adapters use `s` for string/varchar fields, `##` for integer fields, and `#.#` for floating-point fields.
 
-`set_limit(limit)` should limit the number of records returned by a subsequent call to `fetchall()`. It is used by Harlequin to implement the limit checkbox on the Run Query Bar.
+- `set_limit(limit)` should limit the number of records returned by a subsequent call to `fetchall()`. It is used by Harlequin to implement the limit checkbox on the Run Query Bar.
 
-`fetchall()` should return all of the data returned by the query, in one of several accepted formats. It will be called exactly once on each cursor. The acceptable formats are declared by the `AutoBackendType` of Harlequin's Data Table widget (source [here](https://github.com/tconbeer/textual-fastdatatable/blob/a64308ea7e2e6de24df2f1d9c6cc1d024b2a6395/src/textual_fastdatatable/backend.py#L20-L27)). They are:
+- `fetchall()` should return all of the data returned by the query, in one of several accepted formats. It will be called exactly once on each cursor. The acceptable formats are declared by the `AutoBackendType` of Harlequin's Data Table widget (source [here](https://github.com/tconbeer/textual-fastdatatable/blob/a64308ea7e2e6de24df2f1d9c6cc1d024b2a6395/src/textual_fastdatatable/backend.py#L20-L27)). They are:
 
-1. A PyArrow [`Table`](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) or [`RecordBatch`](https://arrow.apache.org/docs/python/generated/pyarrow.RecordBatch.html).
-1. A `Mapping` of `str` to `Sequence`, where keys represent column names and the sequences are the data in each column. For example: `{"col_a": [1, 2, 3], "col_b": ["a", "b", "c"]}`
-1. A `Sequence` of `Iterable`s, like a `list` of `tuple`s, representing rows of data (or records). Such a sequence **MUST NOT** contain a header row.
-1. A `pathlib.Path` or `str` path to a local Parquet file.
+   1. A PyArrow [`Table`](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) or [`RecordBatch`](https://arrow.apache.org/docs/python/generated/pyarrow.RecordBatch.html).
+   1. A `Mapping` of `str` to `Sequence`, where keys represent column names and the sequences are the data in each column. For example: `{"col_a": [1, 2, 3], "col_b": ["a", "b", "c"]}`
+   1. A `Sequence` of `Iterable`s, like a `list` of `tuple`s, representing rows of data (or records). Such a sequence **MUST NOT** contain a header row.
+   1. A `pathlib.Path` or `str` path to a local Parquet file.
 
 ### Adapter Options
 
