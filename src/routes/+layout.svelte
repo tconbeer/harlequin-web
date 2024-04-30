@@ -3,6 +3,9 @@
   import Header from "./header.svelte";
   import { title, subtitle, description } from "$lib/config";
   import "../app.css";
+  import type { LayoutData } from "./$types";
+
+  export let data: LayoutData;
 </script>
 
 <svelte:head>
@@ -11,7 +14,7 @@
 </svelte:head>
 
 <div class="mx-auto max-w-screen-lg px-6 selection:bg-pink">
-  <Header />
+  <Header {data} />
 
   <main>
     <slot />
