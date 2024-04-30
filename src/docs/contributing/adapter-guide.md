@@ -2,6 +2,7 @@
 title: Creating an Adapter
 menuOrder: 2100
 ---
+
 <script>
     import tx_manual from "$lib/assets/docs/tx-manual.png"
 </script>
@@ -65,10 +66,10 @@ A cursor must provide three methods: `columns`, `set_limit`, and `fetchall`.
 
 - `fetchall()` should return all of the data returned by the query, in one of several accepted formats. It will be called exactly once on each cursor. The acceptable formats are declared by the `AutoBackendType` of Harlequin's Data Table widget (source [here](https://github.com/tconbeer/textual-fastdatatable/blob/a64308ea7e2e6de24df2f1d9c6cc1d024b2a6395/src/textual_fastdatatable/backend.py#L20-L27)). They are:
 
-   1. A PyArrow [`Table`](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) or [`RecordBatch`](https://arrow.apache.org/docs/python/generated/pyarrow.RecordBatch.html).
-   1. A `Mapping` of `str` to `Sequence`, where keys represent column names and the sequences are the data in each column. For example: `{"col_a": [1, 2, 3], "col_b": ["a", "b", "c"]}`
-   1. A `Sequence` of `Iterable`s, like a `list` of `tuple`s, representing rows of data (or records). Such a sequence **MUST NOT** contain a header row.
-   1. A `pathlib.Path` or `str` path to a local Parquet file.
+  1.  A PyArrow [`Table`](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) or [`RecordBatch`](https://arrow.apache.org/docs/python/generated/pyarrow.RecordBatch.html).
+  1.  A `Mapping` of `str` to `Sequence`, where keys represent column names and the sequences are the data in each column. For example: `{"col_a": [1, 2, 3], "col_b": ["a", "b", "c"]}`
+  1.  A `Sequence` of `Iterable`s, like a `list` of `tuple`s, representing rows of data (or records). Such a sequence **MUST NOT** contain a header row.
+  1.  A `pathlib.Path` or `str` path to a local Parquet file.
 
 ### Adapter Options
 
