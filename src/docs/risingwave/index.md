@@ -52,4 +52,4 @@ Many more options are available; to see the full list, run:
 harlequin --help
 ```
 
-For more information, see the [Postgres docs](postgres/index).
+For more information, see the [Postgres docs](../postgres/index).
