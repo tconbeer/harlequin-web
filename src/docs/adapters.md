@@ -30,4 +30,7 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [BigQuery](bigquery/index), contributed by [Josh Temple](https://github.com/joshtemple)
 - [Trino](trino/index), contributed by [Tyler Hillery](https://github.com/TylerHillery)
 - [Databricks](databricks/index), contributed by [Zach Shirah](https://github.com/zashirah) and [Alex Malins](https://github.com/alexmalins)
-- ClickHouse (Coming Soon!)
+- [ADBC](adbc/index), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports Snowflake and more.
+- [RisingWave](risingwave/index), contributed by [ZhengYu Xu](https://github.com/zen-xu)
+- [Wherobots](wherobots/index), contributed by [Wherobots](https://github.com/wherobots)
+- Coming soon: [Snowflake](https://github.com/rymurr/harlequin-snowflake), contributed by [Ryan Murray](https://github.com/rymurr)
