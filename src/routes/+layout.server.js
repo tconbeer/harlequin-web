@@ -15,6 +15,9 @@ export async function load({ fetch }) {
   const endpoint = "https://api.github.com/repos/tconbeer/harlequin";
   const request = new Request(endpoint, options);
   const response = await fetch(request);
+  if (!response.ok) {
+    return {forks_count: 62, stargazers_count: 2482};
+  }
   const body = await response.json();
   const data = (({ forks_count, stargazers_count }) => ({
     forks_count,
