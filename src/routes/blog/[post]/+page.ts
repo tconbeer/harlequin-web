@@ -8,6 +8,6 @@ export async function load({ params }) {
       meta: page.metadata,
     };
   } catch (e) {
-    throw error(404, `Could not find ${params.post}`);
+    error(404, `Could not find ${params.post}`);
   }
 }
