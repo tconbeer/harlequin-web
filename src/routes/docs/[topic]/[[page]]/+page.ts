@@ -13,6 +13,6 @@ export async function load({ params }) {
       meta: page.metadata,
     };
   } catch (e) {
-    throw error(404, `Could not find ${params.topic}/${params.page}`);
+    error(404, `Could not find ${params.topic}/${params.page}`);
   }
 }
