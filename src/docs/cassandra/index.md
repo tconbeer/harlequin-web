@@ -41,7 +41,7 @@ poetry add harlequin-cassandra
 If you do not already have Harlequin installed:
 
 ```bash
-pip install harlequin-cassandra
+pipx install harlequin[cassandra]
 ```
 
 If you would like to add the Cassandra adapter to an existing Harlequin installation:
