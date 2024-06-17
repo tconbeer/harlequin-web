@@ -34,4 +34,5 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [RisingWave](risingwave/index), contributed by [ZhengYu Xu](https://github.com/zen-xu)
 - [Wherobots](wherobots/index), contributed by [Wherobots](https://github.com/wherobots)
 - [Cassandra](cassandra/index), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
+- [NebulaGraph](nebulagraph/index), contributed by [Wey Gu](https://github.com/wey-gu)
 - Coming soon: [Snowflake](https://github.com/rymurr/harlequin-snowflake), contributed by [Ryan Murray](https://github.com/rymurr)
