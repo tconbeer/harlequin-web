@@ -31,7 +31,7 @@ If you do not already have Harlequin installed:
 pipx install harlequin[nebulagraph]
 ```
 
-If you would like to add the mysql adapter to an existing Harlequin installation:
+If you would like to add the nebulagraph adapter to an existing Harlequin installation:
 
 ```bash
 pipx inject harlequin harlequin-nebulagraph
@@ -42,7 +42,7 @@ pipx inject harlequin harlequin-nebulagraph
 You can open Harlequin with the NebulaGraph adapter by selecting it with the `-a` option and passing connection parameters as CLI options:
 
 ```bash
-harlequin -a nebulagraph -h 127.0.0.1 -p 9669 -u root -P password
+harlequin -a nebulagraph -h 127.0.0.1 -p 9669 -u root --password password
 ```
 
 ## Demo
