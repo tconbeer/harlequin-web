@@ -57,10 +57,16 @@ Other adapters can be installed using `pip install <adapter package>` or `pipx i
 
 ## Getting Help
 
+To view these docs from within the app, press <Key>F1</Key>.
+
 To view all command-line options for Harlequin and all installed adapters, after installation, simply type:
 
 ```bash
 harlequin --help
 ```
 
-To view a list of all key bindings (keyboard shortcuts) within the app, press <Key>F1</Key>. You can also view this list outside the app [here](bindings).
+See the [Troubleshooting](troubleshooting/index) guide for help with key bindings, appearance issues, copy-paste, etc.
+
+[GitHub Issues](https://github.com/tconbeer/harlequin/issues) are the best place to report bugs.
+
+[GitHub Discussions](https://github.com/tconbeer/harlequin/discussions) are a good place to ask questions, request features, and more.

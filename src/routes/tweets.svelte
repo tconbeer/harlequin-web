@@ -11,6 +11,8 @@
   import _WaylonWalker from "$lib/assets/tweets/_WaylonWalker.jpg";
   import KhuyenTran16 from "$lib/assets/tweets/KhuyenTran16.jpg";
   import joshptemple from "$lib/assets/tweets/joshptemple.png";
+  import adrianmg from "$lib/assets/tweets/adrianmg.jpg";
+  import TanelPoder from "$lib/assets/tweets/TanelPoder.jpg";
 
   const tweets: Tweet[] = [
     {
@@ -140,6 +142,29 @@
       created_at: "9:01 AM · Jan 5, 2024",
       src: "https://twitter.com/KhuyenTran16/status/1743301579669696758",
     },
+    {
+      profile: {
+        name: "Tanel Poder",
+        handle: "TanelPoder",
+        src: "https://twitter.com/TanelPoder",
+        img_src: TanelPoder,
+      },
+      body: `<p lang="en" dir="ltr">Harlequin: The SQL IDE for Your Terminal (works also with DuckDB!)<br><a style="color: blue; text-decoration: underline" href="https://harlequin.sh">harlequin.sh</a> <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GQPUTOWXIAADrpR?format=jpg&amp;name=small" >`,
+      created_at: "7:45 PM · Jun 16, 2024",
+      src: "https://twitter.com/TanelPoder/status/1802517863275643377",
+    },
+    {
+      profile: {
+        name: "Adrián Mato 🐙",
+        handle: "adrianmg",
+        src: "https://twitter.com/adrianmg",
+        img_src: adrianmg,
+      },
+      body: `<p lang="en" dir="ltr">What is this beauty <a style="color: blue; text-decoration: underline" href="https://harlequin.sh">harlequin.sh</a> <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GQUUIEAb0AADSUq?format=jpg&amp;name=small" >`,
+      created_at: "7:02 PM · Jun 17, 2024",
+      src: "https://x.com/adrianmg/status/1802869367753056498",
+    },
+    // AFTER ADDING CARDS, UPDATE THE CONFIG IN tailwind.config.js TO KEEP SCROLLING SMOOTH.
   ];
 </script>
 

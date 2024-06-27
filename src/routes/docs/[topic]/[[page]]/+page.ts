@@ -1,4 +1,4 @@
-import { error } from "@sveltejs/kit";
+import { error, redirect } from "@sveltejs/kit";
 
 export async function load({ params }) {
   try {
@@ -13,6 +13,10 @@ export async function load({ params }) {
       meta: page.metadata,
     };
   } catch (e) {
-    error(404, `Could not find ${params.topic}/${params.page}`);
+    if (!params.page) {
+      redirect(301, `/docs/${params.topic}/index`)
+    } else {
+      error(404, `Could not find ${params.topic}/${params.page}`);
+    }
   }
 }
