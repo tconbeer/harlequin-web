@@ -19,7 +19,8 @@ export default {
         250: "2.5",
       },
       animation: {
-        "horizontal-scroll": "horizontal-scroll 30s linear infinite",
+        // 3s * N cards
+        "horizontal-scroll": "horizontal-scroll 36s linear infinite",
       },
       keyframes: {
         "horizontal-scroll": {
@@ -29,7 +30,7 @@ export default {
           "100%": {
             transform:
               // 328px (320 + 8 gap) * n cards
-              "translateX(-3280px)",
+              "translateX(-3936px)",
           },
         },
       },
