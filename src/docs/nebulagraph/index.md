@@ -1,6 +1,6 @@
 ---
 title: "Adapter: NebulaGraph"
-menuOrder: 100
+menuOrder: 170
 ---
 
 The NebulaGraph adapter was contributed by community member Wey Gu. You can view the source for the adapter on [GitHub](https://github.com/wey-gu/harlequin-nebulagraph).
