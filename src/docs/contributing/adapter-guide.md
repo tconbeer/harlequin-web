@@ -25,6 +25,8 @@ The first is the `HarlequinAdapter`, which is initialized with `conn_str` (a tup
 
 The primary purpose of an adapter is to provide its `connect()` method, which creates and returns an instance of `HarlequinConnection`.
 
+Optionally, adapters may implement a `connection_id` property that uniquely identifies the connection in a manner that is stable between Harlequin invocations. Harlequin uses this `connection_id` to persist and retrieve the data catalog and query history across invocations of Harlequin.
+
 ### HarlequinConnection
 
 A connection must provide two methods: `get_catalog` and `execute`.
