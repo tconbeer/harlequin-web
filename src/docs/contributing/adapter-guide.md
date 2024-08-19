@@ -37,9 +37,11 @@ A connection must provide two methods: `get_catalog` and `execute`.
 
 `get_catalog` and `execute` are called by Harlequin in **different threads**, and those calls may overlap. If multiple queries are run by the user, `execute` may be called many times **serially**, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
 
-A connection may also provide `close`, `get_completions`, and `validate_sql` methods; to support multiple transaction modes, it may also implement the `toggle_transaction_mode` method and the `transaction_mode` property.
+A connection may also provide `close`, `cancel`, `get_completions`, and `validate_sql` methods; to support multiple transaction modes, it may also implement the `toggle_transaction_mode` method and the `transaction_mode` property.
 
 - `close()` can be implemented by an adapter to gracefully close the connection to the underlying database when Harlequin quits, if necessary.
+
+- `cancel()` should cancel any in-progress queries; it may also be necessary to handle any raised exceptions caused by cancelling queries, either during query execution or results fetching. See the DuckDB adapter for a reference implementation.
 
 - `get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
 
