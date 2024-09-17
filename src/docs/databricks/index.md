@@ -51,7 +51,7 @@ poetry add harlequin[databricks]
 pipx install harlequin[databricks]
 ```
 
-## Usage and Configuration
+## Connecting to Databricks
 
 To connect to Databricks you are going to need to provide as CLI arguments:
 
@@ -128,7 +128,7 @@ much faster indexing & refreshing of the assets in the Data Catalog pane.
 
 ## Other CLI options:
 
-For more details on command line options, run:
+For more details on other command line options, run:
 
 ```bash
 harlequin --help
