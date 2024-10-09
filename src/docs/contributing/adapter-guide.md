@@ -41,7 +41,7 @@ A connection may also provide `close`, `cancel`, `get_completions`, and `validat
 
 - `close()` can be implemented by an adapter to gracefully close the connection to the underlying database when Harlequin quits, if necessary.
 
-- `cancel()` should cancel any in-progress queries; it may also be necessary to handle any raised exceptions caused by cancelling queries, either during query execution or results fetching. See the DuckDB adapter for a reference implementation.
+- `cancel()` should cancel any in-progress queries; it may also be necessary to handle any raised exceptions caused by cancelling queries, either during query execution or results fetching. After implementing this method, set the adapter class variable `IMPLEMENTS_CANCEL` to `True` to show the cancel button in the Harlequin UI. See the DuckDB adapter for a reference implementation.
 
 - `get_completions()` should return a list of [`HarlequinCompletion`](https://github.com/tconbeer/harlequin/blob/main/src/harlequin/autocomplete/completion.py) instances, which represent additional, adapter-specific keywords, functions, or other strings for editor autocomplete (Harlequin automatically builds completions for each `CatalogItem`, so they should not be included).
 
@@ -57,8 +57,6 @@ The transaction behavior of an adapter is undefined, and is up to the adapter au
 </div>
 
 To enable this, you must implement the `transaction_mode` property and the `toggle_transaction_mode()` method on the connection. Both return a `HarlequinTransactionMode` data class with a string `label` and optional callables to `commit` and `rollback` a transaction, which will be invoked by Harlequin if the user clicks those buttons.
-
-It is not possible for Harlequin to cancel queries it has submitted for execution. Research on this is planned in the future; please comment on [this issue](https://github.com/tconbeer/harlequin/issues/333) if you would like to contribute to this feature.
 
 ### HarlequinCursor
 
