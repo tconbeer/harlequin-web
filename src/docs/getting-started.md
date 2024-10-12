@@ -55,6 +55,14 @@ harlequin -a sqlite
 
 Other adapters can be installed using `pip install <adapter package>` or `pipx inject harlequin <adapter package>`, depending on how you installed Harlequin. Several adapters are under active development; for a list of known adapters provided either by the Harlequin maintainers or the broader community, see the [adapters](adapters) page.
 
+## Using Harlequin with Django
+
+[django-harlequin](https://pypi.org/project/django-harlequin/) provides a command to launch Harlequin using Django’s database configuration, like:
+
+```bash
+./manage.py harlequin
+```
+
 ## Getting Help
 
 To view these docs from within the app, press <Key>F1</Key>.
