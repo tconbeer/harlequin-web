@@ -5,7 +5,7 @@ menuOrder: 930
 
 <script>
     import solarized_256 from "$lib/assets/docs/solarized-dark-256color.png"
-    import solarized from "$lib/assets/themes/solarized-dark.svg"
+    import solarized from "$lib/assets/docs/solarized-dark.svg"
 </script>
 
 Harlequin should look great in your terminal. If it doesn't, it may be because we depend on your terminal and shell for rendering, and those may require some configuration on your machine.
