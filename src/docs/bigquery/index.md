@@ -1,5 +1,6 @@
 ---
-title: "Adapter: BigQuery"
+title: "BQ Installation and Configuration"
+topic: "Adapter: BigQuery"
 menuOrder: 100
 ---
 

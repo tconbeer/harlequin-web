@@ -12,6 +12,7 @@ menuOrder: 8
 Keymaps can be defined in Harlequin [config files](../config-file), under the `keymaps` key. You can create these keymaps manually in a text editor, or by using the [Harlequin Keys App](#keys-app).
 
 ## What is a Keymap?
+
 In a config file, a keymap is a "[array of tables](https://toml.io/en/v1.0.0#array-of-tables)", where each table defines a key binding. A simple keymap looks like this:
 
 ```toml

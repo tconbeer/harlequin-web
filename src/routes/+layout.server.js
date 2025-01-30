@@ -16,7 +16,7 @@ export async function load({ fetch }) {
   const request = new Request(endpoint, options);
   const response = await fetch(request);
   if (!response.ok) {
-    return {forks_count: 72, stargazers_count: 3239};
+    return { forks_count: 72, stargazers_count: 3239 };
   }
   const body = await response.json();
   const data = (({ forks_count, stargazers_count }) => ({

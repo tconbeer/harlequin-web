@@ -1,5 +1,6 @@
 ---
-title: Customizing Key Bindings
+title: About Key Bindings
+topic: Customizing Key Bindings
 menuOrder: 7
 ---
 

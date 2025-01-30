@@ -3,8 +3,7 @@ title: "Adapter: RisingWave"
 menuOrder: 140
 ---
 
-*This documentation is Copyright 2024 ZhengYu, Xu, reproduced here under an [MIT License](https://github.com/zen-xu/harlequin-risingwave/blob/main/LICENSE). See the [repository](https://github.com/zen-xu/harlequin-risingwave) for the most up-to-date documentation.*
-
+_This documentation is Copyright 2024 ZhengYu, Xu, reproduced here under an [MIT License](https://github.com/zen-xu/harlequin-risingwave/blob/main/LICENSE). See the [repository](https://github.com/zen-xu/harlequin-risingwave) for the most up-to-date documentation._
 
 ## Installation
 
@@ -13,6 +12,7 @@ menuOrder: 140
 ### Using pip
 
 To install this adapter into an activated virtual environment:
+
 ```bash
 pip install harlequin-risingwave
 ```

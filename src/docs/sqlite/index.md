@@ -1,6 +1,6 @@
 ---
 title: "Adapter: SQLite"
-menuOrder: 30
+menuOrder: 45
 ---
 
 ## Installation

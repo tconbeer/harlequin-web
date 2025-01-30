@@ -1,6 +1,7 @@
 ---
-title: "Adapter: DuckDB"
-menuOrder: 20
+title: "DuckDB Basic Usage"
+topic: "Adapter: DuckDB"
+menuOrder: 35
 ---
 
 ## Installation

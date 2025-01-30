@@ -1,5 +1,6 @@
 ---
-title: "Adapter: Databricks"
+title: "Installation and Basic Usage"
+topic: "Adapter: Databricks"
 menuOrder: 120
 ---
 
@@ -63,7 +64,6 @@ To connect to Databricks you are going to need to provide as CLI arguments:
   - an OAuth U2M type
   - a service principle client ID and secret for OAuth M2M
 
-
 ### Personal Access Token (PAT) authentication:
 
 ```bash
@@ -104,7 +104,7 @@ you can launch harlequin-databricks with a short command like `hdb` each time.
 Run this command (once) to create the alias:
 
 ```bash
-echo 'alias hdb="harlequin -a databricks --server-hostname ***.cloud.databricks.com --http-path /sql/1.0/endpoints/1234567890abcdef --access-token dabpi***"' >> .bash_profile    
+echo 'alias hdb="harlequin -a databricks --server-hostname ***.cloud.databricks.com --http-path /sql/1.0/endpoints/1234567890abcdef --access-token dabpi***"' >> .bash_profile
 ```
 
 ## Using Unity Catalog and want fast Data Catalog indexing?

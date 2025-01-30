@@ -1,5 +1,6 @@
 ---
-title: "Contributing to Harlequin"
+title: "Ways to Contribute"
+topic: "Contributing to Harlequin"
 menuOrder: 2000
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Adapter: MySQL"
-menuOrder: 50
+menuOrder: 55
 ---
 
 ## Installation

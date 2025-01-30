@@ -1,5 +1,6 @@
 ---
-title: Troubleshooting
+title: Common Problems
+topic: Troubleshooting
 menuOrder: 900
 ---
 

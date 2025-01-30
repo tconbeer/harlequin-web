@@ -1,6 +1,6 @@
 ---
 title: Loading Extensions
-menuOrder: 32
+menuOrder: 47
 ---
 
 ## Warning: May not work on your platform!

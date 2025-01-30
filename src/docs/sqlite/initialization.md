@@ -1,6 +1,6 @@
 ---
 title: Initialization Scripts
-menuOrder: 31
+menuOrder: 46
 ---
 
 Each time you start Harlequin, it will execute commands from a SQLite [initialization script](https://sqlite.org/cli.html). Such a script can contain both SQL and SQLite CLI [dot commands](https://sqlite.org/cli.html#special_commands_to_sqlite3_dot_commands_). For example:

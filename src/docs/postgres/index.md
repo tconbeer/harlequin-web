@@ -1,6 +1,6 @@
 ---
 title: "Adapter: Postgres"
-menuOrder: 40
+menuOrder: 50
 ---
 
 ## Installation
