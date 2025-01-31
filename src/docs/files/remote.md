@@ -8,7 +8,7 @@ menuOrder: 4
 Before viewing remote objects, you must install the `boto3` package in the same environment as Harlequin. You can do this by installing Harlequin with the `s3` extra:
 
 ```bash
-uv tool install harlequin[s3]
+uv tool install 'harlequin[s3]'
 ```
 
 ## Compatibility

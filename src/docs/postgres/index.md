@@ -9,7 +9,7 @@ menuOrder: 50
 You must install the `harlequin-postgres` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `postgres` extra:
 
 ```bash
-uv tool install harlequin[postgres]
+uv tool install 'harlequin[postgres]'
 ```
 
 ## Using Harlequin with Postgres

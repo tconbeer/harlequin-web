@@ -1,6 +1,6 @@
 import { error, redirect } from "@sveltejs/kit";
 
-export async function load({ params }) {
+export async function load({ params, data }) {
   try {
     let page;
     if (params.page) {
@@ -9,6 +9,7 @@ export async function load({ params }) {
       page = await import(`../../../../docs/${params.topic}.md`);
     }
     return {
+      ...data,
       content: page.default,
       meta: page.metadata,
     };

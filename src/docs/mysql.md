@@ -8,7 +8,7 @@ menuOrder: 55
 You must install the `harlequin-mysql` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `mysql` extra:
 
 ```bash
-uv tool install harlequin[mysql]
+uv tool install 'harlequin[mysql]'
 ```
 
 ## Using Harlequin with MySQL

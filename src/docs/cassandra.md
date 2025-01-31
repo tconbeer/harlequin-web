@@ -3,9 +3,11 @@ title: "Adapter: Cassandra"
 menuOrder: 160
 ---
 
+The Cassandra adapter was contributed by community member Vadim Khitrin.
+
 **CAUTION: This adapter is unstable and experimental.**
 
-**NOTE: This adapter does not aim to support [Scylla](https://www.scylladb.com).**
+_NOTE: This adapter does not aim to support [Scylla](https://www.scylladb.com)._
 
 ## Integration With Harlequin
 
@@ -22,57 +24,13 @@ Cassandra's consistency levels.
 
 ## Installation
 
-### Using pip
-
-To install this adapter into an activated virtual environment:
+You must install the `harlequin-cassandra` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `cassandra` extra:
 
 ```bash
-pip install harlequin-cassandra
+uv tool install 'harlequin[cassandra]'
 ```
 
-### Using poetry
-
-```bash
-poetry add harlequin-cassandra
-```
-
-### Using pipx
-
-If you do not already have Harlequin installed:
-
-```bash
-pipx install harlequin[cassandra]
-```
-
-If you would like to add the Cassandra adapter to an existing Harlequin installation:
-
-```bash
-pipx inject harlequin harlequin-cassandra
-```
-
-### As an Extra
-
-Alternatively, you can install Harlequin with the `cassandra` extra:
-
-```bash
-pip install harlequin[cassandra]
-```
-
-```bash
-poetry add harlequin[cassandra]
-```
-
-```bash
-pipx install harlequin[cassandra]
-```
-
-## Usage and Configuration
-
-To see the full list of options, run:
-
-```bash
-harlequin --help
-```
+## Connection Options
 
 - `--host` - Specifies the initial host to connect to. After the driver successfully connects to the node, it will auto discoverthe rest of the nodes in the cluster and will connect to them.
 - `--port` - Port number to connect to at the server host.
@@ -81,3 +39,9 @@ harlequin --help
 - `--password` - Password to be used if the server demands password authentication.
 - `--protocol-version` - The maximum version of the native protocol to use. If not specified, will be auto-discovered by the driver.
 - `--consistency-level` - Specifies how many replicas must respond for an operation to be considered asuccess.
+
+To see the full list of options, run:
+
+```bash
+harlequin --help
+```

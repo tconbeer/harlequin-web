@@ -1,13 +1,15 @@
 <script lang="ts">
   import { title, subtitle } from "$lib/config";
   import hamburger from "$lib/assets/icons/icons8-database-50.png";
-  import { navigating } from "$app/stores";
-  import Github from "./github.svelte";
+  import { navigating } from "$app/state";
+  import Github from "../lib/components/github.svelte";
 
-  export let data;
+  let {data} = $props();
 
-  let showMenu = false;
-  $: if ($navigating) showMenu = false;
+  let showMenu = $state(false);
+  $effect(() => {
+    if (navigating) showMenu = false;
+  })
 
   function toggleNavbar() {
     showMenu = !showMenu;
@@ -94,7 +96,7 @@
       </a>
     </li>
     <li class="my-2 sm:my-auto">
-      <Github {data} />
+      <Github repo={data.repo} forks_count={data.forks_count} stargazers_count={data.stargazers_count} />
     </li>
   </ul>
 </nav>

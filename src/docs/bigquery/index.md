@@ -4,59 +4,20 @@ topic: "Adapter: BigQuery"
 menuOrder: 100
 ---
 
-The BigQuery adapter was contributed by community member Josh Temple. You can view the source for the adapter on [GitHub](https://github.com/joshtemple/harlequin-bigquery).
+The BigQuery adapter was contributed by community member Josh Temple.
+
 
 ## Installation
 
-`harlequin-bigquery` depends on `harlequin`, so installing `harlequin-bigquery` will also install Harlequin.
-
-### Using pip
-
-To install this adapter into an activated virtual environment:
+You must install the `harlequin-bigquery` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `bigquery` extra:
 
 ```bash
-pip install harlequin-bigquery
+uv tool install 'harlequin[bigquery]'
 ```
 
-### Using poetry
+## Using Harlequin with BigQuery
 
-```bash
-poetry add harlequin-bigquery
-```
-
-### Using pipx
-
-If you do not already have Harlequin installed:
-
-```bash
-pipx install harlequin[bigquery]
-```
-
-If you would like to add the BigQuery adapter to an existing Harlequin installation:
-
-```bash
-pipx inject harlequin harlequin-bigquery
-```
-
-### As an Extra
-
-Alternatively, you can install Harlequin with the `bigquery` extra:
-
-```bash
-pip install harlequin[bigquery]
-```
-
-```bash
-poetry add harlequin[bigquery]
-```
-
-```bash
-pipx install harlequin[bigquery]
-```
-
-## Usage and Configuration
-
-You can open Harlequin with the BigQuery adapter by selecting it with the `-a` option and passing the `--project` and `--location` options:
+Run Harlequin with the `-a bigquery` option; you must also specify values for the `--project` and `--location` options:
 
 ```bash
 harlequin -a bigquery --project my-gcp-project --location us-west1
@@ -64,7 +25,7 @@ harlequin -a bigquery --project my-gcp-project --location us-west1
 
 **See the [next page](/docs/bigquery/auth) for information on authentication and authorization for BigQuery.**
 
-## Configuration
+## Connection Options
 
 This adapter supports the following options:
 

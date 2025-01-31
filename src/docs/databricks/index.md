@@ -4,55 +4,17 @@ topic: "Adapter: Databricks"
 menuOrder: 120
 ---
 
+The Databricks adapter was contributed by community member Alex Malins.
+
 ## Installation
 
-`harlequin-databricks` depends on `harlequin`, so installing this package will also install Harlequin.
-
-### Using pip
-
-To install this adapter into an activated virtual environment:
+You must install the `harlequin-databricks` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `databricks` extra:
 
 ```bash
-pip install harlequin-databricks
+uv tool install 'harlequin[databricks]'
 ```
 
-### Using poetry
-
-```bash
-poetry add harlequin-databricks
-```
-
-### Using pipx
-
-If you do not already have Harlequin installed:
-
-```bash
-pipx install harlequin[databricks]
-```
-
-If you would like to add the Databricks adapter to an existing Harlequin installation:
-
-```bash
-pipx inject harlequin harlequin-databricks
-```
-
-### As an Extra
-
-Alternatively, you can install Harlequin with the `databricks` extra:
-
-```bash
-pip install harlequin[databricks]
-```
-
-```bash
-poetry add harlequin[databricks]
-```
-
-```bash
-pipx install harlequin[databricks]
-```
-
-## Connecting to Databricks
+## Using Harlequin with Databricks
 
 To connect to Databricks you are going to need to provide as CLI arguments:
 

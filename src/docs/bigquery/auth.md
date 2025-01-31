@@ -11,6 +11,12 @@ This adapter will use [Application Default Credentials](https://cloud.google.com
 gcloud auth application-default login
 ```
 
+Alternatively, you can authenticate `gcloud` and the ADC toolchain with:
+
+```bash
+gcloud auth login --update-adc
+```
+
 To install the `gcloud` CLI, see [here](https://cloud.google.com/sdk/docs/install).
 
 ## Authorization

@@ -18,7 +18,7 @@ Additionally, you will need to install the ODBC driver for your specific databas
 You must install the `harlequin-odbc` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `odbc` extra:
 
 ```bash
-uv tool install harlequin[odbc]
+uv tool install 'harlequin['odbc]'
 ```
 
 ## Using Harlequin with an ODBC Driver
