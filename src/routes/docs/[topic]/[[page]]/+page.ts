@@ -1,7 +1,6 @@
-import type { PageLoad } from './$types';
 import { error, redirect } from "@sveltejs/kit";
 
-export async function load({ url, params, data }): Promise<PageLoad> {
+export async function load({ url, params, data }) {
   try {
     let page;
     if (params.page) {
@@ -15,16 +14,19 @@ export async function load({ url, params, data }): Promise<PageLoad> {
       meta: page.metadata,
     };
   } catch (e) {
-      if (!url.searchParams.get("redirect_from")) {
-        if (!params.page) {
-          redirect(308, `/docs/${params.topic}/index?redirect_from=${url.pathname}`);
-        } else if (params.page == "index") {
-          redirect(308, `/docs/${params.topic}?redirect_from=${url.pathname}`);
-        } else {
-          error(404, `Could not find /docs/${params.topic}/${params.page}`);
-        }
+    if (!url.searchParams.get("redirect_from")) {
+      if (!params.page) {
+        redirect(
+          308,
+          `/docs/${params.topic}/index?redirect_from=${url.pathname}`,
+        );
+      } else if (params.page == "index") {
+        redirect(308, `/docs/${params.topic}?redirect_from=${url.pathname}`);
       } else {
-        error(404, `Could not find ${url.searchParams.get("redirect_from")}`);
+        error(404, `Could not find /docs/${params.topic}/${params.page}`);
       }
+    } else {
+      error(404, `Could not find ${url.searchParams.get("redirect_from")}`);
+    }
   }
 }

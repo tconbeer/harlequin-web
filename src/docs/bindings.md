@@ -98,7 +98,7 @@ _With the autocomplete list open:_
 - <Key>pgUp</Key> Move the cursor up one screen.
 - <Key>pgDn</Key> Move the cursor down one screen.
 - <Key>ctrl+up</Key>,<Key>ctrl+down</Key> Move the cursor to the start/end of the column.
-- <Key>ctrl+left</Key>,<Key>ctrl+right</Key>  Move the cursor to the start/end of the row.
+- <Key>ctrl+left</Key>,<Key>ctrl+right</Key> Move the cursor to the start/end of the row.
 - <Key>shift+[any]</Key> Select cells while moving the cursor.
 
 ## Data Catalog Bindings

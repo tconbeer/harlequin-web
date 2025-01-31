@@ -44,7 +44,7 @@ The items in each table are as follows:
 
 ### Keys
 
-The `keys` item is a string that must be a comma-separated list of Textual virtual key names. These are usually intuitive names like `enter` and `ctrl+f`, but depending on your terminal and shell, many keypresses will be aliased to different key names by the time they reach Harlequin. The best way to ensure the correct key name is to use the [Keys App](#keys-app).
+The `keys` item is a string that must be a comma-separated list of Textual virtual key names. These are usually intuitive names like <Key>enter</Key> and <Key>ctrl+f</Key>, but depending on your terminal and shell, many keypresses will be aliased to different key names by the time they reach Harlequin. The best way to ensure the correct key name is to use the [Keys App](#keys-app).
 
 ### Action
 
@@ -88,4 +88,4 @@ In the app, you can use the arrow keys to scroll up and down the list of binding
     </figure>
 </div>
 
-After editing bindings, press <Key>ctrl+q</Key> to quit the Keys App. You will be prompted for a config file location and a keymap name. Remember this name -- you will need it in the next step, when configuring Harlequin to use your keymap. If you select `Save + Quit`, Harlequin will write the full keymap to the location you specify.
+After editing bindings, press <Key>ctrl+q</Key> to quit the Keys App. You will be prompted for a config file location and a keymap name. Remember this name -- you will need it in the next step, when configuring Harlequin to use your keymap. If you select "Save + Quit," Harlequin will write the full keymap to the location you specify.

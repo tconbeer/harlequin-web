@@ -2,8 +2,10 @@
 title: "Adapter: Wherobots"
 menuOrder: 150
 ---
+
 <script>
     import Tip from "$lib/components/tip.svelte"
+    import Link from "$lib/components/link.svelte"
     </script>
 
 _This documentation is Copyright Wherobots, reproduced here under an [Apache 2.0 License](https://github.com/wherobots/harlequin-wherobots/blob/main/LICENSE). See the [repository](https://github.com/wherobots/harlequin-wherobots) for the most up-to-date documentation._
@@ -47,7 +49,7 @@ harlequin -a wherobots --api-key <key> --runtime MEDIUM --region AWS_US_WEST_2
 
 <Tip>
 Community Edition users of Wherobots Cloud are restricted to the "Tiny" runtime size. See Wherobots
-<a class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4" href="https://www.wherobots.com/pricing" target="_blank">Pricing</a> for more information.
+<Link href="https://www.wherobots.com/pricing">Pricing</Link> for more information.
 </Tip>
 
 ## Advanced options

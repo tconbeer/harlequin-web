@@ -5,6 +5,7 @@ menuOrder: 130
 
 <script lang="ts">
   import Tip from "$lib/components/tip.svelte"
+  import Link from "$lib/components/link.svelte"
 </script>
 
 The Trino adapter was contributed by community member Tyler Hillery.
@@ -30,8 +31,6 @@ The following drivers are available as Python packages:
 - adbc-driver-snowflake
 - adbc-driver-sqlite
 
-
-
 <Tip>
 If you don't install the driver but provide a <code>--drive-type</code> cli argument you will get an <code>ImportError</code> when you run Harlequin.
 </Tip>
@@ -50,8 +49,8 @@ Run Harlequin with the `-a adbc` option and pass in a connection string as an ar
 
 When you use the --driver-type option it will try to dynamically use the driver package of the type selected `adbc-driver-{driver type}`. That is why it's crucial to also have that package also install in the virtual environment where Harlequin is installed.
 
-  - `--driver-type` with one of the following options
-  - `flightsql`, `postgresql`, `snowflake`, `sqlite`, `duckdb`
+- `--driver-type` with one of the following options
+- `flightsql`, `postgresql`, `snowflake`, `sqlite`, `duckdb`
 
 ### Driver Path
 
@@ -66,6 +65,7 @@ Since the drivers implement so many different options to pass through when you c
 - `--db-kwargs-str`
 
 Example:
+
 ```bash
 `--db-kwargs-str "username=flight_username;password=flight_password;adbc.flight.sql.client_option.tls_skip_verify=true"`
 ```
@@ -102,7 +102,7 @@ Check the [FlightSQL ADBC Driver Docs](https://arrow.apache.org/adbc/main/driver
 ### Postgres Driver
 
 <Tip>
-Harlequin also has a Postgres adapter, which connects using Psycopg, instead of ADBC. For more information, see <a class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4" href="postgres">this page</a>.
+Harlequin also has a Postgres adapter, which connects using Psycopg, instead of ADBC. For more information, see <Link href="postgres">this page</Link>.
 </Tip>
 
 The Postgres URI should be in the format of a [Postgres DSN](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING):

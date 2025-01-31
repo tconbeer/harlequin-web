@@ -30,7 +30,7 @@ Harlequin is a Python program, and there are many ways to install and run it. We
    ```bash
    uv tool install harlequin
    ```
-   
+
    This command will install Harlequin into an isolated environment and add it to your PATH so you can easily run the executable.
 
 ### Other Installation Methods

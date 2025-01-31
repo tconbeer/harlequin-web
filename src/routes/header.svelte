@@ -4,12 +4,12 @@
   import { navigating } from "$app/state";
   import Github from "../lib/components/github.svelte";
 
-  let {data} = $props();
+  let { data } = $props();
 
   let showMenu = $state(false);
   $effect(() => {
     if (navigating) showMenu = false;
-  })
+  });
 
   function toggleNavbar() {
     showMenu = !showMenu;
@@ -41,8 +41,8 @@
         : 'rotate-0'} "
     >
       <button
-        on:click={toggleNavbar}
-        on:keypress={toggleNavbar}
+        onclick={toggleNavbar}
+        onkeypress={toggleNavbar}
         aria-label="Click for nav menu."
       >
         <img
@@ -96,7 +96,11 @@
       </a>
     </li>
     <li class="my-2 sm:my-auto">
-      <Github repo={data.repo} forks_count={data.forks_count} stargazers_count={data.stargazers_count} />
+      <Github
+        repo={data.repo}
+        forks_count={data.forks_count}
+        stargazers_count={data.stargazers_count}
+      />
     </li>
   </ul>
 </nav>

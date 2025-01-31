@@ -18,7 +18,7 @@
         <a class="font-bold text-black" href={tweet.profile.src}
           >{tweet.profile.name}</a
         >
-        <a class="text-sm text-gray-500"  href={tweet.profile.src}
+        <a class="text-sm text-gray-500" href={tweet.profile.src}
           >@{tweet.profile.handle}</a
         >
       </div>

@@ -12,7 +12,7 @@ export async function load({ fetch }) {
   const options = {
     headers: headers,
   };
-  const repo = "tconbeer/harlequin"
+  const repo = "tconbeer/harlequin";
   const endpoint = `https://api.github.com/repos/${repo}`;
   const request = new Request(endpoint, options);
   const response = await fetch(request);
@@ -20,6 +20,6 @@ export async function load({ fetch }) {
     return { forks_count: 92, stargazers_count: 4085 };
   }
   const body = await response.json();
-  const {forks_count, stargazers_count} = body;
-  return {repo, forks_count, stargazers_count } ;
+  const { forks_count, stargazers_count } = body;
+  return { repo, forks_count, stargazers_count };
 }

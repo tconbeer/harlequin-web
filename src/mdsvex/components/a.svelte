@@ -1,10 +1,6 @@
 <script lang="ts">
-  export let href: string;
+  let { href, children } = $props();
+  import Link from "$lib/components/link.svelte";
 </script>
 
-<a
-  {href}
-  target={href.startsWith("http") ? "_blank" : "_self"}
-  class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4"
-  ><slot /></a
->
+<Link {href}>{@render children()}</Link>

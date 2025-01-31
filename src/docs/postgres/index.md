@@ -14,7 +14,7 @@ uv tool install 'harlequin[postgres]'
 
 ## Using Harlequin with Postgres
 
-To connect  to a Postgres database, run Harlequin with the `-a postgres` option and pass a [Posgres DSN](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING) as an argument:
+To connect to a Postgres database, run Harlequin with the `-a postgres` option and pass a [Posgres DSN](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING) as an argument:
 
 ```bash
 harlequin -a postgres "postgres://my-user:my-pass@localhost:5432/my-database"

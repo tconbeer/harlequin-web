@@ -1,6 +1,10 @@
+<script lang="ts">
+  let { children } = $props();
+</script>
+
 <pre
-  class="my-1 w-full overflow-x-auto rounded border border-purple bg-pink px-4 py-4 text-sm selection:bg-purple"><code
-    class="inline-block overflow-x-auto"><slot /></code
+  class="my-2 w-full overflow-x-auto rounded border border-purple bg-pink px-4 py-2 align-middle text-sm selection:bg-purple"><code
+    class="inline-block overflow-x-auto align-middle">{@render children()}</code
   ></pre>
 
 <style>
