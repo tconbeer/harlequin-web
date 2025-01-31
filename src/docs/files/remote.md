@@ -8,7 +8,7 @@ menuOrder: 4
 Before viewing remote objects, you must install the `boto3` package in the same environment as Harlequin. You can do this by installing Harlequin with the `s3` extra:
 
 ```bash
-pip install harlequin[s3]
+uv tool install harlequin[s3]
 ```
 
 ## Compatibility
@@ -61,7 +61,7 @@ A one-liner to set the AWS Profile and connect to a GCS bucket, filtering for a 
 AWS_PROFILE=gcs harlequin --s3 "https://storage.googleapis.com/my-gcs-bucket/my-prefix"
 ```
 
-Harlequin takes any of the following formats:
+Harlequin takes any of the following formats as a value for the `--s3` option (you likely have to wrap these in single or double quotes, depending on your shell):
 
 ```
 # Amazon S3 Formats

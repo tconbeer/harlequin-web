@@ -8,13 +8,9 @@ menuOrder: 35
 
 The DuckDB adapter ships with Harlequin; you do not need to do anything else to install it.
 
+If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](troubleshooting/duckdb-version-mismatch) page.
+
 ## Using Harlequin with DuckDB
-
-From any shell, to open one or more DuckDB database files:
-
-```bash
-harlequin "path/to/duck.db" "another_duck.db"
-```
 
 To open an in-memory DuckDB session, run Harlequin with no arguments:
 
@@ -22,10 +18,18 @@ To open an in-memory DuckDB session, run Harlequin with no arguments:
 harlequin
 ```
 
-You can also open a database in read-only mode:
+To open one or more DuckDB database files, pass in relative or absolute paths as connection strings (Harlequin will create DuckDB databases if they do not exist):
+
+```bash
+harlequin "path/to/duck.db" "another_duck.db"
+```
+
+## Connection Options
+
+### Read-Only
+
+You can open a database in read-only mode using the `--read-only` or `-r` flag:
 
 ```bash
 harlequin -r "path/to/duck.db"
 ```
-
-The following pages detail more advanced options of Harlequin with DuckDB: running initialization scripts, loading extensions, and using MotherDuck.

@@ -29,7 +29,7 @@
       openMenus.add(topic(menuItem));
     }
   }
-  const activeStyle = "bg-purple font-bold flex";
+  const activeStyle = "bg-purple font-bold rounded flex";
 
   function isNestedPage(menuItem: DocsPage | DocsTopic) {
     if ("topic" in menuItem) {
@@ -96,7 +96,7 @@
           <li
             class="mt-1 rounded px-1 py-1 transition-colors duration-200 md:mb-1 md:flex md:hover:bg-green {showNav
               ? 'flex'
-              : 'hidden'}"
+              : 'hidden'} {topic(menuItem) == activeTopic ? 'font-bold' : ''}"
           >
             <button
               class="flex-1 text-start"
@@ -116,10 +116,10 @@
         {:else}
           <a href="/docs/{menuItem.slug}"
             ><li
-              class="mt-1 justify-between rounded px-1 py-1 md:mb-1 {menuItem.slug ==
+              class="mt-1 justify-between px-1 py-1 md:mb-1 {menuItem.slug ==
               activeSlug
                 ? activeStyle
-                : ''} {showNav ? isNestedPage(menuItem) ? showMenu(menuItem) ? "flex" : "hidden" : "flex" : isNestedPage(menuItem) ? showMenu(menuItem) ? "hidden md:flex" : "hidden" : "hidden md:flex"} {isNestedPage(menuItem) ? "pl-4":""} transition-colors duration-200 md:hover:bg-green"
+                : ''} {topic(menuItem) == activeTopic ? 'border-l border-1 border-purple' : ''} {showNav ? isNestedPage(menuItem) ? showMenu(menuItem) ? "flex" : "hidden" : "flex" : isNestedPage(menuItem) ? showMenu(menuItem) ? "hidden md:flex" : "hidden" : "hidden md:flex"} {isNestedPage(menuItem) ? "pl-4":""} transition-colors duration-200 md:hover:bg-green md:hover:rounded md:hover:border-green"
             >
               <div>
                 {menuItem.title}

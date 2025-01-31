@@ -1,10 +1,11 @@
 ---
 title: Creating a Keymap
-menuOrder: 8
+menuOrder: 26
 ---
 
 <script>
     import Key from "$lib/components/key.svelte"
+    import Tip from "$lib/components/tip.svelte"
     import keys_app from "$lib/assets/docs/keys-app.png"
     import keys_app_edit from "$lib/assets/docs/keys-app-edit.png"
 </script>
@@ -13,7 +14,7 @@ Keymaps can be defined in Harlequin [config files](../config-file), under the `k
 
 ## What is a Keymap?
 
-In a config file, a keymap is a "[array of tables](https://toml.io/en/v1.0.0#array-of-tables)", where each table defines a key binding. A simple keymap looks like this:
+In a config file, a keymap is an ["array of tables"](https://toml.io/en/v1.0.0#array-of-tables), where each table defines a key binding. A simple keymap looks like this:
 
 ```toml
 [[keymaps.more_arrows]]
@@ -29,7 +30,7 @@ key_display="⬅/a"
 [[keymaps.more_arrows]]
 keys="s,j"
 action="results_viewer.cursor_down"
-key_display="⬇/s"
+key_display="⬇/s/j"
 
 [[keymaps.more_arrows]]
 keys="d"
@@ -37,7 +38,7 @@ action="results_viewer.cursor_right"
 key_display="➡/d"
 ```
 
-This keymap is named `more_arrows`, and it maps the keys <Key>w</Key>, <Key>a</Key>, <Key>s</Key>, and <Key>d</Key> to actions that move the cursor in the Results Viewer. The arrow keys are already mapped to these actions in the default keymap, so this keymap is a good example of [extending the default keymap](usage#extending-a-keymap).
+This keymap is named `more_arrows`, and it maps the keys <Key>w</Key>, <Key>a</Key>, <Key>s</Key>, <Key>j</Key>, and <Key>d</Key> to actions that move the cursor in the Results Viewer. The arrow keys are already mapped to these actions in the default keymap, so this keymap is a good example of [extending the default keymap](usage#extending-a-keymap).
 
 The items in each table are as follows:
 
@@ -69,7 +70,7 @@ The app will load the currently-active config (from discovered TOML files, in th
 harlequin --config-path ~/my-config.toml --profile Foo --keys
 ```
 
-**Note:** the `--config-path`, `--profile`, `--keymap-name`, and `--theme` options must be declared **before** the `--keys` option for this to work.
+<Tip>The <code class="text-xs">--config-path</code>, <code class="text-xs">--profile</code>, <code class="text-xs">--keymap-name</code>, and <code class="text-xs">--theme</code> options must be declared <span class="font-bold">before</span> the <code class="text-xs">--keys</code> option for this to work.</Tip>
 
 <div class="flex flex-wrap justify-center py-2">
     <figure>

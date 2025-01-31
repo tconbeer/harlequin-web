@@ -1,17 +1,17 @@
 ---
-title: Selecting an Adapter
+title: Database Adapters
 menuOrder: 1
 ---
 
-Harlequin uses adapter plug-ins as a generic interface to any database. Harlequin ships with adapters for DuckDB (the default) and SQLite; additional adapters can be installed by installing additional `pip` packages in the same virtual environment as Harlequin, or by installing Harlequin while specifying extras.
+Harlequin uses adapter plug-ins as a generic interface to any database. Harlequin ships with adapters for DuckDB (the default) and SQLite; additional adapters Adapters are distributed as their own Python packages that need to be [installed](getting-started/index#installing-database-adapters) into the same environment as Harlequin.
 
-To select an adapter other than DuckDB, you use the `--adapter` option (alias `-a`) at the command-line:
+Once it is installed, to select an adapter other than DuckDB, you use the `--adapter` option (alias `-a`) at the command-line:
 
 ```bash
 harlequin -a sqlite
 ```
 
-Each adapter has its own configuration options, detailed in their own section in these docs. Harlequin `--help` option will dynamically include the options for all installed adapters so you can easily reference them.
+Each adapter has its own configuration options, detailed in their own section in these docs. Running Harlequin with the `--help` option will dynamically include the options for all installed adapters so you can easily reference them.
 
 ## Core Adapters
 

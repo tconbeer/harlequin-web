@@ -1,7 +1,7 @@
 ---
 title: About Key Bindings
 topic: Customizing Key Bindings
-menuOrder: 7
+menuOrder: 25
 ---
 
 ## About Key Bindings and Keymaps

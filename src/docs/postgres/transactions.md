@@ -1,6 +1,6 @@
 ---
 title: Transaction Handling
-menuOrder: 43
+menuOrder: 53
 ---
 
 `harlequin-postgres` v0.3 and higher defines two transaction modes: Auto and Manual. You can toggle between these modes using the button in the Run Query Bar.
