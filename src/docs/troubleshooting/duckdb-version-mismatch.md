@@ -3,9 +3,13 @@ title: DuckDB Version Mismatch
 menuOrder: 991
 ---
 
+<script>
+    import Note from "$lib/components/note.svelte"
+</script>
+
 Harlequin depends on DuckDB, and installing it in an isolated environment (e.g., using `pipx` or in a fresh virtual environment) will cause it to install DuckDB. If you have DuckDB installed elsewhere (e.g., if you already installed DuckDB with `pipx` or Homebrew), you may want to pin the version of DuckDB that Harlequin uses. For example, attempting to open a DuckDB database file with different versions of DuckDB will result in an error that looks like this:
 
-```
+<p class="text-xs font-mono rounded border-black border py-1 px-1">
 IO Error: Trying to read a database file with version number 64, but we can
 only read version 51.
 The database file was created with an newer version of DuckDB.
@@ -20,7 +24,8 @@ on the current version of DuckDB.
 
 See the storage page for more information:
 https://duckdb.org/internals/storage
-```
+
+</p>
 
 ### Determining the Version of the DuckDB CLI on your Path
 
@@ -36,22 +41,10 @@ Open Harlequin, then in the query editor, type or paste `select version()`. In t
 
 ### Changing the Version of DuckDB Used by Harlequin
 
-**Note:** Harlequin requires DuckDB >= 0.8.0 due to changes in the Python API in that version.
+<Note>Harlequin requires DuckDB >= 0.8.0 due to changes in the Python API in that version.</Note>
 
-You can add an explicit pin to a DuckDB version alongside Harlequin's installation. The following examples assume you would like to pin the version to `0.9.0`.
+You can add an explicit pin to a DuckDB version alongside Harlequin's installation. The following example assumes you would like to pin the version to `1.1.3`.
 
-#### With pipx
-
-You must "inject" the pinned dependency into the Harlequin installation with: `pipx inject harlequin duckdb==0.9.0`.
-
-#### With pip
-
-With your venv activated, simply install the pinned version with `pip install duckdb==0.9.0`, or add `duckdb==0.9.0` to your `requirements.txt`.
-
-#### With pipenv
-
-Run `pipenv add duckdb==0.9.0`.
-
-#### With Poetry
-
-Run `poetry add duckdb==0.9.0`.
+```bash
+uv tool install harlequin --with 'duckdb==1.1.3'
+```

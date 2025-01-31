@@ -5,6 +5,7 @@ menuOrder: 130
 
 <script lang="ts">
   import Tip from "$lib/components/tip.svelte"
+  import Note from "$lib/components/note.svelte"
   import Link from "$lib/components/link.svelte"
 </script>
 
@@ -31,9 +32,9 @@ The following drivers are available as Python packages:
 - adbc-driver-snowflake
 - adbc-driver-sqlite
 
-<Tip>
+<Note>
 If you don't install the driver but provide a <code>--drive-type</code> cli argument you will get an <code>ImportError</code> when you run Harlequin.
-</Tip>
+</Note>
 
 Example usage:
 

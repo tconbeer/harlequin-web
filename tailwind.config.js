@@ -14,6 +14,7 @@ export default {
         yellow: "#FEFFAC",
         pink: "#FFB6D9",
         purple: "#D67BFF",
+        black: "#000000",
       },
       scale: {
         250: "2.5",

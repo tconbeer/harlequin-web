@@ -1,9 +1,9 @@
 <script lang="ts">
   let { children } = $props();
   import Alert from "$lib/components/alert.svelte";
-  import lightbulb from "$lib/assets/icons/icons8-lightbulb-50.png";
+  import warning from "$lib/assets/icons/icons8-warning-50.png";
 </script>
 
-<Alert icon_src={lightbulb} title_text="Tip" border_color="green"
+<Alert icon_src={warning} title_text="Warning" border_color="pink"
   >{@render children()}</Alert
 >

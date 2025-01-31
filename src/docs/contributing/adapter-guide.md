@@ -5,6 +5,7 @@ menuOrder: 2100
 
 <script>
     import tx_manual from "$lib/assets/docs/tx-manual.png"
+    import Note from "$lib/components/note.svelte"
 </script>
 
 Database adapters enable Harlequin to work with any relational database by abstracting the actual interface into a standard that Harlequin can use. The interface is minimal: adapters were designed to be easy to implement and maintain. Adapter authors only need familiarity with Python and the database they wish to use; no knowledge of Textual, user interfaces, or async programming is required.
@@ -35,7 +36,9 @@ A connection must provide two methods: `get_catalog` and `execute`.
 
 - `execute(query)` runs a query in the connected database. If the query returns data (like a select statement), `execute` returns a `HarlequinCursor`. Otherwise, it returns `None`.
 
-`get_catalog` and `execute` are called by Harlequin in **different threads**, and those calls may overlap. If multiple queries are run by the user, `execute` may be called many times **serially**, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
+<Note>
+<code>get_catalog</code> and <code>execute</code> are called by Harlequin in <span class="font-bold">different threads</span>, and those calls may overlap. If multiple queries are run by the user, <code>execute</code> may be called many times <span class="font-bold">serially</span>, in a single thread, before any of the cursors' results are fetched (currently there are no plans to execute queries in parallel using multiple threads).
+</Note>
 
 A connection may also provide `close`, `cancel`, `get_completions`, and `validate_sql` methods; to support multiple transaction modes, it may also implement the `toggle_transaction_mode` method and the `transaction_mode` property.
 

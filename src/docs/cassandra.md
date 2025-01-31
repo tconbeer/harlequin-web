@@ -3,15 +3,19 @@ title: "Adapter: Cassandra"
 menuOrder: 160
 ---
 
+<script>
+    import Warning from "$lib/components/warning.svelte"
+    import Note from "$lib/components/note.svelte"
+    import Link from "$lib/components/link.svelte"
+</script>
+
 The Cassandra adapter was contributed by community member Vadim Khitrin.
 
-**CAUTION: This adapter is unstable and experimental.**
+<Warning> This adapter is unstable and experimental. Some quirks are to be expected.</Warning>
 
-_NOTE: This adapter does not aim to support [Scylla](https://www.scylladb.com)._
+<Note> This adapter does not aim to support <Link href="https://www.scylladb.com">Scylla</Link>.</Note>
 
 ## Integration With Harlequin
-
-**Some quirks are to be expected.**
 
 Cassandra doesn't use cursor(s), thus `HarlequinCursor` and `HarlequinConnection`
 behave differently in this adapter.
