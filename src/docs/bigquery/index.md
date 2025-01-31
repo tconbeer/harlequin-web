@@ -4,6 +4,11 @@ topic: "Adapter: BigQuery"
 menuOrder: 100
 ---
 
+<script>
+    import Tip from "$lib/components/tip.svelte"
+    import Link from "$lib/components/link.svelte"
+</script>
+
 The BigQuery adapter was contributed by community member Josh Temple.
 
 ## Installation
@@ -22,7 +27,9 @@ Run Harlequin with the `-a bigquery` option; you must also specify values for th
 harlequin -a bigquery --project my-gcp-project --location us-west1
 ```
 
-**See the [next page](/docs/bigquery/auth) for information on authentication and authorization for BigQuery.**
+<Tip>
+See the <Link href="auth">next page</Link> for information on authentication and authorization for BigQuery.
+</Tip>
 
 ## Connection Options
 

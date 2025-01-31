@@ -1,1 +1,1 @@
-<strong class="font-bold italic text-purple"><slot /></strong>
+<strong class="font-bold"><slot /></strong>

@@ -5,6 +5,8 @@ menuOrder: 910
 
 <script>
     import Key from "$lib/components/key.svelte"
+    import Tip from "$lib/components/tip.svelte"
+    import Link from "$lib/components/link.svelte"
 </script>
 
 Harlequin can only react to key presses that are sent to it from the Terminal it is running in. Some common key presses, like <Key>ctrl+enter</Key>, aren't forwarded correctly by some terminals, or may be aliased to a different key or even a different sort of event.
@@ -17,7 +19,9 @@ If you don't want to [upgrade your terminal](terminal-recommendations), you can 
 - On a Mac: For all bindings, use <Key>^ Control</Key>, not <Key>⌘ Command</Key>.
   - On MacOs >= 15.0.0 , the key binding <Key>^+enter</Key> is mapped to "Show contextual menu" by default. This interferes with the "Run Query" key binding of Harlequin. Instead of setting up alternative key bindings, you can disable this shortcut in MacOS by navigating to: System Settings -> Keyboard -> Keyboard Shortcuts... -> Keyboard -> turn "Show contextual menu" off.
 
-[See here](copying-and-pasting) for copy and paste.
+<Tip>
+<Link href="copying-and-pasting">See here</Link> for help with copy and paste.
+</Tip>
 
 Finally, Harlequin's footer, which lists some of the currently-active key bindings, is clickable. If a binding isn't working, you can click it in the footer to take the same action.
 

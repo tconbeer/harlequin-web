@@ -64,7 +64,7 @@ limit = 200_000
 conn_str = ["my-database.db"]
 
 [tool.harlequin.profiles.local-postgres]
-theme = "fruity"
+theme = "gruvbox"
 limit = 10_000
 ...
 ```
