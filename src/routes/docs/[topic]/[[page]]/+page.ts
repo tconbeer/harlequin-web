@@ -1,6 +1,7 @@
+import type { PageLoad } from './$types';
 import { error, redirect } from "@sveltejs/kit";
 
-export async function load({ params }) {
+export async function load({ url, params, data }): Promise<PageLoad> {
   try {
     let page;
     if (params.page) {
@@ -9,14 +10,21 @@ export async function load({ params }) {
       page = await import(`../../../../docs/${params.topic}.md`);
     }
     return {
+      ...data,
       content: page.default,
       meta: page.metadata,
     };
   } catch (e) {
-    if (!params.page) {
-      redirect(301, `/docs/${params.topic}/index`);
-    } else {
-      error(404, `Could not find ${params.topic}/${params.page}`);
-    }
+      if (!url.searchParams.get("redirect_from")) {
+        if (!params.page) {
+          redirect(308, `/docs/${params.topic}/index?redirect_from=${url.pathname}`);
+        } else if (params.page == "index") {
+          redirect(308, `/docs/${params.topic}?redirect_from=${url.pathname}`);
+        } else {
+          error(404, `Could not find /docs/${params.topic}/${params.page}`);
+        }
+      } else {
+        error(404, `Could not find ${url.searchParams.get("redirect_from")}`);
+      }
   }
 }

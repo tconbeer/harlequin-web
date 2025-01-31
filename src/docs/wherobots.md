@@ -2,17 +2,22 @@
 title: "Adapter: Wherobots"
 menuOrder: 150
 ---
+<script>
+    import Tip from "$lib/components/tip.svelte"
+    </script>
 
 _This documentation is Copyright Wherobots, reproduced here under an [Apache 2.0 License](https://github.com/wherobots/harlequin-wherobots/blob/main/LICENSE). See the [repository](https://github.com/wherobots/harlequin-wherobots) for the most up-to-date documentation._
 
-This is an adapter for Wherobots DB, using
+This repository provides the Harlequin adapter for WherobotsDB, using
 the Wherobots Spatial SQL API and its
 [wherobots-python-dbapi-driver](https://github.com/wherobots/wherobots-python-dbapi-driver).
 
 ## Installation
 
-```
-$ pip install git+https://github.com/wherobots/harlequin-wherobots
+You must install the `harlequin-wherobots` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the additional package:
+
+```bash
+uv tool install harlequin --with harlequin-wherobots
 ```
 
 ## Usage
@@ -20,41 +25,46 @@ $ pip install git+https://github.com/wherobots/harlequin-wherobots
 Procure an API key from Wherobots, and start Harlequin with the
 required parameters:
 
-```
-$ harlequin -a wherobots --api-key <key>
+```bash
+harlequin -a wherobots --api-key <key>
 ```
 
 Alternatively, you can use your session token:
 
-```
-$ harlequin -a wherobots --token <token>
+```bash
+harlequin -a wherobots --token <token>
 ```
 
 The Harlequin adapter for Wherobots will automatically start a Wherobots
-SQL session with the default runtime (Sedona, 4 executors) in the
+SQL session with the default runtime (Tiny, 4 executors) in the
 default Wherobots public compute region (AWS `us-west-2`). You can
 override those defaults with the `--runtime` and `--region` options,
 respectively:
 
+```bash
+harlequin -a wherobots --api-key <key> --runtime MEDIUM --region AWS_US_WEST_2
 ```
-$ harlequin -a wherobots --api-key <key> --runtime NEW_YORK --region aws-us-west-2
-```
+
+<Tip>
+Community Edition users of Wherobots Cloud are restricted to the "Tiny" runtime size. See Wherobots
+<a class="underline hover:decoration-green hover:decoration-4 hover:underline-offset-4" href="https://www.wherobots.com/pricing" target="_blank">Pricing</a> for more information.
+</Tip>
 
 ## Advanced options
 
 If your SQL session is already provisioned and running, you can force
-the driver to directly connect to it via its WebSocket URL:
+the driver to directly connect to it via its WebSocket URL (without
+protocol version):
 
-```
-$ harlequin -a wherobots --api-key <key> --ws-url <session-url>
+```bash
+harlequin -a wherobots --api-key <key> --ws-url <session-url>
 ```
 
 You can also specify the base hostname of the Wherobots stack to
-interact with. By default, the driver connects to `cloud.wherobots.com`,
-the official public Wherobots service. You may want or need to use
-`govcloud.wherobots.com`, `staging.wherobots.com`, or another local
-target during development.
+interact with as the first positional parameter. By default, the driver
+connects to `cloud.wherobots.com`, the official public Wherobots
+service.
 
-```
-$ harlequin -a wherobots --api-key <key> staging.wherobots.com
+```bash
+harlequin -a wherobots --api-key <key> [host]
 ```

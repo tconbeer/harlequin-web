@@ -3,55 +3,17 @@ title: "Adapter: Trino"
 menuOrder: 110
 ---
 
+The Trino adapter was contributed by community member Tyler Hillery.
+
 ## Installation
 
-`harlequin-trino` depends on `harlequin`, so installing this package will also install Harlequin.
-
-### Using pip
-
-To install this adapter into an activated virtual environment:
+You must install the `harlequin-trino` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `trino` extra:
 
 ```bash
-pip install harlequin-trino
+uv tool install 'harlequin[trino]'
 ```
 
-### Using poetry
-
-```bash
-poetry add harlequin-trino
-```
-
-### Using pipx
-
-If you do not already have Harlequin installed:
-
-```bash
-pipx install harlequin[trino]
-```
-
-If you would like to add the Trino adapter to an existing Harlequin installation:
-
-```bash
-pipx inject harlequin harlequin-trino
-```
-
-### As an Extra
-
-Alternatively, you can install Harlequin with the `trino` extra:
-
-```bash
-pip install harlequin[trino]
-```
-
-```bash
-poetry add harlequin[trino]
-```
-
-```bash
-pipx install harlequin[trino]
-```
-
-## Usage and Configuration
+## Using Harlequin with Trino
 
 For a minimum connection you are going to need:
 

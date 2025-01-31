@@ -56,16 +56,16 @@ For a list of known adapters provided either by the Harlequin maintainers or the
 The adapter docs also include installation instructions. Some adapters can be installed as Harlequin extras, like `postgres`. If you used `uv` to install Harlequin:
 
 ```bash
-uv tool install harlequin[postgres]
+uv tool install 'harlequin[postgres]'
 ```
 
 You can install multiple extras:
 
 ```bash
-uv tool install harlequin[postgres,mysql,s3]
+uv tool install 'harlequin[postgres,mysql,s3]'
 ```
 
-<Tip> Depending on your shell, you may need to place single or double quotes around the package name with extras: <pre><code class="text-xs">% uv tool install <span class="font-bold">'harlequin[postgres,mysql,s3]'</span></code></pre></Tip>
+<Tip> Depending on your shell, you may or may not need to place single or double quotes around the package name with extras: <pre><code class="text-xs">% uv tool install <span class="font-bold">'harlequin[postgres,mysql,s3]'</span></code></pre></Tip>
 
 Some adapters are not available as extras, and have to be installed manually. You may also wish to do this to control the version of the adapter that Harlequin uses. You can add adapters to your installation using uv's `--with` option:
 
