@@ -29,11 +29,21 @@ Harlequin is a Python program, and there are many ways to install and run it. We
    ```bash
    uv tool install harlequin
    ```
+   
+   This command will install Harlequin into an isolated environment and add it to your PATH so you can easily run the executable.
+
+### Other Installation Methods
 
 Alternatively, if you know what you're doing, after installing Python 3.9 or above, install Harlequin using `pip`, `pipx`, `poetry`, or any other program that can install Python packages from PyPI:
 
 ```bash
 pip install harlequin
+```
+
+There is also a [Homebrew formula](https://formulae.brew.sh/formula/harlequin) for Harlequin, although this is maintained by the community and is not as rigorously tested as the Python installations. Note that the formula includes several Harlequin adapter packages (Postgres, MySQL, and ODBC) and their dependencies, which is convenient but increases the application size.
+
+```bash
+brew install harlequin
 ```
 
 ## Installing Database Adapters
