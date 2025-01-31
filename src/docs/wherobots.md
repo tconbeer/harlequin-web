@@ -3,7 +3,7 @@ title: "Adapter: Wherobots"
 menuOrder: 150
 ---
 
-*This documentation is Copyright Wherobots, reproduced here under an [Apache 2.0 License](https://github.com/wherobots/harlequin-wherobots/blob/main/LICENSE). See the [repository](https://github.com/wherobots/harlequin-wherobots) for the most up-to-date documentation.*
+_This documentation is Copyright Wherobots, reproduced here under an [Apache 2.0 License](https://github.com/wherobots/harlequin-wherobots/blob/main/LICENSE). See the [repository](https://github.com/wherobots/harlequin-wherobots) for the most up-to-date documentation._
 
 This is an adapter for Wherobots DB, using
 the Wherobots Spatial SQL API and its

@@ -3,6 +3,12 @@ export type DocsPage = {
   slug: string;
   menuOrder: number;
 };
+export type DocsTopic = {
+  topic: string;
+  slug: string;
+  slugPrefix: string;
+  menuOrder: number;
+};
 
 export type BlogPage = {
   title: string;

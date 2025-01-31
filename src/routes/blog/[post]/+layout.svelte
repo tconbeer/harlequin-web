@@ -1,7 +1,11 @@
+<script lang="ts">
+  let { children } = $props();
+</script>
+
 <div class="mt-6 w-full overflow-x-auto">
   <div class="mx-auto mt-4 w-full overflow-x-auto md:mt-0 md:w-2/3">
     <article>
-      <slot />
+      {@render children()}
       <!-- <nav class="mb-4 flex justify-center gap-4 md:gap-8">
         {#if data.pages && activeIndex > 0}
           <a href="/docs/{data.pages[activeIndex - 1].slug}">

@@ -3,6 +3,10 @@ title: Choosing a Theme
 menuOrder: 5
 ---
 
+<script>
+    import ThemeGallery from "$lib/components/theme_gallery.svelte"
+</script>
+
 You can set a theme for Harlequin, passing the name of any Textual Theme to the `--theme` or `-t` option.
 
 ```bash
@@ -13,4 +17,4 @@ Depending on the number of colors supported by your terminal and shell, some the
 
 To see a list of theme names, run `harlequin --help`.
 
-For a gallery of many of the better-looking themes, see the [homepage](/#themes).
+<ThemeGallery grow=false></ThemeGallery>

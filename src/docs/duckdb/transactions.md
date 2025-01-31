@@ -1,6 +1,6 @@
 ---
 title: Transaction Handling
-menuOrder: 23
+menuOrder: 38
 ---
 
 In DuckDB, statements are auto-committed by default. That means, for example, a standalone `create table` statement will be committed as soon as the statement finishes executing.

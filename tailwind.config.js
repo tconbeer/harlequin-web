@@ -30,7 +30,7 @@ export default {
           "100%": {
             transform:
               // 328px (320 + 8 gap) * n cards
-              "translateX(-3936px)",
+              "translateX(-4264px)",
           },
         },
       },

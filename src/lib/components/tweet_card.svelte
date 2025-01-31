@@ -18,14 +18,18 @@
         <a class="font-bold text-black" href={tweet.profile.src}
           >{tweet.profile.name}</a
         >
-        <span class="text-sm text-gray-500">@{tweet.profile.handle}</span>
+        <a class="text-sm text-gray-500"  href={tweet.profile.src}
+          >@{tweet.profile.handle}</a
+        >
       </div>
     </div>
     <LazyImage src={x_icon} alt="X (Twitter) Icon" className="w-6 h-6" />
   </div>
   <a href={tweet.src} target="_blank">
     <!-- eslint-disable-next-line no-at-html-tags -->
-    <div class="text-md mb-1 mt-3 leading-normal">{@html tweet.body}</div>
+    <div class="text-md mb-1 mt-3 leading-normal">
+      {@html tweet.body}
+    </div>
     <div class="mb-3 text-sm text-gray-500">{tweet.created_at}</div>
   </a>
 </div>

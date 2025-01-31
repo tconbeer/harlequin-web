@@ -14,7 +14,7 @@ export async function load({ params }) {
     };
   } catch (e) {
     if (!params.page) {
-      redirect(301, `/docs/${params.topic}/index`)
+      redirect(301, `/docs/${params.topic}/index`);
     } else {
       error(404, `Could not find ${params.topic}/${params.page}`);
     }

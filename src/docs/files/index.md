@@ -1,5 +1,6 @@
 ---
-title: Viewing Files
+title: Files Overview
+topic: Viewing Files
 menuOrder: 2
 ---
 

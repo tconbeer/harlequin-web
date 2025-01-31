@@ -1,6 +1,6 @@
 ---
 title: Selecting Keymaps
-menuOrder: 9
+menuOrder: 27
 ---
 
 After you have [created a keymap](config) or installed a keymap plug-in, you need to configure Harlequin to use that keymap.

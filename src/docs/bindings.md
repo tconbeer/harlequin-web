@@ -19,7 +19,7 @@ Harlequin uses keymaps to define sets of key bindings in the app. Below is a ref
 - <Key>F8</Key> Show the Query History Viewer.
 - <Key>F9</Key>, <Key>ctrl+b</Key> Toggle the sidebar.
 - <Key>F10</Key> Toggle full screen mode for the current widget.
-- <Key>ctrl+e</Key> Write the returned data to a CSV, Parquet, or JSON file.
+- <Key>ctrl+e</Key> Export the returned data to a CSV, Parquet, or JSON file.
 - <Key>ctrl+r</Key> Refresh the Data Catalog.
 
 ## Query Editor Bindings
@@ -49,7 +49,7 @@ Harlequin uses keymaps to define sets of key bindings in the app. Below is a ref
 - <Key>ctrl+z</Key> Undo.
 - <Key>ctrl+y</Key> Redo.
 <!-- prettier-ignore -->
-- <Key>ctrl+/</Key>, <Key>ctrl+_</Key> Toggle comments on selected line(s).
+- <Key>ctrl+/</Key>, <Key>ctrl+\_</Key> Toggle comments on selected line(s).
 - <Key>tab</Key> Insert spaces at cursor to move the cursor to the next tab stop, or indent the selected line(s) to the next tab stop.
 - <Key>shift+tab</Key> Dedent the selected line(s) to the next tab stop.
 - <Key>shift+delete</Key> Delete the current line.
@@ -58,19 +58,19 @@ Harlequin uses keymaps to define sets of key bindings in the app. Below is a ref
 
 _With the autocomplete list open:_
 
-- <Key>up</Key>, <Key>down</Key>, <Key>PgUp</Key>, <Key>PgDn</Key> Select a different item in the list.
+- <Key>up</Key>, <Key>down</Key>, <Key>pgUp</Key>, <Key>pgDn</Key> Select a different item in the list.
 - <Key>tab</Key>, <Key>enter</Key> Place the current selection in the Query Editor.
 - <Key>escape</Key> Dismiss the autocomplete list.
 
 ### Moving the Cursor
 
-- <Key>up</Key>,<Key>down</Key>,<Key>left</Key>,<Key>right</Key> Move the cursor one position.
+- <Key>up</Key>,<Key>down</Key>,<Key>left</Key>,<Key>right</Key>,<Key>tab</Key>,<Key>shift+tab</Key> Move the cursor one position.
 - <Key>home</Key> Move the cursor to the start of the line.
 - <Key>end</Key> Move the cursor to the end of the line.
 - <Key>ctrl+home</Key> Move the cursor to the start of the query.
 - <Key>ctrl+end</Key> Move the cursor to the end of the query.
-- <Key>PgUp</Key> Move the cursor up one screen.
-- <Key>PgDn</Key> Move the cursor down one screen.
+- <Key>pgUp</Key> Move the cursor up one screen.
+- <Key>pgDn</Key> Move the cursor down one screen.
 - <Key>ctrl+up</Key> Scroll up one line.
 - <Key>ctrl+down</Key> Scroll down one line.
 - <Key>ctrl+left</Key> Move the cursor to the start of the current token.
@@ -78,6 +78,10 @@ _With the autocomplete list open:_
 - <Key>shift+[any]</Key> Select text while moving the cursor.
 
 ## Results Viewer Bindings
+
+### Actions
+
+- <Key>ctrl+c</Key> Copy selected cells.
 
 ### Switching Tabs
 
@@ -89,13 +93,19 @@ _With the autocomplete list open:_
 - <Key>up</Key>,<Key>down</Key>,<Key>left</Key>,<Key>right</Key> Move the cursor one cell.
 - <Key>home</Key> Move the cursor to the top of the current column.
 - <Key>end</Key> Move the cursor to the bottom of the current column.
-- <Key>PgUp</Key> Move the cursor up one screen.
-- <Key>PgDn</Key> Move the cursor down one screen.
+- <Key>ctrl+home</Key> Move the cursor to the first cell.
+- <Key>ctrl+end</Key> Move the cursor to the last cell.
+- <Key>pgUp</Key> Move the cursor up one screen.
+- <Key>pgDn</Key> Move the cursor down one screen.
+- <Key>ctrl+up</Key>,<Key>ctrl+down</Key> Move the cursor to the start/end of the column.
+- <Key>ctrl+left</Key>,<Key>ctrl+right</Key>  Move the cursor to the start/end of the row.
+- <Key>shift+[any]</Key> Select cells while moving the cursor.
 
 ## Data Catalog Bindings
 
 - <Key>ctrl+enter</Key>,<Key>ctrl+j</Key> Insert the current name into the Query Editor.
 - <Key>ctrl+c</Key> Copy the current name to the clipboard.
+- <Key>.</Key> Open the Interactions context menu for the selected item.
 
 ### Switching Tabs
 
@@ -109,7 +119,7 @@ _With the autocomplete list open:_
 
 ## Query History Viewer Bindings
 
-- <Key>up</Key>,<Key>down</Key>,<Key>PgUp</Key>,<Key>PgDn</Key> Change selection and scroll.
+- <Key>up</Key>,<Key>down</Key>,<Key>pgUp</Key>,<Key>pgDn</Key> Change selection and scroll.
 - <Key>tab</Key> Change focus between the history list and the query preview pane.
 - <Key>enter</Key> Create a new Editor buffer and insert the highlighted query.
 - <Key>escape</Key> Return to the main screen.

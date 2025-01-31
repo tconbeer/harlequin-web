@@ -13,6 +13,7 @@
   import joshptemple from "$lib/assets/tweets/joshptemple.png";
   import adrianmg from "$lib/assets/tweets/adrianmg.jpg";
   import TanelPoder from "$lib/assets/tweets/TanelPoder.jpg";
+  import DataSuperNerd from "$lib/assets/tweets/DataSuperNerd.jpg";
 
   const tweets: Tweet[] = [
     {
@@ -23,11 +24,11 @@
         img_src: AlexVianaPro,
       },
       body: `<p lang="en" dir="ltr">
-        If you like <a style="color: blue; text-decoration: underline" href="https://twitter.com/duckdb?ref_src=twsrc%5Etfw"
-          >@duckdb</a
+        If you like <span style="color: blue; " 
+          >@duckdb</span
         >
         and retro/efficient text interfaces Harlequin is pretty cool!
-        <a style="color: blue; text-decoration: underline" href="https://t.co/4tNKmt1yT4">https://t.co/4tNKmt1yT4</a>
+        <span style="color: blue; " >https://t.co/4tNKmt1yT4</span>
         <img src="https://pbs.twimg.com/tweet_video_thumb/FxS6gBKWcAMR0X4.jpg" alt="harlequin screenshot">
       </p>`,
       created_at: "6:24 AM · May 29, 2023",
@@ -42,8 +43,8 @@
       },
       body: `<p lang="en" dir="ltr">
         pretty sweet terminal-based duckdb sql editor! just what i&#39;ve been
-        looking for <a style="color: blue; text-decoration: underline" href="https://t.co/DWWY68tQcs">https://t.co/DWWY68tQcs</a
-        > <a style="color: blue; text-decoration: underline" href="https://t.co/Ol2JwcxXE8">pic.twitter.com/Ol2JwcxXE8</a>
+        looking for <span style="color: blue; " >https://t.co/DWWY68tQcs</span
+        > <span style="color: blue; " >pic.twitter.com/Ol2JwcxXE8</span>
       </p>`,
       created_at: "9:46 PM · Jul 5, 2023",
       src: "https://twitter.com/pdrmnvd/status/1676799655513030663",
@@ -56,11 +57,11 @@
         img_src: matsonj,
       },
       body: `<p lang="en" dir="ltr">
-        its beautiful <a style="color: blue; text-decoration: underline"
-          href="https://twitter.com/tedconbeer?ref_src=twsrc%5Etfw"
-          >@tedconbeer</a
+        its beautiful <span style="color: blue; "
+          
+          >@tedconbeer</span
         >
-        <a href="https://t.co/LRNHkPUnGt"><img src="https://pbs.twimg.com/media/F5oFbuSboAArGmR?format=png&name=small" alt="harlequin screenshot"> </a>
+        <span ><img src="https://pbs.twimg.com/media/F5oFbuSboAArGmR?format=png&name=small" alt="harlequin screenshot"> </span>
       </p>`,
       created_at: "7:09 PM · Sep 9, 2023",
       src: "https://twitter.com/matsonj/status/1700677797117907444",
@@ -72,7 +73,7 @@
         src: "https://twitter.com/_TylerHillery",
         img_src: _TylerHillery,
       },
-      body: `<p lang="en" dir="ltr"><a style="color: blue; text-decoration: underline" href="https://twitter.com/tedconbeer?ref_src=twsrc%5Etfw">@tedconbeer</a> crushed it with Harelquin, a DuckDB IDE for your terminal.<br><br>I highly recommend trying it out <a style="color: blue; text-decoration: underline" href="https://github.com/tconbeer/harlequin">github.com/tconbeer/harle...</a> <a href="https://t.co/iBcbTDFKxr"><img src="https://pbs.twimg.com/media/F6bTLmvaIAAR4hc?format=png&name=4096x4096" alt="harlequin screenshot"></a></p>`,
+      body: `<p lang="en" dir="ltr"><span style="color: blue; " >@tedconbeer</span> crushed it with Harelquin, a DuckDB IDE for your terminal.<br><br>I highly recommend trying it out <span style="color: blue; " >github.com/tconbeer/harle...</span> <span ><img src="https://pbs.twimg.com/media/F6bTLmvaIAAR4hc?format=png&name=4096x4096" alt="harlequin screenshot"></span></p>`,
       created_at: "5:52 PM · Sep 19, 2023",
       src: "https://twitter.com/_TylerHillery/status/1704282296868831624",
     },
@@ -83,7 +84,7 @@
         src: "https://twitter.com/nletcher",
         img_src: nletcher,
       },
-      body: `<p lang="en" dir="ltr">Harlequin is a super snazzy terminal-based IDE for <a style="color: blue; text-decoration: underline" href="https://twitter.com/duckdb?ref_src=twsrc%5Etfw">@duckdb</a> that has a whole bunch of useful features. Think of it like the DuckDB CLI dialled up to 11. Go check it out! <a style="color: blue; text-decoration: underline" href="https://t.co/HKVreF6xEv">https://t.co/HKVreF6xEv</a><br><br>(It&#39;s also one of them funky TUIs built with Textual, <a style="color: blue; text-decoration: underline" href="https://twitter.com/textualizeio?ref_src=twsrc%5Etfw">@textualizeio</a> ) <a style="color: blue; text-decoration: underline" href="https://t.co/7hkCWrWl8f">https://t.co/7hkCWrWl8f</a></p>`,
+      body: `<p lang="en" dir="ltr">Harlequin is a super snazzy terminal-based IDE for <span style="color: blue; " >@duckdb</span> that has a whole bunch of useful features. Think of it like the DuckDB CLI dialled up to 11. Go check it out! <span style="color: blue; " >https://t.co/HKVreF6xEv</span><br><br>(It&#39;s also one of them funky TUIs built with Textual, <span style="color: blue; " >@textualizeio</span> ) <span style="color: blue; " >https://t.co/7hkCWrWl8f</span></p>`,
       created_at: "8:24 AM · Sep 20, 2023",
       src: "https://twitter.com/nletcher/status/1704501782133514297",
     },
@@ -94,7 +95,7 @@
         src: "https://twitter.com/willmcgugan",
         img_src: willmcgugan,
       },
-      body: `<p lang="en" dir="ltr">So much awesome! 😀💪 <a style="color: blue; text-decoration: underline" href="https://t.co/D5eBrRGDK9">https://t.co/D5eBrRGDK9</a>`,
+      body: `<p lang="en" dir="ltr">So much awesome! 😀💪 <span style="color: blue; " >https://t.co/D5eBrRGDK9</span>`,
       created_at: "11:27 AM · Sep 20, 2023",
       src: "https://twitter.com/willmcgugan/status/1704547880202051694",
     },
@@ -105,7 +106,7 @@
         src: "https://twitter.com/archieemwood",
         img_src: archieemwood,
       },
-      body: `<p lang="en" dir="ltr">Oh <a style="color: blue; text-decoration: underline" href="https://twitter.com/davidgasquez?ref_src=twsrc%5Etfw">@davidgasquez</a> I love this so much<br/><a style="color: blue; text-decoration: underline" href="https://harlequin.sh">harlequin.sh</a> - the terminal IDE for duckdb <br/> <img src="https://pbs.twimg.com/media/F8xAu05bsAAGlzd?format=jpg&name=4096x4096" alt="harlequin screenshot"></p>`,
+      body: `<p lang="en" dir="ltr">Oh <span style="color: blue; " >@davidgasquez</span> I love this so much<br/><span style="color: blue; " >harlequin.sh</span> - the terminal IDE for duckdb <br/> <img src="https://pbs.twimg.com/media/F8xAu05bsAAGlzd?format=jpg&name=4096x4096" alt="harlequin screenshot"></p>`,
       created_at: "7:32 PM · October 19, 2023",
       src: "https://twitter.com/archieemwood/status/1714816865246310489?s=20",
     },
@@ -127,7 +128,7 @@
         src: "https://twitter.com/joshptemple",
         img_src: joshptemple,
       },
-      body: `<p lang="en" dir="ltr">Loving <a style="color: blue; text-decoration: underline" href="https://twitter.com/tedconbeer?ref_src=twsrc%5Etfw">@tedconbeer</a>’s snappy terminal SQL IDE — Harlequin. Had a blast writing a BigQuery adapter for it last weekend. Try it out and find all the bugs! <a style="color: blue; text-decoration: underline" href="https://t.co/M3LvDpTupQ">https://t.co/M3LvDpTupQ</a></p>`,
+      body: `<p lang="en" dir="ltr">Loving <span style="color: blue; " >@tedconbeer</span>’s snappy terminal SQL IDE — Harlequin. Had a blast writing a BigQuery adapter for it last weekend. Try it out and find all the bugs! <span style="color: blue; " >https://t.co/M3LvDpTupQ</span></p>`,
       created_at: "5:34 PM · Dec 21, 2023",
       src: "https://twitter.com/joshptemple/status/1737994913109713280",
     },
@@ -138,7 +139,7 @@
         src: "https://twitter.com/KhuyenTran16",
         img_src: KhuyenTran16,
       },
-      body: `<p lang="en" dir="ltr">To have a <a style="color: blue; text-decoration: underline" href="https://twitter.com/sql?ref_src=twsrc%5Etfw">@SQL</a> IDE directly on your <a style="color: blue; text-decoration: underline" href="https://twitter.com/terminal?ref_src=twsrc%5Etfw">@terminal</a>, use Harlequin.<br><br>Command-line database operations are resource-efficient and often quicker than switching between multiple apps. <a style="color: blue; text-decoration: underline" href="https://t.co/Fdn5ufImK7">github.com/tconbeer/harlequin</a> <img src="https://pbs.twimg.com/media/GDFzeyBXkAAUMgL?format=png&name=small" alt="harlequin screenshot">`,
+      body: `<p lang="en" dir="ltr">To have a <span style="color: blue; " >@SQL</span> IDE directly on your <span style="color: blue; " >@terminal</span>, use Harlequin.<br><br>Command-line database operations are resource-efficient and often quicker than switching between multiple apps. <span style="color: blue; " >github.com/tconbeer/harlequin</span> <img src="https://pbs.twimg.com/media/GDFzeyBXkAAUMgL?format=png&name=small" alt="harlequin screenshot">`,
       created_at: "9:01 AM · Jan 5, 2024",
       src: "https://twitter.com/KhuyenTran16/status/1743301579669696758",
     },
@@ -149,7 +150,7 @@
         src: "https://twitter.com/TanelPoder",
         img_src: TanelPoder,
       },
-      body: `<p lang="en" dir="ltr">Harlequin: The SQL IDE for Your Terminal (works also with DuckDB!)<br><a style="color: blue; text-decoration: underline" href="https://harlequin.sh">harlequin.sh</a> <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GQPUTOWXIAADrpR?format=jpg&amp;name=small" >`,
+      body: `<p lang="en" dir="ltr">Harlequin: The SQL IDE for Your Terminal (works also with DuckDB!)<br><span style="color: blue; " >harlequin.sh</span> <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GQPUTOWXIAADrpR?format=jpg&amp;name=small" >`,
       created_at: "7:45 PM · Jun 16, 2024",
       src: "https://twitter.com/TanelPoder/status/1802517863275643377",
     },
@@ -160,9 +161,20 @@
         src: "https://twitter.com/adrianmg",
         img_src: adrianmg,
       },
-      body: `<p lang="en" dir="ltr">What is this beauty <a style="color: blue; text-decoration: underline" href="https://harlequin.sh">harlequin.sh</a> <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GQUUIEAb0AADSUq?format=jpg&amp;name=small" >`,
+      body: `<p lang="en" dir="ltr">What is this beauty <span style="color: blue;" >harlequin.sh</span> <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GQUUIEAb0AADSUq?format=jpg&amp;name=small" >`,
       created_at: "7:02 PM · Jun 17, 2024",
       src: "https://x.com/adrianmg/status/1802869367753056498",
+    },
+    {
+      profile: {
+        name: "Gogeta",
+        handle: "DataSuperNerd",
+        src: "https://x.com/DataSuperNerd",
+        img_src: DataSuperNerd,
+      },
+      body: `<p lang="en" dir="ltr">Harlequin is an SQL IDE in your terminal. If you interact with databases everyday, i highly recommend that you give it a try.<br><br>It&#39;s very simple to setup and use, but extremely elegant and graceful👌🏽<br><br>Thank you <span style="color: blue;">@tedconbeer</span> for creating harlequin. <img alt="harlequin screenshot" src="https://pbs.twimg.com/media/GiIhbIiacAAf5up?format=png&name=240x240"></p>`,
+      created_at: "3:47 AM · Jan 25, 2025",
+      src: "https://x.com/DataSuperNerd/status/1883104387175993383",
     },
     // AFTER ADDING CARDS, UPDATE THE CONFIG IN tailwind.config.js TO KEEP SCROLLING SMOOTH.
   ];
@@ -171,7 +183,7 @@
 <p class="text-center">
   Thousands are using Harlequin. Join them with <code
     class="language-bash bg-pink px-1 py-1 text-sm selection:bg-purple"
-    >pipx install harlequin</code
+    >uv tool install harlequin</code
   >.
 </p>
 <ul

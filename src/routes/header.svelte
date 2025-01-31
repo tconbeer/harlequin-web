@@ -25,7 +25,7 @@
           <span
             class="absolute -inset-1 block -skew-y-3 bg-pink"
             aria-hidden="true"
-          />
+          ></span>
           <span class="relative text-sm text-black selection:bg-purple"
             >{subtitle}</span
           >

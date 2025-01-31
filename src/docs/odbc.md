@@ -7,61 +7,23 @@ The ODBC adapter allows Harlequin to work with most databases that support an Op
 
 ## Installation
 
-`harlequin-odbc` depends on `harlequin`, so installing this package will also install Harlequin.
-
 ### Pre-requisites
 
 You will need an ODBC driver manager installed on your OS. Windows has one built-in, but for Unix-based OSes, you will need to download and install one before installing `harlequin-odbc`. You can install unixODBC with `brew install unixodbc` or `sudo apt install unixodbc`. See the [pyodbc docs](https://github.com/mkleehammer/pyodbc/wiki/Install) for more info.
 
 Additionally, you will need to install the ODBC driver for your specific database (e.g., `ODBC Driver 18 for SQL Server` for MS SQL Server). For more information, see the docs for your specific database.
 
-### Using pip
+### Installing harlequin-odbc
 
-To install this adapter into an activated virtual environment:
-
-```bash
-pip install harlequin-odbc
-```
-
-### Using poetry
+You must install the `harlequin-odbc` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `odbc` extra:
 
 ```bash
-poetry add harlequin-odbc
+uv tool install harlequin[odbc]
 ```
 
-### Using pipx
+## Using Harlequin with an ODBC Driver
 
-If you do not already have Harlequin installed:
-
-```bash
-pipx install harlequin[odbc]
-```
-
-If you would like to add the ODBC adapter to an existing Harlequin installation:
-
-```bash
-pipx inject harlequin harlequin-odbc
-```
-
-### As an Extra
-
-Alternatively, you can install Harlequin with the `odbc` extra:
-
-```bash
-pip install harlequin[odbc]
-```
-
-```bash
-poetry add harlequin[odbc]
-```
-
-```bash
-pipx install harlequin[odbc]
-```
-
-## Usage and Configuration
-
-You can open Harlequin with the ODBC adapter by selecting it with the `-a` option and passing an ODBC connection string:
+Run Harlequin with the `-a odbc` option and pass an ODBC connection string as an argument:
 
 ```bash
 harlequin -a odbc 'Driver=&lbrace;ODBC Driver 18 for SQL Server&rbrace;;Server=tcp:harlequin-example.database.windows.net,1433;Database=dev;Uid=harlequin;Pwd=my_secret;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;'

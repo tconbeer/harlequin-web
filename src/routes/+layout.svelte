@@ -3,9 +3,8 @@
   import Header from "./header.svelte";
   import { title, subtitle, description } from "$lib/config";
   import "../app.css";
-  import type { LayoutData } from "./$types";
 
-  export let data: LayoutData;
+  let { data, children } = $props();
 </script>
 
 <svelte:head>
@@ -17,7 +16,7 @@
   <Header {data} />
 
   <main>
-    <slot />
+    {@render children()}
   </main>
 
   <Footer />
