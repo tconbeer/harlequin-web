@@ -6,6 +6,7 @@ menuOrder: -100
 
 <script>
     import Key from "$lib/components/key.svelte"
+    import Tip from "$lib/components/tip.svelte"
 </script>
 
 ## Installing Harlequin
@@ -24,7 +25,7 @@ Harlequin is a Python program, and there are many ways to install and run it. We
    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 
-2. Install Harlequin as a tool (in an isolated environment) using `uv`:
+2. Install Harlequin as a tool using `uv`:
 
    ```bash
    uv tool install harlequin
@@ -63,6 +64,8 @@ You can install multiple extras:
 ```bash
 uv tool install harlequin[postgres,mysql,s3]
 ```
+
+<Tip> Depending on your shell, you may need to place single or double quotes around the package name with extras: <pre><code class="text-xs">% uv tool install <span class="font-bold">'harlequin[postgres,mysql,s3]'</span></code></pre></Tip>
 
 Some adapters are not available as extras, and have to be installed manually. You may also wish to do this to control the version of the adapter that Harlequin uses. You can add adapters to your installation using uv's `--with` option:
 
