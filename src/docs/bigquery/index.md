@@ -6,7 +6,6 @@ menuOrder: 100
 
 The BigQuery adapter was contributed by community member Josh Temple.
 
-
 ## Installation
 
 You must install the `harlequin-bigquery` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `bigquery` extra:

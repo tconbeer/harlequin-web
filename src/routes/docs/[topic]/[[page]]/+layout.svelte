@@ -119,7 +119,21 @@
               class="mt-1 justify-between px-1 py-1 md:mb-1 {menuItem.slug ==
               activeSlug
                 ? activeStyle
-                : ''} {topic(menuItem) == activeTopic ? 'border-l border-1 border-purple' : ''} {showNav ? isNestedPage(menuItem) ? showMenu(menuItem) ? "flex" : "hidden" : "flex" : isNestedPage(menuItem) ? showMenu(menuItem) ? "hidden md:flex" : "hidden" : "hidden md:flex"} {isNestedPage(menuItem) ? "pl-4":""} transition-colors duration-200 md:hover:bg-green md:hover:rounded md:hover:border-green"
+                : ''} {topic(menuItem) == activeTopic
+                ? 'border-1 border-l border-purple'
+                : ''} {showNav
+                ? isNestedPage(menuItem)
+                  ? showMenu(menuItem)
+                    ? 'flex'
+                    : 'hidden'
+                  : 'flex'
+                : isNestedPage(menuItem)
+                  ? showMenu(menuItem)
+                    ? 'hidden md:flex'
+                    : 'hidden'
+                  : 'hidden md:flex'} {isNestedPage(menuItem)
+                ? 'pl-4'
+                : ''} transition-colors duration-200 md:hover:rounded md:hover:border-green md:hover:bg-green"
             >
               <div>
                 {menuItem.title}

@@ -7,7 +7,7 @@ menuOrder: -99
     import Key from "$lib/components/key.svelte"
 </script>
 
-Once Harlequin is installed, you run it from the command line. The arguments and options you pass in at the command line affect Harlequin's behavior, like what database adapter it uses, which database it connects to, whether or not the file picker is visible, and more. Assuming you have installed Harlequin so that it is on your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) (`uv tool install harlequin` does this automatically), you run Harlequin by typing a command of this form into your shell:
+Once Harlequin is installed, you run it from the command line. The arguments and options you pass in at the command line affect Harlequin's behavior, like what database adapter it uses, which database it connects to, whether or not the file picker is visible, and more. Assuming you have installed Harlequin so that it is on your [PATH](<https://en.wikipedia.org/wiki/PATH_(variable)>) (`uv tool install harlequin` does this automatically), you run Harlequin by typing a command of this form into your shell:
 
 ```bash
 harlequin [OPTIONS] [CONN_STR]

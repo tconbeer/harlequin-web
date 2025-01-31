@@ -16,7 +16,7 @@
 
 <!-- pre component styles might get pruned, since the pre component is
     loaded manually in svelte.config.js. -->
-    <div class="mb-8 overflow-x-auto w-full">
-      <slot />
-      <span class="select-none font-bold text-purple"></span>
+<div class="mb-8 w-full overflow-x-auto">
+  <slot />
+  <span class="select-none font-bold text-purple"></span>
 </div>
