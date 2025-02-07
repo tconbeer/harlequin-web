@@ -28,10 +28,11 @@ Core adapters are created and maintained by the maintainer of Harlequin, Ted Con
 Community adapters are created and maintained by other members of the Harlequin community. To add your adapter to this list, please [open a PR](https://github.com/tconbeer/harlequin-web).
 
 - [BigQuery](bigquery/index), contributed by [Josh Temple](https://github.com/joshtemple)
-- [Trino](trino/index), contributed by [Tyler Hillery](https://github.com/TylerHillery)
+- [Trino](trino), contributed by [Tyler Hillery](https://github.com/TylerHillery)
 - [Databricks](databricks/index), contributed by [Zach Shirah](https://github.com/zashirah) and [Alex Malins](https://github.com/alexmalins)
-- [ADBC](adbc/index), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports Snowflake and more.
-- [RisingWave](risingwave/index), contributed by [ZhengYu Xu](https://github.com/zen-xu)
-- [Wherobots](wherobots/index), contributed by [Wherobots](https://github.com/wherobots)
-- [Cassandra](cassandra/index), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
-- [NebulaGraph](nebulagraph/index), contributed by [Wey Gu](https://github.com/wey-gu)
+- [ADBC](adbc), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports Snowflake and more.
+- [RisingWave](risingwave), contributed by [ZhengYu Xu](https://github.com/zen-xu)
+- [Wherobots](wherobots), contributed by [Wherobots](https://github.com/wherobots)
+- [Cassandra](cassandra), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
+- [NebulaGraph](nebulagraph), contributed by [Wey Gu](https://github.com/wey-gu)
+- [Exasol](exasol), contributed by [Nicola Coretti](https://github.com/Nicoretti)

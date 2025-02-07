@@ -24,6 +24,7 @@ export async function load({ fetch, params }) {
     wherobots: "wherobots/harlequin-wherobots",
     cassandra: "vkhitrin/harlequin-cassandra",
     nebulagraph: "wey-gu/harlequin-nebulagraph",
+    exasol: "Nicoretti/harlequin-exasol",
   };
   const repo = repoMap[params["topic"]];
   if (repo) {
