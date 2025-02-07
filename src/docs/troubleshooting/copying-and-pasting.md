@@ -28,7 +28,7 @@ There are two mechanisms for Harlequin to receive clipboard data when you initia
 
 If Harlequin cannot access the system clipboard, there may be a couple of causes:
 
-1.  If Harlequin is installed on Linux, you may be missing a clipboard library. Try `sudo apt get xclip` or `sudo apt get xsel` to install a library that will allow Harlequin to access the system clipboard.
+1.  If Harlequin is installed on Linux, you may be missing a clipboard library. Try `sudo apt install xclip` or `sudo apt install xsel` to install a library that will allow Harlequin to access the system clipboard.
 2.  Harlequin's host (the operating system where Harlequin is running) may have its clipboard disabled. This is common in GitHub Codespaces, CI runners, and other servers that don't typically support user input or a display. If you control the server, you can install or start an X Server (like X11) to enable the clipboard. As a workaround, try triggering a native `Paste` event in your terminal instead.
 3.  If your terminal is attaching to a remote host to run Harlequin, e.g., via SSH, the terminal or SSH client may or may not support clipboard "redirection" (sharing the clipboard between the machines). In this case, Harlequin may be able to access its host's clipboard, but that clipboard won't be the same as the one you use for everything else. As a workaround, try triggering a native `Paste` event in your terminal instead (sadly this might also be disabled).
 
