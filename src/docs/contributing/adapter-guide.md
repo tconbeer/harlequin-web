@@ -86,7 +86,7 @@ Beyond that, adapters can declare CLI options by setting the `ADAPTER_OPTIONS` c
 
 You can use the [harlequin-adapter-template](https://github.com/tconbeer/harlequin-adapter-template) repo as a starting point for your adapter. It uses `MyAdapter` as a placeholder class name (along with `MyConnection` and `MyCursor`) and creates a plugin registered as `my-adapter`.
 
-Your adapter should require a compatible version of Harlequin as a dependency. We suggest using `harlequin = "^1.4"` as the dependency specification.
+Your adapter should require a compatible version of Harlequin as a dependency. We suggest using `harlequin = ">=1.4,<3"` as the dependency specification for a basic adapter; those implementing Lazy Catalogs or Interactions should use `harlequin = ">=1.25,<3"`.
 
 ### Making Your Adapter Discoverable as a Plug-in
 
@@ -108,7 +108,7 @@ If you would like your adapter installable as a Harlequin extra (e.g., `pip inst
 ```toml
 [tool.poetry.dependencies]
 ...
-my-adapter-pypi-distribution = &lbrace; version = "^0.1", optional = true &rbrace;
+my-adapter-pypi-distribution = &lbrace; version = ">=0.1", optional = true &rbrace;
 ...
 
 [tool.poetry.extras]
