@@ -35,7 +35,7 @@ To open one or more DuckDB database files, pass in relative or absolute paths as
 harlequin "path/to/duck.db" "another_duck.db"
 ```
 
-If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](troubleshooting/duckdb-version-mismatch) page.
+If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](../troubleshooting/duckdb-version-mismatch) page.
 
 ## Using Harlequin with SQLite and Other Adapters
 
@@ -55,7 +55,7 @@ Other adapters can be installed as plug-ins; for more information, see the [inst
 
 ## Configuring Harlequin
 
-Harlequin contains a large number of options that allow you to [set the theme](../themes), [customize key bindings](../keymaps/index), [show remote and local files](../files/index.md), set the locale for number formatting, and much more. These can always be entered at the command line, but it can be convenient to define a configuration as a profile instead. For more information on configuring Harlequin, see [Using Config Files](../config-file).
+Harlequin contains a large number of options that allow you to [set the theme](../themes), [customize key bindings](../keymaps/index), [show remote and local files](../files/index), set the locale for number formatting, and much more. These can always be entered at the command line, but it can be convenient to define a configuration as a profile instead. For more information on configuring Harlequin, see [Using Config Files](../config-file).
 
 ## Using Harlequin with Django
 
