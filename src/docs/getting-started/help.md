@@ -15,7 +15,7 @@ harlequin --help
 
 To view a subset of these docs (and a link back here) from within the app, press <Key>F1</Key>.
 
-See the [Troubleshooting](troubleshooting/index) guide for help with key bindings, appearance issues, copy-paste, etc.
+See the [Troubleshooting](../troubleshooting/index) guide for help with key bindings, appearance issues, copy-paste, etc.
 
 [GitHub Discussions](https://github.com/tconbeer/harlequin/discussions) are a good place to ask questions, request features, and say hello.
 
