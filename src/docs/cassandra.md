@@ -11,7 +11,11 @@ menuOrder: 160
 
 The Cassandra adapter was contributed by community member Vadim Khitrin.
 
-<Warning> This adapter is unstable and experimental. Some quirks are to be expected.</Warning>
+<Warning>
+This adapter is unstable and experimental. Some quirks are to be expected.
+
+Python 3.13 is not supported by this adapter, due to the <Link href="https://github.com/datastax/python-driver/pull/1242">underlying DataStax Cassandra python driver.</Link>
+</Warning>
 
 <Note> This adapter does not aim to support <Link href="https://www.scylladb.com">Scylla</Link>.</Note>
 
