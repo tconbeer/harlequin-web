@@ -17,7 +17,7 @@ export async function load({ fetch, params }) {
     mysql: "tconbeer/harlequin-mysql",
     odbc: "tconbeer/harlequin-odbc",
     bigquery: "joshtemple/harlequin-bigquery",
-    trino: "TylerHillery/harlequin-trino",
+    trino: "rogerioguicampos/harlequin-trino",
     databricks: "alexmalins/harlequin-databricks",
     adbc: "TylerHillery/harlequin-adbc",
     risingwave: "zen-xu/harlequin-risingwave",
