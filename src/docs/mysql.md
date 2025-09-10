@@ -1,5 +1,5 @@
 ---
-title: "Adapter: MySQL"
+title: "Adapter: MySQL/MariaDB"
 menuOrder: 55
 ---
 
@@ -11,15 +11,15 @@ You must install the `harlequin-mysql` package into the same environment as `har
 uv tool install 'harlequin[mysql]'
 ```
 
-## Using Harlequin with MySQL
+## Using Harlequin with MySQL or MariaDB
 
-To connect to a MySQL database, run Harlequin with the `-a mysql` option and pass connection parameters as CLI options:
+To connect to a MySQL or MariaDB database, run Harlequin with the `-a mysql` option and pass connection parameters as CLI options:
 
 ```bash
 harlequin -a mysql -h localhost -p 3306 -U root --password example --database dev
 ```
 
-The MySQL adapter does not accept a connection string or DSN.
+The MySQL/MariaDB adapter does not accept a connection string or DSN.
 
 ## Connection Options
 
