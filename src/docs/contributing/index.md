@@ -37,12 +37,11 @@ General advice is below:
 
 ### Setting up Your Dev Environment and Running Tests
 
-1. Install [Poetry](https://python-poetry.org/) v1.2 or higher if you don't have it already. You may also want to install `make`.
+1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) v0.9 or higher if you don't have it already. You may also want to install `make`.
 1. Fork this repo, and then clone the fork into a directory (let's call it `harlequin`), then `cd harlequin`.
-1. Use `poetry install --sync` to install the project (editable) and its dependencies (including all test and dev dependencies) into a new virtual env.
-1. Use `poetry shell` to spawn a subshell with the virtual environment activated.
+1. Use `uv sync` to install the project (editable) and its dependencies (including all test and dev dependencies) into a new virtual env.
 1. Run `pre-commit install` to install pre-commit hooks.
-1. Type `make` to run all tests and linters, or run `pytest`, `black .`, `ruff . --fix`, and `mypy` individually.
+1. Type `make` to run all tests and linters, or run `uv run pytest`, `uv run ruff format .`, `uv run ruff check --fix .`, and `uv run mypy` individually.
 
 ### Inspecting and Updating Snapshot Tests
 
