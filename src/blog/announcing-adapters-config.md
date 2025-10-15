@@ -79,10 +79,10 @@ I learned a lot developing this set of features for Harlequin. Here are a few of
 
 This is actually pretty standard and easy, but I didn't find a simple walkthrough. So here it is.
 
-First, a package has to declare an entry point in a specific group, using its packaging software. For a project that uses Poetry, that looks like these two lines in the project's `pyproject.toml` file:
+First, a package has to declare an entry point in a specific group, using its packaging software. For a project that uses uv, that looks like these two lines in the project's `pyproject.toml` file:
 
 ```toml
-[tool.poetry.plugins."harlequin.adapter"]
+[project.entry-points."harlequin.adapter"]
 my-adapter = "my_package_name:MyAdapter"
 ```
 

@@ -90,10 +90,10 @@ Your adapter should require a compatible version of Harlequin as a dependency. W
 
 ### Making Your Adapter Discoverable as a Plug-in
 
-Your adapter must register an [entry point](https://packaging.python.org/en/latest/specifications/entry-points/) in the `harlequin.adapters` group, using the packaging software you use to build your project. We recommned Poetry. If you use Poetry, you can define the entry point in your `pyproject.toml` file:
+Your adapter must register an [entry point](https://packaging.python.org/en/latest/specifications/entry-points/) in the `harlequin.adapters` group, using the packaging software you use to build your project. We recommned uv. If you use uv, you can define the entry point in your `pyproject.toml` file:
 
 ```toml
-[tool.poetry.plugins."harlequin.adapter"]
+[project.entry-points."harlequin.adapter"]
 my-adapter = "my_package_name:MyAdapter"
 ```
 
@@ -106,18 +106,14 @@ The template repo includes a test to ensure that your adapter is discoverable as
 If you would like your adapter installable as a Harlequin extra (e.g., `pip install harlequin[my-adapter]`), open a PR against [`tconbeer/harlequin`](https://github.com/tconbeer/harlequin) that adds the extra **and** the optional dependency to Harlequin's `pyproject.toml` file.
 
 ```toml
-[tool.poetry.dependencies]
-...
-my-adapter-pypi-distribution = &lbrace; version = ">=0.1", optional = true &rbrace;
-...
 
-[tool.poetry.extras]
+[project.optional-dependencies]
 ...
 my-adapter = ["my-adapter-pypi-distribution"]
 
 ```
 
-After updating `pyproject.toml`, you must run `poetry lock --no-update` to regenerate the lockfile so it includes the new dependencies. Both `pyproject.toml` and `poetry.lock` should be included in your PR.
+After updating `pyproject.toml`, you must run `uv sync` to regenerate the lockfile so it includes the new dependencies. Both `pyproject.toml` and `uv.lock` should be included in your PR.
 
 ## Testing Adapters
 

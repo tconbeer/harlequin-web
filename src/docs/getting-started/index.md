@@ -47,6 +47,8 @@ There is also a [Homebrew formula](https://formulae.brew.sh/formula/harlequin) f
 brew install harlequin
 ```
 
+Finally, there is a [Nix Package](https://search.nixos.org/packages?channel=25.05&show=harlequin&query=harlequin), which carries the same caveats as Homebrew.
+
 ## Installing Database Adapters
 
 Harlequin can connect to dozens of databases using adapter plug-ins. Adapters are distributed as their own Python packages that need to be installed into the same environment as Harlequin.
