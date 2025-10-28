@@ -4,6 +4,10 @@ topic: "Adapter: Databricks"
 menuOrder: 120
 ---
 
+<script lang="ts">
+  import Warning from "$lib/components/warning.svelte"
+</script>
+
 The Databricks adapter was contributed by community member Alex Malins.
 
 ## Installation
@@ -11,8 +15,13 @@ The Databricks adapter was contributed by community member Alex Malins.
 You must install the `harlequin-databricks` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `databricks` extra:
 
 ```bash
-uv tool install 'harlequin[databricks]'
+uv tool install --python 3.13 'harlequin[databricks]'
 ```
+
+<Warning>
+Due to packaging conflicts, currently the databricks extra will not install the Databricks adapter on Python 3.14. You must use Python 3.10 - 3.13. The command above instructs uv to use Python 3.13.
+</Warning>
+
 
 ## Using Harlequin with Databricks
 
