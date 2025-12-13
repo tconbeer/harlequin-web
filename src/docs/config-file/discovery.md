@@ -20,3 +20,12 @@ You can specify a custom path to a config file by invoking Harlequin with the `-
 ```bash
 harlequin --config-path /path/to/my/file.toml
 ```
+
+You can also use the `$HARLEQUIN_CONFIG_PATH` environment variable as an alternative way to specify a custom config file path.
+
+```bash
+export HARLEQUIN_CONFIG_PATH=/path/to/my/file.toml
+harlequin
+```
+
+If both are provided, the CLI option takes precedence over the environment variable.
