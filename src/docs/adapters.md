@@ -36,3 +36,4 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [Cassandra](cassandra), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
 - [NebulaGraph](nebulagraph), contributed by [Wey Gu](https://github.com/wey-gu)
 - [Exasol](exasol), contributed by [Nicola Coretti](https://github.com/Nicoretti)
+- [QuestDB](questdb), contributed by [Rik Huygen](https://github.com/rhuygen)
