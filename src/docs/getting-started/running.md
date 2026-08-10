@@ -57,6 +57,16 @@ Other adapters can be installed as plug-ins; for more information, see the [inst
 
 Harlequin contains a large number of options that allow you to [set the theme](../themes), [customize key bindings](../keymaps/index), [show remote and local files](../files/index), set the locale for number formatting, and much more. These can always be entered at the command line, but it can be convenient to define a configuration as a profile instead. For more information on configuring Harlequin, see [Using Config Files](../config-file).
 
+## Running Queries Without the Interface
+
+Harlequin also installs a second command, `hsql`, which runs SQL headlessly: it connects using the same profiles and adapters, prints the results to stdout, and exits. It is the right tool for shell scripts, `Makefile`s, CI jobs, and AI coding agents.
+
+```bash
+hsql -P prod -c "select count(*) from orders"
+```
+
+For more information, see [Headless & Agents](../headless/index).
+
 ## Using Harlequin with Django
 
 [django-harlequin](https://pypi.org/project/django-harlequin/) provides a command to launch Harlequin using Django’s database configuration, like:
