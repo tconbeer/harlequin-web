@@ -32,8 +32,7 @@
 </script>
 
 <p class="text-center">
-  The same engine, with the interface taken off — for scripts, Makefiles, CI
-  jobs, and coding agents.
+  A fast and powerful CLI designed with efficiency and safety for agents.
 </p>
 <ul class="w-full">
   <li>

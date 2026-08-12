@@ -38,11 +38,11 @@
 
   <SectionHeading
     title="harlequin"
-    tagline="The SQL IDE for your terminal."
+    tagline="For humans, by humans"
     id="harlequin"
   />
 
-  <h3 class="mt-12 text-center font-accent text-3xl">Does SQL IDE Stuff.</h3>
+  <h3 class="mt-12 text-center font-accent text-3xl">A feature-rich TUI</h3>
   <Features />
 
   <h3 class="mt-12 text-center font-accent text-3xl" id="themes">
@@ -52,11 +52,13 @@
 
   <SectionHeading
     title="hsql"
-    tagline="The Harlequin CLI: SQL in, data out."
+    tagline="Your agent's favorite SQL client"
     id="hsql"
   />
 
-  <h3 class="mt-12 text-center font-accent text-3xl">Does Script Stuff.</h3>
+  <h3 class="mt-12 text-center font-accent text-3xl">
+    More features, fewer tokens
+  </h3>
   <HsqlFeatures />
 
   <h2 class="mt-12 text-center font-accent text-3xl">Join the Flock.</h2>
