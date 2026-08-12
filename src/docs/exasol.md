@@ -7,7 +7,6 @@ The Exasol adapter was contributed by community member Nicola Coretti.
 
 _This documentation is Copyright Exasol, reproduced and adapted here under an [MIT License](https://github.com/Nicoretti/harlequin-exasol/blob/main/LICENSE). See the [repository](https://github.com/Nicoretti/harlequin-exasol) for the most up-to-date documentation._
 
-
 <script>
     import Warning from "$lib/components/warning.svelte"
     import Note from "$lib/components/note.svelte"
@@ -21,9 +20,9 @@ Below, you will find information if you are interested in trying it out and gett
 
 ## 🚀 Features
 
-* Basic Catalog
-* Basic Query Completion
-* Basic Query Support, including DDL
+- Basic Catalog
+- Basic Query Completion
+- Basic Query Support, including DDL
 
 ## Installation
 
@@ -49,5 +48,5 @@ harlequin -a exasol --disable-certificate-validation
 
 ## 💥 Known Issues
 
-* Queries cannot be sent while metadata is loading. (@exaSR)
-* Only empty error windows will be shown. (Multiple Reports)
+- Queries cannot be sent while metadata is loading. (@exaSR)
+- Only empty error windows will be shown. (Multiple Reports)
