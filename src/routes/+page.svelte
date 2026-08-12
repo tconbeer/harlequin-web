@@ -12,6 +12,22 @@
 <article class="overflow-x-visible">
   <Hero />
 
+  <h2 class="mt-12 text-center font-accent text-3xl">
+    One Engine, Two Interfaces.
+  </h2>
+  <p class="mx-auto max-w-2xl text-center">
+    <code class="whitespace-nowrap bg-pink px-0.5 selection:bg-purple"
+      >harlequin</code
+    >
+    and
+    <code class="whitespace-nowrap bg-pink px-0.5 selection:bg-purple"
+      >hsql</code
+    > share adapters, config files, profiles, and the query engine underneath — so
+    the interactive session and the scripted one connect the same way and run your
+    SQL the same way. Point both at one profile, and you and your agent can share
+    one tool.
+  </p>
+
   <h2 class="mt-12 text-center font-accent text-3xl">Runs Anywhere.</h2>
   <Platforms />
 
