@@ -3,9 +3,6 @@
   import solarized_light from "$lib/assets/themes/solarized-light.svg";
 </script>
 
-<p class="text-center">
-  Choose from many of themes, or (coming soon!) make your own.
-</p>
 <ul class="w-full">
   <li>
     <Feature
