@@ -3,7 +3,7 @@
   import solarized_light from "$lib/assets/themes/solarized-light.svg";
 </script>
 
-<ul class="w-full">
+<ul class="w-full" id="themes">
   <li>
     <Feature
       title="Themes"

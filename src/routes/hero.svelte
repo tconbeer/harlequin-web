@@ -87,11 +87,10 @@
     >
       <p class="mt-12 text-center font-mono text-sm text-purple">hsql</p>
       <h2 class="text-center font-accent text-3xl">
-        Scriptable, pipeable, headless.
+        Capable, scriptable, discoverable.
       </h2>
       <p class="text-center">
-        The same engine with the interface taken off: your SQL in, your data
-        out.
+        The best headless SQL client for automations and agents.
       </p>
       <div
         class="mx-auto w-fit py-6 transition-transform duration-200 hover:scale-105 active:translate-x-1 active:translate-y-1"

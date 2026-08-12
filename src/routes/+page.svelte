@@ -42,12 +42,9 @@
     id="harlequin"
   />
 
-  <h3 class="mt-12 text-center font-accent text-3xl">A feature-rich TUI</h3>
+  <h3 class="mt-12 text-center font-accent text-3xl">A feature-rich TUI.</h3>
   <Features />
 
-  <h3 class="mt-12 text-center font-accent text-3xl" id="themes">
-    Looks nice.
-  </h3>
   <Themes />
 
   <SectionHeading
@@ -57,7 +54,7 @@
   />
 
   <h3 class="mt-12 text-center font-accent text-3xl">
-    More features, fewer tokens
+    More features, fewer tokens.
   </h3>
   <HsqlFeatures />
 
