@@ -83,13 +83,13 @@ hsql -l 0 -c "select * from orders"
 
 **`hsql` always tells you when it truncated a result.** The notice goes to stderr, so it can never corrupt your data:
 
-```
+```output
 note: results truncated at 500 rows (--limit)
 ```
 
 and the text formats add a visible footer:
 
-```
+```output
 … 500 of 500+ rows
 ```
 
@@ -117,7 +117,7 @@ The default is `all` in every format, so the same command always emits the same 
 hsql --csv -c "select 1; select 2; select 3"
 ```
 
-```
+```output
 hsql: error: 3 result sets, but csv holds one; use --result last or --result 3
 ```
 
@@ -161,7 +161,7 @@ The two produce identical bytes. Use `-o` when you want the path recorded in the
 hsql --stats --csv -c "select * from orders" > orders.csv
 ```
 
-```
+```output
 &lbrace;"status":"ok","statements":1,"rows":500,"truncated":true,"limit":500,"elapsed_ms":412,"columns":[&lbrace;"name":"id","type":"BIGINT"&rbrace;]&rbrace;
 ```
 

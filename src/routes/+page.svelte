@@ -1,31 +1,16 @@
 <script lang="ts">
-  import hero from "$lib/assets/themes/harlequin.svg?raw";
   import Platforms from "./platforms.svelte";
   import Databases from "./databases.svelte";
   import Features from "./features.svelte";
+  import Hero from "./hero.svelte";
+  import HsqlFeatures from "./hsql_features.svelte";
+  import SectionHeading from "./section_heading.svelte";
   import Themes from "./themes.svelte";
   import Tweets from "./tweets.svelte";
 </script>
 
 <article class="overflow-x-visible">
-  <h2 class="mt-12 text-center font-accent text-3xl">
-    Portable, powerful, colorful.
-  </h2>
-  <p class="text-center">
-    An easy, fast, and beautiful database client for the terminal.
-  </p>
-  <div
-    class="mx-auto w-fit py-6 transition-transform duration-200 hover:scale-105 active:translate-x-1 active:translate-y-1"
-  >
-    <a
-      href="/docs/getting-started"
-      class="rounded-full bg-green px-6 py-3 text-center font-bold shadow-lg"
-      >Get Started</a
-    >
-  </div>
-  <figure class="mx-auto max-w-screen-lg py-2 drop-shadow-lg">
-    {@html hero} <!-- eslint-disable-line -->
-  </figure>
+  <Hero />
 
   <h2 class="mt-12 text-center font-accent text-3xl">Runs Anywhere.</h2>
   <Platforms />
@@ -35,13 +20,28 @@
   </h2>
   <Databases />
 
-  <h2 class="mt-12 text-center font-accent text-3xl">Does SQL IDE Stuff.</h2>
+  <SectionHeading
+    title="harlequin"
+    tagline="The SQL IDE for your terminal."
+    id="harlequin"
+  />
+
+  <h3 class="mt-12 text-center font-accent text-3xl">Does SQL IDE Stuff.</h3>
   <Features />
 
-  <h2 class="mt-12 text-center font-accent text-3xl" id="themes">
+  <h3 class="mt-12 text-center font-accent text-3xl" id="themes">
     Looks nice.
-  </h2>
+  </h3>
   <Themes />
+
+  <SectionHeading
+    title="hsql"
+    tagline="The Harlequin CLI: SQL in, data out."
+    id="hsql"
+  />
+
+  <h3 class="mt-12 text-center font-accent text-3xl">Does Script Stuff.</h3>
+  <HsqlFeatures />
 
   <h2 class="mt-12 text-center font-accent text-3xl">Join the Flock.</h2>
   <Tweets />

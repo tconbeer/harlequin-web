@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
 
-  let { children } = $props();
+  let { children }: { children: Snippet } = $props();
   import clippy from "$lib/assets/icons/icons8-clipboard-48.png";
   import check from "$lib/assets/icons/icons8-check-50.png";
 
@@ -23,9 +23,7 @@
   }
 </script>
 
-<div
-  class="flex w-full overflow-x-auto rounded border border-purple bg-pink align-middle"
->
+<div class="code-block code-command">
   <pre
     class="my-2 flex-1 overflow-x-auto px-4 py-2 align-middle text-sm selection:bg-purple"><code
       class="inline-block overflow-x-auto align-middle"

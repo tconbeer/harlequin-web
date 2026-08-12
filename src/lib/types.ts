@@ -24,6 +24,13 @@ export type TweetProfile = {
   src: string;
 };
 
+// One line of a mocked-up terminal session. "command" lines get a prompt,
+// "note" lines are what hsql writes to stderr, and everything else is stdout.
+export type TerminalLine = {
+  text: string;
+  kind?: "command" | "note";
+};
+
 export type Tweet = {
   profile: TweetProfile;
   body: string;

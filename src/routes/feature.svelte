@@ -11,7 +11,7 @@
 >
   {#if src}
     <div class="w-full pr-4 md:w-1/3">
-      <h3 class="mb-3 text-xl font-bold">{title}</h3>
+      <h4 class="mb-3 text-xl font-bold">{title}</h4>
       <p>{body}</p>
     </div>
     <div class="mt-5 max-h-96 w-full md:mt-0 md:w-2/3">
@@ -23,7 +23,7 @@
     </div>
   {:else}
     <div class="w-full">
-      <h3 class="mb-3 text-xl font-bold">{title}</h3>
+      <h4 class="mb-3 text-xl font-bold">{title}</h4>
       <p>{body}</p>
     </div>
   {/if}

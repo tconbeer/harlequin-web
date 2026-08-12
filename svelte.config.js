@@ -11,6 +11,10 @@ const mdsvexOptions = {
     highlighter: (code, lang) => {
       if (lang == "bash") {
         return `<Components.pre><span class="text-purple font-bold select-none">$&nbsp;</span>${code}</Components.pre>`;
+      } else if (lang == "output") {
+        // Not typed by the reader, so: no copy button, no prompt, and a
+        // terminal-black block that joins the command block above it.
+        return `<Components.output>${code}</Components.output>`;
       } else {
         return `<Components.pre>${code}</Components.pre>`;
       }

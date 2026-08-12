@@ -36,7 +36,7 @@ So this writes a clean CSV file and still reports what it did:
 hsql --csv -l 0 -c "select * from orders where order_date = '2026-08-09'" > orders.csv
 ```
 
-```
+```output
 1284 rows in 0.31s
 ```
 
@@ -61,7 +61,7 @@ The default. Aligned plain text, sized to the widest value in each column, and m
 hsql -c "select 1 as id, 'widget' as name, null as sku"
 ```
 
-```
+```output
  id | name   | sku
 ----+--------+------
  1  | widget | NULL
@@ -75,7 +75,7 @@ A pipe table. This is the format to reach for when the reader is a language mode
 hsql --markdown -c "select 1 as id, 'widget' as name"
 ```
 
-```
+```output
 | id | name   |
 | -- | ------ |
 | 1  | widget |
@@ -97,7 +97,7 @@ An array of row objects, matching what `duckdb -json` produces. Numbers are unqu
 hsql --json -c "select 1 as id, 'widget' as name"
 ```
 
-```
+```output
 [&lbrace;"id":1,"name":"widget"&rbrace;]
 ```
 
@@ -113,7 +113,7 @@ One column per line, like `\x` in `psql`. The best way to read a single wide row
 hsql --vertical -c "select * from orders limit 1"
 ```
 
-```
+```output
 -[ RECORD 1 ]-------------------
 id          | 1
 customer_id | 4172
@@ -155,7 +155,7 @@ Four options adjust the text formats, and they compose freely:
 hsql -tAc "select count(*) from orders"
 ```
 
-```
+```output
 128411
 ```
 

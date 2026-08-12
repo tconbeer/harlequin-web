@@ -42,7 +42,7 @@ There is also a package named <code>hsql</code> on PyPI. It is a small metapacka
 hsql -c "select 'hello' as greeting, 42 as answer"
 ```
 
-```
+```output
  greeting | answer
 ----------+--------
  hello    | 42

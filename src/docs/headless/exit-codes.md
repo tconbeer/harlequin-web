@@ -35,7 +35,7 @@ Errors are one plain line on stderr. No panels, no boxes, no ANSI escapes, no tr
 hsql -c "select * from usres"
 ```
 
-```
+```output
 hsql: error: relation "usres" does not exist
 ```
 
@@ -90,6 +90,6 @@ Two reliable ways to notice it:
 hsql --stats --csv -c "select * from orders" > orders.csv
 ```
 
-```
+```output
 &lbrace;"status":"ok","statements":1,"rows":500,"truncated":true,"limit":500,"elapsed_ms":412,"columns":[&lbrace;"name":"id","type":"BIGINT"&rbrace;]&rbrace;
 ```

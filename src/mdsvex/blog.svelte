@@ -7,11 +7,12 @@
   import img from "./components/img.svelte";
   import li from "./components/li.svelte";
   import ol from "./components/ol.svelte";
+  import output from "./components/output.svelte";
   import p from "./components/p.svelte";
   import pre from "./components/pre.svelte";
   import strong from "./components/strong.svelte";
   import ul from "./components/ul.svelte";
-  export { a, code, h2, h3, h4, li, img, ol, p, pre, strong, ul };
+  export { a, code, h2, h3, h4, li, img, ol, output, p, pre, strong, ul };
 </script>
 
 <!-- pre component styles might get pruned, since the pre component is

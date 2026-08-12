@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Fenced code blocks in markdown. `code-command` is the pink, copyable
+     block for things you type; `code-output` is the black block for what
+     the command printed back. When an output block directly follows a
+     command block, the two are joined into a single window. */
+  .code-block {
+    @apply my-4 flex w-full overflow-x-auto rounded border border-purple align-middle;
+  }
+
+  .code-command {
+    @apply bg-pink;
+  }
+
+  .code-output {
+    @apply bg-black text-yellow;
+  }
+
+  .code-command:has(+ .code-output) {
+    @apply mb-0 rounded-b-none;
+  }
+
+  .code-command + .code-output {
+    @apply mt-0 rounded-t-none border-t-0;
+  }
+}
