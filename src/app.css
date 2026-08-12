@@ -16,14 +16,16 @@
   }
 
   .code-output {
-    @apply bg-purple text-black;
+    @apply bg-pink text-black;
   }
 
+  /* One window, split by a single rule: the command block gives up its
+     bottom border so the output block's top border is the divider. */
   .code-command:has(+ .code-output) {
-    @apply mb-0 rounded-b-none;
+    @apply mb-0 rounded-b-none border-b-0;
   }
 
   .code-command + .code-output {
-    @apply mt-0 rounded-t-none border-t-0;
+    @apply mt-0 rounded-t-none;
   }
 }
