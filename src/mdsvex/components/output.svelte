@@ -6,7 +6,7 @@
 
 <div class="code-block code-output">
   <pre
-    class="my-2 flex-1 overflow-x-auto px-4 py-2 align-middle text-sm selection:bg-purple"><code
+    class="my-2 flex-1 overflow-x-auto px-4 py-2 align-middle text-sm selection:bg-pink"><code
       class="inline-block overflow-x-auto align-middle"
       >{@render children()}</code
     ></pre>
@@ -16,7 +16,7 @@
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #d67bff #000000;
+    scrollbar-color: #ffb6d9 #d67bff;
   }
 
   /* Chrome, Edge, and Safari */
@@ -26,12 +26,12 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: #000000;
+    background: #d67bff;
     border-radius: 5px;
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #d67bff;
+    background-color: #ffb6d9;
   }
   *::-webkit-scrollbar-thumb:hover {
     background-color: #45ffca;

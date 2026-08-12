@@ -16,7 +16,7 @@
   }
 
   .code-output {
-    @apply bg-black text-yellow;
+    @apply bg-purple text-black;
   }
 
   .code-command:has(+ .code-output) {
