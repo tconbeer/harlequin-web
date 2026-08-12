@@ -115,18 +115,21 @@
   </div>
 </section>
 
-<nav class="mt-2 flex justify-center gap-2" aria-label="Choose a command">
+<nav class="mt-2 flex justify-center gap-1" aria-label="Choose a command">
   {#each panels as panel, i}
     <button
       onclick={() => show(i)}
       aria-current={index === i ? "true" : undefined}
-      class="rounded-full border border-purple px-4 py-1 font-mono text-xs transition-colors duration-200 hover:bg-green {index ===
-      i
-        ? 'bg-purple font-bold'
-        : ''}"
+      aria-label="{panel.command} — {panel.label}"
+      title="{panel.command} — {panel.label}"
+      class="group p-2"
     >
-      {panel.command}
-      <span class="hidden sm:inline">— {panel.label}</span>
+      <span
+        class="block h-3 w-3 rounded-full border-2 border-purple transition-colors duration-200 {index ===
+        i
+          ? 'bg-purple'
+          : 'bg-transparent group-hover:bg-pink'}"
+      ></span>
     </button>
   {/each}
 </nav>

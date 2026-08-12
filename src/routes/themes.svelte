@@ -1,8 +1,17 @@
 <script lang="ts">
-  import ThemeGallery from "$lib/components/theme_gallery.svelte";
+  import Feature from "./feature.svelte";
+  import solarized_light from "$lib/assets/themes/solarized-light.svg";
 </script>
 
 <p class="text-center">
   Choose from many of themes, or (coming soon!) make your own.
 </p>
-<ThemeGallery></ThemeGallery>
+<ul class="w-full">
+  <li>
+    <Feature
+      title="Themes"
+      body="A dozen built-in themes, including Dracula, Gruvbox, Nord, and Catppuccin. This one is Solarized Light; pick yours with --theme."
+      src={solarized_light}
+    />
+  </li>
+</ul>

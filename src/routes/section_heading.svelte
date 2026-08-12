@@ -3,13 +3,10 @@
 </script>
 
 <div class="mt-20 text-center" id={id || undefined}>
-  <div class="mx-auto mb-4 h-1 w-24 rounded bg-purple"></div>
-  <h2 class="font-display text-4xl md:text-5xl">{title}</h2>
-  <p class="mt-3">
-    <span class="relative">
-      <span class="absolute -inset-1 block -skew-y-3 bg-pink" aria-hidden="true"
-      ></span>
-      <span class="relative selection:bg-purple">{tagline}</span>
-    </span>
+  <h2 class="font-mono text-4xl font-bold md:text-5xl">{title}</h2>
+  <p
+    class="mx-auto mt-4 w-fit border-t-2 border-purple pt-3 text-sm uppercase tracking-widest"
+  >
+    {tagline}
   </p>
 </div>
