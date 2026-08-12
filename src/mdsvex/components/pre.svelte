@@ -23,7 +23,11 @@
   }
 </script>
 
-<div class="code-block code-command">
+<!-- `code-command` is a hook, not a style: an output block that follows one of
+  these joins onto it, and this block drops its bottom edge to become the seam. -->
+<div
+  class="code-command my-4 flex w-full overflow-x-auto rounded border border-purple bg-pink align-middle [&:has(+.code-output)]:mb-0 [&:has(+.code-output)]:rounded-b-none [&:has(+.code-output)]:border-b-0"
+>
   <pre
     class="my-2 flex-1 overflow-x-auto px-4 py-2 align-middle text-sm selection:bg-purple"><code
       class="inline-block overflow-x-auto align-middle"

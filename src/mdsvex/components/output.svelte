@@ -4,7 +4,9 @@
   let { children }: { children: Snippet } = $props();
 </script>
 
-<div class="code-block code-output">
+<div
+  class="code-output my-4 flex w-full overflow-x-auto rounded border border-purple bg-pink align-middle [.code-command+&]:mt-0 [.code-command+&]:rounded-t-none"
+>
   <pre
     class="my-2 flex-1 overflow-x-auto px-4 py-2 align-middle text-sm selection:bg-purple"><code
       class="inline-block overflow-x-auto align-middle"
