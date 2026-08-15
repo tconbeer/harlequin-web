@@ -23,7 +23,10 @@
       text: "hsql -P prod --csv --limit -1 --stats -f report.sql > out.csv",
       kind: "command",
     },
-    { text: `{"status":"ok","rows":1284,"truncated":false,"elapsed_ms":18}`, kind: "note" },
+    {
+      text: `{"status":"ok","rows":1284,"truncated":false,"elapsed_ms":18}`,
+      kind: "note",
+    },
   ];
 
   let index = $state(0);
@@ -54,7 +57,7 @@
 >
   <div class="flip-inner grid" class:flipped={index === 1}>
     <div
-      class="face flex flex-col"
+      class="face flex min-w-0 flex-col"
       inert={index === 0 ? undefined : true}
       aria-hidden={index === 0 ? undefined : "true"}
     >
@@ -74,14 +77,16 @@
           >Get Started</a
         >
       </div>
-      <figure class="mx-auto w-full max-w-screen-lg py-2 drop-shadow-lg">
+      <figure
+        class="mx-auto w-full min-w-0 max-w-screen-lg py-2 drop-shadow-lg"
+      >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -- local asset -->
         {@html screenshot}
       </figure>
     </div>
 
     <div
-      class="face back flex flex-col"
+      class="face back flex min-w-0 flex-col"
       inert={index === 1 ? undefined : true}
       aria-hidden={index === 1 ? undefined : "true"}
     >
@@ -89,9 +94,7 @@
       <h2 class="text-center font-accent text-3xl">
         Capable, usable, efficient.
       </h2>
-      <p class="text-center">
-        The best SQL client for automations and agents.
-      </p>
+      <p class="text-center">The best SQL client for automations and agents.</p>
       <div
         class="mx-auto w-fit py-6 transition-transform duration-200 hover:scale-105 active:translate-x-1 active:translate-y-1"
       >
@@ -102,12 +105,12 @@
         >
       </div>
       <figure
-        class="mx-auto flex w-full max-w-screen-lg flex-1 items-center py-2 drop-shadow-lg"
+        class="mx-auto flex w-full min-w-0 max-w-screen-lg flex-1 items-center py-2 drop-shadow-lg"
       >
         <Terminal
           lines={session}
           label="hsql — prod"
-          size_class="text-[clamp(0.5rem,2.6vw,1.5rem)]"
+          size_class="text-[clamp(0.5rem,2.05vw,1.5rem)]"
         />
       </figure>
     </div>

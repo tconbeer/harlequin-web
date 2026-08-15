@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="flex w-full flex-col overflow-hidden rounded-lg border-4 border-yellow bg-black"
+  class="flex w-full min-w-0 flex-col overflow-hidden rounded-lg border-4 border-yellow bg-black"
 >
   {#if label}
     <div
@@ -22,7 +22,7 @@
     </div>
   {/if}
   <pre
-    class="flex-1 overflow-x-auto px-4 py-3 font-mono leading-relaxed text-yellow selection:bg-purple {size_class}">{#each lines as line, i}{#if line.kind === "command"}<span
+    class="min-w-0 flex-1 overflow-x-auto px-4 py-3 font-mono leading-relaxed text-yellow selection:bg-purple {size_class}">{#each lines as line, i}{#if line.kind === "command"}<span
           class="select-none font-bold text-purple"
           >$ </span><span class="font-bold text-green">{line.text}</span
         >{:else if line.kind === "note"}<span class="text-pink"
