@@ -9,14 +9,19 @@ const mdsvexOptions = {
   layout: "./src/mdsvex/docs.svelte",
   highlight: {
     highlighter: (code, lang) => {
+      // Svelte trims whitespace at the edges of a component's children, which
+      // would eat the leading indent and trailing spaces of a code block. The
+      // empty expressions are the smallest thing that keeps the text node off
+      // both edges, so the code survives verbatim.
+      const verbatim = `{""}${code}{""}`;
       if (lang == "bash") {
-        return `<Components.pre><span class="text-purple font-bold select-none">$&nbsp;</span>${code}</Components.pre>`;
+        return `<Components.pre><span class="text-purple font-bold select-none">$&nbsp;</span>${verbatim}</Components.pre>`;
       } else if (lang == "output") {
         // Not typed by the reader, so: no copy button, no prompt, and a
         // terminal-black block that joins the command block above it.
-        return `<Components.output>${code}</Components.output>`;
+        return `<Components.output>${verbatim}</Components.output>`;
       } else {
-        return `<Components.pre>${code}</Components.pre>`;
+        return `<Components.pre>${verbatim}</Components.pre>`;
       }
     },
   },

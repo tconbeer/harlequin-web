@@ -3,7 +3,7 @@
   import Terminal from "$lib/components/terminal.svelte";
   import type { TerminalLine } from "$lib/types";
 
-  const FLIP_MS = 9000;
+  const FLIP_MS = 8000;
 
   const panels = [
     { command: "harlequin", label: "the TUI" },
@@ -17,13 +17,13 @@
     { text: " 1001     | acme     | 249.00" },
     { text: " 1002     | globex   |  87.50" },
     { text: " 1003     | initech  | 512.25" },
-    { text: "3 rows in 0.02s", kind: "note" },
+    { text: "(3 rows)", kind: "note" },
     { text: "" },
     {
-      text: "hsql -P prod --csv -l 0 -f report.sql > out.csv",
+      text: "hsql -P prod --csv --limit -1 --stats -f report.sql > out.csv",
       kind: "command",
     },
-    { text: "1284 rows in 0.31s", kind: "note" },
+    { text: `{"status":"ok","rows":1284,"truncated":false,"elapsed_ms":18}`, kind: "note" },
   ];
 
   let index = $state(0);
@@ -87,10 +87,10 @@
     >
       <p class="mt-12 text-center font-mono text-sm text-purple">hsql</p>
       <h2 class="text-center font-accent text-3xl">
-        Capable, scriptable, discoverable.
+        Capable, usable, efficient.
       </h2>
       <p class="text-center">
-        The best headless SQL client for automations and agents.
+        The best SQL client for automations and agents.
       </p>
       <div
         class="mx-auto w-fit py-6 transition-transform duration-200 hover:scale-105 active:translate-x-1 active:translate-y-1"
