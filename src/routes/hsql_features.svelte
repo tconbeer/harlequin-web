@@ -5,22 +5,28 @@
   const inputs: TerminalLine[] = [
     { text: 'hsql -P dev -tAc "select 1"', kind: "command" },
     { text: "1" },
-    { text: `hsql -P prod --results all --on-error stop \\
+    {
+      text: `hsql -P prod --results all --on-error stop \\
   -f ./setup.sql \\
   -c "select count(*) as raw from raw_table" \\
   -f ./build-models.sql \\
-  -c "select count(*) as mod from model" `, kind: "command" },
+  -c "select count(*) as mod from model" `,
+      kind: "command",
+    },
   ];
 
   const layouts: TerminalLine[] = [
     { text: "hsql --csv --limit -1 -f report.sql > out.csv", kind: "command" },
     { text: "hsql -tAc \"select count(*) from 'out.csv'\"", kind: "command" },
     { text: "1284" },
-    { text: `hsql --limit 1 --vertical -c "select count(*) from 'out.csv'"`, kind: "command" },
-    { text: "-[ RECORD 1 ]-----------"},
-    { text: "id           | 1234"},
-    { text: "company_id   | 111"},
-    { text: "company_name | Acme Corp"},
+    {
+      text: `hsql --limit 1 --vertical -c "select count(*) from 'out.csv'"`,
+      kind: "command",
+    },
+    { text: "-[ RECORD 1 ]-----------" },
+    { text: "id           | 1234" },
+    { text: "company_id   | 111" },
+    { text: "company_name | Acme Corp" },
   ];
 
   const agents: TerminalLine[] = [

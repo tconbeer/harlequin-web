@@ -21,8 +21,8 @@
     and
     <code class="whitespace-nowrap bg-pink px-0.5 selection:bg-purple"
       >hsql</code
-    > share adapters, config files, profiles, and a query engine, so you,
-    your scripts, and your agents can share one tool.
+    > share adapters, config files, profiles, and a query engine, so you, your scripts,
+    and your agents can share one tool.
   </p>
 
   <h2 class="mt-12 text-center font-accent text-3xl">Runs Anywhere.</h2>

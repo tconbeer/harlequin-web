@@ -59,6 +59,7 @@ To connect to a local DuckDB or SQLite database file, pass the path as a connect
 ```bash
 hsql -a sqlite "path/to/sqlite.db" -c "select * from users"
 ```
+
 ```output
  id | name
 ----+---------
@@ -91,6 +92,7 @@ hsql -P warehouse -c "..." --parquet -o invoices.pq
 ## Data Layouts and File Formats
 
 hsql supports all of the following formats for displaying and writing data:
+
 - table
 - markdown (alias: md)
 - vertical
@@ -112,6 +114,7 @@ Additionally, for any layout, pass `--stats` to print summary info as JSON to st
 ```bash
 hsql -c "select 1" --format none  --stats
 ```
+
 ```output
 &lbrace"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace"name":"1","type":"#"&rbrace]&rbrace
 ```
@@ -134,6 +137,7 @@ hsql -P prod --limit -1 -c "select * from users" --csv > users.csv
 ```
 
 hsql can execute multiple statements in one invocation, and supports several methods for doing so:
+
 - Pass `-c` multiple times
 - Include multiple queries, separated by `;`, in one `-c` option
 - Pass one or more .sql files with `-f`, with multiple statements in each
@@ -141,12 +145,13 @@ hsql can execute multiple statements in one invocation, and supports several met
 - Use `--on-error` to either `stop` or `continue` if one or more queries produces an error.
 
 In other words, this works:
+
 ```bash
 hsql -P prod --limit -1 --format md --results all --on-error stop \
     -f ./setup.sql \
     -c "select count(*) from raw_table" \
     -f ./build-models.sql \
-    -c "select count(*) from modeled_table" 
+    -c "select count(*) from modeled_table"
 ```
 
 hsql's exit codes are meaningful and stable:
@@ -159,6 +164,7 @@ hsql's exit codes are meaningful and stable:
 - 130: Interrupted
 
 You can also use `--stats` and `jq` together to error on a truncated query:
+
 ```bash
 hsql --limit 100 -c "select * from orders" --csv -o data.csv --stats 2>&1 | jq -e '.truncated | not' > /dev/null
 ```
