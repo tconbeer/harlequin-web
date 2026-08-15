@@ -1,6 +1,6 @@
 ---
 title: Running Harlequin
-menuOrder: -99
+menuOrder: -990
 ---
 
 <script>
@@ -56,6 +56,12 @@ Other adapters can be installed as plug-ins; for more information, see the [inst
 ## Configuring Harlequin
 
 Harlequin contains a large number of options that allow you to [set the theme](../themes), [customize key bindings](../keymaps/index), [show remote and local files](../files/index), set the locale for number formatting, and much more. These can always be entered at the command line, but it can be convenient to define a configuration as a profile instead. For more information on configuring Harlequin, see [Using Config Files](../config-file).
+
+## Running Queries From the Command Line
+
+Harlequin also installs a second command, `hsql`, which runs queries headlessly: it connects using the same profiles and adapters, prints the results to stdout, and exits. It's designed specifically for agents, but also works great for scripts and other automations.
+
+For more information, see [Using hsql](../hsql).
 
 ## Using Harlequin with Django
 

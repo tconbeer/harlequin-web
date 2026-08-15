@@ -1,7 +1,7 @@
 ---
 title: Installing Harlequin
 topic: Getting Started
-menuOrder: -100
+menuOrder: -1000
 ---
 
 <script>

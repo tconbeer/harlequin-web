@@ -1,6 +1,6 @@
 ---
 title: Getting Help
-menuOrder: -98
+menuOrder: -100
 ---
 
 <script>

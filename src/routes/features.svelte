@@ -6,6 +6,7 @@
   import full_screen from "$lib/assets/features/full_screen.webp";
   import exporter from "$lib/assets/features/export.png";
   import history from "$lib/assets/features/history.webp";
+  import tokyo_night from "$lib/assets/themes/tokyo-night.svg";
 </script>
 
 <p class="text-center">
@@ -53,6 +54,13 @@
       title="Query History"
       body="View a list of executed queries and a summary of results. Select to insert into a new buffer."
       src={history}
+    />
+  </li>
+  <li id="themes">
+    <Feature
+      title="Themes"
+      body="A dozen built-in themes, to suit any taste (light or dark)."
+      src={tokyo_night}
     />
   </li>
 </ul>
