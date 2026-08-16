@@ -1,6 +1,7 @@
 ---
 title: "Dr. Claude: Or, How I Learned to Stop Worrying and Love Whatever It Is This Is"
 publishedAt: 2026-08-15T12:00:00Z
+lede: "What happens when your ego is shattered by Claude?"
 ---
 
     
