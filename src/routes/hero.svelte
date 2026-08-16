@@ -99,7 +99,7 @@
         class="mx-auto w-fit py-6 transition-transform duration-200 hover:scale-105 active:translate-x-1 active:translate-y-1"
       >
         <a
-          href="/docs/headless"
+          href="/docs/getting-started/hsql"
           class="rounded-full bg-green px-6 py-3 text-center font-bold shadow-lg"
           >Meet hsql</a
         >
