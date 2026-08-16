@@ -1,134 +1,32 @@
 ---
-title: "If you like Harlequin, your agent's going to love hsql"
-publishedAt: 2026-08-12T12:00:00Z
-lede: Harlequin is a SQL IDE for humans. hsql is the same engine, headless, for everything else.
+title: "Dr. Claude: Or, How I Learned to Stop Worrying and Love Whatever It Is This Is"
+publishedAt: 2026-08-15T12:00:00Z
+lede: "What happens when your ego is shattered by Claude?"
 ---
 
-<script>
-    import Tip from "$lib/components/tip.svelte"
-    import Note from "$lib/components/note.svelte"
-</script>
+    
+I’ve been an analyst for more than 15 years. Throughout that time, the standard of analysis has evolved slowly, from Excel models to dbt models, briefly into Data Science (“the sexiest job of the 21st century!”), then ML, and then back to statistical process control, metrics, and reporting (thanks, Amazon). 
 
-I built Harlequin because I wanted a SQL IDE that lived where I already worked: in a terminal, over SSH, inside tmux, next to my editor. That hasn't changed. But something else has. A lot of the SQL being written against your database this year isn't being typed by a person at all — it's being written by a coding agent, and that agent is not going to enjoy your Data Catalog, your themes, or your F10 full-screen mode.
+Throughout this change, for me and the other people who were doing it right, SQL was the one constant. It has always been the best way to declare data transformations, and I hope it always will be. I have written a couple of love letters to SQL - first with [sqlfmt](https://sqlfmt.com) and then with [Harlequin](https://harlequin.sh). I created Harlequin because more and more of my work was being done in WSL, and I needed a better SQL client in my Linux shell, where it could easily access the same data as my Python programs. 
 
-Agents need something else. They need a command that takes SQL, prints data, and exits with a number that means something.
+For a couple of years there, it felt like we (Data teams) had it figured out. Push all your data into a warehouse or data lake, run a SQL engine on top, write declarative data models, and point BI and ML tools at those models. I thought we could keep doing this forever, and I would be maintaining and improving Harlequin until I died. 
 
-So Harlequin now ships one: `hsql`.
+At first slowly, and then this spring very suddenly, AI dramatically changed the way that I work. It hasn’t all been for the better. My day job is as a Fractional Chief Data Officer for start-ups and other fast-growing companies. Over the past 15 years I have built my reputation and earned my seat at the table by aggregating and making sense of an organization’s knowledge - both from their data and from talking to other humans. I have been a trusted advisor in all sorts of high stakes decisions. I am often the first person other executives turn to when they are kept up all night by a tricky issue or suddenly need to know the reality of what is going on in their function.
 
-```bash
-hsql -P prod -c "select count(*) from orders"
-```
+And suddenly, I wasn’t. Something happened around Opus 4.7 where I began to feel like I had been disintermediated. I started to hear, after the fact, that instead of coming to me, clients were going to Claude with their burning questions. They started showing me beautiful decks that Claude made with data queried from Metabase, then they demoed new custom reporting packages in a web app behind SSO, then a complex analysis of labor dynamics and fuel prices driven by the war with Iran.
 
-It's the same engine as the TUI — the same [adapters](/docs/adapters), the same [config files and profiles](/docs/config-file), the same statement splitter, the same query execution — with the interface taken off. If Harlequin is installed, you already have it.
+The artifacts Claude produced weren’t perfect, but it was very clear to me that they didn’t have to be, and that I was in trouble. For my entire career as an analyst, correctness was the foundational pillar that my work stood on (I learned this at Bain, where the learned standard is called “Zero Defect”). Since GPT-3, my line when asked about AI was, “as long as being right is more important than being fast, then I will still have a job.” But this year, the asymmetrical advantage of Claude’s speed and the perceived quality of its output has me completely overmatched. I work part-time at several companies concurrently, which only exacerbates this asymmetry: I no longer have time to even read, let alone review, check, or think critically about, most of the analyses being performed by and shared at my clients. People have always wanted dashboards, but now they don’t want to look at dashboards, they want Claude to do that for them. I typically work with smaller organizations, where  it is possible to keep tabs on and have a point of view on everything. But I can feel and see these organizations scaling out their work in scope and ambition faster than I (or frankly, they) can keep up. 
 
-## The problem isn't SQL. It's the CLIs.
+As an executive and decision maker, I’m not quite sure where we go from here. What does it mean for an organization to know something? It used to be that you got a bunch of leaders in a room together, you reviewed a document, you discussed its implications, and you all internalized some of what you learned. You took that with you and it informed your decisions. That was how organizations learned, grew, and changed. 
 
-Models are good at SQL. What they're bad at is remembering that `psql` wants `-c` but the DuckDB CLI wants the query as a positional argument, that `-t` means tuples-only in one place and something else in another, that one tool exits 1 on a bad query and another exits 0 with an error on stdout, and that the flag to get CSV out is `--csv` here and `-csv` there and a `.mode csv` dot-command somewhere else.
+But next year will that be the case? Will Amazon continue to run a WBR? Or will Claude do it for them, and then write some bullets to a file called EXECUTIVE SKILL.md on some shared drive that all other corporate agents must read before taking any actions?
 
-Every one of those differences is a chance for an agent to guess, guess wrong, and then confidently hand you a truncated CSV with an error message glued to the top of it.
+I have no clue. But I do know that I need to move faster. I still write a lot of SQL by hand, and spend a lot of time looking at data, but for the first time I’m seeing a future where that just won’t be the case. I recently had Claude run a [lagged conversion rate analysis](https://erikbern.com/2019/08/05/modeling-conversion-rates-using-weibull-and-gamma-distributions.html) for me (using my [Convoys fork](https://github.com/tconbeer/convoys2)) and he nailed it, in 1/10th the time it would have taken me 6 months ago. I didn’t write a single line of Python or SQL, but Claude did, and watching him run that SQL was fascinating. Claude’s favorite SQL client was a Python library, and he would ‘python -c import redshift_connector…’, writing a 20-line bash and Python script to execute a query every time he wanted to check his model. Agents are really good at these scripts and it seemed to work every time, but it was total lunacy. 
 
-`hsql` collapses all of that into one contract. Same flags, same output formats, same exit codes, against every database Harlequin supports:
+If only Claude could use Harlequin, I thought. We could share one profile with my credentials, we could look at output together, and we could both be much more efficient. 
 
-```bash
-hsql -a duckdb   -f report.sql
-hsql -a postgres -f report.sql
-hsql -P warehouse -f report.sql
-```
+So we went to work. I asked Claude to design the best SQL client for an agent, building on Harlequin’s foundation. We both agreed psql provided a familiar starting point, and the duckdb CLI added important capabilities. We could borrow that headless UI and use Harlequin’s adapter ecosystem to provide one consistent and familiar interface to any database. But there were other features missing in these tools that were built for humans and scripting but not agents. Harlequin could simplify catalog discovery and add safety features (low default limits, enforceable read-only modes). And finally, it can provide a “multiplayer” experience, where workflows can be handed back and forth between humans and agents, with result handoffs, shared query history, and more. 
 
-An agent that learns `hsql` once can query DuckDB, Postgres, SQLite, MySQL, BigQuery, Databricks, Trino, and everything else with an adapter — without learning anything new.
+Yesterday I released Harlequin 2.9.0, which includes the first version of [hsql](https://harlequin.sh/docs/getting-started/hsql), the headless CLI for agents that shares the config and query engine with Harlequin. There are many more features to come, but hsql is already extremely capable: it works with any Harlequin adapter (dozens of databases), executes SQL from files or the command line, and can output results in 10 different formats. 
 
-## Credentials stay in your config, not in the transcript
-
-This is the part I care most about.
-
-The recommended way to run `hsql` — and the only way I'd recommend running it inside a script or an agent — is with a profile:
-
-```bash
-hsql -P prod -c "select count(*) from orders"
-```
-
-The host, the user, and the password live in your [config file](/docs/config-file/discovery). They never appear in an argument list, which means they never appear in a `ps` listing, your shell history, a CI log, or a conversation transcript that gets shipped off to a model provider. The agent gets a name. You keep the secret.
-
-It's also the same profile you use interactively, which is the nice part: when your agent finds something worth a closer look, you open `harlequin -P prod` against that exact profile and pick up where it left off, catalog and all.
-
-## Fewer tokens, on purpose
-
-Headless output usually ends up in one of three places: a file, a pipe, or a model's context window. The third one has a price tag, so `hsql` defaults are chosen accordingly.
-
-**Results are limited to 500 rows by default.** An accidental `select *` against a fact table is expensive in a context window and slow everywhere else. Raise it with `-l`, or turn it off with `-l 0` — and when a result is truncated, `hsql` says so, on stderr, every time:
-
-```bash
-hsql -c "select * from orders"
-```
-
-```output
-note: results truncated at 500 rows (--limit)
-```
-
-A truncated aggregate is not an aggregate, and an agent that can't tell the difference will cheerfully report the wrong number. This is why the notice isn't optional.
-
-**Pick a format for the reader.** `-F markdown` is the easiest for a model to read back accurately, because the delimiters are unambiguous. `--json` pipes into `jq`. And `-F none` runs the SQL, discards the rows, and just reports status — which is what you want for DDL and DML, where the rows aren't the point.
-
-**Ask for the shape instead of the data.** `--stats` writes one line of JSON to stderr — row count, column names and types, elapsed time, whether the result was truncated — without touching stdout:
-
-```bash
-hsql --stats -F none -c "select * from orders"
-```
-
-```output
-&lbrace;"status":"ok","statements":1,"rows":500,"truncated":true,"limit":500,"elapsed_ms":412,"columns":[&lbrace;"name":"id","type":"BIGINT"&rbrace;]&rbrace;
-```
-
-That's an agent learning the schema and size of a result set for the cost of one line.
-
-## stdout is data. stderr is narration.
-
-Everything above works because of one rule that `hsql` never breaks: **stdout carries results and nothing else.** No banners, no timings, no row counts, no warnings, no progress.
-
-So this writes a clean CSV file, and still tells you what happened:
-
-```bash
-hsql --csv -l 0 -f report.sql > orders.csv
-```
-
-```output
-1284 rows in 0.31s
-```
-
-The row count went to your terminal. The file got data. Nothing to strip, nothing to clean up.
-
-And when a query fails, stdout stays completely empty — which is what lets a script tell "returned no rows" apart from "did not run."
-
-<Tip>
-Need a single value in a shell variable? <code>hsql -tAc "select count(*) from orders"</code> gives you tuples-only, unaligned output — the same idiom you already know from <code>psql</code>.
-</Tip>
-
-## Exit codes worth branching on
-
-The last piece is knowing what happened without parsing English. `hsql` exit codes are [documented and stable](/docs/headless/exit-codes): `1` means the database rejected your SQL, `3` means it never connected. Those call for very different next steps — rewrite the query, or go find out why the host is unreachable — and an agent that branches on the number gets that right without a language model in the loop at all.
-
-```bash
-hsql -P prod -f checks.sql -F none
-```
-
-```output
-hsql: error: could not connect to host
-```
-
-## Try it
-
-`hsql` ships with Harlequin, so if you have Harlequin, run:
-
-```bash
-hsql --help
-```
-
-It's deliberately short: every option that applies to every database, the formats, and the exit codes. Add `-a postgres` or `-P prod` and it'll show you that adapter's connection options too, loading only the adapter you asked about.
-
-<Note>
-There's also an <code>hsql</code> package on PyPI. It's a small metapackage that installs Harlequin, so <code>pip install hsql</code> works if that's what you reach for first.
-</Note>
-
-The [docs](/docs/headless/index) cover the rest: [running queries](/docs/headless/running-queries), [output formats](/docs/headless/output-formats), [exit codes](/docs/headless/exit-codes), and [what transfers from psql](/docs/headless/differences-from-psql) — the last one is worth skimming even if you never plan to type `hsql` yourself, because your agent will.
-
-Harlequin is still for you. `hsql` is for everything else you've got working on your data.
+Until this release, I wrote all of Harlequin’s code by hand. On the [Python Show](https://blog.pythonlibrary.org/2024/05/29/episode-42-harlequin-the-sql-ide-for-your-terminal/) last year I said that Harlequin was my art project, and I didn’t want any AI writing Harlequin code. I still feel the same sense of craft and love for Harlequin, but letting Claude contribute has unblocked me and revitalized this project and will hopefully bring it forward into the next era. I am still reviewing every line of docs and code, still steering the decisions, and still view Harlequin as my creation. But maybe one day that won’t be the case anymore, and agents will just read a TED.md file. And when that time comes, I’ll ride off into the sunset, but maybe at least the project will live on forever. 
