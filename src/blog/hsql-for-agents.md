@@ -1,10 +1,9 @@
 ---
-title: "If you like Harlequin, your agent's going to love hsql"
-publishedAt: 2026-08-12T12:00:00Z
-lede: Harlequin is a SQL IDE for humans. hsql is the same engine, headless, for everything else.
+title: "Dr. Claude: Or, How I Learned to Stop Worrying and Love Whatever It Is This Is"
+publishedAt: 2026-08-15T12:00:00Z
 ---
 
-# Dr. Claude: How I Learned to Stop Worrying and Love Whatever the Fuck This Is
+    
 I’ve been an analyst for more than 15 years. Throughout that time, the standard of analysis has evolved slowly, from Excel models to dbt models, briefly into Data Science (“the sexiest job of the 21st century!”), then ML, and then back to statistical process control, metrics, and reporting (thanks, Amazon). 
 
 Throughout this change, for me and the other people who were doing it right, SQL was the one constant. It has always been the best way to declare data transformations, and I hope it always will be. I have written a couple of love letters to SQL - first with [sqlfmt](https://sqlfmt.com) and then with [Harlequin](https://harlequin.sh). I created Harlequin because more and more of my work was being done in WSL, and I needed a better SQL client in my Linux shell, where it could easily access the same data as my Python programs. 
