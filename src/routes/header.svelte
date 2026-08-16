@@ -16,7 +16,10 @@
   }
 </script>
 
-<nav class="my-4 block w-full justify-between md:flex">
+<!-- The hero's flip card is a 3D transform, which paints above unpositioned
+  content no matter where it sits in the document. relative + z-index keeps the
+  header on top of it. -->
+<nav class="relative z-10 my-4 block w-full justify-between md:flex">
   <div class="flex justify-between">
     <div>
       <div>

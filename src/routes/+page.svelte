@@ -1,4 +1,11 @@
+<script module lang="ts">
+  // Module scope, so this is reset by a document load but not by a
+  // client-side navigation back to the homepage.
+  let first_mount = true;
+</script>
+
 <script lang="ts">
+  import { onMount } from "svelte";
   import Platforms from "./platforms.svelte";
   import Databases from "./databases.svelte";
   import Features from "./features.svelte";
@@ -6,6 +13,26 @@
   import HsqlFeatures from "./hsql_features.svelte";
   import SectionHeading from "./section_heading.svelte";
   import Tweets from "./tweets.svelte";
+
+  onMount(() => {
+    if (!first_mount) return;
+    first_mount = false;
+
+    // Back and forward should still land where the reader left off, and a
+    // link to #hsql should still scroll to it.
+    const [entry] = performance.getEntriesByType(
+      "navigation",
+    ) as PerformanceNavigationTiming[];
+    if (entry?.type === "back_forward" || location.hash) return;
+
+    // Everything else opens at the top of the page. Both SvelteKit and the
+    // browser recover the scroll offset of the last visit when a tab is
+    // reloaded, and Android Chrome reloads tabs on its own whenever it
+    // discards one in the background — so a reader who had scrolled the
+    // homepage before came back to it below the header.
+    history.scrollRestoration = "manual";
+    scrollTo(0, 0);
+  });
 </script>
 
 <article class="overflow-x-visible">
