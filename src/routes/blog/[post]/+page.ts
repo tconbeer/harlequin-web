@@ -6,6 +6,7 @@ export async function load({ params }) {
     return {
       content: page.default,
       meta: page.metadata,
+      slug: params.post,
     };
   } catch (e) {
     error(404, `Could not find ${params.post}`);

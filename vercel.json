@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/blog/hsql-for-agents",
+      "destination": "/blog/dr-claude",
+      "permanent": true
+    }
+  ]
+}
