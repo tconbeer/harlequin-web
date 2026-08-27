@@ -1,6 +1,5 @@
 ---
 title: "Adapter: MySQL/MariaDB"
-menuOrder: 55
 ---
 
 ## Installation

@@ -1,7 +1,5 @@
 ---
 title: "Postgres Basic Usage"
-topic: "Adapter: Postgres"
-menuOrder: 50
 ---
 
 ## Installation

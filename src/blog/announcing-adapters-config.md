@@ -28,7 +28,7 @@ Harlequin's database interface has been abstracted into something I call an Adap
 harlequin -a sqlite
 ```
 
-Adapters each register their own CLI options; for example, after installing the [Postgres adapter](/docs/postgres/index), Harlequin will accept `-h`, `-p`, and other Postgres-specific config:
+Adapters each register their own CLI options; for example, after installing the [Postgres adapter](/docs/postgres), Harlequin will accept `-h`, `-p`, and other Postgres-specific config:
 
 ```bash
 harlequin -a postgres -h localhost -p 5432 -U admin --password my-secret -d postgres

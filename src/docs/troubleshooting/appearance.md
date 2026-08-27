@@ -1,6 +1,5 @@
 ---
 title: Appearance
-menuOrder: 930
 ---
 
 <script>
@@ -33,7 +32,7 @@ For Harlequin to display in truecolor, both the terminal and shell need to suppo
 
 1. Your terminal and shell may support truecolor, but the terminal may be rendering your shell in 256 colors for backwards-compatibility reasons (e.g., bash in WSL2 on Windows Terminal). Try setting the environment variable `COLORTERM` to `truecolor` to instruct your terminal to render truecolor. You can test this by launching Harlequin with `COLORTERM=truecolor harlequin`, and if that works, you should set the environment variable more durably (Google instructions for your OS). As an example (bash in WSL2 on Windows Terminal), I added this line to my `.bashrc` file: `export COLORTERM=truecolor`.
 1. Your terminal may support truecolor, but your shell may not. Some implementations of some shells don't support truecolor, even if the terminal they are running in does. You can try a different shell, like [fish](https://fishshell.com/), [zsh](https://www.zsh.org/), or [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3).
-1. Your terminal may only support 256 colors. You should [upgrade your terminal](terminal-recommendations).
+1. Your terminal may only support 256 colors. You should [upgrade your terminal](/docs/troubleshooting/terminal-recommendations).
 
 If none of those work, some themes still look good in 256 colors. We recommend `harlequin` (the default), `textual-light`, `gruvbox`, `catppuccin-mocha`, and `tokyo-night`.
 

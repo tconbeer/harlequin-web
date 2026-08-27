@@ -1,14 +1,12 @@
 ---
 title: "DuckDB Basic Usage"
-topic: "Adapter: DuckDB"
-menuOrder: 35
 ---
 
 ## Installation
 
 The DuckDB adapter ships with Harlequin; you do not need to do anything else to install it.
 
-If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](troubleshooting/duckdb-version-mismatch) page.
+If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](/docs/troubleshooting/duckdb-version-mismatch) page.
 
 ## Using Harlequin with DuckDB
 

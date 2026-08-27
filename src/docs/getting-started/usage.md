@@ -1,6 +1,5 @@
 ---
 title: Using Harlequin
-menuOrder: -980
 ---
 
 <script>
@@ -51,10 +50,10 @@ This should execute the query, and the results should be shown in the Results Vi
 <Figure src={first_query} alt="A screenshot of Harlequin with data in the Results Viewer."></Figure>
 
 <Tip>
-If that didn't happen, your terminal may be intercepting the <Key>ctrl+enter</Key> keypress. You can try <Key>ctrl+j</Key> instead, or just click the yellow Run Query button. See the <Link href="../troubleshooting/key-bindings">troubleshooting guide</Link> for more info.
+If that didn't happen, your terminal may be intercepting the <Key>ctrl+enter</Key> keypress. You can try <Key>ctrl+j</Key> instead, or just click the yellow Run Query button. See the <Link href="/docs/troubleshooting/key-bindings">troubleshooting guide</Link> for more info.
 </Tip>
 
-The Results Viewer now has the keyboard's focus. You can scroll through the results using the arrow keys, <Key>tab</Key>, <Key>ctrl+right</Key>, <Key>pgDn</Key>, <Key>end</Key>, and [more](../bindings#results-viewer-bindings).
+The Results Viewer now has the keyboard's focus. You can scroll through the results using the arrow keys, <Key>tab</Key>, <Key>ctrl+right</Key>, <Key>pgDn</Key>, <Key>end</Key>, and [more](/docs/bindings#results-viewer-bindings).
 
 There is a lot of data here, so press <Key>F10</Key> to enter full-screen mode.
 
@@ -116,4 +115,4 @@ Now you know the basics, but there is One More Thing: you quit Harlequin using <
 
 ## More Features
 
-This was just a quick introduction to some of Harlequin's features, but many more await. Keep reading these docs for an overview of all features, or skip ahead to the [Key Bindings Reference](../bindings) for a cheat-sheet (and a hint of what is possible).
+This was just a quick introduction to some of Harlequin's features, but many more await. Keep reading these docs for an overview of all features, or skip ahead to the [Key Bindings Reference](/docs/bindings) for a cheat-sheet (and a hint of what is possible).

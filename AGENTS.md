@@ -29,12 +29,15 @@ There are no tests. `pnpm lint` runs as a pre-commit hook (`@fastify/pre-commit`
 
 ### Docs
 
-`src/docs/**/*.md` is the single source of truth for both page content and the sidebar. There is no separate nav config file.
+`src/docs/**/*.md` holds the page content; `src/lib/docs_menu.ts` holds the sidebar. Adding a page means touching both.
 
-- **Frontmatter** — every page needs `title` and `menuOrder`. A directory's `index.md` additionally needs `topic`, which is the collapsible group label in the sidebar.
-- **Sidebar** — `src/routes/api/docs/+server.ts` builds the menu at build time by `import.meta.glob`-ing every `.md` file, reading its frontmatter, and sorting all topics and pages together by `menuOrder` (ties put the topic header first). To position a new page, pick a `menuOrder` between its neighbors; the numbers are global across the whole docs tree, not per-topic. That same ordering drives the Previous/Next buttons at the bottom of each page.
-- **Routing** — everything renders through `src/routes/docs/[topic]/[[page]]/`. `+page.ts` dynamically imports `src/docs/<topic>/<page>.md`, falling back to `src/docs/<topic>.md` when there is no `page` segment. A miss 308-redirects between `/docs/x` and `/docs/x/index` (with a `redirect_from` query param to break the loop) before 404ing, so both flat pages (`src/docs/adapters.md` → `/docs/adapters`) and directory topics (`src/docs/duckdb/index.md` → `/docs/duckdb`) work.
-- **Adapter star counts** — `+page.server.ts` holds a hardcoded `repoMap` from topic slug to GitHub repo. Documenting a new third-party adapter means adding an entry there, or the GitHub stars/forks badge won't render on that page.
+- **Frontmatter** — every page needs a `title`, and that is all the sidebar reads from a file. There is no sort key: menu order is the order of the `docsMenu` array.
+- **Sidebar** — `docsMenu` in `src/lib/docs_menu.ts` is a hand-written list of top-level pages and collapsible topics. A topic's `slug` is its directory, which is also the slug of its `index.md`, so `pages[0].slug` and the topic's `slug` are the same string. `src/routes/docs/[topic]/[[page]]/+layout.svelte` imports it directly — no load function, no fetch — which is why the docs render with no network round trip of their own. The same flattened order drives the Previous/Next buttons.
+- **The menu is checked at build time** — `src/routes/api/docs/v1/+server.ts` is prerendered, and it throws (failing the build) if a markdown file is missing from `docsMenu`, if an entry names a file that does not exist, or if any `/docs/...` link in the corpus points at a page the menu does not have.
+- **Routing** — everything renders through `src/routes/docs/[topic]/[[page]]/`. `+page.ts` dynamically imports `src/docs/<topic>/<page>.md`, falling back for a bare topic to `src/docs/<topic>.md` and then `src/docs/<topic>/index.md`. So `/docs/duckdb` and `/docs/adapters` both work, and `/docs/<topic>/index` 308-redirects to `/docs/<topic>` — the canonical URL for an index page has no `/index` on it.
+- **Links between docs pages are absolute** (`/docs/config-file`, not `../config-file`). Relative links would resolve differently on `/docs/duckdb` than on `/docs/duckdb/motherduck`, and they are dead in any raw-markdown consumer.
+- **Adapter star counts** — `docsMenu` entries carry an optional `repo`; `+page.ts` looks it up by topic and fetches the GitHub badge. Documenting a new third-party adapter means setting `repo` on its entry, or the stars/forks badge won't render.
+- **Public API** — `/api/docs/v1` serves the menu as JSON (prerendered, CORS-open, `topics` + a flat `pages` list in sidebar order); `/api/docs` redirects there via `vercel.json`. Nothing on the site consumes it — it exists for external callers, so changing its shape is a breaking change in a way the sidebar no longer is.
 
 ### Blog
 
@@ -54,5 +57,5 @@ MDSveX is configured in `svelte.config.js` and applies to all `.md` files:
 - **Styling is Tailwind-only**, using the custom palette in `tailwind.config.js` (`green`/`yellow`/`pink`/`purple`/`black`) and the four font families (`font-display` Rye, `font-accent` Contrail One, `font-body` Quicksand, `font-mono` JetBrains Mono). Fonts load from Google Fonts in `src/app.html`.
 - **Site-wide strings** (title, subtitle, description, canonical URL) live in `src/lib/config.ts`; shared TypeScript types live in `src/lib/types.ts`.
 - **CSP** is set in `svelte.config.js` with `script-src: self`, so external scripts and inline script tags will be blocked.
-- **Vercel ISR** — the root layout and the docs page use `config.isr` with a 1-hour expiration because they hit the unauthenticated GitHub API for star counts; that API is rate-limited, and both loaders degrade gracefully when the request fails.
+- **Vercel ISR** — `src/routes/+layout.server.js` and the docs `+page.ts` use `config.isr` with a 1-hour expiration because they hit the unauthenticated GitHub API for star counts; that API is rate-limited, and both loaders degrade gracefully when the request fails.
 - Filenames are lower_snake_case for components, kebab-case for docs pages.

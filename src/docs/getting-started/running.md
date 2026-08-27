@@ -1,6 +1,5 @@
 ---
 title: Running Harlequin
-menuOrder: -990
 ---
 
 <script>
@@ -35,7 +34,7 @@ To open one or more DuckDB database files, pass in relative or absolute paths as
 harlequin "path/to/duck.db" "another_duck.db"
 ```
 
-If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](../troubleshooting/duckdb-version-mismatch) page.
+If you want to control the version of DuckDB that Harlequin uses, see the [Troubleshooting](/docs/troubleshooting/duckdb-version-mismatch) page.
 
 ## Using Harlequin with SQLite and Other Adapters
 
@@ -51,17 +50,17 @@ You can open one or more SQLite database files by passing in their paths as conn
 harlequin -a sqlite "path/to/sqlite.db" "another_sqlite.db"
 ```
 
-Other adapters can be installed as plug-ins; for more information, see the [installation guide](index#installing-database-adapters), and the guides for individual [adapters](../adapters). Each adapter can define its own options, which you can view using `harlequin --help`.
+Other adapters can be installed as plug-ins; for more information, see the [installation guide](/docs/getting-started#installing-database-adapters), and the guides for individual [adapters](/docs/adapters). Each adapter can define its own options, which you can view using `harlequin --help`.
 
 ## Configuring Harlequin
 
-Harlequin contains a large number of options that allow you to [set the theme](../themes), [customize key bindings](../keymaps/index), [show remote and local files](../files/index), set the locale for number formatting, and much more. These can always be entered at the command line, but it can be convenient to define a configuration as a profile instead. For more information on configuring Harlequin, see [Using Config Files](../config-file).
+Harlequin contains a large number of options that allow you to [set the theme](/docs/themes), [customize key bindings](/docs/keymaps), [show remote and local files](/docs/files), set the locale for number formatting, and much more. These can always be entered at the command line, but it can be convenient to define a configuration as a profile instead. For more information on configuring Harlequin, see [Using Config Files](/docs/config-file).
 
 ## Running Queries From the Command Line
 
 Harlequin also installs a second command, `hsql`, which runs queries headlessly: it connects using the same profiles and adapters, prints the results to stdout, and exits. It's designed specifically for agents, but also works great for scripts and other automations.
 
-For more information, see [Using hsql](../hsql).
+For more information, see [Using hsql](/docs/getting-started/hsql).
 
 ## Using Harlequin with Django
 

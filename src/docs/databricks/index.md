@@ -1,7 +1,5 @@
 ---
 title: "Installation and Basic Usage"
-topic: "Adapter: Databricks"
-menuOrder: 120
 ---
 
 The Databricks adapter was contributed by community member Alex Malins.

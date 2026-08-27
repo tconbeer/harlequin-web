@@ -1,6 +1,5 @@
 ---
 title: Creating a Keymap
-menuOrder: 26
 ---
 
 <script>
@@ -10,7 +9,7 @@ menuOrder: 26
     import keys_app_edit from "$lib/assets/docs/keys-app-edit.png"
 </script>
 
-Keymaps can be defined in Harlequin [config files](../config-file), under the `keymaps` key. You can create these keymaps manually in a text editor, or by using the [Harlequin Keys App](#keys-app).
+Keymaps can be defined in Harlequin [config files](/docs/config-file), under the `keymaps` key. You can create these keymaps manually in a text editor, or by using the [Harlequin Keys App](#keys-app).
 
 ## What is a Keymap?
 
@@ -38,7 +37,7 @@ action="results_viewer.cursor_right"
 key_display="➡/d"
 ```
 
-This keymap is named `more_arrows`, and it maps the keys <Key>w</Key>, <Key>a</Key>, <Key>s</Key>, <Key>j</Key>, and <Key>d</Key> to actions that move the cursor in the Results Viewer. The arrow keys are already mapped to these actions in the default keymap, so this keymap is a good example of [extending the default keymap](usage#extending-a-keymap).
+This keymap is named `more_arrows`, and it maps the keys <Key>w</Key>, <Key>a</Key>, <Key>s</Key>, <Key>j</Key>, and <Key>d</Key> to actions that move the cursor in the Results Viewer. The arrow keys are already mapped to these actions in the default keymap, so this keymap is a good example of [extending the default keymap](/docs/keymaps/usage#extending-a-keymap).
 
 The items in each table are as follows:
 

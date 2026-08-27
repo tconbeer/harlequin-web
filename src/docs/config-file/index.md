@@ -1,7 +1,5 @@
 ---
 title: Config Overview
-topic: Configuring Harlequin
-menuOrder: 6
 ---
 
 <script>

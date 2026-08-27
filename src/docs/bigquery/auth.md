@@ -1,6 +1,5 @@
 ---
 title: "Auth and Permissions"
-menuOrder: 101
 ---
 
 ## Authentication

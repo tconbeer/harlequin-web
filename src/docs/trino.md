@@ -1,6 +1,5 @@
 ---
 title: "Adapter: Trino"
-menuOrder: 110
 ---
 
 The Trino adapter was contributed by community member Tyler Hillery.

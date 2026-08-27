@@ -1,6 +1,5 @@
 ---
 title: Loading Extensions
-menuOrder: 47
 ---
 
 ## Warning: May not work on your platform!
@@ -21,6 +20,6 @@ The argument to the option should be a path to a SQLite extension executable. Lo
 
 ## Loading Extensions via Init Script or SQL API
 
-You can use a `.load` command in an [initialization script](initialization) to load an extension (optionally specifying an entrypoint).
+You can use a `.load` command in an [initialization script](/docs/sqlite/initialization) to load an extension (optionally specifying an entrypoint).
 
 Or you can execute a `select load_extension(...)` statement in Harlequin's Query Editor.

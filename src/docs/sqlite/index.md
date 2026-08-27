@@ -1,7 +1,5 @@
 ---
 title: SQLite Basic Usage
-topic: "Adapter: SQLite"
-menuOrder: 45
 ---
 
 ## Installation

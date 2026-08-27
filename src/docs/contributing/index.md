@@ -1,7 +1,5 @@
 ---
 title: "Ways to Contribute"
-topic: "Contributing to Harlequin"
-menuOrder: 2000
 ---
 
 Thanks for your interest in Harlequin! Harlequin is primarily maintained by [Ted Conbeer](https://tedconbeer.com), but he welcomes all contributions!
@@ -16,7 +14,7 @@ We'd love to hear from you! [Start a Discussion](https://github.com/tconbeer/har
 
 ## Contributing Code
 
-If you would like to contribute code to Harlequin, that is fantastic! Ted would love to support you. Please reach out by opening or commenting on an Issue so we can provide more tactical guidance. If you'd like to create a database adapter for Harlequin, the [next page](adapter-guide) provides a guide.
+If you would like to contribute code to Harlequin, that is fantastic! Ted would love to support you. Please reach out by opening or commenting on an Issue so we can provide more tactical guidance. If you'd like to create a database adapter for Harlequin, the [next page](/docs/contributing/adapter-guide) provides a guide.
 
 **Watch this video** for an overview of the end-to-end process for contributing to Harlequin, from clone to PR:
 

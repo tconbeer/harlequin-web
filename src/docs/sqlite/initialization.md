@@ -1,6 +1,5 @@
 ---
 title: Initialization Scripts
-menuOrder: 46
 ---
 
 Each time you start Harlequin, it will execute commands from a SQLite [initialization script](https://sqlite.org/cli.html). Such a script can contain both SQL and SQLite CLI [dot commands](https://sqlite.org/cli.html#special_commands_to_sqlite3_dot_commands_). For example:
@@ -36,6 +35,6 @@ Most SQLite CLI dot commands affect the behavior of the CLI, like the format of 
 Currently Harlequin rewrites the following dot commands to SQL and executes the SQL:
 
 - `.open` is rewritten to an `attach ...` statement.
-- `.load` is rewritten to a `select load_extension(...)` statement. Note: Loading extensions may not be possible with your Python's SQLite distribution. See [extensions](extensions) for more info.
+- `.load` is rewritten to a `select load_extension(...)` statement. Note: Loading extensions may not be possible with your Python's SQLite distribution. See [extensions](/docs/sqlite/extensions) for more info.
 
 To request additional dot command support in Harlequin, [open an issue](https://github.com/tconbeer/harlequin/issues/new/choose).

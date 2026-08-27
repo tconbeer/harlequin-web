@@ -1,6 +1,5 @@
 ---
 title: Exporting Data
-menuOrder: 29
 ---
 
 <script>
@@ -19,7 +18,7 @@ The Results Viewer can copy selected data to the clipboard. First, select a rang
 
 Data is copied in a tab-separated-values format. This format is compatible with many other applications, and pastes nicely into Excel, Google Sheets, and the Harlequin Query Editor.
 
-<Tip>Copying works best when Harlequin has access to the system clipboard. If it doesn't work out of the box, see the <Link href="troubleshooting/copying-and-pasting">troubleshooting guide</Link> for more information.</Tip>
+<Tip>Copying works best when Harlequin has access to the system clipboard. If it doesn't work out of the box, see the <Link href="/docs/troubleshooting/copying-and-pasting">troubleshooting guide</Link> for more information.</Tip>
 
 ## Exporting Files
 

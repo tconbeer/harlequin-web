@@ -1,6 +1,5 @@
 ---
 title: Windows Timezone Database
-menuOrder: 980
 ---
 
 <script>

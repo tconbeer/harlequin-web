@@ -1,6 +1,5 @@
 ---
 title: Selecting a Profile
-menuOrder: 9
 ---
 
 All configs are nested within profiles. You may wish to use distinct profiles for connecting to different databases, or just to change the theme from time to time.

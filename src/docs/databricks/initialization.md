@@ -1,6 +1,5 @@
 ---
 title: Initialization Scripts
-menuOrder: 121
 ---
 
 Each time you start Harlequin, it will execute SQL commands from a Databricks initialization script.
