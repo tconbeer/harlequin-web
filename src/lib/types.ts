@@ -8,14 +8,15 @@ export type DocsPage = {
   repo?: string;
 };
 
-// A collapsible group in the sidebar: one directory under src/docs. `slug` is
-// the directory name, which is also the slug of the directory's index page —
-// so `pages[0].slug` and `slug` are the same string.
+// A collapsible group in the sidebar. `slug` is its overview page — the
+// directory's index.md — which the group's label links to and which is also
+// listed first among its items. `items` are usually pages, but a group that
+// collects other groups (Database Adapters) nests them here instead.
 export type DocsTopic = {
   topic: string;
   slug: string;
   repo?: string;
-  pages: DocsPage[];
+  items: DocsMenuItem[];
 };
 
 export type DocsMenuItem = DocsTopic | DocsPage;

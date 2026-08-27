@@ -1,5 +1,5 @@
 import { url as siteUrl } from "$lib/config";
-import { docsMenu, docsPages, isTopic } from "$lib/docs_menu";
+import { docsAncestors, docsPages, docsRepo, docsTopics } from "$lib/docs_menu";
 import { json } from "@sveltejs/kit";
 
 // Static: the corpus only changes when the repo does, so this is a file on the
@@ -10,12 +10,16 @@ type ApiTopic = {
   topic: string;
   slug: string;
   url: string;
+  // The topic this one nests inside, e.g. "Database Adapters"; null at the
+  // top level. Order is outermost first, so a parent always precedes a child.
+  parent: string | null;
   repo: string | null;
 };
 
 type ApiPage = {
   title: string;
   slug: string;
+  // The topic this page sits in directly; null for a page at the top level.
   topic: string | null;
   url: string;
   repo: string | null;
@@ -87,33 +91,22 @@ export function GET() {
   assertMenuMatchesFiles();
   assertLinksResolve();
 
-  const topics: ApiTopic[] = docsMenu.filter(isTopic).map((topic) => ({
+  const topics: ApiTopic[] = docsTopics.map(({ topic, parent }) => ({
     topic: topic.topic,
     slug: topic.slug,
     url: pageUrl(topic.slug),
+    parent: parent?.topic ?? null,
     repo: topic.repo ?? null,
   }));
 
-  // Flat, in sidebar order; `topic` is null for a page that stands on its own.
-  const pages: ApiPage[] = docsMenu.flatMap((item): ApiPage[] =>
-    isTopic(item)
-      ? item.pages.map((page) => ({
-          title: page.title,
-          slug: page.slug,
-          topic: item.topic,
-          url: pageUrl(page.slug),
-          repo: page.repo ?? item.repo ?? null,
-        }))
-      : [
-          {
-            title: item.title,
-            slug: item.slug,
-            topic: null,
-            url: pageUrl(item.slug),
-            repo: item.repo ?? null,
-          },
-        ],
-  );
+  // Flat, in sidebar order; `topic` is the group the page sits in directly.
+  const pages: ApiPage[] = docsPages.map((page) => ({
+    title: page.title,
+    slug: page.slug,
+    topic: docsAncestors(page.slug).at(-1)?.topic ?? null,
+    url: pageUrl(page.slug),
+    repo: page.repo ?? docsRepo(page.slug.split("/")[0]),
+  }));
 
   return json(
     { version: 1, site: siteUrl.replace(/\/$/, ""), topics, pages },

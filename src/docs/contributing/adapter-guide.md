@@ -133,21 +133,27 @@ In addition, if you would like your adapter to appear in these docs, open a PR a
    ---
    ```
 
-1. Add your adapter to the sidebar by adding an entry to `docsMenu` in `/src/lib/docs_menu.ts`. Put it with the other adapters; the order of that array is the order of the menu. Setting `repo` puts a stars-and-forks badge at the top of your pages:
+1. Add your adapter to the sidebar by adding an entry to `docsMenu` in `/src/lib/docs_menu.ts`, inside the `items` of the "Database Adapters" topic. Put it with the other adapters; the order of that array is the order of the menu. Setting `repo` puts a stars-and-forks badge at the top of your pages:
 
    ```ts
    &lbrace;
      topic: "Adapter: BigQuery",
      slug: "bigquery",
      repo: "joshtemple/harlequin-bigquery",
-     pages: [&lbrace; title: "BQ Installation and Configuration", slug: "bigquery" &rbrace;],
+     items: [&lbrace; title: "BQ Installation and Configuration", slug: "bigquery" &rbrace;],
    &rbrace;,
+   ```
+
+   If your adapter is a single page, a plain entry alongside them does the job:
+
+   ```ts
+   &lbrace; title: "Adapter: Trino", slug: "trino", repo: "rogerioguicampos/harlequin-trino" &rbrace;,
    ```
 
    The build fails if a page is missing from the menu or an entry points at a file that isn't there, so the two stay in step.
 
 1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit there. Link to the docs page you just created — links between docs pages are absolute, like `/docs/bigquery`.
-1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each needs its own `title` frontmatter and its own entry in the topic's `pages` array, in the order you want them read.
+1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each needs its own `title` frontmatter and its own entry in the topic's `items` array, in the order you want them read.
 
 1. (Optional) Add your database's icon to the front page of this site. Find or create a PNG icon with a transparent background. Then resize it to 50x50 and convert it to greyscale, and place it in the `/src/lib/assets/databases/` directory. On Linux, using ImageMagick, that looks like this:
 
