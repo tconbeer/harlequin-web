@@ -1,6 +1,5 @@
 ---
 title: Copying and Pasting
-menuOrder: 920
 ---
 
 <script>

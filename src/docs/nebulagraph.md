@@ -1,6 +1,5 @@
 ---
 title: "Adapter: NebulaGraph"
-menuOrder: 170
 ---
 
 The NebulaGraph adapter was contributed by community member Wey Gu.

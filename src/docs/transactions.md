@@ -1,6 +1,5 @@
 ---
 title: Managing Transactions
-menuOrder: 30
 ---
 
 <script>

@@ -1,6 +1,5 @@
 ---
 title: Using hsql
-menuOrder: -970
 ---
 
 <script>
@@ -12,7 +11,7 @@ menuOrder: -970
 [Harlequin](https://harlequin.sh), and shares the same config and query engine,
 with an interface optimized for agents, scripts, and automations.
 
-hsql is packaged with Harlequin, so you install it by [installing Harlequin](index#installing-harlequin).
+hsql is packaged with Harlequin, so you install it by [installing Harlequin](/docs/getting-started#installing-harlequin).
 
 hsql can connect to dozens of databases using the same adapter plug-ins as Harlequin.
 
@@ -37,7 +36,7 @@ hsql and Harlequin use the same options for defining adapters, connection string
 to your database with Harlequin, just replace <code>harlequin</code> with <code>hsql</code>.
 </Tip>
 
-If you are new to Harlequin, see [Running Harlequin](./running.md) for more information.
+If you are new to Harlequin, see [Running Harlequin](/docs/getting-started/running) for more information.
 
 Like Harlequin, hsql defaults to using its DuckDB database adapter, which ships with hsql and includes the full DuckDB in-process database.
 
@@ -75,13 +74,13 @@ hsql -a postgres "postgresql://example.com/postgres:5432" -c "select * from invo
 ```
 
 <Tip>
-You should use [profiles](../config-file/index) to keep credentials out of your shell
+You should use [profiles](/docs/config-file) to keep credentials out of your shell
 history.
 </Tip>
 
 ## Configuring hsql and Using Profiles
 
-hsql supports a number of options for setting the query limit, configuring output formats, and defining connection parameters. Options can be passed as command-line flags, or read from [config files](../config-file/index). Config files store configurations under separate profiles, so you can easily switch between databases by reading from different profiles with the `-P` option:
+hsql supports a number of options for setting the query limit, configuring output formats, and defining connection parameters. Options can be passed as command-line flags, or read from [config files](/docs/config-file). Config files store configurations under separate profiles, so you can easily switch between databases by reading from different profiles with the `-P` option:
 
 ```bash
 hsql -P prod -c "select count(*) from orders" --csv

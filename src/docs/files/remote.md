@@ -1,6 +1,5 @@
 ---
 title: Remote Objects (S3)
-menuOrder: 4
 ---
 
 ## Installation

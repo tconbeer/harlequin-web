@@ -1,6 +1,5 @@
 ---
 title: Key Bindings
-menuOrder: 910
 ---
 
 <script>
@@ -11,7 +10,7 @@ menuOrder: 910
 
 Harlequin can only react to key presses that are sent to it from the Terminal it is running in. Some common key presses, like <Key>ctrl+enter</Key>, aren't forwarded correctly by some terminals, or may be aliased to a different key or even a different sort of event.
 
-If you don't want to [upgrade your terminal](terminal-recommendations), you can use the following aliases, which should be supported everywhere (if not, [open an issue](https://github.com/tconbeer/harlequin/issues)):
+If you don't want to [upgrade your terminal](/docs/troubleshooting/terminal-recommendations), you can use the following aliases, which should be supported everywhere (if not, [open an issue](https://github.com/tconbeer/harlequin/issues)):
 
 - Run query: use <Key>ctrl+j</Key>, not <Key>ctrl+enter</Key>.
 <!-- prettier-ignore -->
@@ -20,7 +19,7 @@ If you don't want to [upgrade your terminal](terminal-recommendations), you can 
   - On MacOs >= 15.0.0 , the key binding <Key>^+enter</Key> is mapped to "Show contextual menu" by default. This interferes with the "Run Query" key binding of Harlequin. Instead of setting up alternative key bindings, you can disable this shortcut in MacOS by navigating to: System Settings -> Keyboard -> Keyboard Shortcuts... -> Keyboard -> turn "Show contextual menu" off.
 
 <Tip>
-<Link href="copying-and-pasting">See here</Link> for help with copy and paste.
+<Link href="/docs/troubleshooting/copying-and-pasting">See here</Link> for help with copy and paste.
 </Tip>
 
 Finally, Harlequin's footer, which lists some of the currently-active key bindings, is clickable. If a binding isn't working, you can click it in the footer to take the same action.

@@ -1,6 +1,5 @@
 ---
 title: Terminal Recommendations
-menuOrder: 999
 ---
 
 If you are using the default Mac Terminal or Windows Command Prompt, you may want to switch to a more modern terminal. The following terminals are free and come highly recommended:

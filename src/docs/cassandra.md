@@ -1,6 +1,5 @@
 ---
 title: "Adapter: Cassandra"
-menuOrder: 160
 ---
 
 <script>

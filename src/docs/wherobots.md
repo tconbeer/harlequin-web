@@ -1,6 +1,5 @@
 ---
 title: "Adapter: Wherobots"
-menuOrder: 150
 ---
 
 <script>

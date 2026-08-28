@@ -1,6 +1,5 @@
 ---
 title: Locale
-menuOrder: 940
 ---
 
 Harlequin uses your system's locale (the language, region, and other country-specific settings) to format numbers (for example, to set the thousands separator). If the system's locale is not set properly, Harlequin's numbers may look strange to you.

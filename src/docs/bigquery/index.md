@@ -1,7 +1,5 @@
 ---
 title: "BQ Installation and Configuration"
-topic: "Adapter: BigQuery"
-menuOrder: 100
 ---
 
 <script>
@@ -28,7 +26,7 @@ harlequin -a bigquery --project my-gcp-project --location us-west1
 ```
 
 <Tip>
-See the <Link href="auth">next page</Link> for information on authentication and authorization for BigQuery.
+See the <Link href="/docs/bigquery/auth">next page</Link> for information on authentication and authorization for BigQuery.
 </Tip>
 
 ## Connection Options

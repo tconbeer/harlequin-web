@@ -1,13 +1,12 @@
 ---
 title: "Reference: Default Bindings"
-menuOrder: 800
 ---
 
 <script>
     import Key from "$lib/components/key.svelte"
 </script>
 
-Harlequin uses keymaps to define sets of key bindings in the app. Below is a reference for the bindings from the default keymap (called `vscode`). For more information on customizing key bindings, see the [keymaps](keymaps) page.
+Harlequin uses keymaps to define sets of key bindings in the app. Below is a reference for the bindings from the default keymap (called `vscode`). For more information on customizing key bindings, see the [keymaps](/docs/keymaps) page.
 
 ## General Bindings
 

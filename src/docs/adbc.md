@@ -1,6 +1,5 @@
 ---
 title: "Adapter: ADBC"
-menuOrder: 130
 ---
 
 <script lang="ts">
@@ -103,7 +102,7 @@ Check the [FlightSQL ADBC Driver Docs](https://arrow.apache.org/adbc/main/driver
 ### Postgres Driver
 
 <Tip>
-Harlequin also has a Postgres adapter, which connects using Psycopg, instead of ADBC. For more information, see <Link href="postgres">this page</Link>.
+Harlequin also has a Postgres adapter, which connects using Psycopg, instead of ADBC. For more information, see <Link href="/docs/postgres">this page</Link>.
 </Tip>
 
 The Postgres URI should be in the format of a [Postgres DSN](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING):

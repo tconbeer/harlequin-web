@@ -1,7 +1,5 @@
 ---
 title: About Key Bindings
-topic: Customizing Key Bindings
-menuOrder: 25
 ---
 
 ## About Key Bindings and Keymaps
@@ -16,5 +14,5 @@ Harlequin gets all of its key bindings from the keymaps it discovers and loads w
 
 Changing key bindings in Harlequin is a two-step process:
 
-1. Install a keymap plug-in or [create](config) a new keymap in a config file.
-2. [Select](usage) the keymap when starting Harlequin.
+1. Install a keymap plug-in or [create](/docs/keymaps/config) a new keymap in a config file.
+2. [Select](/docs/keymaps/usage) the keymap when starting Harlequin.

@@ -1,7 +1,5 @@
 ---
 title: Installing Harlequin
-topic: Getting Started
-menuOrder: -1000
 ---
 
 <script>
@@ -53,7 +51,7 @@ Finally, there is a [Nix Package](https://search.nixos.org/packages?channel=25.0
 
 Harlequin can connect to dozens of databases using adapter plug-ins. Adapters are distributed as their own Python packages that need to be installed into the same environment as Harlequin.
 
-For a list of known adapters provided either by the Harlequin maintainers or the broader community, see the [adapters](../adapters) page.
+For a list of known adapters provided either by the Harlequin maintainers or the broader community, see the [adapters](/docs/adapters) page.
 
 The adapter docs also include installation instructions. Some adapters can be installed as Harlequin extras, like `postgres`. If you used `uv` to install Harlequin:
 

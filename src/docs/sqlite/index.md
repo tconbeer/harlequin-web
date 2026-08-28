@@ -1,7 +1,5 @@
 ---
 title: SQLite Basic Usage
-topic: "Adapter: SQLite"
-menuOrder: 45
 ---
 
 ## Installation
@@ -38,12 +36,12 @@ As an alternative to the `-r` flag, specify a mode parameter directly using the 
 harlequin -a sqlite --mode rw
 ```
 
-### Timeout
+### Lock Timeout
 
 Specify a maximum number of seconds Harlequin should wait to read from a table that is locked:
 
 ```bash
-harlequin -a sqlite --timeout 60
+harlequin -a sqlite --lock-timeout 60
 ```
 
 ### Statement Caching

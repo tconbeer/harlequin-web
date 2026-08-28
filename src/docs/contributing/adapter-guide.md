@@ -1,6 +1,5 @@
 ---
 title: Creating an Adapter
-menuOrder: 2100
 ---
 
 <script>
@@ -126,24 +125,35 @@ You should add basic docs for your adapter (installation and usage) in the READM
 In addition, if you would like your adapter to appear in these docs, open a PR against [`tconbeer/harlequin-web`](https://github.com/tconbeer/harlequin-web) that makes the following changes:
 
 1. Add a directory with your adapter's name to `/src/docs/`.
-1. Add a file called `index.md` inside that new directory. Add basic installation and usage info in that file (you can probably copy-paste this from your README). Link to your project's repo at the top of the page (see `/src/docs/bigquery/index.md` for an example). This file should start with frontmatter that defines the title and sets the menu sort order; your menuOrder value should be between 100 and 200; `index.md` files should be divisible by 10.
+1. Add a file called `index.md` inside that new directory. Add basic installation and usage info in that file (you can probably copy-paste this from your README). Link to your project's repo at the top of the page (see `/src/docs/bigquery/index.md` for an example). This file needs frontmatter that defines the page's title:
 
    ```md
    ---
    title: "Adapter: BigQuery"
-   menuOrder: 100
    ---
    ```
 
-1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit there. Link to the docs page you just created.
-1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each file should again have frontmatter; the menuOrder should be one higher than the last page (your index page or another additional page):
+1. Add your adapter to the sidebar by adding an entry to `docsMenu` in `/src/lib/docs_menu.ts`, inside the `items` of the "Database Adapters" topic. Put it with the other adapters; the order of that array is the order of the menu. Setting `repo` puts a stars-and-forks badge at the top of your pages:
 
-   ```md
-   ---
-   title: "Auth and Permissions"
-   menuOrder: 101
-   ---
+   ```ts
+   &lbrace;
+     topic: "Adapter: BigQuery",
+     slug: "bigquery",
+     repo: "joshtemple/harlequin-bigquery",
+     items: [&lbrace; title: "BQ Installation and Configuration", slug: "bigquery" &rbrace;],
+   &rbrace;,
    ```
+
+   If your adapter is a single page, a plain entry alongside them does the job:
+
+   ```ts
+   &lbrace; title: "Adapter: Trino", slug: "trino", repo: "rogerioguicampos/harlequin-trino" &rbrace;,
+   ```
+
+   The build fails if a page is missing from the menu or an entry points at a file that isn't there, so the two stay in step.
+
+1. Add your adapter to the list of community adapters in `/src/docs/adapters.md`. Give yourself credit there. Link to the docs page you just created — links between docs pages are absolute, like `/docs/bigquery`.
+1. (Optional) Add more pages of docs under the `/src/docs/<your adapter>/` directory. Each needs its own `title` frontmatter and its own entry in the topic's `items` array, in the order you want them read.
 
 1. (Optional) Add your database's icon to the front page of this site. Find or create a PNG icon with a transparent background. Then resize it to 50x50 and convert it to greyscale, and place it in the `/src/lib/assets/databases/` directory. On Linux, using ImageMagick, that looks like this:
 

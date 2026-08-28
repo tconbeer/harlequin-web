@@ -1,6 +1,5 @@
 ---
 title: DuckDB Version Mismatch
-menuOrder: 991
 ---
 
 <script>

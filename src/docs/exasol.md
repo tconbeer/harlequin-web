@@ -1,6 +1,5 @@
 ---
 title: "Adapter: Exasol"
-menuOrder: 180
 ---
 
 The Exasol adapter was contributed by community member Nicola Coretti.

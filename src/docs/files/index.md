@@ -1,7 +1,5 @@
 ---
 title: Files Overview
-topic: Viewing Files
-menuOrder: 2
 ---
 
 <script>
@@ -18,5 +16,5 @@ To view the file tree, use your mouse to select the "Files" tab, or focus on the
 
 Keep reading for:
 
-1. [Local Files](local)
-2. [Remote Objects (S3)](remote)
+1. [Local Files](/docs/files/local)
+2. [Remote Objects (S3)](/docs/files/remote)

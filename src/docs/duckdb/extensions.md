@@ -1,6 +1,5 @@
 ---
 title: Loading Extensions
-menuOrder: 37
 ---
 
 You can install and load [DuckDB extensions](https://duckdb.org/docs/extensions/overview.html) when starting Harlequin, by passing the `-e` or `--extension` flag one or more times:
@@ -22,4 +21,4 @@ You can also install extensions from custom repos, using the `--custom-extension
 harlequin -u -e prql --custom-extension-repo http://welsch.lu/duckdb/prql/latest
 ```
 
-Alternatively, you can use DuckDB's SQL API for loading and installing extensions, either in Harlequin's Query Editor or in an [initialization script](initialization).
+Alternatively, you can use DuckDB's SQL API for loading and installing extensions, either in Harlequin's Query Editor or in an [initialization script](/docs/duckdb/initialization).

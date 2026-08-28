@@ -1,6 +1,5 @@
 ---
 title: "Adapter: RisingWave"
-menuOrder: 140
 ---
 
 _This documentation is Copyright 2024 ZhengYu, Xu, reproduced here under an [MIT License](https://github.com/zen-xu/harlequin-risingwave/blob/main/LICENSE). See the [repository](https://github.com/zen-xu/harlequin-risingwave) for the most up-to-date documentation._
@@ -33,4 +32,4 @@ Many more options are available; to see the full list, run:
 harlequin --help
 ```
 
-For more information, see the [Postgres docs](postgres).
+For more information, see the [Postgres docs](/docs/postgres).

@@ -5,6 +5,20 @@
       "source": "/blog/hsql-for-agents",
       "destination": "/blog/dr-claude",
       "permanent": true
+    },
+    {
+      "source": "/api/docs",
+      "destination": "/api/docs/v1",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
     }
   ]
 }

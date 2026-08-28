@@ -1,7 +1,5 @@
 ---
 title: Creating Config Files
-topic: Configuring Harlequin
-menuOrder: 7
 ---
 
 <script>

@@ -1,6 +1,5 @@
 ---
 title: Discovering Config Files
-menuOrder: 8
 ---
 
 Harlequin loads config files from the following locations. If it finds multiple files, it merges them, with items listed first taking priority:
