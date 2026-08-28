@@ -129,16 +129,6 @@ export const docsMenu: DocsMenuItem[] = [
     ],
   },
   {
-    topic: "Viewing Files",
-    slug: "files",
-    items: [
-      { title: "Files Overview", slug: "files" },
-      { title: "Local Files", slug: "files/local" },
-      { title: "Remote Objects (S3)", slug: "files/remote" },
-    ],
-  },
-  { title: "Choosing a Theme", slug: "themes" },
-  {
     topic: "Configuring Harlequin",
     slug: "config-file",
     items: [
@@ -148,6 +138,16 @@ export const docsMenu: DocsMenuItem[] = [
       { title: "Selecting a Profile", slug: "config-file/profiles" },
     ],
   },
+  {
+    topic: "Viewing Files",
+    slug: "files",
+    items: [
+      { title: "Files Overview", slug: "files" },
+      { title: "Local Files", slug: "files/local" },
+      { title: "Remote Objects (S3)", slug: "files/remote" },
+    ],
+  },
+  { title: "Choosing a Theme", slug: "themes" },
   {
     topic: "Customizing Key Bindings",
     slug: "keymaps",
