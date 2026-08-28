@@ -26,40 +26,9 @@ export const docsMenu: DocsMenuItem[] = [
     ],
   },
   {
-    topic: "Viewing Files",
-    slug: "files",
-    items: [
-      { title: "Files Overview", slug: "files" },
-      { title: "Local Files", slug: "files/local" },
-      { title: "Remote Objects (S3)", slug: "files/remote" },
-    ],
-  },
-  { title: "Choosing a Theme", slug: "themes" },
-  {
-    topic: "Configuring Harlequin",
-    slug: "config-file",
-    items: [
-      { title: "Config Overview", slug: "config-file" },
-      { title: "Creating Config Files", slug: "config-file/creating-config" },
-      { title: "Discovering Config Files", slug: "config-file/discovery" },
-      { title: "Selecting a Profile", slug: "config-file/profiles" },
-    ],
-  },
-  {
-    topic: "Customizing Key Bindings",
-    slug: "keymaps",
-    items: [
-      { title: "About Key Bindings", slug: "keymaps" },
-      { title: "Creating a Keymap", slug: "keymaps/config" },
-      { title: "Selecting Keymaps", slug: "keymaps/usage" },
-    ],
-  },
-  { title: "Exporting Data", slug: "export" },
-  { title: "Managing Transactions", slug: "transactions" },
-  {
-    // Fourteen adapters is most of the menu, so they collapse into one row.
-    // The topics nested here are groups in their own right; the rest are
-    // single-page adapters that sit alongside them.
+    // Fourteen adapters would be most of the menu, so they collapse into one
+    // row near the top. The topics nested here are groups in their own
+    // right; the rest are single-page adapters that sit alongside them.
     topic: "Database Adapters",
     slug: "adapters",
     items: [
@@ -159,6 +128,37 @@ export const docsMenu: DocsMenuItem[] = [
       },
     ],
   },
+  {
+    topic: "Viewing Files",
+    slug: "files",
+    items: [
+      { title: "Files Overview", slug: "files" },
+      { title: "Local Files", slug: "files/local" },
+      { title: "Remote Objects (S3)", slug: "files/remote" },
+    ],
+  },
+  { title: "Choosing a Theme", slug: "themes" },
+  {
+    topic: "Configuring Harlequin",
+    slug: "config-file",
+    items: [
+      { title: "Config Overview", slug: "config-file" },
+      { title: "Creating Config Files", slug: "config-file/creating-config" },
+      { title: "Discovering Config Files", slug: "config-file/discovery" },
+      { title: "Selecting a Profile", slug: "config-file/profiles" },
+    ],
+  },
+  {
+    topic: "Customizing Key Bindings",
+    slug: "keymaps",
+    items: [
+      { title: "About Key Bindings", slug: "keymaps" },
+      { title: "Creating a Keymap", slug: "keymaps/config" },
+      { title: "Selecting Keymaps", slug: "keymaps/usage" },
+    ],
+  },
+  { title: "Exporting Data", slug: "export" },
+  { title: "Managing Transactions", slug: "transactions" },
   { title: "Reference: Default Bindings", slug: "bindings" },
   {
     topic: "Troubleshooting",
