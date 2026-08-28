@@ -6,7 +6,7 @@
     { text: 'hsql -P dev -tAc "select 1"', kind: "command" },
     { text: "1" },
     {
-      text: `hsql -P prod --results all --on-error stop \\
+      text: `hsql -P prod --result all --on-error stop \\
   -f ./setup.sql \\
   -c "select count(*) as raw from raw_table" \\
   -f ./build-models.sql \\

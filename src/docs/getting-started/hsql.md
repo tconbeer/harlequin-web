@@ -85,7 +85,7 @@ hsql supports a number of options for setting the query limit, configuring outpu
 ```bash
 hsql -P prod -c "select count(*) from orders" --csv
 hsql -P dev -c "select * from users" --vertical --limit 5
-hsql -P warehouse -c "..." --parquet -o invoices.pq
+hsql -P warehouse -c "..." --format parquet -o invoices.pq
 ```
 
 ## Data Layouts and File Formats
@@ -131,7 +131,7 @@ that message so do NOT use hsql with <code>2>/dev/null</code>.
 hsql can write data to files, either with the `-o` option or by piping output (hsql only writes data to stdout; other messages go to stderr):
 
 ```bash
-hsql -P prod --limit -1 -c "select * from users" --parquet -o "users.pq"
+hsql -P prod --limit -1 -c "select * from users" --format parquet -o "users.pq"
 hsql -P prod --limit -1 -c "select * from users" --csv > users.csv
 ```
 
@@ -140,13 +140,13 @@ hsql can execute multiple statements in one invocation, and supports several met
 - Pass `-c` multiple times
 - Include multiple queries, separated by `;`, in one `-c` option
 - Pass one or more .sql files with `-f`, with multiple statements in each
-- Use `--results` to define which queries output data to stdout
+- Use `--result` to define which queries output data to stdout
 - Use `--on-error` to either `stop` or `continue` if one or more queries produces an error.
 
 In other words, this works:
 
 ```bash
-hsql -P prod --limit -1 --format md --results all --on-error stop \
+hsql -P prod --limit -1 --format md --result all --on-error stop \
     -f ./setup.sql \
     -c "select count(*) from raw_table" \
     -f ./build-models.sql \
