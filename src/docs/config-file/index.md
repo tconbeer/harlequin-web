@@ -6,7 +6,7 @@ title: Config Overview
     import wizard from "$lib/assets/docs/config-wizard.png"
 </script>
 
-Typing in command-line options with every invocation of Harlequin can get tiring. Instead, you can create profiles (sets of configurations) and save those profiles to a config file, which Harlequin will discover and load automatically.
+Typing in command-line options with every invocation of Harlequin can get tiring. Instead, you can create profiles (sets of configurations that specify adapter and database connection options). Those profiles are saved in config files, which Harlequin will discover and load automatically. Selecting a profile is a simple command-line flag, or config files can define a default.
 
 Config files are simple text files, written in TOML. Harlequin provides a wizard for creating and editing config files.
 
