@@ -11,3 +11,7 @@ node_modules
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+
+# Vendored from tconbeer/harlequin by its release workflow, and pinned by
+# static/artifacts/manifest.json: reformatting them breaks the digests.
+/static/artifacts
