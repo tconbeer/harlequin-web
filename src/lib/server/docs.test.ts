@@ -1,66 +1,19 @@
 /**
- * The sanitizer, page by page.
+ * The sanitizer, rewrite by rewrite.
  *
- * Four sources are checked against a golden file: the markdown the sanitizer
- * is supposed to produce, committed next to it in `goldens/`. They are chosen
- * for what they contain rather than for what they say — a page with a script
- * block and figures, a page that is mostly `<Key>`, a page with callouts and
- * escaped braces, and a page with none of it — so that between them they
- * exercise every rewrite the module performs.
+ * Each of the eight steps `sanitize()` performs gets its own assertions, over
+ * a source written inline rather than over a page from `src/docs`. That is
+ * deliberate: a test that reads a real page fails when someone rewords the
+ * page, which teaches everyone to stop reading the failure. These fail only
+ * when the sanitizer changes.
  *
- * A golden diff is a real answer to "what changed", which a set of assertions
- * about substrings is not. Regenerate one deliberately, by reading the diff.
+ * What it costs is the whole-page view — nothing here would notice two
+ * rewrites that are each right and compose wrong. `docs_lint.test.ts` covers
+ * the corpus for the properties that can be stated without pinning its prose.
  */
 
 import { describe, expect, it } from "vitest";
 import { buildCorpus, corpusPage, sanitize } from "./docs";
-
-const goldens = import.meta.glob("./goldens/*.md", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
-
-/**
- * Vite gives an asset one URL under the dev server (`/src/lib/assets/…`) and
- * another in a build (`/_app/immutable/assets/…`, with a content hash), so a
- * golden cannot spell either one. It keeps the file name, which is the part of
- * the URL the sanitizer chose; that the URL is absolute and resolves is
- * asserted separately, below.
- */
-function withStableAssetUrls(markdown: string): string {
-  return markdown.replace(
-    /\]\(https:\/\/harlequin\.sh\/(?:src\/lib\/assets|_app\/immutable\/assets)\/[^)]*?([^/)]+)\)/g,
-    (_, file: string) =>
-      `](asset:${file.replace(/\.[A-Za-z0-9_-]{8}(\.[a-z0-9]+)$/, "$1")})`,
-  );
-}
-
-describe("goldens", () => {
-  const pages = [
-    // A script block, seven figures, callouts, and `<Key>` in prose.
-    "getting-started/usage",
-    // Nothing but `<Key>`, 168 of them across the corpus and most of them here.
-    "bindings",
-    // A `<Warning>` holding `<code>`, an `output` fence, and the `&lbrace`
-    // escapes that the rendered page still gets wrong (§1.3 of the M3 plan).
-    "getting-started/hsql",
-    // Plain markdown: no script block, no components, no escapes. The page that
-    // proves the sanitizer leaves alone what it has no business touching.
-    "duckdb/motherduck",
-  ];
-
-  for (const slug of pages) {
-    it(`sanitizes ${slug}.md`, () => {
-      const page = corpusPage(slug);
-      if (!page) throw new Error(`${slug} is not in the corpus`);
-
-      const golden = goldens[`./goldens/${slug.replace(/\//g, "-")}.md`];
-      expect(golden, `no golden file for ${slug}`).toBeDefined();
-      expect(withStableAssetUrls(page.markdown)).toBe(golden);
-    });
-  }
-});
 
 describe("frontmatter", () => {
   it("takes the title out of the body and puts it back as a heading", () => {

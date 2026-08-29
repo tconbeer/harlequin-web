@@ -1,12 +1,12 @@
 /**
  * The docs lint.
  *
- * The goldens in `docs.test.ts` say the sanitizer does the right thing to four
- * pages. This says nothing is wrong with any of the other fifty-one, and — the
- * part that matters — with the ones written after this was committed. It runs
- * over the sanitized corpus rather than over the sources, because the corpus is
- * what gets published, and a construct the sanitizer handles is not a defect in
- * the source.
+ * `docs.test.ts` says each of the sanitizer's rewrites is right on a source
+ * written to exercise it. This says nothing is wrong with any of the 55 real
+ * pages, and — the part that matters — with the ones written after this was
+ * committed. It runs over the sanitized corpus rather than over the sources,
+ * because the corpus is what gets published, and a construct the sanitizer
+ * handles is not a defect in the source.
  *
  * Everything here failed on `main` at some point in M3. That is the argument
  * for it: none of it was caught by a human reading the page, because a `&lbrace`
