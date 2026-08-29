@@ -15,3 +15,7 @@ yarn.lock
 # Vendored from tconbeer/harlequin by its release workflow, and pinned by
 # static/artifacts/manifest.json: reformatting them breaks the digests.
 /static/artifacts
+
+# Golden files: the sanitized markdown for four docs pages, compared byte for
+# byte by src/lib/server/docs.test.ts. Reformatting them is a failing test.
+/src/lib/server/goldens

@@ -15,13 +15,16 @@ pnpm i           # install (also installs the git pre-commit hook)
 pnpm dev         # dev server on localhost:5173
 pnpm build       # production build
 pnpm preview     # serve the production build locally
+pnpm test        # vitest run  (runs on pre-commit)
 pnpm format      # prettier --write with svelte/organize-imports/tailwindcss plugins
 pnpm lint        # prettier --check && eslint  (runs on pre-commit)
 pnpm check       # svelte-check against tsconfig.json
 pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/themes
 ```
 
-There are no tests. `pnpm lint` runs as a pre-commit hook (`@fastify/pre-commit`), so run `pnpm format` before committing. Vercel builds a preview in CI.
+`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. Vercel builds a preview in CI.
+
+The tests are vitest, and they cover the markdown corpus (below) and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`.
 
 `.npmrc` sets `engine-strict=true`; the README targets Node 18, though newer Node works.
 
@@ -38,6 +41,16 @@ There are no tests. `pnpm lint` runs as a pre-commit hook (`@fastify/pre-commit`
 - **Links between docs pages are absolute** (`/docs/config-file`, not `../config-file`). Relative links would resolve differently on `/docs/duckdb` than on `/docs/duckdb/motherduck`, and they are dead in any raw-markdown consumer.
 - **Adapter star counts** — `docsMenu` entries carry an optional `repo`, keyed by the first slug segment; `+page.ts` looks it up by topic and fetches the GitHub badge. Documenting a new third-party adapter means setting `repo` on its entry, or the stars/forks badge won't render.
 - **Public API** — `/api/docs/v1` serves the menu as JSON (prerendered, CORS-open, `topics` — each with the `parent` topic it nests inside — plus a flat `pages` list in sidebar order); `/api/docs` redirects there via `vercel.json`. Nothing on the site consumes it — it exists for external callers, so changing its shape is a breaking change in a way the sidebar no longer is.
+
+### The markdown corpus
+
+`src/lib/server/docs.ts` is the one place that turns a page under `src/docs` into markdown, and everything that publishes markdown reads it from there — so that two consumers cannot disagree about what a page says.
+
+- **A docs source is not markdown.** It is an mdsvex source: a `<script>` block, component tags, identifiers in braces, `&lbrace;` where the author meant `{`, hand-rolled `<figure>` HTML, and a site-private ` ```output ` fence. `sanitize()` resolves all of it — callouts become blockquotes, `<Key>x</Key>` becomes `` `x` ``, `<Figure src={x}>` becomes an image with an absolute URL, relative links resolve against the page's own directory and absolutize against `https://harlequin.sh`, and `/x/index` collapses to `/x` the way the router's 308 collapses it.
+- **It refuses what it does not know.** A component or an HTML tag with no rule, or an identifier it could not resolve, throws — and `/api/docs/v1` calls `buildCorpus()` at prerender time, so that throw fails the build. Adding a component to a docs page means teaching `docs.ts` what it means in markdown; the alternative is `<NewThing>` shipped inside a file whose content type promises markdown.
+- **Goldens.** `src/lib/server/goldens/` holds the expected markdown for four pages, compared byte for byte. They are prettier- and eslint-ignored, because reformatting one is a failing test. Regenerate a golden by reading the diff, not by pasting over it. Asset URLs differ between the dev server and a build, so the goldens carry a stable `asset:` stand-in that the test substitutes in.
+- **The lint** (`docs_lint.test.ts`) runs over the whole sanitized corpus rather than the four goldens: no Svelte tag, no HTML tag, no unresolved `{identifier}`, no `&lbrace`, no relative link, and every internal link resolving to a page the corpus contains. It is what covers pages written after it.
+- **Descriptions** — `sanitize()` derives a one-line description from the page's first sentence of prose, truncated at 120 characters. A `description` key in the frontmatter overrides it, and a new page should set one.
 
 ### Vendored artifacts
 

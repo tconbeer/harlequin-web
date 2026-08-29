@@ -1,5 +1,6 @@
 import { url as siteUrl } from "$lib/config";
 import { docsAncestors, docsPages, docsRepo, docsTopics } from "$lib/docs_menu";
+import { buildCorpus } from "$lib/server/docs";
 import { json } from "@sveltejs/kit";
 
 // Static: the corpus only changes when the repo does, so this is a file on the
@@ -24,31 +25,6 @@ type ApiPage = {
   url: string;
   repo: string | null;
 };
-
-/**
- * The menu is hand-maintained in `src/lib/docs_menu.ts`, so the build checks it
- * against what is actually on disk. A file missing from the menu is a page no
- * reader can navigate to; a menu entry with no file is a dead link.
- */
-function assertMenuMatchesFiles() {
-  const onDisk = new Set(
-    Object.keys(import.meta.glob("/src/docs/**/*.md")).map((path) =>
-      path.slice("/src/docs/".length, -".md".length).replace(/\/index$/, ""),
-    ),
-  );
-  const inMenu = new Set(docsPages.map((page) => page.slug));
-
-  const unlisted = [...onDisk].filter((slug) => !inMenu.has(slug)).sort();
-  const dangling = [...inMenu].filter((slug) => !onDisk.has(slug)).sort();
-
-  if (unlisted.length || dangling.length) {
-    throw new Error(
-      "src/lib/docs_menu.ts is out of sync with src/docs:" +
-        (unlisted.length ? `\n  missing from the menu: ${unlisted}` : "") +
-        (dangling.length ? `\n  no such markdown file: ${dangling}` : ""),
-    );
-  }
-}
 
 /**
  * Docs and blog posts link to each other with absolute `/docs/...` paths, so
@@ -88,7 +64,13 @@ function pageUrl(slug: string) {
 }
 
 export function GET() {
-  assertMenuMatchesFiles();
+  // Building the corpus is what checks the menu against what is on disk — a
+  // file missing from the menu is a page no reader can navigate to, and a menu
+  // entry with no file is a dead link — and, since it sanitizes every page, it
+  // is also what fails the build on a component `src/lib/server/docs.ts` has no
+  // rule for. This route publishes none of it; it is prerendered, so it is the
+  // cheapest place in the build to find out.
+  buildCorpus();
   assertLinksResolve();
 
   const topics: ApiTopic[] = docsTopics.map(({ topic, parent }) => ({
