@@ -1,0 +1,49 @@
+# The checks a contributor runs locally, run again where they cannot be skipped.
+#
+# `pnpm lint` and `pnpm test` are wired to a pre-commit hook, which is the fast
+# feedback and not the guarantee: --no-verify skips it, and an edit made through
+# the GitHub web UI never runs it at all. Vercel builds every PR, so `pnpm build`
+# already catches a docs page that does not sanitize; this is what catches a
+# change to the sanitizer itself.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A second push supersedes the first: nothing here is worth finishing on a commit
+# that is no longer the branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      # 22 because that is what Vercel builds the site on. CI that passes on a
+      # version the deploy does not use is testing the wrong thing.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # Frozen: a lockfile that disagrees with package.json is a failure to
+      # report, not something to resolve silently on the way to the tests.
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+
+      - run: pnpm test
+
+      # Last, and not redundant with Vercel's: this one fails the check rather
+      # than only the preview deploy, and it is where a docs page with a
+      # component `src/lib/server/docs.ts` has no rule for gets caught.
+      - run: pnpm build

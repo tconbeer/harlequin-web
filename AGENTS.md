@@ -22,7 +22,7 @@ pnpm check       # svelte-check against tsconfig.json
 pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/themes
 ```
 
-`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. Vercel builds a preview in CI.
+`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. `.github/workflows/ci.yml` runs `lint`, `test` and `build` on every push and PR — the hook is the fast feedback, that is the guarantee — and Vercel builds a preview alongside it.
 
 The tests are vitest, and they cover the markdown corpus (below) and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`.
 
