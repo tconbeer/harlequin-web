@@ -26,7 +26,7 @@ pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/theme
 
 The tests are vitest, and they cover the markdown corpus (below) and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`.
 
-`.npmrc` sets `engine-strict=true`; the README targets Node 18, though newer Node works.
+`.npmrc` sets `engine-strict=true`, but `package.json` declares no `engines`, so nothing is actually pinned. The README and CI both say Node 22, which is what Vercel builds on.
 
 ## Content architecture
 
