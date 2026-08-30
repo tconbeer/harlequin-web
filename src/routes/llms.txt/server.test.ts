@@ -42,7 +42,7 @@ describe("the file", () => {
   it("points at the corpus, the JSON index and the schema", () => {
     for (const path of [
       "/llms-full.txt",
-      "/api/docs/v1",
+      "/api/docs/v1.json",
       "/schemas/config/v1.json",
     ]) {
       expect(index).toContain(`https://harlequin.sh${path}`);

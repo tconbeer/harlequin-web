@@ -85,7 +85,7 @@ function llmsIndex(): string {
     `for the rendered page at the same path.`,
     "",
     `- The whole corpus in one file: ${SITE}/llms-full.txt (${corpus.length} pages, ~${size}KB)`,
-    `- The same index as JSON: ${SITE}/api/docs/v1`,
+    `- The same index as JSON: ${SITE}/api/docs/v1.json (a page: ${SITE}/api/docs/v1/{slug}.json)`,
     `- The config file schema: ${SITE}/schemas/config/v1.json`,
     "",
   ];
