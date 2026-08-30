@@ -46,12 +46,17 @@
   // hover instead, but they are centred in the column and these sit flush with
   // its left edge under `md`, inside an `overflow-x-auto` that clips: a 5% grow
   // about the centre puts the left border ~4px outside the scroller, where it
-  // is not merely scrolled off but gone. Sticky hover on a touch device leaves
-  // it that way after a tap. The code-block copy button is the nearer
-  // precedent anyway — a small inline control that lights up rather than moves,
-  // and answers a press by changing its icon rather than its colour.
+  // is not merely scrolled off but gone. The code-block copy button is the
+  // nearer precedent anyway — a small inline control that lights up rather than
+  // moves, and answers a press by changing its icon rather than its colour.
+  //
+  // Only where a pointer can actually hover. A touch device applies `:hover` on
+  // a tap and holds it until something else is tapped, so an unguarded hover
+  // fill is a button that lights up when a reader copies a page and stays lit
+  // for as long as they read it. The label and the icon are the feedback a tap
+  // gets, and they clear themselves.
   const buttonStyle =
-    "flex items-center gap-1 rounded border border-green px-2 py-1 shadow transition-colors duration-200 hover:bg-green";
+    "flex items-center gap-1 rounded border border-green px-2 py-1 shadow transition-colors duration-200 [@media(hover:hover)]:hover:bg-green";
 </script>
 
 <div class="my-2 flex flex-wrap items-center gap-2 text-sm">
