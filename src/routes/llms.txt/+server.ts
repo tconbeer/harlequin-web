@@ -19,7 +19,7 @@
  * gets what it came for in one GET.
  */
 
-import { canonicalUrl, description, title } from "$lib/config";
+import { canonicalUrl, description, overview, title } from "$lib/config";
 import { buildCorpus, type CorpusPage } from "$lib/server/docs";
 
 // Static: the corpus changes only when the repo does, so this is a file on the
@@ -80,9 +80,13 @@ function llmsIndex(): string {
     "",
     `> ${description}`,
     "",
-    `Every page of the Harlequin documentation, grouped the way the site's`,
-    `sidebar groups it. Each link is the page as markdown; drop the \`.md\``,
-    `for the rendered page at the same path.`,
+    // What the two commands are, before the list of pages about them: a reader
+    // that arrives here has the whole map and no idea what it is a map of.
+    overview,
+    "",
+    `Below is every page of the Harlequin documentation, grouped the way the`,
+    `site's sidebar groups it. Each link is the page as markdown; drop the`,
+    `\`.md\` for the rendered page at the same path.`,
     "",
     `- The whole corpus in one file: ${SITE}/llms-full.txt (${corpus.length} pages, ~${size}KB)`,
     `- The same index as JSON: ${SITE}/api/docs/v1.json (a page: ${SITE}/api/docs/v1/{slug}.json)`,

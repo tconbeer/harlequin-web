@@ -13,7 +13,7 @@
  * answers about what a page says depending on which one it asked.
  */
 
-import { canonicalUrl, description, title } from "$lib/config";
+import { canonicalUrl, description, overview, title } from "$lib/config";
 import { buildCorpus } from "$lib/server/docs";
 
 // Static: the corpus changes only when the repo does, so this is a file on the
@@ -35,9 +35,14 @@ function llmsFull(): string {
     "",
     `> ${description}`,
     "",
-    `Every page of ${SITE}/docs, as markdown, in the order the site`,
-    `lists them. ${corpus.length} pages, each introduced by a \`Source:\` line naming the`,
-    `URL it is also served at on its own, and separated by a \`---\` rule.`,
+    // The same orientation `llms.txt` opens with: this file is read by callers
+    // that never fetched that one, and a corpus is not a description.
+    overview,
+    "",
+    `Below is every page of ${SITE}/docs, as markdown, in the order`,
+    `the site lists them. ${corpus.length} pages, each introduced by a \`Source:\` line`,
+    `naming the URL it is also served at on its own, and separated by a`,
+    `\`---\` rule.`,
     "",
     `For an index of titles and one-line descriptions — which is the cheaper`,
     `way in — see ${SITE}/llms.txt.`,

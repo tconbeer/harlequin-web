@@ -7,7 +7,7 @@ title: Using hsql
     import Warning from "$lib/components/warning.svelte"
 </script>
 
-`hsql` is your agent's favorite SQL client. It the headless CLI for
+`hsql` is your agent's favorite SQL client. It's the headless CLI for
 [Harlequin](https://harlequin.sh), and shares the same config and query engine,
 with an interface optimized for agents, scripts, and automations.
 
