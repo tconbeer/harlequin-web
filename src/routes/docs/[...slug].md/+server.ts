@@ -9,12 +9,11 @@
  * The extension rather than content negotiation on the rendered URL, because an
  * agent constructs a URL by appending a string far more reliably than it sets an
  * `Accept` header, and because a path is cacheable without a `Vary`. The
- * convention is meant to be guessable from one example: the rendered page will
- * link to its own `.md` twin (D4), and every other page answers to the same
- * rule.
+ * convention is meant to be guessable from one example: the rendered page links
+ * to its own `.md` twin, and every other page answers to the same rule.
  *
  * The markdown comes from `$lib/server/docs`, which is also what `llms.txt`,
- * the docs API and the copy button will read, so no consumer can disagree with
+ * the docs API and the copy button read, so no consumer can disagree with
  * another about what a page says.
  */
 
@@ -34,11 +33,11 @@ function corpus(): Map<string, CorpusPage> {
 }
 
 /**
- * The prerenderer finds routes by crawling links, and nothing on the site links
- * here yet — the button that will is D4's, and the readers this route exists for
- * arrive by constructing the URL rather than by following a link. So the corpus
- * names the entries itself, which also means a page cannot be added to the site
- * and left without a `.md` twin.
+ * The prerenderer finds routes by crawling links. Every rendered page now links
+ * to its own twin, but the readers this route exists for arrive by constructing
+ * the URL rather than by following a link, and a crawl is only as complete as
+ * the page that links. So the corpus names the entries itself, which also means
+ * a page cannot be added to the site and left without a `.md` twin.
  */
 export const entries: EntryGenerator = () =>
   [...corpus().keys()].map((slug) => ({ slug }));
