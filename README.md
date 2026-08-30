@@ -8,23 +8,26 @@ It was created and is maintained by [Ted Conbeer](https://tedconbeer.com).
 
 ## Contributing
 
-Use Node v18 with pnpm to install deps and build the site:
+Use Node v22 with pnpm to install deps and build the site:
 
 ```bash
 pnpm i
 pnpm dev
 ```
 
-Format and lint:
+Format, lint and test:
 
 ```bash
 pnpm format
 pnpm lint
+pnpm test
 ```
 
-When installing dependencies, pnpm should also install git pre-hooks for formatting and linting.
+The tests cover `src/lib/server/docs.ts`, which turns the mdsvex sources under `src/docs` into the markdown the site publishes to agents.
 
-There are no tests. Vercel will build a preview in CI; if you want to build and preview a prod version locally you can with:
+When installing dependencies, pnpm should also install git pre-hooks for formatting, linting and testing.
+
+GitHub Actions runs `lint`, `test` and `build` on every push and pull request, and Vercel builds a preview alongside it. If you want to build and preview a prod version locally you can with:
 
 ```bash
 pnpm build
