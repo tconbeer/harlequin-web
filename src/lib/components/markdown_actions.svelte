@@ -11,13 +11,13 @@
 
   const href = $derived(markdownPath(slug));
 
-  let status: "idle" | "copied" | "failed" = $state("idle");
+  const labels = {
+    idle: "Copy as Markdown",
+    copied: "Copied!",
+    failed: "Copy failed",
+  };
+  let status: keyof typeof labels = $state("idle");
   let restore: ReturnType<typeof setTimeout> | undefined;
-  const label = $derived(
-    { idle: "Copy as Markdown", copied: "Copied!", failed: "Copy failed" }[
-      status
-    ],
-  );
 
   // The markdown comes from the page's own `.md` twin rather than from anything
   // rebuilt here: one sanitizer, and the bytes a reader pastes are the bytes an
@@ -47,8 +47,27 @@
 
 <div class="my-2 flex flex-wrap items-center gap-2 text-sm">
   <button onclick={copy} class={buttonStyle}>
-    <img class="h-4 w-4" src={status === "copied" ? check : clippy} alt="" />
-    <span aria-live="polite">{label}</span>
+    <img
+      class="h-4 w-4 flex-none"
+      src={status === "copied" ? check : clippy}
+      alt=""
+    />
+    <!-- The label changes; the width must not. "Copied!" is half the width of
+         "Copy as Markdown", and a narrower button is a narrower row — one that
+         fits beside the title where the wide one wrapped under it, so the click
+         that changes the label throws the button across the column and the
+         reset two seconds later throws it back. Every label is rendered, one
+         over another, and all but the live one are `invisible`: the box is as
+         wide as the widest of them whatever it currently says. -->
+    <span class="grid" aria-live="polite">
+      {#each Object.entries(labels) as [key, text] (key)}
+        <span
+          class="col-start-1 row-start-1 text-left {key === status
+            ? ''
+            : 'invisible'}">{text}</span
+        >
+      {/each}
+    </span>
   </button>
   <!-- A server route, not a page: the client router has nothing to render for
        it, so the link is a browser navigation. -->
