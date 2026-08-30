@@ -17,7 +17,7 @@ hsql can connect to dozens of databases using the same adapter plug-ins as Harle
 
 ## Running hsql
 
-Once hsql is installed, you run it from the command line. If you have used psql or the duckdb CLI, hsql will feel familiar, but hsql has the major advantage that is works with most databases and provides the same interface and produces the same output, regardless of the connected database. This means you (and your agent) can learn one tool, instead of several. In your shell, all hsql commands take the same form:
+Once hsql is installed, you run it from the command line. If you have used psql or the duckdb CLI, hsql will feel familiar, but hsql has the major advantage that it works with most databases and provides the same interface and produces the same output, regardless of the connected database. This means you (and your agent) can learn one tool, instead of several. In your shell, all hsql commands take the same form:
 
 ```bash
 hsql [OPTIONS] [CONN_STR]
