@@ -1,5 +1,6 @@
 ---
 title: "Adapter: NebulaGraph"
+description: "Install the NebulaGraph adapter and connect Harlequin to a NebulaGraph instance."
 ---
 
 The NebulaGraph adapter was contributed by community member Wey Gu.

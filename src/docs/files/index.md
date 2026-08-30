@@ -1,5 +1,6 @@
 ---
 title: Files Overview
+description: "Show a file tree of local files or S3 objects in the Data Catalog, and insert paths into the editor."
 ---
 
 <script>

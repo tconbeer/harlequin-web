@@ -1,5 +1,6 @@
 ---
 title: "Adapter: Wherobots"
+description: "Install the Wherobots adapter and query WherobotsDB with the Wherobots Spatial SQL API."
 ---
 
 <script>

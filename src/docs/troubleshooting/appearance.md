@@ -1,5 +1,6 @@
 ---
 title: Appearance
+description: "Fix colors, fonts and rendering by configuring your terminal for truecolor and a Nerd Font."
 ---
 
 <script>

@@ -1,5 +1,6 @@
 ---
 title: "Adapter: Cassandra"
+description: "Install the Cassandra adapter and connect Harlequin to a Cassandra cluster."
 ---
 
 <script>

@@ -1,5 +1,6 @@
 ---
 title: "Adapter: Exasol"
+description: "Install the experimental Exasol adapter and connect Harlequin to an Exasol database."
 ---
 
 The Exasol adapter was contributed by community member Nicola Coretti.

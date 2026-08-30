@@ -1,5 +1,6 @@
 ---
 title: "Adapter: ODBC"
+description: "Connect Harlequin to SQL Server, Oracle, Teradata and other databases that ship an ODBC driver."
 ---
 
 The ODBC adapter allows Harlequin to work with most databases that support an Open Database Connect driver, including Microsoft SQL Server, Oracle, Teradata, Vertica, and even the best database of all time, Microsoft Excel.

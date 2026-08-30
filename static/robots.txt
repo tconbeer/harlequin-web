@@ -1,2 +1,8 @@
 User-agent: *
 Allow: /
+
+# The docs, for machines. Both are already allowed by the rule above; naming
+# them is how the llmstxt.org convention is read, and how a crawler that looks
+# for the index finds it without guessing at a path.
+Allow: /llms.txt
+Allow: /llms-full.txt

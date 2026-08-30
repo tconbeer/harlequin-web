@@ -1,5 +1,6 @@
 ---
 title: Getting Help
+description: "Where to find help: harlequin --help, the in-app help screen, GitHub Discussions and Issues."
 ---
 
 <script>

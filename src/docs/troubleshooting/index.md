@@ -1,5 +1,6 @@
 ---
 title: Common Problems
+description: "An index of the things terminals get wrong: key bindings, copy-paste, colors, locale, timezones."
 ---
 
 Sorry to see you here. Terminals can be finicky.

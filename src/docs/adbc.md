@@ -1,5 +1,6 @@
 ---
 title: "Adapter: ADBC"
+description: "Install the ADBC adapter and connect Harlequin to any database with an ADBC driver."
 ---
 
 <script lang="ts">
@@ -8,7 +9,7 @@ title: "Adapter: ADBC"
   import Link from "$lib/components/link.svelte"
 </script>
 
-The Trino adapter was contributed by community member Tyler Hillery.
+The ADBC adapter was contributed by community member Tyler Hillery.
 
 _This documentation is Copyright 2024 Tyler Hillery, reproduced here under an [MIT License](https://github.com/TylerHillery/harlequin-adbc/blob/main/LICENSE). See the [repository](https://github.com/TylerHillery/harlequin-adbc) for the most up-to-date documentation._
 

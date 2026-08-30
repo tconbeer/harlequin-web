@@ -1,5 +1,6 @@
 ---
 title: Loading Extensions
+description: "Install and load DuckDB extensions at startup with the -e/--extension flag, signed or unsigned."
 ---
 
 You can install and load [DuckDB extensions](https://duckdb.org/docs/extensions/overview.html) when starting Harlequin, by passing the `-e` or `--extension` flag one or more times:
