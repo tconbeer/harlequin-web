@@ -41,8 +41,15 @@
     restore = setTimeout(() => (status = "idle"), 2000);
   }
 
+  // Colour, not movement, for the hover and press cues. The site's pager cards
+  // grow on hover, but they are centred in the column and these sit flush with
+  // its left edge under `md`, inside an `overflow-x-auto` that clips: a 5% grow
+  // about the centre puts the left border ~4px outside the scroller, where it
+  // is not merely scrolled off but gone. Sticky hover on a touch device leaves
+  // it that way after a tap. The code-block copy button is the nearer
+  // precedent anyway — a small inline control that lights up rather than moves.
   const buttonStyle =
-    "flex items-center gap-1 rounded border border-green px-2 py-1 shadow transition-transform hover:scale-105 active:translate-x-1 active:translate-y-1";
+    "flex items-center gap-1 rounded border border-green px-2 py-1 shadow transition-colors duration-200 hover:bg-green active:bg-purple";
 </script>
 
 <div class="my-2 flex flex-wrap items-center gap-2 text-sm">
