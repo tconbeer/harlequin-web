@@ -1,5 +1,6 @@
 ---
 title: "BQ Installation and Configuration"
+description: "Install the BigQuery adapter and connect Harlequin to a GCP project and location."
 ---
 
 <script>

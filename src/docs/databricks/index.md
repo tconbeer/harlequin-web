@@ -1,5 +1,6 @@
 ---
 title: "Installation and Basic Usage"
+description: "Install the Databricks adapter and connect Harlequin to a Databricks warehouse or cluster."
 ---
 
 The Databricks adapter was contributed by community member Alex Malins.

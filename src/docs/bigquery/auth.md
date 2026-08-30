@@ -1,5 +1,6 @@
 ---
 title: "Auth and Permissions"
+description: "How the BigQuery adapter authenticates with Application Default Credentials, and the IAM permissions it needs."
 ---
 
 ## Authentication

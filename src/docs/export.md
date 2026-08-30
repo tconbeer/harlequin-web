@@ -1,5 +1,6 @@
 ---
 title: Exporting Data
+description: "Copy results to the clipboard, or export them as CSV, Parquet, JSON, ORC or Feather."
 ---
 
 <script>

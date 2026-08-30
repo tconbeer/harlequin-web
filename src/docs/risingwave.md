@@ -1,5 +1,6 @@
 ---
 title: "Adapter: RisingWave"
+description: "Install the RisingWave adapter and connect Harlequin to a RisingWave instance."
 ---
 
 _This documentation is Copyright 2024 ZhengYu, Xu, reproduced here under an [MIT License](https://github.com/zen-xu/harlequin-risingwave/blob/main/LICENSE). See the [repository](https://github.com/zen-xu/harlequin-risingwave) for the most up-to-date documentation._

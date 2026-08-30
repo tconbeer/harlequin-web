@@ -1,5 +1,6 @@
 ---
 title: "Ways to Contribute"
+description: "Ways to help: sponsoring, feedback, issues, pull requests, and writing an adapter."
 ---
 
 Thanks for your interest in Harlequin! Harlequin is primarily maintained by [Ted Conbeer](https://tedconbeer.com), but he welcomes all contributions!

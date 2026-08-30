@@ -1,5 +1,6 @@
 ---
 title: Using Harlequin
+description: "A tour of Harlequin's Query Editor, Data Catalog and Results Viewer, and how to run your first query."
 ---
 
 <script>

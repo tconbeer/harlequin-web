@@ -1,5 +1,6 @@
 ---
 title: "Adapter: ADBC"
+description: "Install the ADBC adapter and connect Harlequin to any database with an ADBC driver."
 ---
 
 <script lang="ts">

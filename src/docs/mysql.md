@@ -1,5 +1,6 @@
 ---
 title: "Adapter: MySQL/MariaDB"
+description: "Install the MySQL adapter and connect Harlequin to a MySQL or MariaDB database."
 ---
 
 ## Installation

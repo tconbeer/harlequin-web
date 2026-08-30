@@ -1,5 +1,6 @@
 ---
 title: Creating an Adapter
+description: "The HarlequinAdapter interface, entry points, and how to package an adapter for any relational database."
 ---
 
 <script>

@@ -1,5 +1,6 @@
 ---
 title: "Adapter: Trino"
+description: "Install the Trino adapter and connect Harlequin to a Trino cluster."
 ---
 
 The Trino adapter was contributed by community member Tyler Hillery.

@@ -86,6 +86,29 @@ describe("every sanitized page", () => {
   );
 });
 
+describe("every description", () => {
+  // The row an agent reads in `llms.txt` before it decides which page to fetch.
+  // It is one line there, so it has to be one line here, and long enough to say
+  // something: a page whose first sentence is an attribution or a greeting gets
+  // a `description` in its frontmatter, which is what this fails on.
+  const LIMIT = 160;
+
+  it.each(corpus.map((page) => [page.slug, page] as const))(
+    "%s has one",
+    (slug, page) => {
+      expect(page.description.trim(), slug).not.toBe("");
+    },
+  );
+
+  it.each(corpus.map((page) => [page.slug, page] as const))(
+    "%s fits on a line",
+    (slug, page) => {
+      expect(page.description, slug).not.toContain("\n");
+      expect(page.description.length, slug).toBeLessThanOrEqual(LIMIT);
+    },
+  );
+});
+
 describe("links between pages", () => {
   const slugs = new Set(corpus.map((page) => page.slug));
 

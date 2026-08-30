@@ -1,5 +1,6 @@
 ---
 title: DuckDB Version Mismatch
+description: "Pin the DuckDB version Harlequin installs when it cannot open a database file another DuckDB wrote."
 ---
 
 <script>
