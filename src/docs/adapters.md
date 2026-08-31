@@ -35,3 +35,4 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [Cassandra](/docs/cassandra), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
 - [NebulaGraph](/docs/nebulagraph), contributed by [Wey Gu](https://github.com/wey-gu)
 - [Exasol](/docs/exasol), contributed by [Nicola Coretti](https://github.com/Nicoretti)
+- [Vertica](/docs/vertica), contributed by [clang-engineer](https://github.com/clang-engineer)
