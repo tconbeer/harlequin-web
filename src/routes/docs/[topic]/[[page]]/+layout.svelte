@@ -137,8 +137,14 @@
       <nav class="mb-4 flex justify-between gap-4 md:gap-8" aria-label="Pager">
         {#if neighbors.prev}
           <a href="/docs/{neighbors.prev.slug}" rel="prev">
+            <!-- Each card grows away from the column edge it sits against, and
+                 presses towards the other one. A card centred on its own origin
+                 grows ~5px past that edge, and the column is an overflow-x-auto:
+                 past the left edge the border is clipped away, past the right it
+                 puts a scrollbar under the page for as long as the pointer
+                 rests on the card. -->
             <div
-              class="rounded border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:translate-x-1 active:translate-y-1 md:w-48"
+              class="origin-left rounded border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:translate-x-1 active:translate-y-1 md:w-48"
             >
               <p class="text-xs">← Previous</p>
               <p class="text-sm md:text-base">
@@ -152,7 +158,7 @@
         {#if neighbors.next}
           <a href="/docs/{neighbors.next.slug}" rel="next" class="text-right">
             <div
-              class="rounded border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:translate-x-1 active:translate-y-1 md:w-48"
+              class="origin-right rounded border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:-translate-x-1 active:translate-y-1 md:w-48"
             >
               <p class="text-xs">Next →</p>
               <p class="text-sm md:text-base">
