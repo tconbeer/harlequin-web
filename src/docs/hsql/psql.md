@@ -24,17 +24,17 @@ and one output contract, instead of one client per database.
 
 |                             | psql                                                | hsql                                                                                        |
 | --------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `-P`                        | `--pset`, an output setting                         | `--profile`, a [config-file profile](/docs/headless/config)                                 |
-| Field separator             | `-F`                                                | `--csv`, `--format tsv`, or any other [`--format`](/docs/headless/formats)                  |
-| Listing databases           | `-l`                                                | [`--catalog`](/docs/headless/catalog)                                                       |
+| `-P`                        | `--pset`, an output setting                         | `--profile`, a [config-file profile](/docs/hsql/config)                                 |
+| Field separator             | `-F`                                                | `--csv`, `--format tsv`, or any other [`--format`](/docs/hsql/formats)                  |
+| Listing databases           | `-l`                                                | [`--catalog`](/docs/hsql/catalog)                                                       |
 | Describing an object        | `\d`, `\dt`                                         | `--catalog --path`, `--catalog-search`                                                      |
 | Stopping on the first error | `-v ON_ERROR_STOP=1`                                | `--on-error stop`, which is the default                                                     |
 | One transaction             | `-1`                                                | write `begin` and `commit` in your script                                                   |
 | `-o`                        | a file for query output                             | a file, or a directory that gets one file per result set                                    |
 | Connection flags            | `-h`, `-p`, `-U`, built in                          | the adapter's, so `hsql --help -a postgres` lists them                                      |
-| Row limits                  | none                                                | [500 rows by default](/docs/headless/safety); `--limit -1` removes it                       |
+| Row limits                  | none                                                | [500 rows by default](/docs/hsql/safety); `--limit -1` removes it                       |
 | Suppressing chatter         | `-q`                                                | nothing to suppress: stdout is only ever results                                            |
-| Exit codes                  | `1` its own error, `2` connection, `3` script error | [`1` query error, `2` usage/config, `3` connection, `4` timeout](/docs/headless/exit-codes) |
+| Exit codes                  | `1` its own error, `2` connection, `3` script error | [`1` query error, `2` usage/config, `3` connection, `4` timeout](/docs/hsql/exit-codes) |
 
 <Warning>
 
@@ -50,9 +50,9 @@ psql's meta-commands are a language of their own, and hsql has none of them.
 What they do, hsql does with options that work the same way against every
 database:
 
-- `\d`, `\dt`, `\l` — [`--catalog` and `--catalog-search`](/docs/headless/catalog),
+- `\d`, `\dt`, `\l` — [`--catalog` and `--catalog-search`](/docs/hsql/catalog),
   which produce ordinary result sets rather than a special display.
-- `\copy` — [`--csv` and `-o`](/docs/headless/formats), or `--format parquet`.
+- `\copy` — [`--csv` and `-o`](/docs/hsql/formats), or `--format parquet`.
 - `\timing` — `--stats`, which reports `elapsed_ms` alongside the row count on
   stderr.
 - `\c` — a different profile: `-P NAME`.

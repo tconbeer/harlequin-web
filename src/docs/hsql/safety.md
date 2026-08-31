@@ -34,14 +34,14 @@ aggregating the rows yourself, or writing them anywhere.
 
 A truncated result is a wrong answer that looks like a right one. When a limit
 cuts a result set short, hsql says so on stderr and
-[`--stats`](/docs/headless/exit-codes) reports
+[`--stats`](/docs/hsql/exit-codes) reports
 `"truncated": true` — which is why hsql should never be run with
 `2>/dev/null`.
 
 </Warning>
 
 `--display-rows` is the other, softer knob: it caps what a text layout
-[prints](/docs/headless/formats) without changing what was fetched. If a number
+[prints](/docs/hsql/formats) without changing what was fetched. If a number
 looks short, `--limit` is the one to check.
 
 ## `--read-only`
@@ -58,12 +58,12 @@ hsql: error: Invalid Input Error: Cannot execute statement of type "INSERT" on d
 ```
 
 An adapter that cannot connect read-only makes hsql exit
-[`2`](/docs/headless/exit-codes) rather than connect writable and hope.
+[`2`](/docs/hsql/exit-codes) rather than connect writable and hope.
 
 ## `--timeout`
 
 `--timeout SECONDS` bounds the whole run — executing _and_ fetching — and exits
-[`4`](/docs/headless/exit-codes) when it runs out:
+[`4`](/docs/hsql/exit-codes) when it runs out:
 
 ```bash
 hsql --timeout 0.5 -c "select count(*) from range(100000000000) t(i)"
@@ -117,7 +117,7 @@ hsql --info -a sqlite | jq '.adapters.sqlite'
 | --------------------------- | -------------------------------------------- |
 | `implements_read_only`      | `-r`, `--read-only`                          |
 | `implements_cancel`         | `--timeout`                                  |
-| `implements_catalog_search` | [`--catalog-search`](/docs/headless/catalog) |
+| `implements_catalog_search` | [`--catalog-search`](/docs/hsql/catalog) |
 | `implements_validate_sql`   | Checking a statement without running it      |
 
 <Note>
@@ -132,7 +132,7 @@ installation rather than a broken config; see
 ## A Profile That Carries the Bounds
 
 `read_only`, `timeout` and `limit` are all [profile
-keys](/docs/headless/config), so a profile meant for automation can carry them
+keys](/docs/hsql/config), so a profile meant for automation can carry them
 and no invocation has to remember:
 
 ```toml
@@ -151,6 +151,6 @@ hsql -P agent -tAc "select count(*) from orders"
 
 That is the shape to hand an agent: no credential on the command line, no write
 it did not ask for, and a bound on how long it can hold a connection. The
-[hsql Agent Skill](/docs/headless/skill) teaches the rest of the habits — ask
+[hsql Agent Skill](/docs/hsql/skill) teaches the rest of the habits — ask
 before you write, read the catalog before you guess at a name, and hand off to
 `harlequin` when a human should be driving.

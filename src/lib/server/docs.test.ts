@@ -126,7 +126,7 @@ describe("components", () => {
 describe("the vendored CLI reference", () => {
   const page = sanitize(
     `---\ntitle: T\n---\n\nBefore.\n\n<HsqlReference />\n`,
-    "headless/reference",
+    "hsql/reference",
   ).markdown;
 
   it("puts the artifact in, byte for byte", () => {

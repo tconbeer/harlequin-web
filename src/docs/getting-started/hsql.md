@@ -30,7 +30,7 @@ hsql --help
 ```
 
 Every option, with its type, default and help text, is also on one page here:
-[Reference: hsql CLI](/docs/headless/reference).
+[Reference: hsql CLI](/docs/hsql/reference).
 
 ## Database Adapters
 
@@ -94,7 +94,7 @@ hsql -P warehouse -c "..." --format parquet -o invoices.pq
 ```
 
 For where config files are found, how they merge, and how to keep credentials
-out of them, see [Config Files and Profiles](/docs/headless/config).
+out of them, see [Config Files and Profiles](/docs/hsql/config).
 
 ## Data Layouts and File Formats
 
@@ -116,7 +116,7 @@ You can select a format with the `--format <name>` or using the shorthand `--<na
 
 Some layouts can present the results from multiple queries. Others will raise an error and exit with code 2 if multiple queries are executed.
 
-[Formats and Layouts](/docs/headless/formats) covers all of them, along with the
+[Formats and Layouts](/docs/hsql/formats) covers all of them, along with the
 switches that shape a text layout and the ways `-o` writes results to files.
 
 Additionally, for any layout, pass `--stats` to print summary info as JSON to stderr:
@@ -130,7 +130,7 @@ hsql -c "select 1" --format none  --stats
 ```
 
 Every key in that summary, and what to do about `truncated`, is on
-[Exit Codes and Streams](/docs/headless/exit-codes).
+[Exit Codes and Streams](/docs/hsql/exit-codes).
 
 ## Scripting with hsql
 
@@ -176,7 +176,7 @@ hsql's exit codes are meaningful and stable:
 - 4: Timeout
 - 130: Interrupted
 
-[Exit Codes and Streams](/docs/headless/exit-codes) has what each one means,
+[Exit Codes and Streams](/docs/hsql/exit-codes) has what each one means,
 what hsql writes to stdout and stderr, and how `--on-error` decides what happens
 after a statement fails.
 
@@ -189,11 +189,11 @@ hsql --limit 100 -c "select * from orders" --csv -o data.csv --stats 2>&1 | jq -
 ## Where to Next
 
 Before you write a query against a database you have not seen, hsql can tell you
-what is in it: [Exploring the Catalog](/docs/headless/catalog).
+what is in it: [Exploring the Catalog](/docs/hsql/catalog).
 
 Before you put hsql in a script or hand it to an agent, bound what it can do:
-[Running Safely](/docs/headless/safety) — and let
-[the hsql Agent Skill](/docs/headless/skill) teach the agent the rest.
+[Running Safely](/docs/hsql/safety) — and let
+[the hsql Agent Skill](/docs/hsql/skill) teach the agent the rest.
 
-The whole reference lives under [The hsql CLI](/docs/headless). If you are
-coming from psql, start with [Differences from psql](/docs/headless/psql).
+The whole reference lives under [The hsql CLI](/docs/hsql). If you are
+coming from psql, start with [Differences from psql](/docs/hsql/psql).

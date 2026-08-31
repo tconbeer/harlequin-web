@@ -129,7 +129,7 @@ duck.analytics.orders|orders|"analytics"."orders"|BASE TABLE|t
 Not every adapter can search. An adapter that cannot says so and exits, rather
 than walking its whole catalog for you. `hsql --info -a NAME` reports
 `implements_catalog_search` for each installed adapter; see
-[Running Safely](/docs/headless/safety) for the rest of what it reports.
+[Running Safely](/docs/hsql/safety) for the rest of what it reports.
 
 </Note>
 
@@ -154,7 +154,7 @@ hsql -P prod --catalog --path prod.public --json -o ./schema.json
 
 They are modes, though, not options: hsql either reads the catalog or runs SQL,
 and passing `-c` or `-f` beside `--catalog` is a usage error that
-[exits `2`](/docs/headless/exit-codes). Run them as two invocations.
+[exits `2`](/docs/hsql/exit-codes). Run them as two invocations.
 
 <Tip>
 

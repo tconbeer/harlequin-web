@@ -45,9 +45,9 @@ are running for its side effects, or a connection check.
 
 Only the text layouts, `jsonl` and `none` can carry more than one result set.
 `csv`, `json`, `parquet` and the other file formats hold exactly one, and exit
-[`2`](/docs/headless/exit-codes) rather than silently concatenating two —
+[`2`](/docs/hsql/exit-codes) rather than silently concatenating two —
 so pass `--result last` (or `--result 2`, or `--jsonl`) when a run produces
-several. The generated [CLI reference](/docs/headless/reference) has the table,
+several. The generated [CLI reference](/docs/hsql/reference) has the table,
 suffix by suffix.
 
 </Note>
@@ -91,7 +91,7 @@ format ignores the ones that do not apply to it.
 
 `--display-rows` is not a limit: hsql fetched every row, and this is how many of
 them it prints. `--limit` is the one that changes what the database returns —
-see [Running Safely](/docs/headless/safety).
+see [Running Safely](/docs/hsql/safety).
 
 </Tip>
 
@@ -132,7 +132,7 @@ hsql -P prod --limit -1 --format md --result last --on-error stop \
 
 Every statement still runs; `--result` only decides what is printed. What
 happens after one of them fails is
-[`--on-error`](/docs/headless/exit-codes)'s business.
+[`--on-error`](/docs/hsql/exit-codes)'s business.
 
 <Tip>
 

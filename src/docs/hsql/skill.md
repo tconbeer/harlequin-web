@@ -29,18 +29,18 @@ Nine short sections of standing guidance, not a checklist:
    adapter capabilities; `hsql --help -a NAME` for one adapter's connection
    options.
 2. **Keep credentials off the command line** — a
-   [profile](/docs/headless/config) and `-P`, with an environment variable for
+   [profile](/docs/hsql/config) and `-P`, with an environment variable for
    the secret.
-3. **Orient in the [catalog](/docs/headless/catalog) before writing SQL** —
+3. **Orient in the [catalog](/docs/hsql/catalog) before writing SQL** —
    `--catalog`, `--path`, `--catalog-search`, and the `query_name` column
    instead of an identifier you quoted by hand.
 4. **Run it** — `-c` and `-f`, `--result`, `--on-error`.
-5. **Pick a [format](/docs/headless/formats) on purpose** — `-tAc` for one
+5. **Pick a [format](/docs/hsql/formats) on purpose** — `-tAc` for one
    value, `--csv` for a pipe, `--markdown` for a reply, parquet for anything
    large.
-6. **[The row limit](/docs/headless/safety) is real** — 500 by default; read
+6. **[The row limit](/docs/hsql/safety) is real** — 500 by default; read
    `--stats`, and never `2>/dev/null`.
-7. **Branch on the [exit code](/docs/headless/exit-codes)** — a `2` is the
+7. **Branch on the [exit code](/docs/hsql/exit-codes)** — a `2` is the
    caller's bug, a `1` is the SQL's, a `3` is the environment's.
 8. **Ask before you write** — prefer `--read-only`, and say what a DDL or DML
    statement will change before running it.
@@ -103,7 +103,7 @@ cannot describe a different version than the one it is driving.
 <Tip>
 
 The skill teaches habits, not options. When the agent needs a flag it does not
-have, the [CLI reference](/docs/headless/reference) is one page, and
+have, the [CLI reference](/docs/hsql/reference) is one page, and
 `hsql --spec` is the same thing as JSON on the machine itself.
 
 </Tip>

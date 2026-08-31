@@ -78,7 +78,7 @@ hsql -c "select 1" --format none --stats
 
 The keys are `status`, `statements`, `rows`, `truncated`, `limit`,
 `elapsed_ms` and `columns`. `truncated` is the one to read every time: it is
-`true` when the [row limit](/docs/headless/safety) cut a result set short, which
+`true` when the [row limit](/docs/hsql/safety) cut a result set short, which
 means any number computed from those rows is wrong.
 
 Because `--stats` goes to stderr, a check on it redirects that stream and leaves
@@ -105,6 +105,6 @@ what runs, not what hsql reports.
 
 `--result all|last|N` decides which result sets reach stdout, which is a
 different question from what runs; see
-[Formats and Layouts](/docs/headless/formats).
+[Formats and Layouts](/docs/hsql/formats).
 
 </Tip>

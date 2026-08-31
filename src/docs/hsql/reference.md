@@ -31,12 +31,12 @@ declares it supports. None of the four connects to a database.
 
 <Tip>
 
-The prose pages under [The hsql CLI](/docs/headless) explain what these
-options are _for_: [formats and layouts](/docs/headless/formats),
-[the catalog](/docs/headless/catalog),
-[config files and profiles](/docs/headless/config),
-[exit codes](/docs/headless/exit-codes) and
-[the safety bounds](/docs/headless/safety).
+The prose pages under [The hsql CLI](/docs/hsql) explain what these
+options are _for_: [formats and layouts](/docs/hsql/formats),
+[the catalog](/docs/hsql/catalog),
+[config files and profiles](/docs/hsql/config),
+[exit codes](/docs/hsql/exit-codes) and
+[the safety bounds](/docs/hsql/safety).
 
 </Tip>
 

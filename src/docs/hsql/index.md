@@ -18,24 +18,24 @@ means, how a profile is discovered and merged, and what bounds an invocation.
 
 ## The Path Through It
 
-- [Exit Codes and Streams](/docs/headless/exit-codes) — the six codes, what
+- [Exit Codes and Streams](/docs/hsql/exit-codes) — the six codes, what
   hsql puts on stdout and on stderr, `--stats`, and `--on-error`. Read this
   first if you are writing something that has to notice a failure.
-- [Exploring the Catalog](/docs/headless/catalog) — `--catalog`, `--path` and
+- [Exploring the Catalog](/docs/hsql/catalog) — `--catalog`, `--path` and
   `--catalog-search`: how to find out what is in a database before you write
   SQL against it.
-- [Formats and Layouts](/docs/headless/formats) — every format, the shorthand
+- [Formats and Layouts](/docs/hsql/formats) — every format, the shorthand
   flags, the layout switches, and `-o`.
-- [Config Files and Profiles](/docs/headless/config) — where config files come
+- [Config Files and Profiles](/docs/hsql/config) — where config files come
   from, how they merge, how to keep credentials out of them, and the five
   `--config` modes.
-- [Running Safely](/docs/headless/safety) — `--read-only`, `--timeout`, the
+- [Running Safely](/docs/hsql/safety) — `--read-only`, `--timeout`, the
   row limit, and the adapter capabilities that back them.
-- [Differences from psql](/docs/headless/psql) — what carries over, and what
+- [Differences from psql](/docs/hsql/psql) — what carries over, and what
   does not.
-- [Reference: hsql CLI](/docs/headless/reference) — every option, generated
+- [Reference: hsql CLI](/docs/hsql/reference) — every option, generated
   from hsql itself.
-- [The hsql Agent Skill](/docs/headless/skill) — what the skill says, and three
+- [The hsql Agent Skill](/docs/hsql/skill) — what the skill says, and three
   ways to install it.
 
 ## Two Kinds of Reader
@@ -44,7 +44,7 @@ hsql is meant to be driven by an agent as often as by a person, so these pages
 are written for both, and the site serves them to both:
 
 - Every page here has a markdown twin at its own URL with `.md` on the end —
-  `/docs/headless/exit-codes.md`, for instance — and the two buttons beside a
+  `/docs/hsql/exit-codes.md`, for instance — and the two buttons beside a
   page's title copy or open it.
 - [llms.txt](/llms.txt) indexes every page on this site with a one-line
   description; [llms-full.txt](/llms-full.txt) is the whole corpus in one file.
@@ -55,7 +55,7 @@ are written for both, and the site serves them to both:
 
 If you are teaching an agent to use hsql, you do not have to write any of this
 down yourself: `hsql --skill` installs an
-[Agent Skill](/docs/headless/skill) that already says it, matched to the hsql
+[Agent Skill](/docs/hsql/skill) that already says it, matched to the hsql
 you have installed.
 
 </Tip>
