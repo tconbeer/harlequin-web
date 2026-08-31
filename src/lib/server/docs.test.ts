@@ -13,6 +13,7 @@
  */
 
 import { describe, expect, it } from "vitest";
+import { artifact, manifest } from "./artifacts";
 import { buildCorpus, corpusPage, sanitize } from "./docs";
 
 describe("frontmatter", () => {
@@ -119,6 +120,32 @@ describe("components", () => {
     expect(() => wrap("The value is {answer}.")).toThrow(
       /an unresolved expression/,
     );
+  });
+});
+
+describe("the vendored CLI reference", () => {
+  const page = sanitize(
+    `---\ntitle: T\n---\n\nBefore.\n\n<HsqlReference />\n`,
+    "headless/reference",
+  ).markdown;
+
+  it("puts the artifact in, byte for byte", () => {
+    // Verbatim, and inserted after the rewrites rather than through them: the
+    // file is already markdown, generated in another repo, and a future
+    // release's help text is not this sanitizer's to second-guess.
+    expect(page).toContain(artifact("hsql-reference.md").trim());
+  });
+
+  it("says which release it was generated from", () => {
+    expect(page).toContain(
+      `*Generated from hsql ${manifest.version}, and served verbatim at ` +
+        `[harlequin.sh/artifacts/hsql-reference.md]` +
+        `(https://harlequin.sh/artifacts/hsql-reference.md).*`,
+    );
+  });
+
+  it("leaves the rest of the page alone", () => {
+    expect(page.startsWith("# T\n\nBefore.\n\n")).toBe(true);
   });
 });
 

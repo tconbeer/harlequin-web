@@ -21,6 +21,7 @@
 
 import { canonicalUrl } from "$lib/config";
 import { docsPages, docsTopicLabel } from "$lib/docs_menu";
+import { artifact, manifest } from "./artifacts";
 
 // Raw sources, not the compiled Svelte components: the point is to read what
 // the author wrote, before mdsvex touches it.
@@ -228,6 +229,32 @@ function figure(alt: string, url: string, caption?: string): string {
 }
 
 /* -------------------------------------------------------------------------- */
+/* The vendored CLI reference                                                  */
+/* -------------------------------------------------------------------------- */
+
+// `<HsqlReference />` stands in for a file this repo does not write:
+// `hsql-reference.md` is generated from `hsql --spec` in `tconbeer/harlequin`
+// and vendored under `static/artifacts`. It leaves a placeholder here and the
+// bytes go in at the end, because the artifact is already markdown — running
+// the rewrites over it would let a future release's help text (an angle bracket
+// in a metavar, say) fail this build over a construct that is not a defect.
+const VENDORED_REFERENCE = /\uE001reference\uE001/g;
+
+/**
+ * The reference as the page publishes it: which release it was generated from,
+ * then the artifact, verbatim. `hsql_reference.svelte` renders the same two
+ * files the same way, so the page and its markdown twin say the same thing.
+ */
+function vendoredReference(): string {
+  const url = `${SITE}/artifacts/hsql-reference.md`;
+  return (
+    `*Generated from hsql ${manifest.version}, and served verbatim at ` +
+    `[harlequin.sh/artifacts/hsql-reference.md](${url}).*\n\n` +
+    artifact("hsql-reference.md").trim()
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /* Links                                                                       */
 /* -------------------------------------------------------------------------- */
 
@@ -369,6 +396,13 @@ function downgrade(
       }
       return `[${attribute(attributes, "title") ?? "Watch the video"}](${src})`;
     },
+  );
+
+  // The CLI reference is generated in another repo and vendored here, so the
+  // page that publishes it holds a component where the artifact goes.
+  out = out.replace(
+    /<HsqlReference\b[^>]*>\s*(?:<\/HsqlReference>)?/g,
+    "\uE001reference\uE001",
   );
 
   // The gallery is a hundred rendered screenshots. There is no markdown for
@@ -513,8 +547,13 @@ export function sanitize(
     .trim();
 
   // A page with no heading of its own reads as a fragment once it is a file
-  // rather than a route with a title above it.
-  const titled = `# ${meta.title}\n\n${markdown}\n`;
+  // rather than a route with a title above it. The vendored reference goes in
+  // last, so that nothing above has rewritten it and nothing below reads a
+  // description out of it.
+  const titled = `# ${meta.title}\n\n${markdown}\n`.replace(
+    VENDORED_REFERENCE,
+    () => vendoredReference(),
+  );
 
   return {
     title: meta.title,
