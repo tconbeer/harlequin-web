@@ -538,9 +538,10 @@ export function sanitize(
   assertNothingLeftOver(prose, slug);
 
   const markdown = unmask({ text: prose, pieces: masked.pieces })
-    // The malformed spellings too: `&lbrace` without its semicolon is what
-    // src/docs/getting-started/hsql.md writes, and it is why the rendered page
-    // shows agents a JSON object with `&lbrace` where `{` belongs.
+    // The malformed spellings too. `&lbrace` without its semicolon is not an
+    // entity at all, so the rendered page shows it as written — the --stats
+    // example on getting-started/hsql read that way for a year — and it is
+    // cheaper to resolve the typo here than to publish it to a machine.
     .replace(/&lbrace;?/g, "{")
     .replace(/&rbrace;?/g, "}")
     .replace(/\n{3,}/g, "\n\n")

@@ -86,6 +86,26 @@ describe("every sanitized page", () => {
   );
 });
 
+describe("every page source", () => {
+  const sources = import.meta.glob("/src/docs/**/*.md", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  }) as Record<string, string>;
+
+  // The one check here that reads the source rather than the corpus, because
+  // it is the one defect the corpus cannot show: `sanitize()` resolves
+  // `&lbrace` with or without its semicolon, so a page missing the semicolon
+  // publishes clean markdown and still renders `&lbrace` to everyone reading
+  // the page. That is what the --stats example on getting-started/hsql did.
+  it.each(Object.entries(sources))(
+    "%s writes an escaped brace as an entity",
+    (path, source) => {
+      expect(source.match(/&[lr]brace(?!;)/g), path).toBeNull();
+    },
+  );
+});
+
 describe("every description", () => {
   // The row an agent reads in `llms.txt` before it decides which page to fetch.
   // It is one line there, so it has to be one line here, and long enough to say

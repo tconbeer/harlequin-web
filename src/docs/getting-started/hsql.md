@@ -126,7 +126,7 @@ hsql -c "select 1" --format none  --stats
 ```
 
 ```output
-&lbrace"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace"name":"1","type":"#"&rbrace]&rbrace
+&lbrace;"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace;"name":"1","type":"#"&rbrace;]&rbrace;
 ```
 
 Every key in that summary, and what to do about `truncated`, is on

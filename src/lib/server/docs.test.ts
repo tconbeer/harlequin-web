@@ -266,9 +266,9 @@ describe("code", () => {
   });
 
   it("un-escapes the malformed spelling too", () => {
-    // src/docs/getting-started/hsql.md writes `&lbrace` without its semicolon,
-    // which is why the rendered page shows `&amp;lbrace` to anyone reading the
-    // --stats example.
+    // `&lbrace` without its semicolon is not an entity, so a page that writes
+    // it shows it. The corpus has none left, and this is what keeps the next
+    // one from reaching a reader who is not looking at the rendered page.
     expect(code('```output\n&lbrace"status":"ok"&rbrace\n```')).toContain(
       '```\n{"status":"ok"}\n```',
     );
