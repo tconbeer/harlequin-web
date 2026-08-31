@@ -31,7 +31,7 @@ declares it supports. None of the four connects to a database.
 
 <Tip>
 
-The prose pages under [Headless & Agents](/docs/headless) explain what these
+The prose pages under [The hsql CLI](/docs/headless) explain what these
 options are _for_: [formats and layouts](/docs/headless/formats),
 [the catalog](/docs/headless/catalog),
 [config files and profiles](/docs/headless/config),

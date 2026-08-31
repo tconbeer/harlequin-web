@@ -195,5 +195,5 @@ Before you put hsql in a script or hand it to an agent, bound what it can do:
 [Running Safely](/docs/headless/safety) — and let
 [the hsql Agent Skill](/docs/headless/skill) teach the agent the rest.
 
-The whole reference lives under [Headless & Agents](/docs/headless). If you are
+The whole reference lives under [The hsql CLI](/docs/headless). If you are
 coming from psql, start with [Differences from psql](/docs/headless/psql).

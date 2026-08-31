@@ -1,5 +1,5 @@
 ---
-title: Headless & Agents
+title: The hsql CLI
 description: "The reference beneath the hsql tutorial: the catalog, formats, exit codes, config, safety, the generated CLI reference and the agent skill."
 ---
 

@@ -30,10 +30,10 @@ export const docsMenu: DocsMenuItem[] = [
     // the tutorial is the page a human reads once, and these are the pages
     // that get read every time by whoever — or whatever — is writing the
     // command line.
-    topic: "Headless & Agents",
+    topic: "The hsql CLI",
     slug: "headless",
     items: [
-      { title: "Headless Overview", slug: "headless" },
+      { title: "hsql Overview", slug: "headless" },
       { title: "Exit Codes and Streams", slug: "headless/exit-codes" },
       { title: "Exploring the Catalog", slug: "headless/catalog" },
       { title: "Formats and Layouts", slug: "headless/formats" },
