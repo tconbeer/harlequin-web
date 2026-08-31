@@ -32,7 +32,7 @@ Every row has five columns:
 | `type`       | The database's own word for it: `database`, `schema`, `VIEW`, `BIGINT`. |
 | `type_label` | The short label Harlequin shows in its data catalog.                    |
 
-## Walking Down
+## Navigating the Catalog
 
 Pass a row's `path` back to `--path`:
 
@@ -77,8 +77,8 @@ hsql "path/to/duck.db" --catalog --path duck.analytics.orders
 (4 rows)
 ```
 
-The adapter names the segments, so how deep the catalog goes, and what each
-level is called, varies by database.
+The adapter names the segments, so how deep the catalog goes and what each
+level is called varies by database.
 
 A trailing `*` filters a listing. Quote it, or the shell expands it against the
 working directory:
@@ -118,8 +118,7 @@ duck.analytics.orders|orders|"analytics"."orders"|BASE TABLE|t
 
 <Note>
 
-Not every adapter can search. One that cannot says so and exits rather than
-walking its whole catalog. `hsql --info -a NAME` reports
+Not every adapter can search. `hsql --info -a NAME` reports
 `implements_catalog_search`; see [Running Safely](/docs/hsql/safety).
 
 </Note>
@@ -147,4 +146,4 @@ They are modes rather than options: hsql either reads the catalog or runs SQL.
 Passing `-c` or `-f` beside `--catalog` [exits `2`](/docs/hsql/exit-codes). Use
 two invocations.
 
-For the same catalog as a tree you can click through, run `harlequin -P prod`.
+For the same catalog as a tree you can click through, use the Harlequin IDE.

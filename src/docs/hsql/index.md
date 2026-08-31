@@ -7,8 +7,8 @@ description: Reference for hsql, Harlequin's headless SQL client — the catalog
 of flags and one output contract. It reads the same config files as the IDE, so
 one profile serves both.
 
-[Using hsql](/docs/getting-started/hsql) is the tutorial. These pages are the
-reference under it.
+For a tutorial, see [Using hsql](/docs/getting-started/hsql). For more detailed
+information on hsql and its features, keep reading.
 
 ## Pages
 
@@ -22,25 +22,3 @@ reference under it.
 | [Differences from psql](/docs/hsql/psql)        | What carries over, and what does not                        |
 | [Reference: hsql CLI](/docs/hsql/reference)     | Every option, generated from hsql itself                    |
 | [The hsql Agent Skill](/docs/hsql/skill)        | What the skill says, and how to install it                  |
-
-## Reading These Pages as Markdown
-
-Add `.md` to any docs URL for the raw page: `/docs/hsql/exit-codes.md`. The two
-buttons beside a page title do the same thing.
-
-- [llms.txt](/llms.txt) — every page on this site, with a one-line description.
-- [llms-full.txt](/llms-full.txt) — the whole corpus in one file.
-- [/api/docs/v1.json](/api/docs/v1.json) — the same index as JSON.
-  `/api/docs/v1/<slug>.json` is one page, with its markdown.
-
-An agent does not have to read any of it: `hsql --skill` installs an
-[Agent Skill](/docs/hsql/skill) that covers the same ground, matched to the
-version installed.
-
-## Elsewhere in These Docs
-
-- [Database Adapters](/docs/adapters) — what hsql can connect to.
-- [Configuring Harlequin](/docs/config-file) — config files in full, including
-  the keys only the IDE reads.
-- [Getting Help](/docs/getting-started/help) — where to ask, and where to file a
-  bug.

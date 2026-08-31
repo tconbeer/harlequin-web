@@ -43,6 +43,9 @@ export const docsMenu: DocsMenuItem[] = [
       { title: "The hsql Agent Skill", slug: "hsql/skill" },
     ],
   },
+  // One page, so a row rather than a topic: the sidebar spells a single-page
+  // topic as a plain entry, the way Exporting Data and Choosing a Theme are.
+  { title: "Agent Docs", slug: "agent-docs" },
   {
     // Fourteen adapters would be most of the menu, so they collapse into one
     // row near the top. The topics nested here are groups in their own
