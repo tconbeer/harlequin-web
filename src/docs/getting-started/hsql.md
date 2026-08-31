@@ -93,8 +93,8 @@ hsql -P dev -c "select * from users" --vertical --limit 5
 hsql -P warehouse -c "..." --format parquet -o invoices.pq
 ```
 
-For where config files are found, how they merge, and how to keep credentials
-out of them, see [Config Files and Profiles](/docs/hsql/config).
+hsql can also inspect, validate and write those files without running any
+SQL; see [Config Modes](/docs/hsql/config).
 
 ## Data Layouts and File Formats
 
@@ -112,7 +112,7 @@ hsql supports all of the following formats for displaying and writing data:
 - feather (alias: arrow)
 - none (suppresses output)
 
-You can select a format with the `--format <name>` or using the shorthand `--<name>`, so these are equivalent: `--format csv`, `--csv`. Note that only five formats have a shorthand.
+You can select a format with the `--format <name>`. Some formats have a shorthand `--<name>`, so these are equivalent: `--format csv`, `--csv`.
 
 Some layouts can present the results from multiple queries. Others will raise an error and exit with code 2 if multiple queries are executed.
 
@@ -167,31 +167,10 @@ hsql -P prod --limit -1 --format md --result all --on-error stop \
     -c "select count(*) from modeled_table"
 ```
 
-hsql's exit codes are meaningful and stable:
-
-- 0: Success
-- 1: Query error
-- 2: Usage/config error
-- 3: Connection error
-- 4: Timeout
-- 130: Interrupted
-
-[Exit Codes and Streams](/docs/hsql/exit-codes) has what each one means, what
-goes to stdout and stderr, and what `--on-error` does after a failure.
+hsql's [exit codes](/docs/hsql/exit-codes) are meaningful and stable.
 
 You can also use `--stats` and `jq` together to error on a truncated query:
 
 ```bash
 hsql --limit 100 -c "select * from orders" --csv -o data.csv --stats 2>&1 | jq -e '.truncated | not' > /dev/null
 ```
-
-## Where to Next
-
-The reference for all of this is under [The hsql CLI](/docs/hsql):
-
-- [Exploring the Catalog](/docs/hsql/catalog) — find out what is in a database
-  before you query it.
-- [Running Safely](/docs/hsql/safety) — `--read-only`, `--timeout`, and the row
-  limit.
-- [The hsql Agent Skill](/docs/hsql/skill) — teach an agent the same habits.
-- [Differences from psql](/docs/hsql/psql) — if you are coming from psql.

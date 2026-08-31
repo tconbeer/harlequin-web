@@ -26,7 +26,7 @@ Nine short sections of standing guidance:
 1. **Ask before you assume** — `hsql --info` for versions, config files and
    capabilities; `hsql --help -a NAME` for one adapter's options.
 2. **Keep credentials off the command line** — a
-   [profile](/docs/hsql/config) and `-P`, with an environment variable for the
+   [profile](/docs/config-file) and `-P`, with an environment variable for the
    secret.
 3. **Read the [catalog](/docs/hsql/catalog) before writing SQL** — `--catalog`,
    `--path`, `--catalog-search`, and the `query_name` column rather than an

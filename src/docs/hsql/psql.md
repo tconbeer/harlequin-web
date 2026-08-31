@@ -21,7 +21,7 @@ part psql cannot do.
 
 |                             | psql                                                | hsql                                                                                    |
 | --------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `-P`                        | `--pset`, an output setting                         | `--profile`, a [config-file profile](/docs/hsql/config)                                 |
+| `-P`                        | `--pset`, an output setting                         | `--profile`, a [config-file profile](/docs/config-file)                                 |
 | Field separator             | `-F`                                                | `--csv`, `--format tsv`, or any other [`--format`](/docs/hsql/formats)                  |
 | Listing databases           | `-l`                                                | [`--catalog`](/docs/hsql/catalog)                                                       |
 | Describing an object        | `\d`, `\dt`                                         | `--catalog --path`, `--catalog-search`                                                  |

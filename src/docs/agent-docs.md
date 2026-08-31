@@ -14,8 +14,6 @@ buttons beside a page title do the same thing.
 - [/api/docs/v1.json](/api/docs/v1.json) — the same index as JSON.
   `/api/docs/v1/<slug>.json` is one page, with its markdown.
 
-Whichever route serves it, the markdown is the same bytes.
-
 An agent driving [hsql](/docs/hsql) does not have to read any of it:
 `hsql --skill` installs an [Agent Skill](/docs/hsql/skill) that covers the same
 ground, matched to the version installed.

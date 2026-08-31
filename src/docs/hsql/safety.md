@@ -114,7 +114,7 @@ installation rather than a broken config; see
 
 ## A Profile for Automation
 
-`read_only`, `timeout` and `limit` are [profile keys](/docs/hsql/config), so no
+`read_only`, `timeout` and `limit` are [profile keys](/docs/config-file), so no
 invocation has to remember them:
 
 ```toml

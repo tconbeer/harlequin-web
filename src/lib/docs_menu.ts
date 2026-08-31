@@ -36,7 +36,7 @@ export const docsMenu: DocsMenuItem[] = [
       { title: "Exit Codes and Streams", slug: "hsql/exit-codes" },
       { title: "Exploring the Catalog", slug: "hsql/catalog" },
       { title: "Formats and Layouts", slug: "hsql/formats" },
-      { title: "Config Files and Profiles", slug: "hsql/config" },
+      { title: "Config Modes", slug: "hsql/config" },
       { title: "Running Safely", slug: "hsql/safety" },
       { title: "Differences from psql", slug: "hsql/psql" },
       { title: "Reference: hsql CLI", slug: "hsql/reference" },
