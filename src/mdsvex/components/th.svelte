@@ -1,3 +1,3 @@
-<th class="border border-purple bg-pink px-2 py-1 align-bottom font-bold">
+<th class="border-b border-purple pb-1 pr-4 align-bottom font-bold last:pr-0">
   <slot />
 </th>

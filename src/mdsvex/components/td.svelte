@@ -1,1 +1,1 @@
-<td class="border border-purple px-2 py-1 align-top"><slot /></td>
+<td class="py-1 pr-4 align-top last:pr-0"><slot /></td>

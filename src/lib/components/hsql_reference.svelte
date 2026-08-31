@@ -15,4 +15,16 @@
   Generated from hsql {manifest.version}, and served verbatim at
   <Link href={url}>harlequin.sh/artifacts/hsql-reference.md</Link>.
 </p>
-<Reference />
+<div class="reference">
+  <Reference />
+</div>
+
+<style>
+  /* The option table is six columns wide and its rows are as tall as a
+     paragraph, so a reader loses the row on the way to the description. A
+     hairline under each one is enough to follow, and it belongs to this table
+     rather than to every table on the site. */
+  .reference :global(tbody tr:not(:last-child) td) {
+    border-bottom: 1px solid rgba(214, 123, 255, 0.4);
+  }
+</style>
