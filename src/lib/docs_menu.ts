@@ -26,6 +26,25 @@ export const docsMenu: DocsMenuItem[] = [
     ],
   },
   {
+    // The reference beneath `getting-started/hsql`, which stays where it is:
+    // the tutorial is the page a human reads once, and these are the pages
+    // that get read every time by whoever — or whatever — is writing the
+    // command line.
+    topic: "Headless & Agents",
+    slug: "headless",
+    items: [
+      { title: "Headless Overview", slug: "headless" },
+      { title: "Exit Codes and Streams", slug: "headless/exit-codes" },
+      { title: "Exploring the Catalog", slug: "headless/catalog" },
+      { title: "Formats and Layouts", slug: "headless/formats" },
+      { title: "Config Files and Profiles", slug: "headless/config" },
+      { title: "Running Safely", slug: "headless/safety" },
+      { title: "Differences from psql", slug: "headless/psql" },
+      { title: "Reference: hsql CLI", slug: "headless/reference" },
+      { title: "The hsql Agent Skill", slug: "headless/skill" },
+    ],
+  },
+  {
     // Fourteen adapters would be most of the menu, so they collapse into one
     // row near the top. The topics nested here are groups in their own
     // right; the rest are single-page adapters that sit alongside them.

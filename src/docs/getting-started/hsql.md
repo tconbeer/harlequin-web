@@ -29,6 +29,9 @@ where `[OPTIONS]` is 0 or more pairs of the form `--[option-name] [option-value]
 hsql --help
 ```
 
+Every option, with its type, default and help text, is also on one page here:
+[Reference: hsql CLI](/docs/headless/reference).
+
 ## Database Adapters
 
 <Tip>
@@ -74,8 +77,10 @@ hsql -a postgres "postgresql://example.com/postgres:5432" -c "select * from invo
 ```
 
 <Tip>
+
 You should use [profiles](/docs/config-file) to keep credentials out of your shell
 history.
+
 </Tip>
 
 ## Configuring hsql and Using Profiles
@@ -87,6 +92,9 @@ hsql -P prod -c "select count(*) from orders" --csv
 hsql -P dev -c "select * from users" --vertical --limit 5
 hsql -P warehouse -c "..." --format parquet -o invoices.pq
 ```
+
+For where config files are found, how they merge, and how to keep credentials
+out of them, see [Config Files and Profiles](/docs/headless/config).
 
 ## Data Layouts and File Formats
 
@@ -104,9 +112,12 @@ hsql supports all of the following formats for displaying and writing data:
 - feather (alias: arrow)
 - none (suppresses output)
 
-You can select a format with the `--format <name>` or using the shorthand `--<name>`, so these are equivalent: `--format csv`, `--csv`.
+You can select a format with the `--format <name>` or using the shorthand `--<name>`, so these are equivalent: `--format csv`, `--csv`. Note that only five formats have a shorthand.
 
 Some layouts can present the results from multiple queries. Others will raise an error and exit with code 2 if multiple queries are executed.
+
+[Formats and Layouts](/docs/headless/formats) covers all of them, along with the
+switches that shape a text layout and the ways `-o` writes results to files.
 
 Additionally, for any layout, pass `--stats` to print summary info as JSON to stderr:
 
@@ -117,6 +128,9 @@ hsql -c "select 1" --format none  --stats
 ```output
 &lbrace"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace"name":"1","type":"#"&rbrace]&rbrace
 ```
+
+Every key in that summary, and what to do about `truncated`, is on
+[Exit Codes and Streams](/docs/headless/exit-codes).
 
 ## Scripting with hsql
 
@@ -162,8 +176,24 @@ hsql's exit codes are meaningful and stable:
 - 4: Timeout
 - 130: Interrupted
 
+[Exit Codes and Streams](/docs/headless/exit-codes) has what each one means,
+what hsql writes to stdout and stderr, and how `--on-error` decides what happens
+after a statement fails.
+
 You can also use `--stats` and `jq` together to error on a truncated query:
 
 ```bash
 hsql --limit 100 -c "select * from orders" --csv -o data.csv --stats 2>&1 | jq -e '.truncated | not' > /dev/null
 ```
+
+## Where to Next
+
+Before you write a query against a database you have not seen, hsql can tell you
+what is in it: [Exploring the Catalog](/docs/headless/catalog).
+
+Before you put hsql in a script or hand it to an agent, bound what it can do:
+[Running Safely](/docs/headless/safety) — and let
+[the hsql Agent Skill](/docs/headless/skill) teach the agent the rest.
+
+The whole reference lives under [Headless & Agents](/docs/headless). If you are
+coming from psql, start with [Differences from psql](/docs/headless/psql).
