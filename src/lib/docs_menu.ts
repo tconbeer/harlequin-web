@@ -26,6 +26,27 @@ export const docsMenu: DocsMenuItem[] = [
     ],
   },
   {
+    // The reference beneath `getting-started/hsql`, which stays where it is:
+    // the tutorial is read once, and these are the pages that get read every
+    // time someone writes a command line.
+    topic: "The hsql CLI",
+    slug: "hsql",
+    items: [
+      { title: "hsql Overview", slug: "hsql" },
+      { title: "Exit Codes and Streams", slug: "hsql/exit-codes" },
+      { title: "Exploring the Catalog", slug: "hsql/catalog" },
+      { title: "Formats and Layouts", slug: "hsql/formats" },
+      { title: "Config Modes", slug: "hsql/config" },
+      { title: "Running Safely", slug: "hsql/safety" },
+      { title: "Differences from psql", slug: "hsql/psql" },
+      { title: "Reference: hsql CLI", slug: "hsql/reference" },
+      { title: "The hsql Agent Skill", slug: "hsql/skill" },
+    ],
+  },
+  // One page, so a row rather than a topic: the sidebar spells a single-page
+  // topic as a plain entry, the way Exporting Data and Choosing a Theme are.
+  { title: "Agent Docs", slug: "agent-docs" },
+  {
     // Fourteen adapters would be most of the menu, so they collapse into one
     // row near the top. The topics nested here are groups in their own
     // right; the rest are single-page adapters that sit alongside them.

@@ -29,6 +29,9 @@ where `[OPTIONS]` is 0 or more pairs of the form `--[option-name] [option-value]
 hsql --help
 ```
 
+Every option, with its type, default and help text, is also on one page:
+[Reference: hsql CLI](/docs/hsql/reference).
+
 ## Database Adapters
 
 <Tip>
@@ -74,8 +77,10 @@ hsql -a postgres "postgresql://example.com/postgres:5432" -c "select * from invo
 ```
 
 <Tip>
+
 You should use [profiles](/docs/config-file) to keep credentials out of your shell
 history.
+
 </Tip>
 
 ## Configuring hsql and Using Profiles
@@ -87,6 +92,9 @@ hsql -P prod -c "select count(*) from orders" --csv
 hsql -P dev -c "select * from users" --vertical --limit 5
 hsql -P warehouse -c "..." --format parquet -o invoices.pq
 ```
+
+hsql can also inspect, validate and write those files without running any
+SQL; see [Config Modes](/docs/hsql/config).
 
 ## Data Layouts and File Formats
 
@@ -104,9 +112,12 @@ hsql supports all of the following formats for displaying and writing data:
 - feather (alias: arrow)
 - none (suppresses output)
 
-You can select a format with the `--format <name>` or using the shorthand `--<name>`, so these are equivalent: `--format csv`, `--csv`.
+You can select a format with the `--format <name>`. Some formats have a shorthand `--<name>`, so these are equivalent: `--format csv`, `--csv`.
 
 Some layouts can present the results from multiple queries. Others will raise an error and exit with code 2 if multiple queries are executed.
+
+[Formats and Layouts](/docs/hsql/formats) covers all of them, the switches that
+shape a text layout, and `-o`.
 
 Additionally, for any layout, pass `--stats` to print summary info as JSON to stderr:
 
@@ -115,8 +126,11 @@ hsql -c "select 1" --format none  --stats
 ```
 
 ```output
-&lbrace"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace"name":"1","type":"#"&rbrace]&rbrace
+&lbrace;"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace;"name":"1","type":"#"&rbrace;]&rbrace;
 ```
+
+Every key in that summary, and what to do about `truncated`, is on
+[Exit Codes and Streams](/docs/hsql/exit-codes).
 
 ## Scripting with hsql
 
@@ -153,14 +167,7 @@ hsql -P prod --limit -1 --format md --result all --on-error stop \
     -c "select count(*) from modeled_table"
 ```
 
-hsql's exit codes are meaningful and stable:
-
-- 0: Success
-- 1: Query error
-- 2: Usage/config error
-- 3: Connection error
-- 4: Timeout
-- 130: Interrupted
+hsql's [exit codes](/docs/hsql/exit-codes) are meaningful and stable.
 
 You can also use `--stats` and `jq` together to error on a truncated query:
 
