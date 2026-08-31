@@ -4,13 +4,12 @@ description: How --catalog, --path and --catalog-search list a database's databa
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
     import Note from "$lib/components/note.svelte"
 </script>
 
-Before you can write a query, you have to know what is in the database.
 `--catalog` lists the objects one level below `--path`, and exits without
-running any SQL:
+running SQL. `--catalog-search` finds objects by name at every level at once.
+Neither runs a query, and both produce ordinary result sets.
 
 ```bash
 hsql "path/to/duck.db" --catalog
@@ -23,19 +22,19 @@ hsql "path/to/duck.db" --catalog
 (1 row)
 ```
 
-Every row is five columns, and the first is the one that does the work:
+Every row has five columns:
 
 | Column       | What it is                                                              |
 | ------------ | ----------------------------------------------------------------------- |
-| `path`       | What to pass to `--path` to list this object's own children.            |
+| `path`       | What to pass to `--path` to list this object's children.                |
 | `name`       | The object's name, unquoted.                                            |
-| `query_name` | The name already quoted for this database — paste this into SQL.        |
+| `query_name` | The name already quoted for this database. Paste this into SQL.         |
 | `type`       | The database's own word for it: `database`, `schema`, `VIEW`, `BIGINT`. |
 | `type_label` | The short label Harlequin shows in its data catalog.                    |
 
-## Walking Down One Level at a Time
+## Walking Down
 
-Pass a row's `path` back to `--path` to list what is under it:
+Pass a row's `path` back to `--path`:
 
 ```bash
 hsql "path/to/duck.db" --catalog --path duck
@@ -62,7 +61,7 @@ hsql "path/to/duck.db" --catalog --path duck.analytics
 (3 rows)
 ```
 
-One more level down is the columns, with their types:
+One level further down is the columns, with their types:
 
 ```bash
 hsql "path/to/duck.db" --catalog --path duck.analytics.orders
@@ -78,27 +77,20 @@ hsql "path/to/duck.db" --catalog --path duck.analytics.orders
 (4 rows)
 ```
 
-The segments of a path are named by the adapter, so how deep the catalog goes,
-and what each level is called, is the database's business rather than hsql's.
+The adapter names the segments, so how deep the catalog goes, and what each
+level is called, varies by database.
 
-A trailing `*` filters a listing to the names that start with it:
+A trailing `*` filters a listing. Quote it, or the shell expands it against the
+working directory:
 
 ```bash
 hsql "path/to/duck.db" --catalog --path 'duck.analytics.ord*'
 ```
 
-<Tip>
+## Searching
 
-Quote a path containing `*`, or your shell will try to expand it
-against the files in the working directory.
-
-</Tip>
-
-## Searching Instead of Walking
-
-Walking is the wrong tool for _where does `orders` live_ and _which tables have
-a `customer_id`_. `--catalog-search TERM` searches every level of the catalog at
-once, for objects whose name contains TERM:
+`--catalog-search TERM` searches every level at once, for objects whose name
+contains TERM:
 
 ```bash
 hsql "path/to/duck.db" --catalog-search customer_id
@@ -126,17 +118,16 @@ duck.analytics.orders|orders|"analytics"."orders"|BASE TABLE|t
 
 <Note>
 
-Not every adapter can search. An adapter that cannot says so and exits, rather
-than walking its whole catalog for you. `hsql --info -a NAME` reports
-`implements_catalog_search` for each installed adapter; see
-[Running Safely](/docs/hsql/safety) for the rest of what it reports.
+Not every adapter can search. One that cannot says so and exits rather than
+walking its whole catalog. `hsql --info -a NAME` reports
+`implements_catalog_search`; see [Running Safely](/docs/hsql/safety).
 
 </Note>
 
-## A Listing Is a Result Set
+## Formats and Files
 
-`--catalog` and `--catalog-search` produce rows, so every format and output
-option applies to them exactly as it does to a query:
+A listing is a result set, so every [format and output
+option](/docs/hsql/formats) applies:
 
 ```bash
 hsql "path/to/duck.db" --catalog --path duck.analytics -tA --csv
@@ -152,13 +143,8 @@ duck.analytics.orders,orders,"""analytics"".""orders""",BASE TABLE,t
 hsql -P prod --catalog --path prod.public --json -o ./schema.json
 ```
 
-They are modes, though, not options: hsql either reads the catalog or runs SQL,
-and passing `-c` or `-f` beside `--catalog` is a usage error that
-[exits `2`](/docs/hsql/exit-codes). Run them as two invocations.
+They are modes rather than options: hsql either reads the catalog or runs SQL.
+Passing `-c` or `-f` beside `--catalog` [exits `2`](/docs/hsql/exit-codes). Use
+two invocations.
 
-<Tip>
-
-The same catalog, in a tree you can click through, is the data catalog in
-Harlequin itself: `harlequin -P prod` opens it on the same profile.
-
-</Tip>
+For the same catalog as a tree you can click through, run `harlequin -P prod`.

@@ -5,16 +5,14 @@ description: Every hsql option, argument, format and exit code, generated from h
 
 <script>
     import HsqlReference from "$lib/components/hsql_reference.svelte"
-    import Tip from "$lib/components/tip.svelte"
 </script>
 
-This page is generated. It is rendered from `hsql --spec` with no adapters
-loaded, in [Harlequin's own repository](https://github.com/tconbeer/harlequin),
-and published here with the release it describes — so it cannot drift from the
-program, and nothing on this site hand-writes an option name.
+This page is generated from `hsql --spec` with no adapters loaded, in
+[Harlequin's repository](https://github.com/tconbeer/harlequin), and published
+with the release it describes.
 
-What it does not cover is any adapter's own connection options, which are the
-adapter's to declare:
+It does not cover any adapter's connection options. Four commands answer that,
+and none of them connects to a database:
 
 ```bash
 hsql --help
@@ -23,21 +21,12 @@ hsql --spec
 hsql --info
 ```
 
-`--help` is the same list for a person, `--help -a NAME` adds one adapter's
-options to it, and `--spec` is the whole surface — hsql's and every installed
-adapter's — as JSON. `--info` describes the installation instead: versions, the
-config files hsql found, the profile that would be active, and what each adapter
-declares it supports. None of the four connects to a database.
+`--help` is this list for a person, `--help -a NAME` adds one adapter's options
+to it, and `--spec` is the whole surface as JSON. `--info` describes the
+installation: versions, config files, the active profile, and what each adapter
+supports.
 
-<Tip>
-
-The prose pages under [The hsql CLI](/docs/hsql) explain what these
-options are _for_: [formats and layouts](/docs/hsql/formats),
-[the catalog](/docs/hsql/catalog),
-[config files and profiles](/docs/hsql/config),
-[exit codes](/docs/hsql/exit-codes) and
-[the safety bounds](/docs/hsql/safety).
-
-</Tip>
+What the options are _for_ is on the other pages under [The hsql
+CLI](/docs/hsql).
 
 <HsqlReference />

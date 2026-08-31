@@ -1,73 +1,46 @@
 ---
 title: The hsql CLI
-description: "The reference beneath the hsql tutorial: the catalog, formats, exit codes, config, safety, the generated CLI reference and the agent skill."
+description: Reference for hsql, Harlequin's headless SQL client — the catalog, formats, exit codes, config files, safety options, the CLI reference and the agent skill.
 ---
 
-<script>
-    import Tip from "$lib/components/tip.svelte"
-</script>
+`hsql` runs SQL against any database Harlequin has an adapter for, with one set
+of flags and one output contract. It reads the same config files as the IDE, so
+one profile serves both.
 
-[hsql](/docs/getting-started/hsql) is Harlequin's headless CLI: the same config
-and query engine as the full-screen IDE, with an interface built for agents,
-scripts and automations. This topic is the reference beneath that tutorial.
+[Using hsql](/docs/getting-started/hsql) is the tutorial. These pages are the
+reference under it.
 
-The tutorial is the page you read once, to learn what hsql is and how to run it.
-These are the pages you — or the agent driving your shell — come back to: the
-exact shape of the catalog, every format and layout switch, what each exit code
-means, how a profile is discovered and merged, and what bounds an invocation.
+## Pages
 
-## The Path Through It
+| Page                                            | What it covers                                              |
+| ----------------------------------------------- | ----------------------------------------------------------- |
+| [Exit Codes and Streams](/docs/hsql/exit-codes) | The six codes, stdout and stderr, `--stats`, `--on-error`   |
+| [Exploring the Catalog](/docs/hsql/catalog)     | `--catalog`, `--path`, `--catalog-search`                   |
+| [Formats and Layouts](/docs/hsql/formats)       | Every format, the layout switches, `-o`, `--result`         |
+| [Config Files and Profiles](/docs/hsql/config)  | Discovery, merging, `${VAR}`, the `--config` modes          |
+| [Running Safely](/docs/hsql/safety)             | `--limit`, `--read-only`, `--timeout`, adapter capabilities |
+| [Differences from psql](/docs/hsql/psql)        | What carries over, and what does not                        |
+| [Reference: hsql CLI](/docs/hsql/reference)     | Every option, generated from hsql itself                    |
+| [The hsql Agent Skill](/docs/hsql/skill)        | What the skill says, and how to install it                  |
 
-- [Exit Codes and Streams](/docs/hsql/exit-codes) — the six codes, what
-  hsql puts on stdout and on stderr, `--stats`, and `--on-error`. Read this
-  first if you are writing something that has to notice a failure.
-- [Exploring the Catalog](/docs/hsql/catalog) — `--catalog`, `--path` and
-  `--catalog-search`: how to find out what is in a database before you write
-  SQL against it.
-- [Formats and Layouts](/docs/hsql/formats) — every format, the shorthand
-  flags, the layout switches, and `-o`.
-- [Config Files and Profiles](/docs/hsql/config) — where config files come
-  from, how they merge, how to keep credentials out of them, and the five
-  `--config` modes.
-- [Running Safely](/docs/hsql/safety) — `--read-only`, `--timeout`, the
-  row limit, and the adapter capabilities that back them.
-- [Differences from psql](/docs/hsql/psql) — what carries over, and what
-  does not.
-- [Reference: hsql CLI](/docs/hsql/reference) — every option, generated
-  from hsql itself.
-- [The hsql Agent Skill](/docs/hsql/skill) — what the skill says, and three
-  ways to install it.
+## Reading These Pages as Markdown
 
-## Two Kinds of Reader
+Add `.md` to any docs URL for the raw page: `/docs/hsql/exit-codes.md`. The two
+buttons beside a page title do the same thing.
 
-hsql is meant to be driven by an agent as often as by a person, so these pages
-are written for both, and the site serves them to both:
+- [llms.txt](/llms.txt) — every page on this site, with a one-line description.
+- [llms-full.txt](/llms-full.txt) — the whole corpus in one file.
+- [/api/docs/v1.json](/api/docs/v1.json) — the same index as JSON.
+  `/api/docs/v1/<slug>.json` is one page, with its markdown.
 
-- Every page here has a markdown twin at its own URL with `.md` on the end —
-  `/docs/hsql/exit-codes.md`, for instance — and the two buttons beside a
-  page's title copy or open it.
-- [llms.txt](/llms.txt) indexes every page on this site with a one-line
-  description; [llms-full.txt](/llms-full.txt) is the whole corpus in one file.
-- [/api/docs/v1.json](/api/docs/v1.json) is the same index as JSON, and
-  `/api/docs/v1/<slug>.json` is one page with its markdown.
+An agent does not have to read any of it: `hsql --skill` installs an
+[Agent Skill](/docs/hsql/skill) that covers the same ground, matched to the
+version installed.
 
-<Tip>
+## Elsewhere in These Docs
 
-If you are teaching an agent to use hsql, you do not have to write any of this
-down yourself: `hsql --skill` installs an
-[Agent Skill](/docs/hsql/skill) that already says it, matched to the hsql
-you have installed.
-
-</Tip>
-
-## Everything Else
-
-hsql shares its adapters, its config files and its query engine with Harlequin,
-so the rest of these docs apply to it unchanged:
-
-- [Database Adapters](/docs/adapters) — what hsql can connect to, and how to
-  install one.
+- [Database Adapters](/docs/adapters) — what hsql can connect to.
 - [Configuring Harlequin](/docs/config-file) — config files in full, including
-  the keys that only the IDE reads.
-- [Getting Help](/docs/getting-started/help) — where to ask, and where to file
-  a bug.
+  the keys only the IDE reads.
+- [Getting Help](/docs/getting-started/help) — where to ask, and where to file a
+  bug.

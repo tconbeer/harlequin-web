@@ -5,38 +5,27 @@ description: hsql's six exit codes, what it writes to stdout and stderr, the --s
 
 <script>
     import Warning from "$lib/components/warning.svelte"
-    import Tip from "$lib/components/tip.svelte"
 </script>
 
-hsql makes three promises to whatever is calling it, and they do not vary by
-adapter:
+stdout carries result sets and nothing else. Every error, warning and note goes
+to stderr. The exit code is the verdict, and stdout is empty whenever it is
+non-zero — so read the code before the output.
 
-1. **stdout is data.** Result sets, and nothing else.
-2. **stderr is everything else.** Errors, warnings, notes, and the names of
-   files hsql wrote.
-3. **The exit code is the verdict.** It is meaningful, it is stable, and stdout
-   is empty whenever it is non-zero.
+## The Codes
 
-That is the whole contract, and it is what makes hsql safe to put in a pipe.
+| Code  | Meaning                                                          |
+| ----- | ---------------------------------------------------------------- |
+| `0`   | Success.                                                         |
+| `1`   | The database rejected the SQL.                                   |
+| `2`   | A bad flag, a bad profile, or a config file hsql could not read. |
+| `3`   | hsql could not connect.                                          |
+| `4`   | `--timeout` ran out, and hsql stopped the run.                   |
+| `130` | Interrupted.                                                     |
 
-## The Exit Codes
-
-| Code  | Meaning                                                          | Whose bug it usually is     |
-| ----- | ---------------------------------------------------------------- | --------------------------- |
-| `0`   | Success.                                                         | —                           |
-| `1`   | The database rejected the SQL.                                   | the query's                 |
-| `2`   | A bad flag, a bad profile, or a config file hsql could not read. | the caller's                |
-| `3`   | hsql could not connect.                                          | the environment's           |
-| `4`   | `--timeout` ran out, and hsql stopped the run.                   | the query's, or the bound's |
-| `130` | Interrupted.                                                     | nobody's                    |
-
-A `2` means hsql never opened a connection: it is the code you get for a flag
-that does not exist, for `-P` naming a profile no file defines, for a `${VAR}`
-in a config file that is unset, and for asking a format that holds one result
-set to print three. A `1` means the connection was fine and the database said
-no.
-
-Branch on the code before you look at the output:
+A `2` means hsql never opened a connection. It covers a flag that does not
+exist, a `-P` naming a profile no file defines, an unset `${VAR}` in a config
+file, and a single-result format asked to print three result sets. A `1` means
+the connection was fine and the database said no.
 
 ```bash
 if ! hsql -P prod --read-only -c "select 1" --format none; then
@@ -45,28 +34,25 @@ if ! hsql -P prod --read-only -c "select 1" --format none; then
 fi
 ```
 
-## Reading the Errors
+## Errors and Notes
 
-Errors are one line on stderr, prefixed `hsql: error:`. Notes — the file names
-`-o` wrote, a warning that a limit truncated a result — are prefixed `note:`.
+Errors are one line, prefixed `hsql: error:`. Notes — the files `-o` wrote, a
+warning that a limit truncated a result — are prefixed `note:`.
 
 <Warning>
 
-Never run hsql with `2>/dev/null`. Truncation warnings and errors
-both go to stderr, and suppressing that stream is exactly what turns a detected
-problem into a wrong number. If stderr is noisy, redirect it to a log — and then
-have something read the log.
+`2>/dev/null` hides truncation warnings and errors alike. Redirect stderr to a
+log if it is noisy, but keep it.
 
 </Warning>
 
-For a failure you cannot place, [Troubleshooting](/docs/troubleshooting) covers
-Harlequin and hsql together, and `hsql --info` — which connects to nothing,
-redacts the profile it reports, and answers even when the config is broken —
-is safe to paste into a bug report.
+`hsql --info` connects to nothing, redacts the profile it reports, and answers
+even when the config is broken, so it is safe to paste into a bug report.
+[Troubleshooting](/docs/troubleshooting) covers hsql and the IDE together.
 
-## `--stats`: the Machine-Readable Summary
+## `--stats`
 
-For any format, `--stats` writes one line of JSON to stderr describing the run:
+For any format, `--stats` writes a one-line JSON summary of the run to stderr:
 
 ```bash
 hsql -c "select 1" --format none --stats
@@ -76,35 +62,27 @@ hsql -c "select 1" --format none --stats
 &lbrace;"status":"ok","statements":1,"rows":1,"truncated":false,"limit":500,"elapsed_ms":1,"columns":[&lbrace;"name":"1","type":"#"&rbrace;]&rbrace;
 ```
 
-The keys are `status`, `statements`, `rows`, `truncated`, `limit`,
-`elapsed_ms` and `columns`. `truncated` is the one to read every time: it is
-`true` when the [row limit](/docs/hsql/safety) cut a result set short, which
-means any number computed from those rows is wrong.
-
-Because `--stats` goes to stderr, a check on it redirects that stream and leaves
-stdout alone:
+The keys are `status`, `statements`, `rows`, `truncated`, `limit`, `elapsed_ms`
+and `columns`. `truncated` is `true` when the [row
+limit](/docs/hsql/safety) cut a result set short, which means anything computed
+from those rows is wrong.
 
 ```bash
 hsql --limit -1 -c "select * from orders" --csv -o data.csv --stats 2>&1 \
     | jq -e '.truncated | not' > /dev/null
 ```
 
-## `--on-error`, When There Is More Than One Statement
+## `--on-error`
 
-hsql runs as many statements as you pass it — repeated `-c` and `-f`, and
-several statements separated by `;` inside either — in the order you typed
-them, on one connection.
+hsql runs every statement you pass it — repeated `-c` and `-f`, and several
+statements separated by `;` inside either — in the order typed, on one
+connection.
 
-- `--on-error stop` (the default) stops at the first statement that fails.
-- `--on-error continue` runs the rest anyway.
+- `--on-error stop` (the default) stops at the first failure.
+- `--on-error continue` runs the rest.
 
-Either way, a failed statement makes the exit code non-zero: `continue` changes
+Either way a failed statement makes the exit code non-zero. `continue` changes
 what runs, not what hsql reports.
 
-<Tip>
-
-`--result all|last|N` decides which result sets reach stdout, which is a
-different question from what runs; see
-[Formats and Layouts](/docs/hsql/formats).
-
-</Tip>
+Which result sets reach stdout is a separate question:
+[`--result`](/docs/hsql/formats).
