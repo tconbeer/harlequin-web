@@ -36,7 +36,8 @@ And `none`, which runs the SQL and writes nothing.
 
 Only the text layouts, `jsonl` and `none` carry more than one result set.
 `csv`, `json`, `parquet` and the rest hold exactly one and exit
-[`2`](/docs/hsql/exit-codes) rather than concatenating, so a run with several
+[`2`](/docs/hsql/exit-codes) rather than concatenating, unless `-o` names a
+directory, which gets one file per result set. Otherwise a run with several
 result sets wants `--result last` or `--jsonl`. The [CLI
 reference](/docs/hsql/reference) has the table, suffix by suffix.
 
@@ -80,7 +81,7 @@ ignores the ones that do not apply to it.
 print. [`--limit`](/docs/hsql/safety) is the one that changes what the database
 returns.
 
-## Writing to a File
+## Writing to a File or Directory
 
 `-o PATH` writes results to a file instead of stdout, in the same bytes a
 redirect would produce:

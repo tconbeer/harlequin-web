@@ -22,8 +22,7 @@ hsql -P prod --limit 100 -c "select * from orders"
 hsql -P prod --limit -1 -c "select * from orders" --format parquet -o orders.parquet
 ```
 
-`--limit -1` removes it. That is what you want before counting or aggregating
-the rows yourself, or writing them anywhere.
+`--limit -1` runs the query as written, with no limit applied.
 
 <Warning>
 
@@ -38,8 +37,7 @@ layout prints without changing what was fetched.
 
 ## `--read-only`
 
-`-r` (or `--read-only`) connects in a mode the database itself refuses writes
-in. The database does the refusing, not a filter over your SQL:
+`-r` (or `--read-only`) instructs the database to prohibit writes:
 
 ```bash
 hsql -r "path/to/duck.db" -c "insert into orders values (1)"
@@ -65,12 +63,8 @@ hsql --timeout 0.5 -c "select count(*) from range(100000000000) t(i)"
 hsql: error: timed out after 0.5s
 ```
 
-hsql attributes the timeout explicitly, because a cancelled cursor comes back
-empty and error-free, exactly like a query that matched nothing. As with
-`--read-only`, hsql refuses to start when the adapter cannot cancel a query.
-
-When a timeout fires, `explain`, a missing filter, or aggregating in SQL is
-usually a better answer than a larger number.
+As with `--read-only`, hsql refuses to start when the adapter cannot cancel a
+query.
 
 ## Adapter Capabilities
 
@@ -130,8 +124,3 @@ limit = -1
 ```bash
 hsql -P agent -tAc "select count(*) from orders"
 ```
-
-The [hsql Agent Skill](/docs/hsql/skill) covers the habits around these
-options: read the catalog before guessing at a name, say what a write will
-change before running it, and hand off to `harlequin` when a human should
-drive.
