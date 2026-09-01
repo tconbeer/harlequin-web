@@ -71,11 +71,6 @@ export const docsMenu: DocsMenuItem[] = [
       },
       { title: "Adapter: ODBC", slug: "odbc", repo: "tconbeer/harlequin-odbc" },
       {
-        title: "Adapter: H2",
-        slug: "h2",
-        repo: "clang-engineer/harlequin-h2",
-      },
-      {
         topic: "Adapter: BigQuery",
         slug: "bigquery",
         repo: "joshtemple/harlequin-bigquery",
@@ -130,6 +125,11 @@ export const docsMenu: DocsMenuItem[] = [
         title: "Adapter: Exasol",
         slug: "exasol",
         repo: "Nicoretti/harlequin-exasol",
+      },
+      {
+        title: "Adapter: H2",
+        slug: "h2",
+        repo: "clang-engineer/harlequin-h2",
       },
     ],
   },
