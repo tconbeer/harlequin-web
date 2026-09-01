@@ -166,6 +166,11 @@ export const docsMenu: DocsMenuItem[] = [
         slug: "exasol",
         repo: "Nicoretti/harlequin-exasol",
       },
+      {
+        title: "Adapter: H2",
+        slug: "h2",
+        repo: "clang-engineer/harlequin-h2",
+      },
     ],
   },
   {
