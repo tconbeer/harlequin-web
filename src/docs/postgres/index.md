@@ -2,6 +2,10 @@
 title: "Postgres Basic Usage"
 ---
 
+<script>
+    import Note from "$lib/components/note.svelte"
+</script>
+
 ## Installation
 
 You must install the `harlequin-postgres` package into the same environment as `harlequin`. The best and easiest way to do this is to use `uv` to install Harlequin with the `postgres` extra:
@@ -12,7 +16,11 @@ uv tool install 'harlequin[postgres]'
 
 ## Using Harlequin with Postgres
 
+<Note>
+
 This adapter uses `psycopg`, which cannot connect to Amazon Redshift. To connect to Redshift, use the [Redshift adapter](/docs/redshift) instead.
+
+</Note>
 
 To connect to a Postgres database, run Harlequin with the `-a postgres` option and pass a [Posgres DSN](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING) as an argument:
 

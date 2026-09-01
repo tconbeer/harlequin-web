@@ -83,11 +83,3 @@ harlequin --read-only -a redshift "redshift://my-cluster:5439/dev"
 The adapter asks the server for a session-wide read-only default first, and confirms that the server reports it as on. If the server has no such setting, it opens every transaction with `BEGIN READ ONLY` instead, and confirms that the server reports `transaction_read_only` as on inside one. If neither holds, Harlequin refuses to start rather than hand back a connection that would happily write.
 
 Read-only mode applies to both Auto and Manual transaction modes.
-
-## Driver Notes
-
-The adapter works around two `redshift_connector` behaviors, which are worth knowing about if you also use the driver directly:
-
-**The connect timeout is also a read timeout.** The driver sets a timeout on the socket while connecting and never clears it, so `timeout` becomes a ceiling on how long _any_ read may block — a query that runs longer than it dies with "The read operation timed out". This adapter clears the socket timeout once the connection is up, so `--timeout` means what it says: a limit on connecting, not on your queries. TCP keepalives, which are on by default, are what notice a peer that has actually gone away.
-
-**The server-side metadata path can mis-index its own results.** For its `SHOW`-based metadata calls, the driver caches a column-name-to-index map on the cursor, builds it once from whatever result set is current, then looks names up in it. On a cluster with cross-database catalog metadata enabled, this raises `KeyError: 'database_name'` from `get_catalog_list()`. When that happens, this adapter logs it, stops using that path for the rest of the session, and reads the catalog with the driver's direct catalog queries instead — so the catalog loads either way. A genuine server error, such as a permission failure, is reported rather than worked around.

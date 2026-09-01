@@ -17,7 +17,7 @@ System schemas (`pg_*` and `information_schema`) are not shown.
 
 By default, the catalog shows the connected database. Pass `--all-databases` to show every database the cluster exposes metadata for, including the ones a datashare brings in.
 
-That flag is off by default because it is not free. It asks the server for cross-database catalog metadata, which is answered by the `SVV_ALL_*` views and is markedly slower, and on some clusters the driver's server-side metadata path cannot serve it at all (see [Driver Notes](/docs/redshift#driver-notes)). With it off, the catalog is read through the fast path, and every level is a single round trip.
+That flag is off by default because it is not free. It asks the server for cross-database catalog metadata, which is answered by the `SVV_ALL_*` views and is markedly slower, and on some clusters the driver's server-side metadata path cannot serve it at all. With it off, the catalog is read through the fast path, and every level is a single round trip.
 
 Relations in another database are given three-part query names, which is how Redshift's cross-database queries address them; relations in the connected database get two-part names.
 
