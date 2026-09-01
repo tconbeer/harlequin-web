@@ -47,7 +47,7 @@ export const docsMenu: DocsMenuItem[] = [
   // topic as a plain entry, the way Exporting Data and Choosing a Theme are.
   { title: "Agent Docs", slug: "agent-docs" },
   {
-    // Fourteen adapters would be most of the menu, so they collapse into one
+    // Sixteen adapters would be most of the menu, so they collapse into one
     // row near the top. The topics nested here are groups in their own
     // right; the rest are single-page adapters that sit alongside them.
     topic: "Database Adapters",
@@ -83,6 +83,25 @@ export const docsMenu: DocsMenuItem[] = [
           { title: "Postgres Basic Usage", slug: "postgres" },
           { title: "Multiple Databases", slug: "postgres/multiple" },
           { title: "Transaction Handling", slug: "postgres/transactions" },
+        ],
+      },
+      {
+        topic: "Adapter: Redshift",
+        slug: "redshift",
+        repo: "tconbeer/harlequin-redshift",
+        items: [
+          { title: "Redshift Basic Usage", slug: "redshift" },
+          { title: "Redshift Authentication", slug: "redshift/auth" },
+          { title: "Redshift Data Catalog", slug: "redshift/catalog" },
+        ],
+      },
+      {
+        topic: "Adapter: Snowflake",
+        slug: "snowflake",
+        repo: "tconbeer/harlequin-snowflake",
+        items: [
+          { title: "Snowflake Basic Usage", slug: "snowflake" },
+          { title: "Snowflake Authentication", slug: "snowflake/auth" },
         ],
       },
       {
