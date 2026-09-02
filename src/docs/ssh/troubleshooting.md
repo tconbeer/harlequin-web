@@ -23,7 +23,7 @@ passphrase, a password, or confirmation of a host key; answer it, or pass
 ## ssh Exited Without Opening the Forward
 
 ```output
-tco@bastion.example.com: Permission denied (publickey).
+my_ssh_username@bastion.example.com: Permission denied (publickey).
 hsql: error: ssh exited with code 255 without opening the forward.
 ```
 

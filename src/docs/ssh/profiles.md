@@ -27,7 +27,7 @@ adapter = "postgres"
 host = "localhost"
 port = 15432
 dbname = "prod"
-user = "tco"
+user = "my_db_username"
 ssh_host = "db_prod"
 ```
 
@@ -46,8 +46,8 @@ adapter = "postgres"
 host = "localhost"
 port = 15432
 dbname = "prod"
-user = "tco"
-ssh_host = "tco@bastion.example.com"
+user = "my_db_username"
+ssh_host = "my_ssh_username@bastion.example.com"
 ssh_forward = ["15432:db.internal:5432"]
 ssh_timeout = 30
 ```

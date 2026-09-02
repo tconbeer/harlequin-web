@@ -24,7 +24,7 @@ The destination, passed to `ssh` verbatim. Anything `ssh` accepts works: a `Host
 
 ```bash
 harlequin -P prod --ssh-host db_prod
-harlequin -P prod --ssh-host tco@bastion.example.com
+harlequin -P prod --ssh-host my_ssh_username@bastion.example.com
 ```
 
 **Everything else about the connection belongs in your ssh config**, where the rest of your tooling can already see it: the user, the port, the identity file, a jump host, and anything else `ssh_config` can express.
@@ -32,7 +32,7 @@ harlequin -P prod --ssh-host tco@bastion.example.com
 ```
 Host db_prod
   HostName bastion.example.com
-  User tco
+  User my_ssh_username
   Port 2222
   IdentityFile ~/.ssh/id_ed25519_work
   ProxyJump jump.example.com
@@ -53,7 +53,7 @@ A local forward, spelled the way `ssh -L` takes one: `LOCAL:HOST:REMOTE`. **The 
 
 ```bash
 hsql -a postgres --host localhost --port 15432 --dbname prod \
-  --ssh-host tco@bastion.example.com \
+  --ssh-host my_ssh_username@bastion.example.com \
   --ssh-forward 15432:db.internal:5432 \
   -c "select count(*) from orders"
 ```
@@ -86,7 +86,7 @@ hsql -P prod --ssh-batch-mode -c "select count(*) from orders"
 ```
 
 ```output
-tco@bastion.example.com: Permission denied (publickey).
+my_ssh_username@bastion.example.com: Permission denied (publickey).
 hsql: error: ssh exited with code 255 without opening the forward.
 ```
 
