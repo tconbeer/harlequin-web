@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* What `search_highlight.svelte` paints a match with. It lives here rather than
+   in that component because Svelte scopes a component's styles with a generated
+   class, which a highlight pseudo-element cannot carry — the rule would be
+   rewritten to match nothing, and then pruned as unused. `::highlight()` takes
+   only colour, background, text-decoration and text-shadow, which is all a
+   found word needs. */
+::highlight(search-hit) {
+  background-color: #45ffca;
+  color: #000;
+}

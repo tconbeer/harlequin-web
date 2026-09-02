@@ -3,10 +3,14 @@
   import { canonicalUrl, title, url } from "$lib/config";
   import Github from "$lib/components/github.svelte";
   import MarkdownActions from "$lib/components/markdown_actions.svelte";
+  import SearchHighlight from "$lib/components/search_highlight.svelte";
   import { docsSlug } from "$lib/markdown_actions";
 
   let { data } = $props();
   const Content = $derived(data.content);
+  // The rendered body, for the search highlighter to read. It walks these nodes
+  // and paints ranges over them; it never modifies them.
+  let body = $state<HTMLElement | null>(null);
   const canonical = $derived(new URL(page.url.pathname, url).href);
   const slug = $derived(docsSlug(page.url.pathname));
   // The URL the page is published at, not the one that served it: a copied page
@@ -32,4 +36,7 @@
     ></Github>
   </div>
 {/if}
-<Content></Content>
+<SearchHighlight target={body} />
+<div bind:this={body}>
+  <Content></Content>
+</div>
