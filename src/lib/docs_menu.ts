@@ -26,7 +26,28 @@ export const docsMenu: DocsMenuItem[] = [
     ],
   },
   {
-    // Fourteen adapters would be most of the menu, so they collapse into one
+    // The reference beneath `getting-started/hsql`, which stays where it is:
+    // the tutorial is read once, and these are the pages that get read every
+    // time someone writes a command line.
+    topic: "The hsql CLI",
+    slug: "hsql",
+    items: [
+      { title: "hsql Overview", slug: "hsql" },
+      { title: "Exit Codes and Streams", slug: "hsql/exit-codes" },
+      { title: "Exploring the Catalog", slug: "hsql/catalog" },
+      { title: "Formats and Layouts", slug: "hsql/formats" },
+      { title: "Config Modes", slug: "hsql/config" },
+      { title: "Running Safely", slug: "hsql/safety" },
+      { title: "Differences from psql", slug: "hsql/psql" },
+      { title: "Reference: hsql CLI", slug: "hsql/reference" },
+      { title: "The hsql Agent Skill", slug: "hsql/skill" },
+    ],
+  },
+  // One page, so a row rather than a topic: the sidebar spells a single-page
+  // topic as a plain entry, the way Exporting Data and Choosing a Theme are.
+  { title: "Agent Docs", slug: "agent-docs" },
+  {
+    // Sixteen adapters would be most of the menu, so they collapse into one
     // row near the top. The topics nested here are groups in their own
     // right; the rest are single-page adapters that sit alongside them.
     topic: "Database Adapters",
@@ -62,6 +83,25 @@ export const docsMenu: DocsMenuItem[] = [
           { title: "Postgres Basic Usage", slug: "postgres" },
           { title: "Multiple Databases", slug: "postgres/multiple" },
           { title: "Transaction Handling", slug: "postgres/transactions" },
+        ],
+      },
+      {
+        topic: "Adapter: Redshift",
+        slug: "redshift",
+        repo: "tconbeer/harlequin-redshift",
+        items: [
+          { title: "Redshift Basic Usage", slug: "redshift" },
+          { title: "Redshift Authentication", slug: "redshift/auth" },
+          { title: "Redshift Data Catalog", slug: "redshift/catalog" },
+        ],
+      },
+      {
+        topic: "Adapter: Snowflake",
+        slug: "snowflake",
+        repo: "tconbeer/harlequin-snowflake",
+        items: [
+          { title: "Snowflake Basic Usage", slug: "snowflake" },
+          { title: "Snowflake Authentication", slug: "snowflake/auth" },
         ],
       },
       {
@@ -130,6 +170,11 @@ export const docsMenu: DocsMenuItem[] = [
         title: "Adapter: Exasol",
         slug: "exasol",
         repo: "Nicoretti/harlequin-exasol",
+      },
+      {
+        title: "Adapter: H2",
+        slug: "h2",
+        repo: "clang-engineer/harlequin-h2",
       },
     ],
   },

@@ -7,6 +7,11 @@ import rehypeSlug from "rehype-slug";
 const mdsvexOptions = {
   extensions: [".md"],
   layout: "./src/mdsvex/docs.svelte",
+  // Curly quotes and ellipses, but `--` stays `--`: these pages are mostly
+  // about a command line, and smartypants turns a `--flag` that is not inside
+  // backticks into an em dash. That is silent, it is wrong, and the generated
+  // CLI reference is full of help text that mentions a flag in prose.
+  smartypants: { dashes: false },
   highlight: {
     highlighter: (code, lang) => {
       // Svelte trims whitespace at the edges of a component's children, which

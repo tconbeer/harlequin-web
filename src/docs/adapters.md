@@ -18,7 +18,9 @@ Core adapters are created and maintained by the maintainer of Harlequin, Ted Con
 
 - [DuckDB](/docs/duckdb)
 - [SQLite](/docs/sqlite)
-- [Postgres](/docs/postgres) (also supports Redshift)
+- [Postgres](/docs/postgres)
+- [Redshift](/docs/redshift) (Amazon Redshift and Redshift Serverless)
+- [Snowflake](/docs/snowflake)
 - [MySQL/MariaDB](/docs/mysql)
 - [ODBC](/docs/odbc) (supports MS SQL Server, Oracle, and others)
 
@@ -29,10 +31,11 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [BigQuery](/docs/bigquery), contributed by [Josh Temple](https://github.com/joshtemple)
 - [Trino](/docs/trino), contributed by [Tyler Hillery](https://github.com/TylerHillery)
 - [Databricks](/docs/databricks), contributed by [Zach Shirah](https://github.com/zashirah) and [Alex Malins](https://github.com/alexmalins)
-- [ADBC](/docs/adbc), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports Snowflake and more.
+- [ADBC](/docs/adbc), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports any database with an Arrow Database Connectivity driver.
 - [RisingWave](/docs/risingwave), contributed by [ZhengYu Xu](https://github.com/zen-xu)
 - [Wherobots](/docs/wherobots), contributed by [Wherobots](https://github.com/wherobots)
 - [Cassandra](/docs/cassandra), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
 - [NebulaGraph](/docs/nebulagraph), contributed by [Wey Gu](https://github.com/wey-gu)
 - [Exasol](/docs/exasol), contributed by [Nicola Coretti](https://github.com/Nicoretti)
+- [H2](/docs/h2), contributed by [clang-engineer](https://github.com/clang-engineer)
 - [Vertica](/docs/vertica), contributed by [clang-engineer](https://github.com/clang-engineer)
