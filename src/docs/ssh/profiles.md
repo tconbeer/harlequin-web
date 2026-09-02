@@ -22,18 +22,18 @@ A tunnel and the connection it carries belong together, so the SSH options are [
 When your ssh config already declares the forward, the profile names the local end of it and the destination to open it through:
 
 ```toml
-[profiles.redshift]
+[profiles.prod]
 adapter = "postgres"
 host = "localhost"
-port = 15439
+port = 15432
 dbname = "prod"
 user = "tco"
-ssh_host = "redshift_prod"
+ssh_host = "db_prod"
 ```
 
 ```bash
-harlequin -P redshift
-hsql -P redshift -c "select count(*) from orders"
+harlequin -P prod
+hsql -P prod -c "select count(*) from orders"
 ```
 
 ## Everything in the Profile
@@ -41,14 +41,14 @@ hsql -P redshift -c "select count(*) from orders"
 With no ssh config to rely on, spell the forward out. `ssh_forward` takes one spec or an array of them:
 
 ```toml
-[profiles.redshift]
+[profiles.prod]
 adapter = "postgres"
 host = "localhost"
-port = 15439
+port = 15432
 dbname = "prod"
 user = "tco"
 ssh_host = "tco@bastion.example.com"
-ssh_forward = ["15439:analytics.internal:5439"]
+ssh_forward = ["15432:db.internal:5432"]
 ssh_timeout = 30
 ```
 
@@ -62,7 +62,7 @@ harlequin --config
 
 ```output
 ? Do you connect via SSH? Yes
-? What SSH destination should this profile tunnel through? redshift_prod
+? What SSH destination should this profile tunnel through? db_prod
 ? What should it forward?
 ? Should ssh fail rather than prompt for a passphrase or password? No
 ? How many seconds should Harlequin wait for the forwards?
@@ -71,8 +71,8 @@ harlequin --config
 `hsql --config init` writes the same keys from the options you typed, without prompting:
 
 ```bash
-hsql --config init -P redshift -a postgres --host localhost --port 15439 \
-  --dbname prod --ssh-host redshift_prod
+hsql --config init -P prod -a postgres --host localhost --port 15432 \
+  --dbname prod --ssh-host db_prod
 ```
 
 ## Running Unattended
@@ -83,10 +83,10 @@ Set `ssh_batch_mode` in any profile a script, a cron job, CI, or an agent uses. 
 [profiles.agent]
 adapter = "postgres"
 host = "localhost"
-port = 15439
+port = 15432
 dbname = "prod"
 read_only = true
-ssh_host = "redshift_prod"
+ssh_host = "db_prod"
 ssh_batch_mode = true
 ```
 
@@ -98,7 +98,7 @@ A tunnel that will not open exits [`3`](/docs/hsql/exit-codes) — the same code
 
 <Note>
 
-`ssh_allow_reuse` is the one SSH option with no profile key. It turns off the check that the local port is not already someone else's, and config files are discovered in the working directory — so a file that set it could quietly point your queries at a listener you did not open. Pass `--ssh-allow-reuse` on the command line instead.
+Harlequin reads `ssh_allow_reuse` from the command line only. It turns off the check that the local port belongs to the tunnel Harlequin opened, and config files are discovered in the working directory — so a file that set it could quietly point your queries at someone else's listener. Pass `--ssh-allow-reuse` when you want it.
 
 </Note>
 
@@ -106,8 +106,8 @@ A tunnel that will not open exits [`3`](/docs/hsql/exit-codes) — the same code
 
 <Warning>
 
-**A profile whose host is `localhost` is only correct while its tunnel is up.** Run it with `ssh_host` removed — or as a second profile that forgot the key — and it connects to whatever is on that port on your own machine. Forward to an unusual local port, like `15439`, so that mistake is a connection refused instead of the wrong database.
+**A profile whose host is `localhost` is only correct while its tunnel is up.** Run it with `ssh_host` removed — or as a second profile that forgot the key — and it connects to whatever is on that port on your own machine. Forward to an unusual local port, like `15432`, so that mistake is a connection refused instead of the wrong database.
 
 </Warning>
 
-Harlequin's cached catalog and query history are keyed by the tunnel as well as by the connection details, so two bastions fronting two different databases on the same local port never share each other's catalogs.
+Harlequin's cached catalog and query history are keyed by the tunnel as well as by the connection details, so two bastions fronting two different databases on the same local port each keep their own.
