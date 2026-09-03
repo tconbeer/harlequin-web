@@ -188,9 +188,9 @@ export const docsMenu: DocsMenuItem[] = [
     slug: "ssh",
     items: [
       { title: "SSH Tunnels Overview", slug: "ssh" },
-      { title: "Opening a Tunnel", slug: "ssh/options" },
-      { title: "Tunnels in Profiles", slug: "ssh/profiles" },
-      { title: "When a Tunnel Fails", slug: "ssh/troubleshooting" },
+      { title: "SSH Configuration", slug: "ssh/config" },
+      { title: "SSH Security", slug: "ssh/security" },
+      { title: "Troubleshooting SSH", slug: "ssh/troubleshooting" },
     ],
   },
   {
