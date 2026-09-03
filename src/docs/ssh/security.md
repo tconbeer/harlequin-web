@@ -1,6 +1,6 @@
 ---
 title: SSH Security
-description: "The security model of Harlequin's SSH integration: what it accepts, what it refuses, and why a config file gets a smaller vocabulary than your ssh config."
+description: "The security model of Harlequin's SSH integration."
 ---
 
 <script>
@@ -8,11 +8,13 @@ description: "The security model of Harlequin's SSH integration: what it accepts
     import Warning from "$lib/components/warning.svelte"
 </script>
 
-Harlequin's SSH integration is small on purpose. It runs the `ssh` client you already have, hands it a destination and a forward, and leaves authentication, host keys, and everything else to `ssh` and to the config file you control.
+Harlequin's SSH integration is small on purpose. It runs the `ssh` client you already have, hands it a destination and a forward, and leaves authentication, host keys, and everything else to `ssh` and to the SSH config file you control.
 
-## Where the Values Come From
+## Trust and Config Files
 
-Harlequin discovers config files rather than requiring one: the current working directory first, then your user config directory, then your home directory — and a `pyproject.toml` with a `[tool.harlequin]` section counts. That is convenient, and it is also the reason for the rules on this page: **a profile can arrive with a repository you cloned**, so a `ssh_host` or `ssh_forward` is not necessarily a value its user typed.
+Harlequin discovers profiles in several places, including the current working directory. This means that a profile can arrive with a repository that you cloned, a folder you downloaded from the internet, or another source that you may not trust.
+
+That presents a security concern for SSH configuration, which can define arbitrary shell commands that will execute on both your local and remote machines. Accordingly, a Harlequin profile may only specify a subset of the full SSH configuration, and it may not specify a custom SSH config file location.
 
 ## What Harlequin Accepts
 
@@ -24,30 +26,23 @@ Harlequin discovers config files rather than requiring one: the current working 
 | `--ssh-allow-reuse` | A boolean, from the command line only            |
 | `--ssh-timeout`     | A number of seconds                              |
 
-A destination, a forward spec, a boolean, and a number. Everything else about the connection comes from your `~/.ssh/config`, which `ssh` reads exactly as it does when you run `ssh` yourself.
+## What Harlequin Refuses in Profiles
 
-## What Harlequin Refuses
+| Refused                                                 | Why                                                                         |
+| ------------------------------------------------------- | --------------------------------------------------------------------------- |
+| A destination or forward starting with `-`              | `ssh` would read it as an option                                            |
+| Shell metacharacters in a destination or forward        | A `ProxyCommand` expands them into a shell (CVE-2023-51385, CVE-2025-61984) |
+| Other `ssh` options (`ssh -o KEY=VALUE`)                | Several of them name a command for `ssh` to run                             |
+| A custom SSH config file location (`ssh -F`)            | The file it names can do the same                                           |
+| Remote forwards (`ssh -R`) and SOCKS proxies (`ssh -D`) | A database tunnel needs only a local forward                                |
+| `ssh_allow_reuse` in a profile                          | Accepting someone else's listener stays a command-line decision             |
+| A tunnel with no `ssh_host`                             | The connection would run past the forward to whatever answers locally       |
 
-| Refused                                          | Why                                                                                                                                           |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| A destination or forward starting with `-`       | `ssh` has no `--`, so such a value would reach it as an option rather than as a value                                                         |
-| Shell metacharacters in a destination or forward | A destination reaches your ssh config as `%h`, `%r` and `%p`, where a `ProxyCommand` runs it through a shell (CVE-2023-51385, CVE-2025-61984) |
-| `ssh_allow_reuse` in a config file               | It turns off the check that the local port belongs to the tunnel Harlequin opened, so it stays a deliberate act at the command line           |
-| An SSH tunnel described with no `ssh_host`       | The connection would run past the forward to whatever answers locally                                                                         |
+A `ProxyCommand`, `LocalCommand`, or `KnownHostsCommand` in your own SSH config file is unaffected, and always was.
 
-The characters refused inside a destination or a forward spec are the ones a shell acts on: whitespace and control characters, `` ` ``, `$`, `\`, `"`, `'`, `|`, `&`, `;`, `<`, `>`, `(`, `)`, `{`, and `}`. A hostname, a `Host` alias, and a `LOCAL:HOST:REMOTE` forward have no use for any of them.
+## Forwards
 
-## ssh Options Stay in Your ssh Config
-
-Every other `ssh` option reaches the connection through your ssh config. Passing `-o KEY=VALUE` through Harlequin, or naming an alternate config file the way `ssh -F` does, would let a discovered config file set `ProxyCommand`, `LocalCommand`, or `KnownHostsCommand` — which is to say, run a command of its choosing on your machine. A deny list of such keywords would have to be revisited with every OpenSSH release, and a miss would be a hole; a vocabulary of four value types has nothing to deny.
-
-A `ProxyCommand` in your own `~/.ssh/config` is unaffected, and always was.
-
-## Forwards Are Local Forwards
-
-`--ssh-forward` becomes `ssh -L`, and that is the whole of it: remote forwards (`ssh -R`) and SOCKS proxies (`ssh -D`) are outside Harlequin's vocabulary. A forward whose local end is a Unix socket path is passed through to `ssh` like any other, but Harlequin polls TCP ports to know a tunnel is ready, so it connects without waiting on a socket path.
-
-Harlequin always adds `ExitOnForwardFailure=yes`, so a run never continues without the forward it asked for.
+Harlequin always adds `ExitOnForwardFailure=yes`, so a run never continues without the forward it asked for. A forward whose local end is a Unix socket path is passed through to `ssh` like any other, but Harlequin polls TCP ports to know a tunnel is ready, so it connects without waiting on a socket path.
 
 <Warning>
 

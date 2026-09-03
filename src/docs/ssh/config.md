@@ -47,10 +47,11 @@ Host db_prod
   LocalForward 15432 db.internal:5432
 ```
 
-Now we can invoke Harlequin with only the `--ssh-host` option, where we pass the alias of the Host to find in the SSH config file:
+Now we can invoke Harlequin with only the `--ssh-host` option, where we pass the alias of the Host defined in the SSH config file:
 
 ```bash
-harlequin -a postgres --host localhost --port 15432 --dbname analytics --ssh-host db_prod
+harlequin -a postgres --host localhost --port 15432 --dbname analytics \
+  --ssh-host db_prod
 ```
 
 <Tip>
@@ -73,13 +74,15 @@ user = "my_db_username"
 ssh_host = "db_prod"
 ```
 
+Now invoking Harlequin with the profile option will automatically open the SSH tunnel:
+
 ```bash
 harlequin -P prod
 ```
 
 ## More Complex SSH Configurations
 
-Since Harlequin's SSH configurations live on the command line or in a profile, they are intentionally limited, and only describe a subset of all SSH configurations. However, Harlequin can support arbitrarily complex SSH configurations; you just have to define the Host in an SSH config file:
+Since Harlequin's SSH configurations live on the command line or in a profile, they are [intentionally limited](/docs/ssh/security), and only describe a subset of all SSH configurations. However, Harlequin can support arbitrarily complex SSH configurations; you just have to define the Host in an SSH config file:
 
 ```
 Host db_prod
@@ -96,7 +99,7 @@ Match host bastion.example.com exec "nc -z -w1 vpn.internal 443"
   ProxyJump none
 ```
 
-This config is quite complex: a jump host in front of the bastion, an identity agent, custom keepalives, two forwards on one connection, and a `Match` block that skips the jump when it isn't required. However, this works just fine with Harlequin. Both forwards are opened by the same tunnel, so two profiles can name the same Host and connect to different databases through it:
+This config is quite complex: a jump host in front of the bastion, an identity agent, custom keepalives, two forwards on one connection, and a `Match` block that skips the jump when it isn't required. However, this works just fine with Harlequin. Both forwards are opened by the same tunnel, so two profiles can name the same Host and connect to different databases through it (note the different ports):
 
 ```toml
 [profiles.prod]
@@ -120,7 +123,7 @@ ssh_host = "db_prod"
 
 By default, if the local port requested by Harlequin is already bound, then Harlequin and hsql will exit with an error.
 
-When invoked with `--ssh-allow-reuse`, Harlequin will print a warning and then use the existing tunnel to connect to the database:
+When invoked with `--ssh-allow-reuse`, both programs will print a warning and then use the existing tunnel to connect to the database:
 
 ```output
 note: ssh: localhost:15432 is already bound; connecting through the existing listener (--ssh-allow-reuse)

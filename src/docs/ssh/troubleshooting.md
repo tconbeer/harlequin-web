@@ -3,14 +3,7 @@ title: Troubleshooting SSH
 description: "More information on SSH errors and how to fix them."
 ---
 
-<script>
-    import Key from "$lib/components/key.svelte"
-    import Note from "$lib/components/note.svelte"
-</script>
-
-A tunnel is a chain: your computer runs an `ssh` client, the client authenticates to the bastion, the bastion opens a forward back to a port on your machine, and Harlequin connects to that port to reach the database on the private network. Each link fails in its own way, and the message usually says which one gave out. Work through them in order.
-
-Harlequin passes `ssh`'s own diagnostics through as they arrive, so most of what you see is written by `ssh` itself.
+A tunnel is a chain: your computer runs an `ssh` client, the client authenticates to the bastion, the bastion opens a forward back to a port on your machine, and Harlequin connects to that port to reach the database on the private network. This page describes each link in the chain and how it might fail.
 
 ## The ssh Client on Your Computer
 
@@ -35,7 +28,7 @@ Install an OpenSSH client — on Windows, "OpenSSH Client" is an optional featur
 
 ## Authenticating to the SSH Host
 
-`ssh` runs before the IDE takes over the terminal, so a prompt reaches you and you can answer it. When nobody answers, the wait ends at `--ssh-timeout`:
+The SSH client may prompt you for authentication details before it can open a tunnel. Harlequin will wait for you to respond, but will time out if the SSH tunnel is not opened:
 
 ```output
 ssh did not open the forward within 60s. It is most likely waiting for a
@@ -43,16 +36,16 @@ passphrase, a password, or confirmation of a host key; answer it, or pass
 --ssh-batch-mode to fail immediately instead of waiting.
 ```
 
-An outright refusal looks like this — the first line is `ssh`'s, the second is Harlequin's:
+On the other hand, if authentication details are provided but incorrect, you will see a different error from `ssh`:
 
 ```output
 my_ssh_username@bastion.example.com: Permission denied (publickey).
 hsql: error: ssh exited with code 255 without opening the forward.
 ```
 
-Either way, the fix is to make the connection work by hand first: run `ssh -N db_prod` in a terminal, answer whatever it asks, and confirm the host key. Then add the key to your agent so the next run needs no answer, and add [`--ssh-batch-mode`](/docs/hsql/safety#ssh-batch-mode) to anything unattended, so a missing credential fails immediately and names itself instead of waiting.
+When troubleshooting SSH authentication, it may be easier to run `ssh` directly, e.g. `ssh -fN db_prod`.
 
-If your login genuinely takes a while — an identity provider that opens a browser, or a hardware key you have to reach for — raise `--ssh-timeout` rather than lowering it.
+If your login genuinely takes a while — an identity provider that opens a browser, or a hardware key you have to reach for — raise `--ssh-timeout`.
 
 ## Opening the Local End of the Tunnel
 
@@ -108,14 +101,6 @@ A reconnect is a **new session**, and Harlequin says so:
 The tunnel dropped and has been reopened, so this is a new session: an open
 transaction, a temp table, and anything set with SET went with the old one.
 ```
-
-<Note>
-
-Refresh the Data Catalog with <Key>ctrl+r</Key> after a reconnect. Catalog items that have not been expanded yet still hold the connection that died with the old tunnel, so expanding one can fail with a Catalog Error until the tree is rebuilt.
-
-</Note>
-
-hsql runs one short session, and its statements are not idempotent — so a lost tunnel ends the run and reports it, leaving the decision to retry with you.
 
 ## One More Warning You May See
 
