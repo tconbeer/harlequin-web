@@ -184,6 +184,16 @@ export const docsMenu: DocsMenuItem[] = [
     ],
   },
   {
+    topic: "SSH Tunnels",
+    slug: "ssh",
+    items: [
+      { title: "SSH Tunnels Overview", slug: "ssh" },
+      { title: "SSH Configuration", slug: "ssh/config" },
+      { title: "SSH Security", slug: "ssh/security" },
+      { title: "Troubleshooting SSH", slug: "ssh/troubleshooting" },
+    ],
+  },
+  {
     topic: "Viewing Files",
     slug: "files",
     items: [

@@ -106,10 +106,17 @@ installation rather than a broken config; see
 
 </Note>
 
+## SSH Batch Mode
+
+When connecting through [an SSH tunnel](/docs/ssh), it is important that the SSH
+client does not use an interactive prompt for, e.g., a password. Harlequin
+accepts an `--ssh-batch-mode` flag that ensures the SSH connection will fail
+rather than prompting.
+
 ## A Profile for Automation
 
-`read_only`, `timeout` and `limit` are [profile keys](/docs/config-file), so no
-invocation has to remember them:
+`read_only`, `timeout` and `limit` are [profile keys](/docs/config-file), as are
+the SSH options, so no invocation has to remember them:
 
 ```toml
 [profiles.agent]
@@ -119,6 +126,8 @@ password = "$&lbrace;PGPASSWORD&rbrace;"
 read_only = true
 timeout = 30
 limit = -1
+ssh_host = "db_prod"
+ssh_batch_mode = true
 ```
 
 ```bash
