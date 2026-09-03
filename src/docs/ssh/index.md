@@ -70,7 +70,7 @@ ssh_host = "db_prod"
 
 ## What Happens When You Connect
 
-1. When you run Harlequin or hsql with an `--ssh-host` option, it will attempt to establish the SSH tunnel before starting. `ssh` may prompt you for a password, 2FA, etc. (Pass [`--ssh-batch-mode`](/docs/ssh/config) to fail instead of prompting.)
+1. When you run Harlequin or hsql with an `--ssh-host` option, it will attempt to establish the SSH tunnel before starting. `ssh` may prompt you for a password, 2FA, etc. (Pass [`--ssh-batch-mode`](/docs/hsql/safety#ssh-batch-mode) to fail instead of prompting.)
 2. If the tunnel is opened successfully, Harlequin will attempt to connect to your database through the tunnel. If it succeeds, you will be shown a notification that the tunnel is open and the database is connected.
 3. Harlequin keeps the SSH connection alive, and will attempt to reconnect if it fails.
 4. When you quit Harlequin, it closes the tunnel during shutdown.

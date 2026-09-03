@@ -106,10 +106,17 @@ installation rather than a broken config; see
 
 </Note>
 
+## SSH Batch Mode
+
+When connecting through [an SSH tunnel](/docs/ssh), it is important that the SSH
+client does not use an interactive prompt for, e.g., a password. Harlequin
+accepts an `--ssh-batch-mode` flag that ensures the SSH connection will fail
+rather than prompting.
+
 ## A Profile for Automation
 
-`read_only`, `timeout` and `limit` are [profile keys](/docs/config-file), so no
-invocation has to remember them:
+`read_only`, `timeout` and `limit` are [profile keys](/docs/config-file), as are
+the SSH options, so no invocation has to remember them:
 
 ```toml
 [profiles.agent]
@@ -119,38 +126,10 @@ password = "$&lbrace;PGPASSWORD&rbrace;"
 read_only = true
 timeout = 30
 limit = -1
+ssh_host = "db_prod"
+ssh_batch_mode = true
 ```
 
 ```bash
 hsql -P agent -tAc "select count(*) from orders"
 ```
-
-## Reaching a Database Through SSH
-
-When the database is only reachable through [an SSH tunnel](/docs/ssh), the
-tunnel belongs in the same profile, and unattended runs want one more key with
-it:
-
-```toml
-[profiles.agent]
-adapter = "postgres"
-host = "localhost"
-port = 15432
-dbname = "analytics"
-read_only = true
-timeout = 30
-ssh_host = "db_prod"
-ssh_batch_mode = true
-```
-
-`ssh_batch_mode` (`--ssh-batch-mode` on the command line) is ssh's own
-`BatchMode`: it fails immediately, naming the credential it wanted, rather than
-prompting for a passphrase, a password, or confirmation of a host key. Set it in
-anything a person is not watching — a script, a cron job, CI, an agent —
-because otherwise such a run waits out `ssh_timeout`, 60 seconds by default, at
-a prompt nobody can see, and then reports a timeout instead of the real problem.
-
-Make sure the credential is one `ssh` can use without a human: an agent the job
-can reach, or an unencrypted key file with the right permissions. A tunnel that
-will not open exits [`3`](/docs/hsql/exit-codes), like any other database hsql
-could not reach.

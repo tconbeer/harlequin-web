@@ -50,7 +50,7 @@ my_ssh_username@bastion.example.com: Permission denied (publickey).
 hsql: error: ssh exited with code 255 without opening the forward.
 ```
 
-Either way, the fix is to make the connection work by hand first: run `ssh -N db_prod` in a terminal, answer whatever it asks, and confirm the host key. Then add the key to your agent so the next run needs no answer, and add [`--ssh-batch-mode`](/docs/ssh/config) to anything unattended, so a missing credential fails immediately and names itself instead of waiting.
+Either way, the fix is to make the connection work by hand first: run `ssh -N db_prod` in a terminal, answer whatever it asks, and confirm the host key. Then add the key to your agent so the next run needs no answer, and add [`--ssh-batch-mode`](/docs/hsql/safety#ssh-batch-mode) to anything unattended, so a missing credential fails immediately and names itself instead of waiting.
 
 If your login genuinely takes a while — an identity provider that opens a browser, or a hardware key you have to reach for — raise `--ssh-timeout` rather than lowering it.
 
@@ -65,7 +65,7 @@ different local port, or pass --ssh-allow-reuse to connect through the
 listener that already has it.
 ```
 
-Usually that is an `ssh -fN` you started earlier, or another Harlequin. All three suggestions work; [`--ssh-allow-reuse`](/docs/ssh/config) is the one for when the listener that has it is the tunnel you wanted anyway.
+Usually that is an `ssh -fN` you started earlier, or another Harlequin. All three suggestions work; [`--ssh-allow-reuse`](/docs/ssh/config#reusing-an-open-ssh-tunnel) is the one for when the listener that has it is the tunnel you wanted anyway.
 
 A tunnel that forwards nothing is refused before `ssh` runs, because the connection would go straight past it:
 

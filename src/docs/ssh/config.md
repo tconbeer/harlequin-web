@@ -1,19 +1,17 @@
 ---
 title: SSH Configuration
-description: "Four worked examples, from a tunnel spelled entirely on the command line to one only your ssh config can express."
+description: "How to configure both simple and complex SSH tunnels with Harlequin."
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
+    import Tip from "$lib/components/tip.svelte"
 </script>
 
-To open a tunnel, Harlequin needs two things: an SSH destination, and a local forward. You can give it both on the command line, or let your `~/.ssh/config` supply either or both.
+To open a tunnel, Harlequin needs two things: an SSH destination (the address of the SSH server, or bastion), and instructions for the bastion on how to forward connections (what is known as a local forward). You can configure these elements directly in Harlequin, or Harlequin can use configurations found in your SSH config file.
 
-The four examples below build on each other, and all of them connect to the same Postgres database behind the same bastion — the one in the [overview](/docs/ssh).
+## Configuring an SSH Tunnel with CLI Options
 
-## 1. Everything on the Command Line
-
-With no ssh config to rely on, two options describe the whole tunnel:
+A simple tunnel can be configured with just two Harlequin options:
 
 ```bash
 harlequin -a postgres --host localhost --port 15432 --dbname analytics \
@@ -21,11 +19,11 @@ harlequin -a postgres --host localhost --port 15432 --dbname analytics \
   --ssh-forward 15432:db.internal:5432
 ```
 
-`--ssh-host` is the SSH destination, and Harlequin hands it to `ssh` the way you typed it: a hostname, `user@host`, `ssh://user@host:port`, or a `Host` alias like the one in the next example.
+The first options specify the Postgres adapter, connecting to the local end of the SSH tunnel, with `--host localhost` and `--port 15432`.
 
-`--ssh-forward` is spelled the way `ssh -L` takes a local forward — `LOCAL:HOST:REMOTE`. Here that means "listen on port 15432 on this machine, and deliver to `db.internal:5432`," where `db.internal` is resolved by the bastion rather than by your computer. Repeat the option for a second forward.
+`--ssh-host` defines the SSH destination. Harlequin accepts any of the forms used by `ssh`: a hostname, `user@host`, `ssh://user@host:port`, or the alias of a Host defined in an SSH config file.
 
-The rest of the command line is the ordinary Postgres connection, pointed at the local end of the tunnel: `localhost`, port `15432`.
+`--ssh-forward` defines the local forward of the tunnel. It accepts the form that ssh's `-L` option takes: `LOCAL:HOST:REMOTE`. In the example above, `15432:db.internal:5432`, connections on port 15432 on your laptop will be forwarded to `db.internal` on port 5432 (as resolved by the bastion). You can repeat this option to define a second forward.
 
 hsql takes the same options:
 
@@ -36,9 +34,11 @@ hsql -a postgres --host localhost --port 15432 --dbname analytics \
   -c "select count(*) from orders"
 ```
 
-## 2. The Tunnel in Your ssh Config
+## Using an SSH Config File
 
-The same tunnel, moved into `~/.ssh/config`. `LocalForward 15432 db.internal:5432` is the same directive as `--ssh-forward 15432:db.internal:5432`, written with a space instead of a colon:
+By default, `ssh` looks for a config file in your user's `.ssh` directory: `~/.ssh/config`, or `%USERPROFILE%\.ssh\config` on Windows.
+
+We can define the same SSH destination and local forward as the example above by defining a Host in an SSH config file:
 
 ```
 Host db_prod
@@ -47,17 +47,21 @@ Host db_prod
   LocalForward 15432 db.internal:5432
 ```
 
-Harlequin now needs only the alias, and finds the forward where `ssh` finds it:
+Now we can invoke Harlequin with only the `--ssh-host` option, where we pass the alias of the Host to find in the SSH config file:
 
 ```bash
 harlequin -a postgres --host localhost --port 15432 --dbname analytics --ssh-host db_prod
 ```
 
-This is the setup we recommend. The `Host` block is read by everything else that speaks SSH — `ssh`, `scp`, `rsync`, your editor's remote tooling — so the tunnel is described once, in the place those tools already look.
+<Tip>
 
-## 3. The Tunnel in a Profile
+Defining a Host in an SSH config file allows it to be found by all programs that integrate with SSH, like `ssh`, `scp`, and `rsync`.
 
-The connection details are still on the command line in both examples above. A [profile](/docs/config-file) holds all of it, and the SSH options are profile keys like any other:
+</Tip>
+
+## Using a Harlequin Profile
+
+Above we defined both the connection parameters and the SSH host on the command line. However, it is usually more convenient to create a [profile](/docs/config-file) that can automatically load this configuration:
 
 ```toml
 [profiles.prod]
@@ -71,69 +75,17 @@ ssh_host = "db_prod"
 
 ```bash
 harlequin -P prod
-hsql -P prod -c "select count(*) from orders"
 ```
 
-Each SSH option has a profile key of the same name, spelled with underscores:
+## More Complex SSH Configurations
 
-| Option                  | Profile key      | What it does                                                                |
-| ----------------------- | ---------------- | --------------------------------------------------------------------------- |
-| `--ssh-host TEXT`       | `ssh_host`       | The SSH destination. Setting it is what opens a tunnel.                     |
-| `--ssh-forward TEXT`    | `ssh_forward`    | A local forward, as `ssh -L` spells one. Repeatable.                        |
-| `--ssh-batch-mode`      | `ssh_batch_mode` | Fail rather than prompt for a passphrase, password, or host key.            |
-| `--ssh-timeout SECONDS` | `ssh_timeout`    | How long to wait for the forwards to start answering. Default `60` seconds. |
-
-`ssh_forward` takes one spec or an array of them, so a profile can describe the whole tunnel the way example 1 does:
-
-```toml
-[profiles.prod]
-adapter = "postgres"
-host = "localhost"
-port = 15432
-dbname = "analytics"
-user = "my_db_username"
-ssh_host = "my_ssh_username@bastion.example.com"
-ssh_forward = ["15432:db.internal:5432"]
-ssh_timeout = 30
-```
-
-The [config wizard](/docs/config-file/creating-config) asks about the tunnel while it builds the profile:
-
-```bash
-harlequin --config
-```
-
-```output
-? Do you connect via SSH? Yes
-? What SSH destination should this profile tunnel through? db_prod
-? What should it forward?
-? Should ssh fail rather than prompt for a passphrase or password? No
-? How many seconds should Harlequin wait for the forwards?
-```
-
-`hsql --config init` writes the same keys from the options you typed, without prompting:
-
-```bash
-hsql --config init -P prod -a postgres --host localhost --port 15432 \
-  --dbname analytics --ssh-host db_prod
-```
-
-<Warning>
-
-**A profile whose host is `localhost` is only correct while its tunnel is up.** Run it with `ssh_host` removed — or as a second profile that forgot the key — and it connects to whatever is on that port on your own machine. Forward to an unusual local port, like `15432`, so that mistake is a connection refused instead of the wrong database.
-
-</Warning>
-
-## 4. What Only Your ssh Config Can Express
-
-Harlequin's options describe a destination and a forward, which is the common case. Everything else about the connection is `ssh_config`'s to say — and Harlequin gets all of it, because it runs the `ssh` client you already have:
+Since Harlequin's SSH configurations live on the command line or in a profile, they are intentionally limited, and only describe a subset of all SSH configurations. However, Harlequin can support arbitrarily complex SSH configurations; you just have to define the Host in an SSH config file:
 
 ```
 Host db_prod
   HostName bastion.example.com
   User my_ssh_username
   Port 2222
-  IdentityFile ~/.ssh/id_ed25519_work
   IdentityAgent ~/.1password-agent.sock
   ProxyJump jump.example.com
   ServerAliveInterval 60
@@ -144,18 +96,34 @@ Match host bastion.example.com exec "nc -z -w1 vpn.internal 443"
   ProxyJump none
 ```
 
-A jump host in front of the bastion, a key held in a hardware token or a password manager's agent, an SSH certificate, keepalives tuned for your network, two forwards on one connection, a `Match` block that skips the jump when you are already on the VPN: `ssh` handles all of it, and Harlequin still needs only `--ssh-host db_prod`. Point a second profile at `localhost:16432` and it reaches the replica through the same tunnel.
+This config is quite complex: a jump host in front of the bastion, an identity agent, custom keepalives, two forwards on one connection, and a `Match` block that skips the jump when it isn't required. However, this works just fine with Harlequin. Both forwards are opened by the same tunnel, so two profiles can name the same Host and connect to different databases through it:
 
-This split is deliberate. Harlequin accepts a destination, a forward spec, a boolean, and a number; anything richer belongs to the file you control, for the reasons on [SSH Security](/docs/ssh/security).
+```toml
+[profiles.prod]
+adapter = "postgres"
+host = "localhost"
+port = 15432
+dbname = "analytics"
+user = "my_db_username"
+ssh_host = "db_prod"
 
-## Reusing a Listener That Is Already There
+[profiles.replica]
+adapter = "postgres"
+host = "localhost"
+port = 16432
+dbname = "analytics"
+user = "my_db_username"
+ssh_host = "db_prod"
+```
 
-By default, a local port that is already bound is an error: `ssh` exits rather than connecting without its forward, and Harlequin quotes it. That is the safe direction, because a port that answers might belong to any listener at all.
+## Reusing an Open SSH Tunnel
 
-`--ssh-allow-reuse` says to connect anyway, as long as _every_ forwarded port is answering:
+By default, if the local port requested by Harlequin is already bound, then Harlequin and hsql will exit with an error.
+
+When invoked with `--ssh-allow-reuse`, Harlequin will print a warning and then use the existing tunnel to connect to the database:
 
 ```output
 note: ssh: localhost:15432 is already bound; connecting through the existing listener (--ssh-allow-reuse)
 ```
 
-It is for the person who keeps `ssh -fN db_prod` running all day and would rather Harlequin used that tunnel than fought it. Harlequin reads this option from the command line only, and never from a config file — see [SSH Security](/docs/ssh/security).
+This option helps Harlequin play nicely with other dev tools, which might already have a tunnel open to the same database (e.g. with `ssh -fN db_prod`). However, reusing an existing tunnel runs the risk of exposing database connection secrets to a different, unintended listener. To help protect your connection secrets, this option must be passed on the command line, and will not be read from a Harlequin profile.
