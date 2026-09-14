@@ -129,6 +129,25 @@ describe("every description", () => {
   );
 });
 
+describe("every page, as the route imports it", () => {
+  // Two readers, one frontmatter block. `docs.ts` splits it with a regex, and
+  // the route renders `metadata.title` off mdsvex's YAML parse. A value YAML
+  // rejects — a description opening with a backtick, which is a reserved
+  // indicator — leaves the corpus above intact and makes the page itself a 500,
+  // so nothing here catches it except reading the page the way the route does.
+  const modules = import.meta.glob<{ metadata?: { title?: string } }>(
+    "/src/docs/**/*.md",
+  );
+
+  it.each(Object.keys(modules))(
+    "%s has parseable frontmatter",
+    async (path) => {
+      const { metadata } = await modules[path]();
+      expect(metadata?.title, path).toBeTruthy();
+    },
+  );
+});
+
 describe("links between pages", () => {
   const slugs = new Set(corpus.map((page) => page.slug));
 
