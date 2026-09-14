@@ -14,7 +14,7 @@ information on hsql and its features, keep reading.
 
 | Page                                            | What it covers                                                 |
 | ----------------------------------------------- | -------------------------------------------------------------- |
-| [Exit Codes and Streams](/docs/hsql/exit-codes) | The six codes, stdout and stderr, `--stats`, `--on-error`      |
+| [Exit Codes and Streams](/docs/hsql/exit-codes) | The seven codes, stdout and stderr, `--stats`, `--on-error`    |
 | [Exploring the Catalog](/docs/hsql/catalog)     | `--catalog`, `--path`, `--catalog-search`                      |
 | [Formats and Layouts](/docs/hsql/formats)       | Every format, the layout switches, `-o`, `--result`            |
 | [Config Modes](/docs/hsql/config)               | `--config list-profiles`, `show`, `validate`, `schema`, `init` |

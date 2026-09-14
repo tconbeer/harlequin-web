@@ -1,6 +1,6 @@
 ---
 title: Exit Codes and Streams
-description: hsql's six exit codes, what it writes to stdout and stderr, the --stats summary, and what --on-error does after a statement fails.
+description: hsql's seven exit codes, what it writes to stdout and stderr, the --stats summary, and what --on-error does after a statement fails.
 ---
 
 <script>
@@ -20,12 +20,19 @@ non-zero — so read the code before the output.
 | `2`   | A bad flag, a bad profile, or a config file hsql could not read. |
 | `3`   | hsql could not connect.                                          |
 | `4`   | `--timeout` ran out, and hsql stopped the run.                   |
+| `70`  | hsql hit a bug in itself and wrote a crash report.               |
 | `130` | Interrupted.                                                     |
 
 A `2` means hsql never opened a connection. It covers a flag that does not
 exist, a `-P` naming a profile no file defines, an unset `${VAR}` in a config
 file, and a single-result format asked to print three result sets. A `1` means
 the connection was fine and the database said no.
+
+A `70` is a bug in hsql itself rather than anything about your query — it sits
+far from the other codes so a script can tell the two apart. hsql writes a crash
+report to disk and names the file on stderr; please [report
+it](https://github.com/tconbeer/harlequin/issues/new?template=crash_report.md)
+with that file attached.
 
 ```bash
 if ! hsql -P prod --read-only -c "select 1" --format none; then
