@@ -16,7 +16,7 @@ hsql --skill -o ~/.claude/skills/hsql/
 ```
 
 ```output
-note: wrote 5 files to /home/user/.claude/skills/hsql: SKILL.md, references/config.md, references/queries.md, references/scripting.md, references/troubleshooting.md
+note: wrote 6 files to /home/user/.claude/skills/hsql: SKILL.md, references/config.md, references/queries.md, references/scripting.md, references/sessions.md, references/troubleshooting.md
 ```
 
 ## What It Says
@@ -32,8 +32,8 @@ Ten short sections of standing guidance:
    `--path`, `--catalog-search`, and the `query_name` column rather than an
    identifier quoted by hand.
 4. **Run it** — `-c` and `-f`, `--result`, `--on-error`.
-5. **A [session](/docs/hsql/sessions) may already be open** — what `HSQL_SESSION`
-   changes about an invocation, and why not to start one unasked.
+5. **Consider a [warm session](/docs/hsql/sessions)** — when many invocations
+   should share one connection, and why to suggest one rather than start it.
 6. **Pick a [format](/docs/hsql/formats) on purpose** — `-tAc` for one value,
    `--csv` for a pipe, `--markdown` for a reply, parquet for anything large.
 7. **[The row limit](/docs/hsql/safety) is real** — 500 by default; read
@@ -45,8 +45,8 @@ Ten short sections of standing guidance:
 10. **Know when to hand off** — anything destructive, or anything a human will
     want to iterate on: `harlequin -P <profile>`.
 
-Four reference files sit beside it, read when the job calls for one:
-`queries.md`, `config.md`, `scripting.md` and `troubleshooting.md`.
+Five reference files sit beside it, read when the job calls for one:
+`queries.md`, `config.md`, `scripting.md`, `sessions.md` and `troubleshooting.md`.
 
 <Note>
 
