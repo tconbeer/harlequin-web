@@ -1,6 +1,6 @@
 ---
 title: Warm Sessions
-description: hsql --serve holds one connection open as a named session and --session sends invocations to it — what a session remembers, and how to keep one safe.
+description: `--serve` and `--session` (the hsql server)
 ---
 
 <script>
@@ -9,14 +9,19 @@ description: hsql --serve holds one connection open as a named session and --ses
     import Warning from "$lib/components/warning.svelte"
 </script>
 
-A warm session is not "hsql, but faster." It is **a database session you can
-send commands to**: one connection, held open, running the invocations you send
-it. Temp tables, settings and transactions live in that session the way they
-live in a psql prompt, and the next invocation sees them.
+In its default mode, hsql keeps nothing between invocations: each one starts a
+process, connects, runs its SQL and exits, so the connection it opened and
+whatever it did with it go with it. The hsql server closes that gap. `--serve`
+holds one connection open as **a named database session you send commands to**,
+and `--session` is an invocation that runs inside it — the speed and the
+single-session behavior of an interactive CLI, through the same interface a
+script or an agent already drives.
 
-The speed is a consequence. A served invocation answers in a few milliseconds,
-because Python, the adapter and the connection are already up; a cold one pays
-for all three, every time.
+A served invocation answers in a few milliseconds, because Python, the adapter
+and the connection are already up; a cold one pays for all three, every time.
+And because it is one connection, temp tables, settings and transactions live in
+the session the way they live in a psql prompt, where the next invocation finds
+them.
 
 <Note>
 
