@@ -14,7 +14,7 @@ creates a fresh database connection. For repeated invocations, this can
 be unnecessarily slow, and prevents more complex explorations using an open
 session, like creating and querying temp tables.
 
-`hsql --serve my_session -P dev` holds one connection open instead, and 
+`hsql --serve my_session -P dev` holds one connection open instead, and
 `hsql --session my_session -c "..."` sends queries to it, so queries can
 return in milliseconds, and temp tables and settings survive from one to the next.
 
@@ -47,7 +47,7 @@ note: request 2: exit 0 in 167ms
 note: session 'dev' stopped after 2 requests.
 ```
 
-`--serve` starts a simple foreground process, which you can background with `&` or manage with a service manager like systemd (as a *user* unit, since hsql uses a socket linked to your user).
+`--serve` starts a simple foreground process, which you can background with `&` or manage with a service manager like systemd (as a _user_ unit, since hsql uses a socket linked to your user).
 
 ## Executing Queries
 
@@ -102,7 +102,6 @@ stateful:
   that won't be automatically closed; this can cause the server to hold
   locks until the session is reset or the server is shut down.
 
-
 ## Resetting and Inspecting
 
 `--session-reset` closes the database connection and opens a fresh one, effectively
@@ -150,18 +149,18 @@ hsql --session dev --read-only -c "select 1"
 hsql: error: --read-only is a connection option. The session named 'dev' was started without it, and its connection is fixed. Drop it here, or start a session with it: 'hsql --serve NAME --read-only ...'.
 ```
 
-`-P` and `--config-path` are special meta-options: they determine where config values 
+`-P` and `--config-path` are special meta-options: they determine where config values
 are loaded from, so they can be used with either `--serve` or `--session`. When used with
 `--session`, profiles that contradict `--serve` options may be refused.
 
 ## Queuing
 
-A session has one database connection, so it runs one query at a time; a second 
+A session has one database connection, so it runs one query at a time; a second
 invocation with `--session` is queued behind the first if necessary.
 `--queue-timeout SECONDS` on `--serve` bounds that wait, and a request
 that times out exits [`4`](/docs/hsql/exit-codes).
 
-`Ctrl-C` from the `--session` (client) invocation cancels a request, whether it had 
+`Ctrl-C` from the `--session` (client) invocation cancels a request, whether it had
 started or was still queued, and hsql exits `130` as it does cold. Where the adapter
 [cannot cancel a query](/docs/hsql/safety), hsql prints a warning on stderr that the query
 is still running and still holding the session; `--session-status` can provide more
@@ -185,7 +184,7 @@ but `--max-lifetime` can stop a queued query from executing.
 A session holds an authenticated database connection (and an [SSH tunnel](/docs/ssh), if
 it opened one) for as long as it runs, so it has additional security-related safeguards:
 
-- A session's command line is readable in `ps` by every process on the machine for as 
+- A session's command line is readable in `ps` by every process on the machine for as
   long as the session runs, so hsql warns when a secret is passed in via a command-line
   option (instead of via a profile).
 - The socket lives in a private, `0700` directory owned by the invoking user,
