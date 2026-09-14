@@ -1,6 +1,6 @@
 ---
 title: Warm Sessions
-description: `--serve` and `--session` (the hsql server)
+description: "`--serve` and `--session` (the hsql server)"
 ---
 
 <script>
