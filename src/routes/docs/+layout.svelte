@@ -1,6 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { page } from "$app/state";
+  import AnnouncementBanner from "$lib/components/announcement_banner.svelte";
   import chevron from "$lib/assets/icons/icons8-chevron-50.png";
   import DocsSearch from "$lib/components/docs_search.svelte";
   import {
@@ -103,6 +104,8 @@
     {/if}
   </li>
 {/snippet}
+
+<AnnouncementBanner />
 
 <div class="mt-6 flex w-full flex-wrap">
   <nav aria-label="Documentation" class="w-full md:w-1/4">
