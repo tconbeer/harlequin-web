@@ -111,6 +111,11 @@ export const docsMenu: DocsMenuItem[] = [
       },
       { title: "Adapter: ODBC", slug: "odbc", repo: "tconbeer/harlequin-odbc" },
       {
+        title: "Adapter: Vertica",
+        slug: "vertica",
+        repo: "clang-engineer/harlequin-odbc-vertica",
+      },
+      {
         topic: "Adapter: BigQuery",
         slug: "bigquery",
         repo: "joshtemple/harlequin-bigquery",
