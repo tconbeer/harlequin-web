@@ -9,28 +9,23 @@ description: `--serve` and `--session` (the hsql server)
     import Warning from "$lib/components/warning.svelte"
 </script>
 
-In its default mode, hsql keeps nothing between invocations: each one starts a
-process, connects, runs its SQL and exits, so the connection it opened and
-whatever it did with it go with it. The hsql server closes that gap. `--serve`
-holds one connection open as **a named database session you send commands to**,
-and `--session` is an invocation that runs inside it — the speed and the
-single-session behavior of an interactive CLI, through the same interface a
-script or an agent already drives.
+By default, every invocation of hsql starts a new process and
+creates a fresh database connection. For repeated invocations, this can
+be unnecessarily slow, and prevents more complex explorations using an open
+session, like creating and querying temp tables.
 
-A served invocation answers in a few milliseconds, because Python, the adapter
-and the connection are already up; a cold one pays for all three, every time.
-And because it is one connection, temp tables, settings and transactions live in
-the session the way they live in a psql prompt, where the next invocation finds
-them.
+`hsql --serve my_session -P dev` holds one connection open instead, and 
+`hsql --session my_session -c "..."` sends queries to it, so queries can
+return in milliseconds, and temp tables and settings survive from one to the next.
 
 <Note>
 
-Sessions are POSIX only. A session is reached over a unix socket, which native
-Windows does not have. WSL2 is Linux, and gets them.
+The hsql server is POSIX only. A session is reached over a unix socket, which native
+Windows does not have. This feature does work on WSL2.
 
 </Note>
 
-## Starting One
+## Starting The Server
 
 `--serve NAME` connects, then holds that connection open as the session called
 `NAME`:
@@ -52,9 +47,11 @@ note: request 2: exit 0 in 167ms
 note: session 'dev' stopped after 2 requests.
 ```
 
-## Sending It Queries
+`--serve` starts a simple foreground process, which you can background with `&` or manage with a service manager like systemd (as a *user* unit, since hsql uses a socket linked to your user).
 
-`--session NAME` sends an invocation to that session instead of connecting:
+## Executing Queries
+
+`--session NAME` forwards a query to the session's server instead of creating a new connection to the database:
 
 ```bash
 hsql --session dev -c "create temp table recent as select * from orders where ordered_at > now() - interval 7 day"
@@ -73,7 +70,7 @@ Everything else about the invocation is unchanged: the same flags, the same
 same bytes on stdout. A request carries your working directory with it, so
 `-f ./script.sql` and `-o ./out.csv` mean what they would have meant cold.
 
-`HSQL_SESSION=dev` says the same thing for every invocation in an environment:
+You can use the `HSQL_SESSION` environment variable instead of the `--session` option:
 
 ```bash
 export HSQL_SESSION=dev
@@ -83,43 +80,33 @@ hsql -c "select count(*) from recent"
 The two spellings differ in what happens when no such session is running. A
 typed `--session` is an assertion, and hsql exits [`3`](/docs/hsql/exit-codes)
 rather than quietly running without the state you were counting on.
-`HSQL_SESSION` is a preference, so the invocation runs cold and says so:
+`HSQL_SESSION` is a preference, so the invocation runs cold but emits a warning:
 
 ```output
 note: no session named 'dev' is running, so this invocation is running cold. Start one with `hsql --serve dev ...`.
 ```
 
-That warning is not suppressible: a session that quietly stopped is a temp
-table that quietly vanished, and nobody should have to guess at which happened.
+## Session State
 
-## What a Session Remembers
-
-This is the part to hold in your head, because it is the part that is not true
-of any other hsql invocation:
+When the server creates a session in the attached database, hsql invocations can become
+stateful:
 
 - **Temp tables persist.** `create temp table` in one invocation is queryable by
-  the next. It is the most useful thing about a session.
+  the next.
 - **Settings persist.** `SET`, `search_path`, time zones, DuckDB `PRAGMA`s,
-  extensions you installed. A `SET` in one invocation changes the results of the
-  next twenty.
+  extensions, etc. A `SET` in one invocation changes the results of the
+  next.
 - **In-memory databases persist.** `hsql --serve scratch ":memory:"` is a
-  scratch warehouse that outlives the invocations that write to it.
-- **Transactions persist**, and this is the sharp edge.
+  scratch interactive warehouse.
+- **Transactions persist.** A `begin` in one query will begin a transaction
+  that won't be automatically closed; this can cause the server to hold
+  locks until the session is reset or the server is shut down.
 
-<Warning>
-
-A `begin` that no invocation committed is still open — holding its locks, and
-wrapping every request after it. A cold invocation rolled that back when the
-process exited; a session has no process exit to roll it back. Commit in the
-same invocation you begin in, or reset the session.
-
-</Warning>
 
 ## Resetting and Inspecting
 
-`--session-reset` closes the connection and opens a fresh one, without
-restarting the process, so the imports stay warm. Temp tables, settings and any
-open transaction are gone:
+`--session-reset` closes the database connection and opens a fresh one, effectively
+resetting the state above.
 
 ```bash
 hsql --session dev --session-reset
@@ -141,107 +128,88 @@ hsql --session dev --session-status
 ```
 
 `state` is `idle`, `busy` or `unavailable`, and `queued` is how many requests are
-waiting behind the one running. Secrets are masked here as they are everywhere
-else hsql prints a config value. `transaction_mode` is the adapter's
-[transaction mode](/docs/transactions) where it has one; a session moved out of
-the mode it connected in says so on stderr after every request.
+waiting behind the one running.
 
-## Which Options Go Where
+## Configuring Sessions
 
-Every option belongs to exactly one of three groups, and hsql refuses the ones
-that are in the wrong place rather than ignoring them.
+Options belongs to one of three groups. hsql will refuse options passed to the wrong mode (in some cases,
+only if they contradict the existing session).
 
 | Group            | Options                                                                         | Where                            |
 | ---------------- | ------------------------------------------------------------------------------- | -------------------------------- |
 | Connection       | `CONN_STR`, `-a`, `-r`, the [SSH options](/docs/ssh), and every adapter option  | `--serve`, once                  |
 | Session lifetime | `--idle-timeout`, `--max-lifetime`, `--queue-timeout`                           | `--serve`, once                  |
 | Per request      | `-c`, `-f`, `--format`, `-o`, `--limit`, `--timeout`, `--catalog`, and the rest | `--session`, on every invocation |
+| Meta             | `-P`/`--profile, `--config-path`                                                | Anywhere                         |
 
 ```bash
-hsql --session dev -r -c "select 1"
+hsql --session dev --read-only -c "select 1"
 ```
 
 ```output
 hsql: error: --read-only is a connection option. The session named 'dev' was started without it, and its connection is fixed. Drop it here, or start a session with it: 'hsql --serve NAME --read-only ...'.
 ```
 
-`-P` and `--config-path` are neither: they name where values come from, so they
-work on both sides. A profile that sets a connection key is refused on a request
-the same way the flag would be, and one that sets only per-request keys — a
-`format`, a `limit` — is read for the request as usual.
+`-P` and `--config-path` are special meta-options: they determine where config values 
+are loaded from, so they can be used with either `--serve` or `--session`. When used with
+`--session`, profiles that contradict `--serve` options may be refused.
 
-## One Request at a Time
+## Queuing
 
-A session has one connection, so it runs one request at a time; a second waits
-its turn. `--queue-timeout SECONDS` on `--serve` bounds that wait, and a request
-that spends it exits [`4`](/docs/hsql/exit-codes) without ever reaching the
-database.
+A session has one database connection, so it runs one query at a time; a second 
+invocation with `--session` is queued behind the first if necessary.
+`--queue-timeout SECONDS` on `--serve` bounds that wait, and a request
+that times out exits [`4`](/docs/hsql/exit-codes).
 
-`Ctrl-C` cancels a request on the session, whether it had started or was still
-waiting its turn, and hsql exits `130` as it does cold. Where the adapter
-[cannot cancel a query](/docs/hsql/safety), hsql says on stderr that the query
-is still running and still holding the session; `--session-status` is how you
-watch for it to finish.
+`Ctrl-C` from the `--session` (client) invocation cancels a request, whether it had 
+started or was still queued, and hsql exits `130` as it does cold. Where the adapter
+[cannot cancel a query](/docs/hsql/safety), hsql prints a warning on stderr that the query
+is still running and still holding the session; `--session-status` can provide more
+information.
 
 ## When a Session Stops
 
-A session is a live authenticated connection, so it is bounded unless you say
-otherwise. It stops itself after 30 minutes with no request, or 8 hours after it
-connected, whichever comes first:
+A session is a live authenticated database connection, so by default it will time out
+after 30 minutes with no requests, or 8 hours after it connected, whichever comes first.
+Both timeouts are configurable:
 
 ```bash
 hsql --serve dev -P dev --idle-timeout 3600 --max-lifetime 0
 ```
 
-`0` switches either clock off. The idle clock does not run while a request does,
-or while a client is connected, so a long query is not idle. A lifetime that runs
-out mid-query lets that request finish first — and stops taking connections
-straight away, so the query cannot be cancelled while it runs out the clock.
+`0` disables either timeout. Neither timeout can interrupt a query that is in-flight,
+but `--max-lifetime` can stop a queued query from executing.
 
-<Tip>
+## Security
 
-"My session died between calls" is the idle timeout. `--idle-timeout 0` is the
-answer, and `expires_in_s` in `--session-status` is how long you have.
+A session holds an authenticated database connection (and an [SSH tunnel](/docs/ssh), if
+it opened one) for as long as it runs, so it has additional security-related safeguards:
 
-</Tip>
+- A session's command line is readable in `ps` by every process on the machine for as 
+  long as the session runs, so hsql warns when a secret is passed in via a command-line
+  option (instead of via a profile).
+- The socket lives in a private, `0700` directory owned by the invoking user,
+  and the server refuses a connection from any other user.
+- A session must be started explicitly, with `--serve`.
+- Sessions time out by default (see above).
+- The hsql client and server must be running the same version of hsql.
 
-## Keeping a Session Safe
+## Agent Integrations
 
-A session holds an authenticated connection — and an [SSH tunnel](/docs/ssh), if
-it opened one — for as long as it runs, so it is worth a minute of thought:
-
-- **Start it from a [profile](/docs/config-file).** A session's command line is
-  readable in `ps` by every process on the machine for as long as the session
-  runs, and hsql warns when a secret is on one.
-- **It is yours alone.** The socket lives in a private, `0700` directory owned by
-  you, and the server refuses a connection from any other user.
-- **Nothing is automatic.** A session is never started for you, never on by
-  default, and a request is never silently served by one you did not name.
-- **A session outliving its purpose is a credential left open.** That is what the
-  two clocks above are for.
-
-Client and server must be the same version of hsql; an upgrade underneath a
-running session is refused rather than served.
-
-## Starting One for an Agent
-
-An agent that runs one query per turn pays the start-up cost every turn. Start a
-session when the agent's own session starts, and point it at that session with
-the environment variable — so that if the hook did not run, the agent's queries
-still work, with a warning.
+Agent hooks can automatically open a session for an agent to use.
 
 For Claude Code, in `.claude/settings.json`:
 
 ```json
 &lbrace;
-  "env": &lbrace; "HSQL_SESSION": "dev" &rbrace;,
+  "env": &lbrace; "HSQL_SESSION": "claude" &rbrace;,
   "hooks": &lbrace;
     "SessionStart": [
       &lbrace;
         "hooks": [
           &lbrace;
             "type": "command",
-            "command": "hsql --session dev --session-status >/dev/null 2>&1 || setsid hsql --serve dev -P dev >>/tmp/hsql-dev.log 2>&1 &"
+            "command": "hsql --session claude --session-status >/dev/null 2>&1 || setsid hsql --serve dev -P dev >>/tmp/hsql-claude-dev.log 2>&1 &"
           &rbrace;
         ]
       &rbrace;
