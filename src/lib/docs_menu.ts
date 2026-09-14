@@ -38,6 +38,7 @@ export const docsMenu: DocsMenuItem[] = [
       { title: "Formats and Layouts", slug: "hsql/formats" },
       { title: "Config Modes", slug: "hsql/config" },
       { title: "Running Safely", slug: "hsql/safety" },
+      { title: "Warm Sessions", slug: "hsql/sessions" },
       { title: "Differences from psql", slug: "hsql/psql" },
       { title: "Reference: hsql CLI", slug: "hsql/reference" },
       { title: "The hsql Agent Skill", slug: "hsql/skill" },

@@ -174,3 +174,10 @@ You can also use `--stats` and `jq` together to error on a truncated query:
 ```bash
 hsql --limit 100 -c "select * from orders" --csv -o data.csv --stats 2>&1 | jq -e '.truncated | not' > /dev/null
 ```
+
+## Warm Sessions
+
+Every invocation above starts a process and connects. `hsql --serve dev -P dev`
+holds one connection open instead, and `hsql --session dev -c "..."` sends
+queries to it — so they answer in milliseconds, and temp tables and settings
+survive from one to the next. [Warm Sessions](/docs/hsql/sessions) covers it.

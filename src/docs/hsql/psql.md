@@ -51,10 +51,16 @@ hsql has no meta-commands. What they do, options do:
 - `\timing` — `--stats`, which reports `elapsed_ms` on stderr.
 - `\c` — a different profile: `-P NAME`.
 - `\set` — the profile, or the command line. One invocation, no session
-  variables.
+  variables — unless it is served by a [warm session](/docs/hsql/sessions),
+  which keeps what `SET` sets.
 
 ## No Interactive Session
 
 hsql executes what it was passed and exits; there is no prompt. For an
 interactive session, [Harlequin](/docs/getting-started/usage) uses the same
 adapters, config files and profiles: `harlequin -P prod`.
+
+What a psql prompt keeps between statements — one connection, temp tables,
+settings, an open transaction — a [warm session](/docs/hsql/sessions) keeps
+between invocations: `hsql --serve prod -P prod`, then
+`hsql --session prod -c "..."`.
