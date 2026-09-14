@@ -20,7 +20,7 @@ non-zero — so read the code before the output.
 | `2`   | A bad flag, a bad profile, or a config file hsql could not read. |
 | `3`   | hsql could not connect.                                          |
 | `4`   | `--timeout` ran out, and hsql stopped the run.                   |
-| `70`  | hsql hit a bug in itself and wrote a crash report.               |
+| `70`  | hsql crashed and wrote a crash report.                           |
 | `130` | Interrupted.                                                     |
 
 A `2` means hsql never opened a connection. It covers a flag that does not
