@@ -51,16 +51,20 @@ hsql has no meta-commands. What they do, options do:
 - `\timing` — `--stats`, which reports `elapsed_ms` on stderr.
 - `\c` — a different profile: `-P NAME`.
 - `\set` — the profile, or the command line. One invocation, no session
-  variables — unless it is served by a [warm session](/docs/hsql/sessions),
-  which keeps what `SET` sets.
+  variables.
 
-## No Interactive Session
+## Sessions: Keeping Connections Open
 
-hsql executes what it was passed and exits; there is no prompt. For an
-interactive session, [Harlequin](/docs/getting-started/usage) uses the same
-adapters, config files and profiles: `harlequin -P prod`.
+By default, hsql executes what it was passed and exits. Every invocation starts
+a process, connects, runs its SQL and drops the connection, so nothing it did —
+a temp table, a `SET`, an open transaction — reaches the next one. That is the
+right default for a script or an agent, and it is what every example above
+assumes.
 
-What a psql prompt keeps between statements — one connection, temp tables,
-settings, an open transaction — a [warm session](/docs/hsql/sessions) keeps
-between invocations: `hsql --serve prod -P prod`, then
-`hsql --session prod -c "..."`.
+`hsql --serve prod -P prod` holds a connection open the way a psql prompt does,
+and `hsql --session prod -c "..."` runs against it. There is still no
+interactive prompt — for that, [Harlequin](/docs/getting-started/usage) uses the
+same adapters, config files and profiles: `harlequin -P prod` — but an
+invocation served that way answers in milliseconds instead of reconnecting, and
+finds the temp tables, settings and transactions the one before it left, exactly
+as a psql session would. See [Warm Sessions](/docs/hsql/sessions).

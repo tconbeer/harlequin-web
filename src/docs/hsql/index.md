@@ -19,7 +19,7 @@ information on hsql and its features, keep reading.
 | [Formats and Layouts](/docs/hsql/formats)       | Every format, the layout switches, `-o`, `--result`            |
 | [Config Modes](/docs/hsql/config)               | `--config list-profiles`, `show`, `validate`, `schema`, `init` |
 | [Running Safely](/docs/hsql/safety)             | `--limit`, `--read-only`, `--timeout`, adapter capabilities    |
-| [Warm Sessions](/docs/hsql/sessions)            | `--serve`, `--session`, and what a held connection remembers   |
+| [Warm Sessions](/docs/hsql/sessions)            | `--serve` and `--session` (the hsql server)                    |
 | [Differences from psql](/docs/hsql/psql)        | What carries over, and what does not                           |
 | [Reference: hsql CLI](/docs/hsql/reference)     | Every option, generated from hsql itself                       |
 | [The hsql Agent Skill](/docs/hsql/skill)        | What the skill says, and how to install it                     |
