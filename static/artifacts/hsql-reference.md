@@ -40,21 +40,29 @@ Alphabetical by name. Flags are off by default.
 | `-f`, `--file` | text | `PATH` |  |  | Execute SQL from a file, or from stdin for `-`. Repeatable. |
 | `--format` | choice | `table`, `markdown`, `md`, `vertical`, `csv`, `tsv`, `json`, `jsonl`, `ndjson`, `parquet`, `orc`, `feather`, `arrow`, `none` | `table` |  | Output format. See below for the list. |
 | `--help` | boolean |  |  |  | Show this message and exit. |
+| `--idle-timeout` | number | `SECONDS` | `1800.0` |  | With --serve: stop the session once it has gone SECONDS with no request. 0 for a session that waits as long as it takes. |
 | `--info` | boolean |  |  |  | Versions, config files, the active profile, and what each installed adapter declares it supports, as JSON. Connects to nothing. -a narrows it to one adapter. |
 | `--json` | boolean |  |  |  | Shorthand for --format json. |
 | `--jsonl` | boolean |  |  |  | Shorthand for --format jsonl. |
 | `--limit` | integer | `N` | `500` |  | Maximum rows fetched per result set. -1 for no limit. |
 | `--markdown` | boolean |  |  |  | Shorthand for --format markdown. |
+| `--max-lifetime` | number | `SECONDS` | `28800.0` |  | With --serve: stop the session SECONDS after it connected, whatever it is doing; a request already running finishes first. 0 for a session that runs until something stops it. |
 | `-A`, `--no-align` | boolean |  |  |  | Unaligned output. As in psql. |
 | `--no-footer` | boolean |  |  |  | Omit the row-count footer, keeping other chrome. |
 | `--no-header` | boolean |  |  |  | Omit the header row, keeping other chrome. |
+| `--no-write-history` | boolean |  |  |  | Do not record this run's queries in the query history that Harlequin and hsql share. |
 | `--null-string` | text | `TEXT` |  |  | Render NULL as TEXT. Defaults to NULL for text formats, empty for csv. |
 | `--on-error` | choice | `stop`, `continue` | `stop` |  | What to do when a statement fails. |
 | `-o`, `--output` | text | `PATH` |  |  | Write results to PATH instead of stdout. Accepts a file or directory. |
 | `--path` | text | `TEXT` |  |  | Where in the catalog --catalog looks, and what --catalog-search searches under. Dotted segments, named by the adapter; the top of the catalog by default. A trailing * filters a --catalog listing. |
 | `-P`, `--profile` | text |  |  |  | Load a profile from an available config file. Options passed here take precedence over the profile's. Use the profile named None for Harlequin's defaults instead of the config file's default profile. |
+| `--queue-timeout` | number | `SECONDS` |  |  | With --serve: a request waits at most SECONDS for the one before it, then exits 4 without reaching the database. [default: no limit] |
 | `-r`, `--read-only` | boolean |  |  |  | Connect read-only, and refuse to run at all if the adapter cannot. To check an adapter's capabilities, use --info. |
 | `--result` | text | `all\|last\|N` | `all` |  | Which result set(s) to emit. |
+| `--serve` | text | `NAME` |  |  | Connect, then hold the connection open as the session named NAME and answer `--session NAME` invocations from it until stopped. Takes connection and session-lifetime options; no per-request ones. Not on native Windows. |
+| `--session` | text | `NAME` |  |  | Send this invocation to the running session named NAME, started with --serve. HSQL_SESSION=NAME does the same for every invocation, and runs without the session, with a warning, when none is up. |
+| `--session-reset` | boolean |  |  |  | Ask the session to close its connection and open a fresh one, and exit without running SQL. Temp tables, settings and an open transaction are gone. Needs --session. |
+| `--session-status` | boolean |  |  |  | Poll the server for its status as JSON, and exit. Reports while a query is running. Needs --session. |
 | `--skill` | boolean |  |  |  | Write the Agent Skill for driving hsql, as markdown. -o installs it: 'hsql --skill -o ~/.claude/skills/hsql/'. |
 | `--spec` | boolean |  |  |  | Every option here, plus every installed adapter's, as JSON. -a narrows it to one adapter. |
 | `--ssh-allow-reuse` | boolean |  |  |  | When the local port is already bound, warn and connect through the listener that has it instead of failing. |
@@ -104,4 +112,5 @@ names a file with.
 | `2` | A bad flag, a bad profile, or a config file hsql could not read. |
 | `3` | hsql could not connect. |
 | `4` | `--timeout` ran out, and hsql stopped the run. |
+| `70` | hsql hit a bug in itself and wrote a crash report. |
 | `130` | Interrupted. |

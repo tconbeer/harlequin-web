@@ -254,6 +254,25 @@
           "description": "Write the Agent Skill for driving hsql, as markdown. -o installs it: 'hsql --skill -o ~/.claude/skills/hsql/'.",
           "default": false
         },
+        "session_reset": {
+          "type": "boolean",
+          "description": "Ask the session to close its connection and open a fresh one, and exit without running SQL. Temp tables, settings and an open transaction are gone. Needs --session.",
+          "default": false
+        },
+        "queue_timeout": {
+          "type": "number",
+          "description": "With --serve: a request waits at most SECONDS for the one before it, then exits 4 without reaching the database. [default: no limit]"
+        },
+        "idle_timeout": {
+          "type": "number",
+          "description": "With --serve: stop the session once it has gone SECONDS with no request. 0 for a session that waits as long as it takes.",
+          "default": 1800.0
+        },
+        "max_lifetime": {
+          "type": "number",
+          "description": "With --serve: stop the session SECONDS after it connected, whatever it is doing; a request already running finishes first. 0 for a session that runs until something stops it.",
+          "default": 28800.0
+        },
         "limit": {
           "type": "integer",
           "description": "Maximum rows fetched per result set. -1 for no limit.",
@@ -276,6 +295,11 @@
           ],
           "description": "What to do when a statement fails.",
           "default": "stop"
+        },
+        "no_write_history": {
+          "type": "boolean",
+          "description": "Do not record this run's queries in the query history that Harlequin and hsql share.",
+          "default": false
         },
         "stats": {
           "type": "boolean",
