@@ -139,7 +139,7 @@ only if they contradict the existing session).
 | Connection       | `CONN_STR`, `-a`, `-r`, the [SSH options](/docs/ssh), and every adapter option  | `--serve`, once                  |
 | Session lifetime | `--idle-timeout`, `--max-lifetime`, `--queue-timeout`                           | `--serve`, once                  |
 | Per request      | `-c`, `-f`, `--format`, `-o`, `--limit`, `--timeout`, `--catalog`, and the rest | `--session`, on every invocation |
-| Meta             | `-P`/`--profile, `--config-path`                                                | Anywhere                         |
+| Meta             | `-P`/`--profile`, `--config-path`                                               | Anywhere                         |
 
 ```bash
 hsql --session dev --read-only -c "select 1"
@@ -208,7 +208,7 @@ For Claude Code, in `.claude/settings.json`:
         "hooks": [
           &lbrace;
             "type": "command",
-            "command": "hsql --session claude --session-status >/dev/null 2>&1 || setsid hsql --serve dev -P dev >>/tmp/hsql-claude-dev.log 2>&1 &"
+            "command": "hsql --session claude --session-status >/dev/null 2>&1 || setsid hsql --serve claude -P dev >>/tmp/hsql-claude-dev.log 2>&1 &"
           &rbrace;
         ]
       &rbrace;
