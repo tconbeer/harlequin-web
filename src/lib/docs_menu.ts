@@ -143,6 +143,11 @@ export const docsMenu: DocsMenuItem[] = [
         repo: "TylerHillery/harlequin-adbc",
       },
       {
+        title: "Adapter: chDB",
+        slug: "chdb",
+        repo: "chdb-io/harlequin-chdb",
+      },
+      {
         title: "Adapter: RisingWave",
         slug: "risingwave",
         repo: "zen-xu/harlequin-risingwave",

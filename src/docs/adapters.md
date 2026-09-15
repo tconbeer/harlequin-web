@@ -32,6 +32,7 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [Trino](/docs/trino), contributed by [Tyler Hillery](https://github.com/TylerHillery)
 - [Databricks](/docs/databricks), contributed by [Zach Shirah](https://github.com/zashirah) and [Alex Malins](https://github.com/alexmalins)
 - [ADBC](/docs/adbc), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports any database with an Arrow Database Connectivity driver.
+- [chDB](/docs/chdb), contributed by the [chDB team](https://github.com/chdb-io)
 - [RisingWave](/docs/risingwave), contributed by [ZhengYu Xu](https://github.com/zen-xu)
 - [Wherobots](/docs/wherobots), contributed by [Wherobots](https://github.com/wherobots)
 - [Cassandra](/docs/cassandra), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
