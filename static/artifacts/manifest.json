@@ -1,24 +1,24 @@
 {
-  "version": "2.14.0",
+  "version": "2.15.0",
   "generated_by": "scripts/publish_artifacts.py",
   "files": [
     {
       "path": "SKILL.md",
       "source": "src/harlequin/hsql/skill/SKILL.md",
-      "bytes": 4930,
-      "sha256": "8caa2ca5a0d9b3b3fc86a27ba244950f2638504b5bee6120b90e9e7d83ff6095"
+      "bytes": 5030,
+      "sha256": "40ae2f8791fd4b1d7ee064ff442ccbff322f0bad4abc878a924cafce7e5eafc2"
     },
     {
       "path": "config-v1.json",
       "source": "src/harlequin/schemas/config-v1.json",
-      "bytes": 12612,
-      "sha256": "4f78549f40248c20d0d62efb87be1fe9f24dbcb47073dfb88629139cc3e27a0f"
+      "bytes": 13100,
+      "sha256": "3e034c88c9af297c77c3c9c8548476a1b8d84e7f2eb4e0a22e8325e048fe2e45"
     },
     {
       "path": "hsql-reference.md",
       "source": "docs/generated/hsql-reference.md",
-      "bytes": 8498,
-      "sha256": "5d1cfd59b754b1993213c23c0ee90480216cc1275d6c0cf5ed39b87ba265934f"
+      "bytes": 8860,
+      "sha256": "1ec327720057ab4d5f25a688ff6f648bdf562d66e9501bc95f8c5376194f335a"
     },
     {
       "path": "references/config.md",
@@ -29,8 +29,8 @@
     {
       "path": "references/queries.md",
       "source": "src/harlequin/hsql/skill/references/queries.md",
-      "bytes": 4467,
-      "sha256": "2e1f03e438d7f4f52e4c6191b2e0d93f8dac35cf6ee4c1c4dde62467b74d1a49"
+      "bytes": 6378,
+      "sha256": "0f99d466e41e33a1131d261321af4a8dd3e3360f31ad695a46ad7605bf814629"
     },
     {
       "path": "references/scripting.md",
