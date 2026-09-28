@@ -8,6 +8,8 @@ title: "Reference: Default Bindings"
 
 Harlequin uses keymaps to define sets of key bindings in the app. Below is a reference for the bindings from the default keymap (called `vscode`). For more information on customizing key bindings, see the [keymaps](/docs/keymaps) page.
 
+In the app, press <Key>F7</Key> to open the Keys panel, which lists the bindings for the focused widget.
+
 ## General Bindings
 
 - <Key>ctrl+q</Key> Quit Harlequin
@@ -15,6 +17,7 @@ Harlequin uses keymaps to define sets of key bindings in the app. Below is a ref
 - <Key>F2</Key> Focus on the Query Editor.
 - <Key>F5</Key> Focus on the Results Viewer.
 - <Key>F6</Key> Focus on the Data Catalog.
+- <Key>F7</Key> Show or hide the Keys panel, which lists the bindings for the focused widget.
 - <Key>F8</Key> Show the Query History Viewer.
 - <Key>F9</Key>, <Key>ctrl+b</Key> Toggle the sidebar.
 - <Key>F10</Key> Toggle full screen mode for the current widget.
