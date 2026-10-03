@@ -1,5 +1,5 @@
 {
-  "version": "2.15.0",
+  "version": "2.16.1",
   "generated_by": "scripts/publish_artifacts.py",
   "files": [
     {
@@ -11,14 +11,14 @@
     {
       "path": "config-v1.json",
       "source": "src/harlequin/schemas/config-v1.json",
-      "bytes": 13100,
-      "sha256": "3e034c88c9af297c77c3c9c8548476a1b8d84e7f2eb4e0a22e8325e048fe2e45"
+      "bytes": 13379,
+      "sha256": "38a9e2ed034dd0963879f3c0872769b3ac07e65bfcd5310bf900decc061f103d"
     },
     {
       "path": "hsql-reference.md",
       "source": "docs/generated/hsql-reference.md",
-      "bytes": 8860,
-      "sha256": "1ec327720057ab4d5f25a688ff6f648bdf562d66e9501bc95f8c5376194f335a"
+      "bytes": 9139,
+      "sha256": "5fceec49a0a344024e75bc88480d0f595d8ca538c7662b34fd7d598390d862a7"
     },
     {
       "path": "references/config.md",
