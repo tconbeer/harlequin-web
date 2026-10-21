@@ -104,12 +104,6 @@ _With the autocomplete list open:_
 - <Key>ctrl+left</Key>,<Key>ctrl+right</Key> Move the cursor to the start/end of the row.
 - <Key>shift+[any]</Key> Select cells while moving the cursor.
 
-To jump to a column, press <Key>ctrl+g</Key> in the Results Viewer and start typing
-its name. The picker uses case-insensitive fuzzy matching against the active
-result's column names. Use <Key>up</Key> and <Key>down</Key> to choose a match, then
-<Key>enter</Key> to jump, or <Key>escape</Key> to cancel. Column positions distinguish
-duplicate names. You can also choose **Jump to Column** from the command palette.
-
 ## Data Catalog Bindings
 
 - <Key>ctrl+enter</Key>,<Key>ctrl+j</Key> Insert the current name into the Query Editor.

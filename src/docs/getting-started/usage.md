@@ -56,6 +56,8 @@ If that didn't happen, your terminal may be intercepting the <Key>ctrl+enter</Ke
 
 The Results Viewer now has the keyboard's focus. You can scroll through the results using the arrow keys, <Key>tab</Key>, <Key>ctrl+right</Key>, <Key>pgDn</Key>, <Key>end</Key>, and [more](/docs/bindings#results-viewer-bindings).
 
+Press <Key>ctrl+g</Key> and type a column name to find it, then press <Key>enter</Key> to jump to that column while keeping the current row.
+
 There is a lot of data here, so press <Key>F10</Key> to enter full-screen mode.
 
 <Figure src={full_screen} alt="A screenshot of Harlequin with data in full screen mode."></Figure>
