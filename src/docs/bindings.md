@@ -93,6 +93,7 @@ _With the autocomplete list open:_
 ### Moving the Cursor
 
 - <Key>up</Key>,<Key>down</Key>,<Key>left</Key>,<Key>right</Key> Move the cursor one cell.
+- <Key>ctrl+g</Key> Jump to a column by name while keeping the current row.
 - <Key>home</Key> Move the cursor to the top of the current column.
 - <Key>end</Key> Move the cursor to the bottom of the current column.
 - <Key>ctrl+home</Key> Move the cursor to the first cell.
