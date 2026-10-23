@@ -38,7 +38,7 @@
 </script>
 
 <!-- pre component styles might get pruned, since the pre component is
-    loaded manually in svelte.config.js. -->
+    loaded manually by the mdsvex highlighter in vite.config.ts. -->
 <div class="mb-8 w-full overflow-x-auto">
   <slot />
   <span class="font-bold text-purple select-none"></span>
