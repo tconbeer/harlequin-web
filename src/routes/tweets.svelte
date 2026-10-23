@@ -189,8 +189,7 @@
 <ul
   class="relative mt-4 flex gap-2 motion-safe:overflow-x-hidden motion-reduce:overflow-x-scroll"
 >
-  {#each { length: 2 } as _}
-    <!-- eslint-disable-line -->
+  {#each { length: 2 }}
     {#each tweets as tweet}
       <li
         class="shrink-0 overflow-hidden motion-safe:animate-horizontal-scroll"

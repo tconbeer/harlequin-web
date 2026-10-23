@@ -78,7 +78,7 @@
         >
       </div>
       <figure
-        class="mx-auto w-full min-w-0 max-w-screen-lg py-2 drop-shadow-lg"
+        class="mx-auto w-full max-w-(--breakpoint-lg) min-w-0 py-2 drop-shadow-lg"
       >
         <!-- eslint-disable-next-line svelte/no-at-html-tags -- local asset -->
         {@html screenshot}
@@ -105,7 +105,7 @@
         >
       </div>
       <figure
-        class="mx-auto flex w-full min-w-0 max-w-screen-lg flex-1 items-center py-2 drop-shadow-lg"
+        class="mx-auto flex w-full max-w-(--breakpoint-lg) min-w-0 flex-1 items-center py-2 drop-shadow-lg"
       >
         <Terminal
           lines={session}

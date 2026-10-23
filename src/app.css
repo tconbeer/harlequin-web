@@ -1,6 +1,60 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* The site's palette and fonts replace Tailwind's; fonts load from Google
+   Fonts in src/app.html. */
+
+@theme {
+  --font-*: initial;
+  --font-display: Rye;
+  --font-accent: Contrail One;
+  --font-body: Quicksand;
+  --font-mono: JetBrains Mono;
+
+  --color-green: #45ffca;
+  --color-yellow: #feffac;
+  --color-pink: #ffb6d9;
+  --color-purple: #d67bff;
+  --color-black: #000000;
+
+  --scale-250: 2.5;
+
+  /* 3s * N cards */
+  --animate-horizontal-scroll: horizontal-scroll 36s linear infinite;
+
+  @keyframes horizontal-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* 328px (320 + 8 gap) * N cards */
+      transform: translateX(-4264px);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* Tailwind 4's preflight gives buttons the default cursor; keep v3's. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 /* What `search_highlight.svelte` paints a match with. It lives here rather than
    in that component because Svelte scopes a component's styles with a generated

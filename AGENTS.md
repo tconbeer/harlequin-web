@@ -16,17 +16,18 @@ pnpm dev         # dev server on localhost:5173
 pnpm build       # production build
 pnpm preview     # serve the production build locally
 pnpm test        # vitest run  (runs on pre-commit)
+pnpm test:e2e    # Playwright smoke tests against `vite build && vite preview`
 pnpm format      # prettier --write with svelte/organize-imports/tailwindcss plugins
 pnpm lint        # prettier --check && eslint  (runs on pre-commit)
 pnpm check       # svelte-check against tsconfig.json
-pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/themes
+pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/themes (scripts/themes.js)
 ```
 
-`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. `.github/workflows/ci.yml` runs `lint`, `test` and `build` on every push and PR — the hook is the fast feedback, that is the guarantee — and Vercel builds a preview alongside it.
+`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. `.github/workflows/ci.yml` runs `lint`, `check`, `test`, `build` and `test:e2e` on every push and PR — the hook is the fast feedback, that is the guarantee — and Vercel builds a preview alongside it.
 
-The tests are vitest, and they cover the markdown corpus (below), the routes that publish it, and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`. There is no component test runner; what is testable about a component belongs in a module beside it, the way `src/lib/markdown_actions.ts` holds the URLs the copy and view buttons build.
+The tests are vitest, and they cover the markdown corpus (below), the routes that publish it, and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`. `tests/e2e/` is a Playwright smoke suite over the production build: every page type, the docs search, and the published endpoints, failing on any console error or failed same-origin request. It runs under `vite preview`, so `vercel.json`'s redirects and headers do not apply there. Set `E2E_PREBUILT=1` to serve an existing build instead of building first, `E2E_PORT` if 4317 is taken, and `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to use a preinstalled Chromium. There is no component test runner; what is testable about a component belongs in a module beside it, the way `src/lib/markdown_actions.ts` holds the URLs the copy and view buttons build.
 
-`.npmrc` sets `engine-strict=true`, but `package.json` declares no `engines`, so nothing is actually pinned. The README and CI both say Node 22, which is what Vercel builds on.
+**Node is pinned in three places that must agree:** `engines.node` in `package.json` (the major only: Vercel reads it to pick its build image, whose patch level Vercel controls), `.nvmrc` (the exact patched version CI's `setup-node` and local installs use), and `runtime` in the adapter options in `svelte.config.js` (the Node line the ISR pages and `/api/blog` run on as Vercel functions).
 
 ## Content architecture
 
@@ -111,7 +112,7 @@ MDSveX is configured in `svelte.config.js` and applies to all `.md` files:
 ## Conventions
 
 - **Svelte 5 runes** throughout — `$props()`, `$state()`, `$derived()`, `$effect()`, and `{@render children()}` rather than slots or `export let`. Match this in new components.
-- **Styling is Tailwind-only**, using the custom palette in `tailwind.config.js` (`green`/`yellow`/`pink`/`purple`/`black`) and the four font families (`font-display` Rye, `font-accent` Contrail One, `font-body` Quicksand, `font-mono` JetBrains Mono). Fonts load from Google Fonts in `src/app.html`.
+- **Styling is Tailwind-only**, using the custom palette in the `@theme` block of `src/app.css` (`green`/`yellow`/`pink`/`purple`/`black`) and the four font families (`font-display` Rye, `font-accent` Contrail One, `font-body` Quicksand, `font-mono` JetBrains Mono). Fonts load from Google Fonts in `src/app.html`.
 - **Site-wide strings** (title, subtitle, description, canonical URL) live in `src/lib/config.ts`; shared TypeScript types live in `src/lib/types.ts`.
 - **CSP** is set in `svelte.config.js` with `script-src: self`, so external scripts and inline script tags will be blocked.
 - **Vercel ISR** — `src/routes/+layout.server.js` and the docs `+page.ts` use `config.isr` with a 1-hour expiration because they hit the unauthenticated GitHub API for star counts; that API is rate-limited, and both loaders degrade gracefully when the request fails.

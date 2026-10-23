@@ -29,7 +29,7 @@
   // Topics are collapsed by default. Those containing the current page open
   // themselves — seeded here, not only in the effect below, so the server
   // renders them open too — and any the reader opens by hand stay open.
-  let openTopics = $state(new SvelteSet<string>(openPath(page.url.pathname)));
+  const openTopics = new SvelteSet<string>(openPath(page.url.pathname));
   $effect(() => {
     for (const slug of openPath(page.url.pathname)) {
       openTopics.add(slug);
@@ -44,12 +44,14 @@
   // On small screens the sidebar is a drawer; opening a page closes it.
   let showNav = $state(false);
   $effect(() => {
+    // Read only to subscribe: the effect reruns on every page change.
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     activeSlug;
     showNav = false;
   });
 
   const linkStyle =
-    "mt-1 flex justify-between rounded px-1 py-1 transition-colors duration-200 md:mb-1 md:hover:bg-green";
+    "mt-1 flex justify-between rounded-sm px-1 py-1 transition-colors duration-200 md:mb-1 md:hover:bg-green";
   const activeStyle = "bg-purple font-bold";
 </script>
 
@@ -120,7 +122,7 @@
       initial={browser ? (page.url.searchParams.get("q") ?? "") : ""}
     />
     <button
-      class="mt-1 flex w-full rounded bg-green px-1 py-1 transition-colors duration-200 md:hidden"
+      class="mt-1 flex w-full rounded-sm bg-green px-1 py-1 transition-colors duration-200 md:hidden"
       onclick={() => (showNav = !showNav)}
       aria-expanded={showNav}
       aria-controls="docs-menu"
@@ -165,7 +167,7 @@
                  puts a scrollbar under the page for as long as the pointer
                  rests on the card. -->
               <div
-                class="origin-left rounded border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:translate-x-1 active:translate-y-1 md:w-48"
+                class="origin-left rounded-sm border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:translate-x-1 active:translate-y-1 md:w-48"
               >
                 <p class="text-xs">← Previous</p>
                 <p class="text-sm md:text-base">
@@ -179,7 +181,7 @@
           {#if neighbors.next}
             <a href="/docs/{neighbors.next.slug}" rel="next" class="text-right">
               <div
-                class="origin-right rounded border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:-translate-x-1 active:translate-y-1 md:w-48"
+                class="origin-right rounded-sm border border-green px-4 py-2 shadow-lg transition-transform hover:scale-105 active:-translate-x-1 active:translate-y-1 md:w-48"
               >
                 <p class="text-xs">Next →</p>
                 <p class="text-sm md:text-base">

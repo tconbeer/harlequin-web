@@ -2,13 +2,15 @@
   import { goto } from "$app/navigation";
   import { resultHref, type SearchResult } from "$lib/search";
   import { loadEngine } from "$lib/search_client";
+  import { untrack } from "svelte";
   import SearchExcerpt from "./search_excerpt.svelte";
 
   let { initial = "" }: { initial?: string } = $props();
 
   const HITS = 6;
 
-  let query = $state(initial);
+  // A seed: once the reader types, the box is theirs.
+  let query = $state(untrack(() => initial));
   let engine = $state<Awaited<ReturnType<typeof loadEngine>> | null>(null);
   let failed = $state(false);
   let open = $state(false);
@@ -128,13 +130,13 @@
       aria-activedescendant={active >= 0
         ? `docs-search-hit-${active}`
         : undefined}
-      class="w-full rounded border border-purple bg-transparent px-2 py-1 text-sm placeholder:text-black/50 focus:border-green focus:outline-none focus:ring-1 focus:ring-green"
+      class="w-full rounded-sm border border-purple bg-transparent px-2 py-1 text-sm placeholder:text-black/50 focus:border-green focus:ring-1 focus:ring-green focus:outline-hidden"
     />
   </form>
 
   {#if open && query.trim()}
     <div
-      class="absolute left-0 right-0 top-full z-20 mt-1 max-h-96 overflow-y-auto rounded border border-purple bg-yellow shadow-lg md:w-96"
+      class="absolute top-full right-0 left-0 z-20 mt-1 max-h-96 overflow-y-auto rounded-sm border border-purple bg-yellow shadow-lg md:w-96"
     >
       <ul id="docs-search-hits" role="listbox" aria-label="Search results">
         {#each results as result, i (result.slug)}

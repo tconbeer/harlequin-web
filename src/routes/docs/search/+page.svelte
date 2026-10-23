@@ -88,6 +88,8 @@
         {#if result.more.length}
           <span class="mt-1 block text-xs">
             <span class="opacity-70">Also on this page:</span>
+            <!-- A literal: whitespace at the edge of a block is trimmed. -->
+            <!-- eslint-disable-next-line svelte/no-useless-mustaches -->
             {#each result.more as section, i (section.anchor)}{#if i > 0}{", "}{/if}<a
                 href={resultHref(result.slug, query, section.anchor)}
                 >{section.heading}</a

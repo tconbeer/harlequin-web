@@ -56,7 +56,7 @@
   // for as long as they read it. The label and the icon are the feedback a tap
   // gets, and they clear themselves.
   const buttonStyle =
-    "flex items-center gap-1 rounded border border-green px-2 py-1 shadow transition-colors duration-200 [@media(hover:hover)]:hover:bg-green";
+    "flex items-center gap-1 rounded-sm border border-green px-2 py-1 shadow-sm transition-colors duration-200 [@media(hover:hover)]:hover:bg-green";
 </script>
 
 <div class="my-2 flex flex-wrap items-center gap-2 text-sm">

@@ -14,7 +14,7 @@
 <div
   class="rounded-full py-1 transition-transform duration-200 {grow === true
     ? 'hover:scale-105'
-    : ''} hover:bg-green hover:shadow-lg active:translate-x-1 active:translate-y-1 sm:py-3 sm:pl-3 sm:pr-4"
+    : ''} hover:bg-green hover:shadow-lg active:translate-x-1 active:translate-y-1 sm:py-3 sm:pr-4 sm:pl-3"
 >
   <a
     href="https://github.com/{repo}"

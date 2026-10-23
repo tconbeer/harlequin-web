@@ -1,12 +1,14 @@
 import adapter from "@sveltejs/adapter-vercel";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { mdsvex } from "mdsvex";
+import { fileURLToPath } from "node:url";
 import rehypeSlug from "rehype-slug";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
   extensions: [".md"],
-  layout: "./src/mdsvex/docs.svelte",
+  // Absolute: mdsvex writes the layout path into each page's import as given.
+  layout: fileURLToPath(new URL("./src/mdsvex/docs.svelte", import.meta.url)),
   // Curly quotes and ellipses, but `--` stays `--`: these pages are mostly
   // about a command line, and smartypants turns a `--flag` that is not inside
   // backticks into an em dash. That is silent, it is wrong, and the generated
@@ -41,10 +43,10 @@ const config = {
   preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 
   kit: {
-    // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-    // If your environment is not supported or you settled on a specific environment, switch out the adapter.
-    // See https://kit.svelte.dev/docs/adapters for more information about adapters.
-    adapter: adapter(),
+    // The ISR pages and /api/blog run as Vercel functions. Named here so the
+    // production runtime is the line `engines.node` pins rather than whatever
+    // Node the build happened to run on.
+    adapter: adapter({ runtime: "nodejs24.x" }),
     csp: {
       mode: "auto",
       directives: {

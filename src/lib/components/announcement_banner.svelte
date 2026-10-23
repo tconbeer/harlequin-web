@@ -11,10 +11,10 @@
      deleting the two tags that render this. The page background is `bg-yellow`,
      so the banner is not. -->
 <aside
-  class="mt-4 flex w-full items-start gap-2 rounded border-2 border-purple bg-pink px-4 py-3 text-sm text-black"
+  class="mt-4 flex w-full items-start gap-2 rounded-sm border-2 border-purple bg-pink px-4 py-3 text-sm text-black"
 >
   <img class="mt-0.5 h-5 w-5 flex-none" src={exclamation} alt="" />
-  <p class="min-w-0 break-words">
+  <p class="min-w-0 wrap-break-word">
     Python 3.15 is not supported by all Harlequin dependencies. For the best
     experience, install Harlequin using Python 3.14 with <code
       class="bg-black px-1 font-mono text-yellow selection:bg-purple"

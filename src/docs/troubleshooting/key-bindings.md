@@ -13,7 +13,6 @@ Harlequin can only react to key presses that are sent to it from the Terminal it
 If you don't want to [upgrade your terminal](/docs/troubleshooting/terminal-recommendations), you can use the following aliases, which should be supported everywhere (if not, [open an issue](https://github.com/tconbeer/harlequin/issues)):
 
 - Run query: use <Key>ctrl+j</Key>, not <Key>ctrl+enter</Key>.
-<!-- prettier-ignore -->
 - Comment line: use <Key>ctrl+\_</Key> (underscore), not <Key>ctrl+/</Key>.
 - On a Mac: For all bindings, use <Key>^ Control</Key>, not <Key>⌘ Command</Key>.
   - On MacOs >= 15.0.0 , the key binding <Key>^+enter</Key> is mapped to "Show contextual menu" by default. This interferes with the "Run Query" key binding of Harlequin. Instead of setting up alternative key bindings, you can disable this shortcut in MacOS by navigating to: System Settings -> Keyboard -> Keyboard Shortcuts... -> Keyboard -> turn "Show contextual menu" off.

@@ -18,21 +18,25 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 10
 
-      # 22 because that is what Vercel builds the site on. CI that passes on a
-      # version the deploy does not use is testing the wrong thing.
-      - uses: actions/setup-node@v4
+      # .nvmrc is the same line `engines.node` pins and Vercel builds and serves
+      # on. CI that passes on a version the deploy does not use is testing the
+      # wrong thing.
+      - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
 
       # Frozen: a lockfile that disagrees with package.json is a failure to
@@ -41,9 +45,25 @@ jobs:
 
       - run: pnpm lint
 
+      - run: pnpm check
+
       - run: pnpm test
 
-      # Last, and not redundant with Vercel's: this one fails the check rather
-      # than only the preview deploy, and it is where a docs page with a
-      # component `src/lib/server/docs.ts` has no rule for gets caught.
+      # Not redundant with Vercel's: this one fails the check rather than only
+      # the preview deploy, and it is where a docs page with a component
+      # `src/lib/server/docs.ts` has no rule for gets caught.
       - run: pnpm build
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      # Smoke tests against `vite preview` of the build above.
+      - run: pnpm test:e2e
+        env:
+          E2E_PREBUILT: "1"
+
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7

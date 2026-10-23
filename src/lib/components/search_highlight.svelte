@@ -1,7 +1,4 @@
 <script lang="ts">
-  // `Highlight` postdates the browser globals eslint 8's `env: browser` knows
-  // about; it is in the DOM lib TypeScript checks against.
-  /* global Highlight */
   import { page } from "$app/state";
   import { highlightRanges, parseQuery } from "$lib/search";
   import { flatten, locate } from "$lib/search_highlight";
@@ -130,7 +127,7 @@
 
 {#if query}
   <p
-    class="search-banner my-2 rounded border border-purple px-2 py-1 text-sm"
+    class="search-banner my-2 rounded-sm border border-purple px-2 py-1 text-sm"
     aria-live="polite"
   >
     {#if count}

@@ -7,7 +7,7 @@
   <title>{title}: Blog</title>
 </svelte:head>
 
-<div class="mb-8 mt-6 w-full overflow-x-auto">
+<div class="mt-6 mb-8 w-full overflow-x-auto">
   <div class="mx-auto mt-4 w-full overflow-x-auto md:mt-0 md:w-2/3">
     <h1 class="mb-8 font-accent text-5xl">Harlequin Blog</h1>
     <ul role="list" class="divide-y divide-solid divide-pink">
