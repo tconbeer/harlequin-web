@@ -51,7 +51,7 @@ export function artifact(path: string): string {
   return read(path);
 }
 
-async function sha256(bytes: Uint8Array): Promise<string> {
+async function sha256(bytes: Uint8Array<ArrayBuffer>): Promise<string> {
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return [...new Uint8Array(digest)]
     .map((byte) => byte.toString(16).padStart(2, "0"))

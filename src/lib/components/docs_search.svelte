@@ -2,13 +2,15 @@
   import { goto } from "$app/navigation";
   import { resultHref, type SearchResult } from "$lib/search";
   import { loadEngine } from "$lib/search_client";
+  import { untrack } from "svelte";
   import SearchExcerpt from "./search_excerpt.svelte";
 
   let { initial = "" }: { initial?: string } = $props();
 
   const HITS = 6;
 
-  let query = $state(initial);
+  // A seed: once the reader types, the box is theirs.
+  let query = $state(untrack(() => initial));
   let engine = $state<Awaited<ReturnType<typeof loadEngine>> | null>(null);
   let failed = $state(false);
   let open = $state(false);
