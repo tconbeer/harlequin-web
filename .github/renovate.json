@@ -57,12 +57,6 @@
       "automerge": false
     },
     {
-      "description": "Raise the engines.node patch floor with each Node patch, so it tracks .nvmrc.",
-      "matchDepTypes": ["engines"],
-      "matchDepNames": ["node"],
-      "rangeStrategy": "bump"
-    },
-    {
       "description": "Keep Node on even-numbered (LTS) lines only.",
       "matchDepNames": ["node"],
       "allowedVersions": "/^v?\\d*[02468]\\./"
