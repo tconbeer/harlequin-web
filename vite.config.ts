@@ -1,8 +1,9 @@
 import { sveltekit } from "@sveltejs/kit/vite";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [sveltekit()],
+  plugins: [tailwindcss(), sveltekit()],
   build: {
     // Every asset gets a URL, however small it is. A figure's src is the URL
     // Vite serves it from, and `src/lib/server/docs.ts` absolutizes that into

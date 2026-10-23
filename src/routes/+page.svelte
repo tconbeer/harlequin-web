@@ -18,11 +18,11 @@
     One Engine, Two Interfaces.
   </h2>
   <p class="mx-auto max-w-2xl text-center">
-    <code class="whitespace-nowrap bg-pink px-0.5 selection:bg-purple"
+    <code class="bg-pink px-0.5 whitespace-nowrap selection:bg-purple"
       >harlequin</code
     >
     and
-    <code class="whitespace-nowrap bg-pink px-0.5 selection:bg-purple"
+    <code class="bg-pink px-0.5 whitespace-nowrap selection:bg-purple"
       >hsql</code
     > share adapters, config files, profiles, and a query engine, so you, your scripts,
     and your agents can share one tool.

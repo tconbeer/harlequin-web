@@ -6,7 +6,7 @@
   /* eslint svelte/no-at-html-tags: "off" */
 </script>
 
-<div class="w-80 rounded border bg-white px-6 py-4 font-body">
+<div class="w-80 rounded-sm border bg-white px-6 py-4 font-body">
   <div class="flex justify-between">
     <div class="flex">
       <LazyImage
@@ -27,7 +27,7 @@
   </div>
   <a href={tweet.src} target="_blank">
     <!-- eslint-disable-next-line no-at-html-tags -->
-    <div class="text-md mb-1 mt-3 leading-normal">
+    <div class="text-md mt-3 mb-1 leading-normal">
       {@html tweet.body}
     </div>
     <div class="mb-3 text-sm text-gray-500">{tweet.created_at}</div>

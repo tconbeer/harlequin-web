@@ -23,7 +23,7 @@
   {/if}
   <pre
     class="min-w-0 flex-1 overflow-x-auto px-4 py-3 font-mono leading-relaxed text-yellow selection:bg-purple {size_class}">{#each lines as line, i}{#if line.kind === "command"}<span
-          class="select-none font-bold text-purple"
+          class="font-bold text-purple select-none"
           >$ </span><span class="font-bold text-green">{line.text}</span
         >{:else if line.kind === "note"}<span class="text-pink"
           >{line.text}</span

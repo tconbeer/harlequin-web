@@ -12,7 +12,7 @@
   <meta name="description" content={description} />
 </svelte:head>
 
-<div class="mx-auto max-w-screen-lg px-6 selection:bg-pink">
+<div class="mx-auto max-w-(--breakpoint-lg) px-6 selection:bg-pink">
   <Header {data} />
 
   <main>

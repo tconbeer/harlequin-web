@@ -30,7 +30,7 @@
 <h1 class="mb-4 font-accent text-3xl sm:text-5xl">{data.meta.title}</h1>
 <div class="mb-6 flex justify-start">
   <img
-    class="mr-2 h-[60px] w-[60px] flex-shrink-0 overflow-hidden rounded-full border border-purple"
+    class="mr-2 h-[60px] w-[60px] shrink-0 overflow-hidden rounded-full border border-purple"
     src={ted}
     alt="Headshot of Ted Conbeer"
   />
@@ -46,7 +46,8 @@
     </div>
   </div>
 </div>
-<summary class="mb-4 rounded border border-purple bg-green px-4 py-4 font-bold"
+<summary
+  class="mb-4 rounded-sm border border-purple bg-green px-4 py-4 font-bold"
   >{data.meta.lede}</summary
 >
 <svelte:component this={data.content}></svelte:component>

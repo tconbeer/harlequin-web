@@ -41,5 +41,5 @@
     loaded manually in svelte.config.js. -->
 <div class="mb-8 w-full overflow-x-auto">
   <slot />
-  <span class="select-none font-bold text-purple"></span>
+  <span class="font-bold text-purple select-none"></span>
 </div>

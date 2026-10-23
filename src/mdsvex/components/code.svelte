@@ -3,6 +3,6 @@
   let { children }: { children: Snippet } = $props();
 </script>
 
-<code class="whitespace-nowrap bg-pink px-0.5 text-xs selection:bg-purple"
+<code class="bg-pink px-0.5 text-xs whitespace-nowrap selection:bg-purple"
   >{@render children()}</code
 >

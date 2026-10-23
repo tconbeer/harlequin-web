@@ -127,7 +127,7 @@
 
 {#if query}
   <p
-    class="search-banner my-2 rounded border border-purple px-2 py-1 text-sm"
+    class="search-banner my-2 rounded-sm border border-purple px-2 py-1 text-sm"
     aria-live="polite"
   >
     {#if count}
