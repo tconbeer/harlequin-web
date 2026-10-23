@@ -19,6 +19,9 @@ export default defineConfig({
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
+        // CI sets this to `chrome`, the runner's preinstalled Chrome, so it
+        // downloads no browser and apt-installs nothing.
+        channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
         // For a machine with a preinstalled Chromium that is not the build
         // this Playwright release downloads.
         launchOptions: {
