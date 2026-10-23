@@ -1,7 +1,4 @@
 <script lang="ts">
-  // `Highlight` postdates the browser globals eslint 8's `env: browser` knows
-  // about; it is in the DOM lib TypeScript checks against.
-  /* global Highlight */
   import { page } from "$app/state";
   import { highlightRanges, parseQuery } from "$lib/search";
   import { flatten, locate } from "$lib/search_highlight";

@@ -29,7 +29,7 @@
   // Topics are collapsed by default. Those containing the current page open
   // themselves — seeded here, not only in the effect below, so the server
   // renders them open too — and any the reader opens by hand stay open.
-  let openTopics = $state(new SvelteSet<string>(openPath(page.url.pathname)));
+  const openTopics = new SvelteSet<string>(openPath(page.url.pathname));
   $effect(() => {
     for (const slug of openPath(page.url.pathname)) {
       openTopics.add(slug);
@@ -44,6 +44,8 @@
   // On small screens the sidebar is a drawer; opening a page closes it.
   let showNav = $state(false);
   $effect(() => {
+    // Read only to subscribe: the effect reruns on every page change.
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     activeSlug;
     showNav = false;
   });

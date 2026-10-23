@@ -4,7 +4,7 @@
   import ted from "$lib/assets/blog/ted_100.jpg";
 
   $: postUrl = `${url}blog/${data.slug}`;
-  $: imageUrl = `${url}harlequin.png`;
+  const imageUrl = `${url}harlequin.png`;
 </script>
 
 <svelte:head>
