@@ -27,7 +27,7 @@ The tests cover `src/lib/server/docs.ts`, which turns the mdsvex sources under `
 
 When installing dependencies, pnpm should also install git pre-hooks for formatting, linting and testing.
 
-GitHub Actions runs `lint`, `test` and `build` on every push and pull request, and Vercel builds a preview alongside it. If you want to build and preview a prod version locally you can with:
+GitHub Actions runs `lint`, `test`, `build` and the Playwright smoke tests (`pnpm test:e2e`) on every push and pull request, and Vercel builds a preview alongside it. If you want to build and preview a prod version locally you can with:
 
 ```bash
 pnpm build

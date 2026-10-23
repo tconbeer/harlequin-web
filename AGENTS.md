@@ -16,15 +16,16 @@ pnpm dev         # dev server on localhost:5173
 pnpm build       # production build
 pnpm preview     # serve the production build locally
 pnpm test        # vitest run  (runs on pre-commit)
+pnpm test:e2e    # Playwright smoke tests against `vite build && vite preview`
 pnpm format      # prettier --write with svelte/organize-imports/tailwindcss plugins
 pnpm lint        # prettier --check && eslint  (runs on pre-commit)
 pnpm check       # svelte-check against tsconfig.json
 pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/themes
 ```
 
-`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. `.github/workflows/ci.yml` runs `lint`, `test` and `build` on every push and PR — the hook is the fast feedback, that is the guarantee — and Vercel builds a preview alongside it.
+`pnpm lint` and `pnpm test` run as pre-commit hooks (`@fastify/pre-commit`), so run `pnpm format` before committing. `.github/workflows/ci.yml` runs `lint`, `test`, `build` and `test:e2e` on every push and PR — the hook is the fast feedback, that is the guarantee — and Vercel builds a preview alongside it.
 
-The tests are vitest, and they cover the markdown corpus (below), the routes that publish it, and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`. There is no component test runner; what is testable about a component belongs in a module beside it, the way `src/lib/markdown_actions.ts` holds the URLs the copy and view buttons build.
+The tests are vitest, and they cover the markdown corpus (below), the routes that publish it, and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`. `tests/e2e/` is a Playwright smoke suite over the production build: every page type, the docs search, and the published endpoints, failing on any console error or failed same-origin request. It runs under `vite preview`, so `vercel.json`'s redirects and headers do not apply there. Set `E2E_PREBUILT=1` to serve an existing build instead of building first, and `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to use a preinstalled Chromium. There is no component test runner; what is testable about a component belongs in a module beside it, the way `src/lib/markdown_actions.ts` holds the URLs the copy and view buttons build.
 
 **Node is pinned in three places that must agree:** `engines.node` in `package.json` (a patch floor on the 24 LTS line, enforced locally by `engine-strict=true` in `.npmrc`, and the field Vercel reads to pick its build image), `.nvmrc` (which CI's `setup-node` reads), and `runtime` in the adapter options in `svelte.config.js` (the Node line the ISR pages and `/api/blog` run on as Vercel functions). Vercel owns the patch level of both its build image and its function runtime.
 

@@ -44,7 +44,21 @@ jobs:
 
       - run: pnpm test
 
-      # Last, and not redundant with Vercel's: this one fails the check rather
-      # than only the preview deploy, and it is where a docs page with a
-      # component `src/lib/server/docs.ts` has no rule for gets caught.
+      # Not redundant with Vercel's: this one fails the check rather than only
+      # the preview deploy, and it is where a docs page with a component
+      # `src/lib/server/docs.ts` has no rule for gets caught.
       - run: pnpm build
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      # Smoke tests against `vite preview` of the build above.
+      - run: pnpm test:e2e
+        env:
+          E2E_PREBUILT: "1"
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7
