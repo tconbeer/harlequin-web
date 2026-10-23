@@ -54,12 +54,12 @@ jobs:
       # `src/lib/server/docs.ts` has no rule for gets caught.
       - run: pnpm build
 
-      - run: pnpm exec playwright install --with-deps chromium
-
-      # Smoke tests against `vite preview` of the build above.
+      # Smoke tests against `vite preview` of the build above, on the runner's
+      # preinstalled Chrome.
       - run: pnpm test:e2e
         env:
           E2E_PREBUILT: "1"
+          PLAYWRIGHT_CHANNEL: chrome
 
       - uses: actions/upload-artifact@v7
         if: failure()
