@@ -3,7 +3,7 @@ title: Config Overview
 ---
 
 <script>
-    import wizard from "$lib/assets/docs/config-wizard.png"
+    import wizard from "#lib/assets/docs/config-wizard.png"
 </script>
 
 Typing in command-line options with every invocation of Harlequin can get tiring. Instead, you can create profiles (sets of configurations that specify adapter and database connection options). Those profiles are saved in config files, which Harlequin will discover and load automatically. Selecting a profile is a simple command-line flag, or config files can define a default.

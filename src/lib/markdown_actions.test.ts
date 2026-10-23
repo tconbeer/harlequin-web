@@ -8,8 +8,8 @@
  * reader who clicked it.
  */
 
-import { docsPages } from "$lib/docs_menu";
-import { buildCorpus } from "$lib/server/docs";
+import { docsPages } from "#lib/docs_menu.js";
+import { buildCorpus } from "#lib/server/docs.js";
 import { describe, expect, it } from "vitest";
 import { docsSlug, markdownHeader, markdownPath } from "./markdown_actions";
 

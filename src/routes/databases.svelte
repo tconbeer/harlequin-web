@@ -1,7 +1,7 @@
 <script lang="ts">
-  import LazyImage from "$lib/components/lazy_image.svelte";
+  import LazyImage from "#lib/components/lazy_image.svelte";
   const databases = import.meta.glob<{ default: string }>(
-    "$lib/assets/databases/*.{svg,png}",
+    "#lib/assets/databases/*.{svg,png}",
     {
       query: "?url",
       eager: true,

@@ -3,7 +3,7 @@ title: Windows Timezone Database
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 Unlike other operating systems, Windows does not ship with an IANA-format timezone database.

@@ -8,9 +8,9 @@
  * was committed do too.
  */
 
-import { docsPages } from "$lib/docs_menu";
-import { createEngine, decodePostings, tokenize } from "$lib/search";
-import { slugifyText } from "$lib/slugify";
+import { docsPages } from "#lib/docs_menu.js";
+import { createEngine, decodePostings, tokenize } from "#lib/search.js";
+import { slugifyText } from "#lib/slugify.js";
 import { describe, expect, it } from "vitest";
 import { buildSearchIndex } from "./search_index";
 

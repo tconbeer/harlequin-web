@@ -4,7 +4,7 @@
   // from `hsql --spec` and copied here by that repo's release workflow — so
   // nothing on this side writes or edits it, and the version line says which
   // release a reader is looking at.
-  import Link from "$lib/components/link.svelte";
+  import Link from "#lib/components/link.svelte";
   import manifest from "../../../static/artifacts/manifest.json";
   import Reference from "../../../static/artifacts/hsql-reference.md";
 

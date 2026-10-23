@@ -24,8 +24,8 @@ import {
   type IndexPage,
   type IndexSection,
   type SearchIndex,
-} from "$lib/search";
-import { slugifyText } from "$lib/slugify";
+} from "#lib/search.js";
+import { slugifyText } from "#lib/slugify.js";
 import { buildCorpus } from "./docs";
 
 /** Inline markdown, as the text it renders to. */

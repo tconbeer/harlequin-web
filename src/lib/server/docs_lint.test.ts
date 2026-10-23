@@ -14,7 +14,7 @@
  * over and a machine trips on.
  */
 
-import { docsPages } from "$lib/docs_menu";
+import { docsPages } from "#lib/docs_menu.js";
 import { describe, expect, it } from "vitest";
 import { buildCorpus } from "./docs";
 

@@ -4,7 +4,7 @@ description: hsql's seven exit codes, what it writes to stdout and stderr, the -
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 stdout carries result sets and nothing else. Every error, warning and note goes

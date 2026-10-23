@@ -8,8 +8,8 @@
  * `src/lib/server/search_index.test.ts`.
  */
 
-import type { SearchIndex } from "$lib/search";
-import { buildSearchIndex } from "$lib/server/search_index";
+import type { SearchIndex } from "#lib/search.js";
+import { buildSearchIndex } from "#lib/server/search_index.js";
 import { describe, expect, it } from "vitest";
 import { GET, prerender } from "./+server";
 

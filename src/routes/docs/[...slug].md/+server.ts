@@ -12,12 +12,12 @@
  * convention is meant to be guessable from one example: the rendered page links
  * to its own `.md` twin, and every other page answers to the same rule.
  *
- * The markdown comes from `$lib/server/docs`, which is also what `llms.txt`,
+ * The markdown comes from `#lib/server/docs`, which is also what `llms.txt`,
  * the docs API and the copy button read, so no consumer can disagree with
  * another about what a page says.
  */
 
-import { buildCorpus, type CorpusPage } from "$lib/server/docs";
+import { buildCorpus, type CorpusPage } from "#lib/server/docs.js";
 import { error } from "@sveltejs/kit";
 import type { EntryGenerator, RequestHandler } from "./$types";
 

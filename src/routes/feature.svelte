@@ -3,7 +3,7 @@
   export let body = "";
   export let src = "";
 
-  import LazyImage from "$lib/components/lazy_image.svelte";
+  import LazyImage from "#lib/components/lazy_image.svelte";
 </script>
 
 <div

@@ -4,18 +4,18 @@ description: "A tour of Harlequin's Query Editor, Data Catalog and Results Viewe
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Tip from "$lib/components/tip.svelte"
-    import Figure from "$lib/components/figure.svelte"
-    import Link from "$lib/components/link.svelte"
-    import init from "$lib/assets/docs/getting-started/init.png"
-    import first_query from "$lib/assets/docs/getting-started/first-query.png"
-    import full_screen from "$lib/assets/docs/getting-started/full-screen.png"
-    import catalog from "$lib/assets/docs/getting-started/catalog.png"
-    import interactions from "$lib/assets/docs/getting-started/interactions.png"
-    import describe from "$lib/assets/docs/getting-started/describe.png"
-    import autocomplete from "$lib/assets/docs/getting-started/autocomplete.png"
-    import find from "$lib/assets/docs/getting-started/find.png"
+    import Key from "#lib/components/key.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Figure from "#lib/components/figure.svelte"
+    import Link from "#lib/components/link.svelte"
+    import init from "#lib/assets/docs/getting-started/init.png"
+    import first_query from "#lib/assets/docs/getting-started/first-query.png"
+    import full_screen from "#lib/assets/docs/getting-started/full-screen.png"
+    import catalog from "#lib/assets/docs/getting-started/catalog.png"
+    import interactions from "#lib/assets/docs/getting-started/interactions.png"
+    import describe from "#lib/assets/docs/getting-started/describe.png"
+    import autocomplete from "#lib/assets/docs/getting-started/autocomplete.png"
+    import find from "#lib/assets/docs/getting-started/find.png"
 </script>
 
 To follow this tutorial, simply run Harlequin with no arguments to open an in-memory DuckDB database:

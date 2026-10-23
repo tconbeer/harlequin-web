@@ -1,18 +1,18 @@
 <script lang="ts">
-  import LazyImage from "$lib/components/lazy_image.svelte";
+  import LazyImage from "#lib/components/lazy_image.svelte";
 
-  import catppuccin_latte from "$lib/assets/themes/catppuccin-latte.svg";
-  import catppuccin_mocha from "$lib/assets/themes/catppuccin-mocha.svg";
-  import dracula from "$lib/assets/themes/dracula.svg";
-  import flexoki from "$lib/assets/themes/flexoki.svg";
-  import gruvbox from "$lib/assets/themes/gruvbox.svg";
-  import harlequin from "$lib/assets/themes/harlequin.svg";
-  import monokai from "$lib/assets/themes/monokai.svg";
-  import nord from "$lib/assets/themes/nord.svg";
-  import solarized_light from "$lib/assets/themes/solarized-light.svg";
-  import textual_dark from "$lib/assets/themes/textual-dark.svg";
-  import textual_light from "$lib/assets/themes/textual-light.svg";
-  import tokyo_night from "$lib/assets/themes/tokyo-night.svg";
+  import catppuccin_latte from "#lib/assets/themes/catppuccin-latte.svg";
+  import catppuccin_mocha from "#lib/assets/themes/catppuccin-mocha.svg";
+  import dracula from "#lib/assets/themes/dracula.svg";
+  import flexoki from "#lib/assets/themes/flexoki.svg";
+  import gruvbox from "#lib/assets/themes/gruvbox.svg";
+  import harlequin from "#lib/assets/themes/harlequin.svg";
+  import monokai from "#lib/assets/themes/monokai.svg";
+  import nord from "#lib/assets/themes/nord.svg";
+  import solarized_light from "#lib/assets/themes/solarized-light.svg";
+  import textual_dark from "#lib/assets/themes/textual-dark.svg";
+  import textual_light from "#lib/assets/themes/textual-light.svg";
+  import tokyo_night from "#lib/assets/themes/tokyo-night.svg";
 
   const themes = [
     ["catppuccin-latte", catppuccin_latte],

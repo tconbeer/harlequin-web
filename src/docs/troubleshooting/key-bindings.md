@@ -3,9 +3,9 @@ title: Key Bindings
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Tip from "$lib/components/tip.svelte"
-    import Link from "$lib/components/link.svelte"
+    import Key from "#lib/components/key.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Link from "#lib/components/link.svelte"
 </script>
 
 Harlequin can only react to key presses that are sent to it from the Terminal it is running in. Some common key presses, like <Key>ctrl+enter</Key>, aren't forwarded correctly by some terminals, or may be aliased to a different key or even a different sort of event.

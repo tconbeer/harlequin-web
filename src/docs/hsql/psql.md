@@ -4,7 +4,7 @@ description: What carries over from psql to hsql — -c, -f, -t, -A, -x — and 
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 `-c`, `-f`, `-t`, `-A` and `-x` mean what they mean in psql, so this prints a

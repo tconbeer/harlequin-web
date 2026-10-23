@@ -15,13 +15,12 @@
  * are coordinated.
  */
 
-import { buildSearchIndex } from "$lib/server/search_index";
-import { json } from "@sveltejs/kit";
+import { buildSearchIndex } from "#lib/server/search_index.js";
 
 export const prerender = true;
 
 export function GET() {
-  return json(buildSearchIndex(), {
+  return Response.json(buildSearchIndex(), {
     headers: {
       // Set here for the dev server; in production this prerenders to a file
       // and Vercel types it by its extension.

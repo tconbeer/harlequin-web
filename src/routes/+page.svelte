@@ -6,7 +6,7 @@
   import HsqlFeatures from "./hsql_features.svelte";
   import SectionHeading from "./section_heading.svelte";
   import Tweets from "./tweets.svelte";
-  import AnnouncementBanner from "$lib/components/announcement_banner.svelte";
+  import AnnouncementBanner from "#lib/components/announcement_banner.svelte";
 </script>
 
 <article class="overflow-x-visible">

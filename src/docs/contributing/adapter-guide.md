@@ -4,8 +4,8 @@ description: "The HarlequinAdapter interface, entry points, and how to package a
 ---
 
 <script>
-    import tx_manual from "$lib/assets/docs/tx-manual.png"
-    import Note from "$lib/components/note.svelte"
+    import tx_manual from "#lib/assets/docs/tx-manual.png"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 Database adapters enable Harlequin to work with any relational database by abstracting the actual interface into a standard that Harlequin can use. The interface is minimal: adapters were designed to be easy to implement and maintain. Adapter authors only need familiarity with Python and the database they wish to use; no knowledge of Textual, user interfaces, or async programming is required.

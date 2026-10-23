@@ -4,7 +4,7 @@ description: Every hsql output format, the shorthand flags, the layout switches 
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 `--format NAME` picks how results are laid out, or what file format they are

@@ -4,7 +4,7 @@ description: How --catalog, --path and --catalog-search list a database's databa
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 `--catalog` lists the objects one level below `--path`, and exits without

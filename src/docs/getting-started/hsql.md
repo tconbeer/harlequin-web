@@ -3,8 +3,8 @@ title: Using hsql
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
-    import Warning from "$lib/components/warning.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 `hsql` is your agent's favorite SQL client. It's the headless CLI for

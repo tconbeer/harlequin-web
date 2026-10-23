@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Segment } from "$lib/search";
+  import type { Segment } from "#lib/search.js";
 
   let { segments }: { segments: Segment[] } = $props();
 </script>

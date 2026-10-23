@@ -4,8 +4,8 @@ description: "Learn how Harlequin integrates with SSH to connect to databases on
 ---
 
 <script>
-    import Figure from "$lib/components/figure.svelte"
-    import tunnel from "$lib/assets/docs/ssh-tunnel.svg"
+    import Figure from "#lib/components/figure.svelte"
+    import tunnel from "#lib/assets/docs/ssh-tunnel.svg"
 </script>
 
 Many databases are not reachable from the public internet. Harlequin's and hsql's integration with SSH can make connecting to such databases easier.

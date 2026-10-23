@@ -11,7 +11,7 @@
  * than serve a rejection forever from a cache.
  */
 
-import { createEngine, type Engine, type SearchIndex } from "$lib/search";
+import { createEngine, type Engine, type SearchIndex } from "#lib/search.js";
 
 export const INDEX_URL = "/docs/search/index.json";
 

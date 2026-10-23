@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { highlightRanges, parseQuery } from "$lib/search";
-  import { flatten, locate } from "$lib/search_highlight";
+  import { highlightRanges, parseQuery } from "#lib/search.js";
+  import { flatten, locate } from "#lib/search_highlight.js";
   import { tick } from "svelte";
 
   let { target }: { target: HTMLElement | null } = $props();

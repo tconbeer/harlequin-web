@@ -58,12 +58,12 @@
     },
     {
       "description": "Keep Node on even-numbered (LTS) lines only.",
-      "matchDepNames": ["node"],
+      "matchDepNames": ["node", "@types/node"],
       "allowedVersions": "/^v?\\d*[02468]\\./"
     },
     {
-      "description": "A Node major also means changing the adapter runtime in svelte.config.js, so it is one PR merged by hand.",
-      "matchDepNames": ["node"],
+      "description": "A Node major also means changing the adapter runtime in vite.config.ts, so it is one PR merged by hand.",
+      "matchDepNames": ["node", "@types/node"],
       "matchUpdateTypes": ["major"],
       "groupName": "node major",
       "groupSlug": "node-major",

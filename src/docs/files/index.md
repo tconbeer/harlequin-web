@@ -4,9 +4,9 @@ description: "Show a file tree of local files or S3 objects in the Data Catalog,
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Figure from "$lib/components/figure.svelte"
-    import file_tree from "$lib/assets/docs/file-tree.png"
+    import Key from "#lib/components/key.svelte"
+    import Figure from "#lib/components/figure.svelte"
+    import file_tree from "#lib/assets/docs/file-tree.png"
 </script>
 
 Harlequin's Data Catalog optionally displays file trees for either local files or remote objects stored in Amazon S3 (or another object storage service that provides an S3-compatible API.)

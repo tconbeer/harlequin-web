@@ -1,4 +1,4 @@
-import type { BlogPage } from "$lib/types.js";
+import type { BlogPage } from "#lib/types.js";
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load({ fetch }) {

@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
   import { page } from "$app/state";
-  import AnnouncementBanner from "$lib/components/announcement_banner.svelte";
-  import chevron from "$lib/assets/icons/icons8-chevron-50.png";
-  import DocsSearch from "$lib/components/docs_search.svelte";
+  import AnnouncementBanner from "#lib/components/announcement_banner.svelte";
+  import chevron from "#lib/assets/icons/icons8-chevron-50.png";
+  import DocsSearch from "#lib/components/docs_search.svelte";
   import {
     docsAncestors,
     docsMenu,
     docsNeighbors,
     isTopic,
-  } from "$lib/docs_menu";
-  import type { DocsMenuItem } from "$lib/types";
+  } from "#lib/docs_menu.js";
+  import type { DocsMenuItem } from "#lib/types.js";
   import { SvelteSet } from "svelte/reactivity";
 
   let { children } = $props();

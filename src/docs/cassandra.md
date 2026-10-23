@@ -4,9 +4,9 @@ description: "Install the Cassandra adapter and connect Harlequin to a Cassandra
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
-    import Note from "$lib/components/note.svelte"
-    import Link from "$lib/components/link.svelte"
+    import Warning from "#lib/components/warning.svelte"
+    import Note from "#lib/components/note.svelte"
+    import Link from "#lib/components/link.svelte"
 </script>
 
 The Cassandra adapter was contributed by community member Vadim Khitrin.

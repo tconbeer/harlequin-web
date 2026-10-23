@@ -4,8 +4,8 @@ description: The row limit, --read-only and --timeout, the adapter capabilities 
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
-    import Note from "$lib/components/note.svelte"
+    import Warning from "#lib/components/warning.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 Three options bound a run: how many rows it fetches, whether it can write, and

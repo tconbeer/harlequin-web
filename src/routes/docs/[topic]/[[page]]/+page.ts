@@ -1,4 +1,4 @@
-import { docsRepo } from "$lib/docs_menu";
+import { docsRepo } from "#lib/docs_menu.js";
 import { error, redirect } from "@sveltejs/kit";
 
 export const config = {

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import check from "$lib/assets/icons/icons8-check-50.png";
-  import clippy from "$lib/assets/icons/icons8-clipboard-48.png";
-  import { markdownHeader, markdownPath } from "$lib/markdown_actions";
+  import check from "#lib/assets/icons/icons8-check-50.png";
+  import clippy from "#lib/assets/icons/icons8-clipboard-48.png";
+  import { markdownHeader, markdownPath } from "#lib/markdown_actions.js";
 
   let {
     slug,

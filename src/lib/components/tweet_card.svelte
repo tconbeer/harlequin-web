@@ -1,7 +1,7 @@
 <script lang="ts">
   export let tweet: Tweet;
-  import type { Tweet } from "$lib/types";
-  import x_icon from "$lib/assets/icons/icons8-twitterx-50.png";
+  import type { Tweet } from "#lib/types.js";
+  import x_icon from "#lib/assets/icons/icons8-twitterx-50.png";
   import LazyImage from "./lazy_image.svelte";
   /* eslint svelte/no-at-html-tags: "off" */
 </script>

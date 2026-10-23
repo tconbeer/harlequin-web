@@ -8,8 +8,8 @@ The Exasol adapter was contributed by community member Nicola Coretti.
 _This documentation is Copyright Exasol, reproduced and adapted here under an [MIT License](https://github.com/Nicoretti/harlequin-exasol/blob/main/LICENSE). See the [repository](https://github.com/Nicoretti/harlequin-exasol) for the most up-to-date documentation._
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
-    import Note from "$lib/components/note.svelte"
+    import Warning from "#lib/components/warning.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 <Warning>

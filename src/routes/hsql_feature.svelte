@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Terminal from "$lib/components/terminal.svelte";
-  import type { TerminalLine } from "$lib/types";
+  import Terminal from "#lib/components/terminal.svelte";
+  import type { TerminalLine } from "#lib/types.js";
 
   let { title = "", body = "", lines = [] as TerminalLine[] } = $props();
 </script>

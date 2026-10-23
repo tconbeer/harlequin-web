@@ -9,7 +9,7 @@
  * would notice going wrong.
  */
 
-import { buildCorpus } from "$lib/server/docs";
+import { buildCorpus } from "#lib/server/docs.js";
 import { describe, expect, it } from "vitest";
 import { GET, prerender } from "./+server";
 

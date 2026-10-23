@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
   import { page } from "$app/state";
-  import { title } from "$lib/config";
-  import SearchExcerpt from "$lib/components/search_excerpt.svelte";
-  import { resultHref, type SearchResult } from "$lib/search";
-  import { loadEngine } from "$lib/search_client";
+  import { title } from "#lib/config.js";
+  import SearchExcerpt from "#lib/components/search_excerpt.svelte";
+  import { resultHref, type SearchResult } from "#lib/search.js";
+  import { loadEngine } from "#lib/search_client.js";
 
   const LIMIT = 30;
 

@@ -27,7 +27,7 @@ pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/theme
 
 The tests are vitest, and they cover the markdown corpus (below), the routes that publish it, and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`. `tests/e2e/` is a Playwright smoke suite over the production build: every page type, the docs search, and the published endpoints, failing on any console error or failed same-origin request. It runs under `vite preview`, so `vercel.json`'s redirects and headers do not apply there. Set `E2E_PREBUILT=1` to serve an existing build instead of building first, `E2E_PORT` if 4317 is taken, and `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to use a preinstalled Chromium. There is no component test runner; what is testable about a component belongs in a module beside it, the way `src/lib/markdown_actions.ts` holds the URLs the copy and view buttons build.
 
-**Node is pinned in three places that must agree:** `engines.node` in `package.json` (the major only: Vercel reads it to pick its build image, whose patch level Vercel controls), `.nvmrc` (the exact patched version CI's `setup-node` and local installs use), and `runtime` in the adapter options in `svelte.config.js` (the Node line the ISR pages and `/api/blog` run on as Vercel functions).
+**Node is pinned in three places that must agree:** `engines.node` in `package.json` (the major only: Vercel reads it to pick its build image, whose patch level Vercel controls), `.nvmrc` (the exact patched version CI's `setup-node` and local installs use), and `runtime` in the adapter options in `vite.config.ts` (the Node line the ISR pages and `/api/blog` run on as Vercel functions). `@types/node` follows the same major.
 
 ## Content architecture
 
@@ -61,7 +61,7 @@ The tests are vitest, and they cover the markdown corpus (below), the routes tha
 `src/lib/search.ts` is the query language and the ranking; `src/lib/server/search_index.ts` turns the corpus into the index it runs against; `/docs/search/index.json` serves that index, prerendered.
 
 - **The index ships whole, and it ships tokenized.** 71 pages is ~300 sections and ~2,700 distinct words — 300KB of JSON, 83KB over the wire — so the browser fetches it once and every search after that is local. What ships is not the text alone: tokenizing 20,000 words in the browser is a ~73ms pass on a desktop and several hundred milliseconds on a phone, and it would land inside the first keystroke. So the tokenizing happens at build time and the tokens ship, as a sorted dictionary and one delta-encoded postings string per term. Prefix-matching "conf" is then two binary searches over the dictionary rather than a scan of every token in the docs.
-- **`tokenize()` lives in `$lib/search.ts`, not beside the builder**, because both sides have to use the same one. A dictionary built by a tokenizer the query does not share holds terms no query can reach, and nothing fails — the results are just quietly missing. The tokenizer is tuned for a CLI reference: `motherduck_token`, `harlequin.sh` and `v2.13.0` are each one word, and a leading `--` is not part of one, so `--limit` is found by searching `limit`.
+- **`tokenize()` lives in `#lib/search.ts`, not beside the builder**, because both sides have to use the same one. A dictionary built by a tokenizer the query does not share holds terms no query can reach, and nothing fails — the results are just quietly missing. The tokenizer is tuned for a CLI reference: `motherduck_token`, `harlequin.sh` and `v2.13.0` are each one word, and a leading `--` is not part of one, so `--limit` is found by searching `limit`.
 - **The grammar is `websearch_to_tsquery`'s**, which is what people have muscle memory for: bare words prefix-match and AND, `"a phrase"` is exact and adjacent, `-word` excludes the whole page, and `OR` binds looser than the implicit AND (`a b OR c` is `(a AND b) OR c`). A `-` only negates when a word follows it directly — `--limit` is a flag, not an exclusion of "limit".
 - **Sections, not pages, are the unit.** A page is split at its `##`–`####` headings, each section anchored at `slugifyText(heading)` — the same id `src/mdsvex/components/h2.svelte` renders, which is why `slugify.ts` exports the string form and the element form delegates to it. **Split with the fences masked:** `files/remote.md` lists S3 formats under `# Amazon S3 Formats` _inside_ an unlabelled code block, and `snowflake/index.md` has a `# key-pair auth` TOML comment. And `sanitize()` prepends `# <title>` to every page, which is the route's `<h1>` and has no id, so it is not a section either.
 - **Code is content.** Fence markers go; what is inside them stays, verbatim — the `*` in `SELECT *` is not emphasis, and a reader searching `motherduck_token` is searching a code block.
@@ -99,7 +99,7 @@ Every config schema `harlequin` has generated since 2.10 carries `https://harleq
 
 ### Markdown rendering
 
-MDSveX is configured in `svelte.config.js` and applies to all `.md` files:
+MDSveX is configured in `vite.config.ts` and applies to all `.md` files:
 
 - `src/mdsvex/docs.svelte` is the global layout; it exports the components in `src/mdsvex/components/` so plain markdown elements (`p`, `a`, `pre`, `h2`…) render as styled Svelte components. (`src/mdsvex/blog.svelte` is a near-duplicate that nothing currently references.)
 - **Markdown inside a component tag needs a blank line.** The first paragraph after `<Tip>` is passed through as raw HTML — a `[link](/docs/x)` written there renders as literal brackets — so put a blank line after the opening tag and before the closing one, and then backticks, links and lists all work. (The older pages write `<code>` by hand instead; that is why.)
@@ -107,13 +107,15 @@ MDSveX is configured in `svelte.config.js` and applies to all `.md` files:
 - **`smartypants` runs with `dashes: false`.** Curly quotes and ellipses, but a `--flag` written outside backticks stays a flag rather than becoming an em dash; the generated CLI reference is full of help text that mentions one.
 - Markdown tables render through `components/table.svelte` and its `th`/`td`, and each one scrolls in its own box. `components/h1.svelte` renders an `<h2>`: a page's own `<h1>` is the route's, from the frontmatter, and the only `#` in the corpus is inside the embedded CLI reference.
 - The custom highlighter prepends a `$ ` prompt to ` ```bash ` blocks. `components/pre.svelte` renders the copy button and strips that leading `$` when copying — so use `bash` for shell commands and no fence language for output/other snippets.
-- Markdown files may open a `<script>` block and import Svelte components, which is how docs pages use `$lib/components/` callouts (`note`, `tip`, `warning`) and `theme_gallery`.
+- Markdown files may open a `<script>` block and import Svelte components, which is how docs pages use `#lib/components/` callouts (`note`, `tip`, `warning`) and `theme_gallery`.
 
 ## Conventions
 
+- **SvelteKit 3: there is no `svelte.config.js`.** Kit's options (adapter, CSP, prerender, preprocessors) are passed to `sveltekit()` in `vite.config.ts`, and eslint reads them from there through `@sveltejs/load-config`.
+- **`src/lib` is imported as `#lib/...`**, a subpath import declared in `package.json`'s `imports`, and it needs the file extension: `#lib/docs_menu.js` for a `.ts` module, `#lib/components/note.svelte` for a component. Docs pages' `<script>` blocks follow the same rule, and `sanitize()` resolves a figure's `#lib/assets/...` import.
 - **Svelte 5 runes** throughout — `$props()`, `$state()`, `$derived()`, `$effect()`, and `{@render children()}` rather than slots or `export let`. Match this in new components.
 - **Styling is Tailwind-only**, using the custom palette in the `@theme` block of `src/app.css` (`green`/`yellow`/`pink`/`purple`/`black`) and the four font families (`font-display` Rye, `font-accent` Contrail One, `font-body` Quicksand, `font-mono` JetBrains Mono). Fonts load from Google Fonts in `src/app.html`.
 - **Site-wide strings** (title, subtitle, description, canonical URL) live in `src/lib/config.ts`; shared TypeScript types live in `src/lib/types.ts`.
-- **CSP** is set in `svelte.config.js` with `script-src: self`, so external scripts and inline script tags will be blocked.
+- **CSP** is set in `vite.config.ts` with `script-src: self`, so external scripts and inline script tags will be blocked.
 - **Vercel ISR** — `src/routes/+layout.server.js` and the docs `+page.ts` use `config.isr` with a 1-hour expiration because they hit the unauthenticated GitHub API for star counts; that API is rate-limited, and both loaders degrade gracefully when the request fails.
 - Filenames are lower_snake_case for components, kebab-case for docs pages.

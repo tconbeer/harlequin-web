@@ -2,8 +2,8 @@
   import type { Snippet } from "svelte";
 
   let { children }: { children: Snippet } = $props();
-  import clippy from "$lib/assets/icons/icons8-clipboard-48.png";
-  import check from "$lib/assets/icons/icons8-check-50.png";
+  import clippy from "#lib/assets/icons/icons8-clipboard-48.png";
+  import check from "#lib/assets/icons/icons8-check-50.png";
 
   let copy_icon = $state(clippy);
   const element_id = crypto.randomUUID();
