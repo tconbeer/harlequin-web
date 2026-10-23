@@ -15,7 +15,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write --plugin prettier-plugin-svelte --plugin prettier-plugin-organize-imports --plugin prettier-plugin-tailwindcss .",
-    "themes": "svgo -f ./src/lib/assets/themes -o ./src/lib/assets/themes",
+    "themes": "node scripts/themes.js",
     "test:e2e": "playwright test"
   },
   "pre-commit": [
