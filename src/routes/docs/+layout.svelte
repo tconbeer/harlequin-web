@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
   import { page } from "$app/state";
   import AnnouncementBanner from "#lib/components/announcement_banner.svelte";
   import chevron from "#lib/assets/icons/icons8-chevron-50.png";

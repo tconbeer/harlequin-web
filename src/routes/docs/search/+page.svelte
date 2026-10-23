@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
   import { page } from "$app/state";
   import { title } from "#lib/config.js";
   import SearchExcerpt from "#lib/components/search_excerpt.svelte";
