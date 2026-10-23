@@ -1,5 +1,6 @@
 <script lang="ts">
-  let { children } = $props();
+  import type { Snippet } from "svelte";
+  let { children }: { children: Snippet } = $props();
   import Alert from "$lib/components/alert.svelte";
   import lightbulb from "$lib/assets/icons/icons8-lightbulb-50.png";
 </script>

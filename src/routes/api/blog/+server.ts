@@ -19,7 +19,7 @@ async function getPosts() {
 
   pages.sort(
     (first, second) =>
-      new Date(second.publishedAt) - new Date(first.publishedAt),
+      Date.parse(second.publishedAt) - Date.parse(first.publishedAt),
   );
 
   return pages;

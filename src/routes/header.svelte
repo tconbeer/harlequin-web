@@ -4,7 +4,10 @@
   import { navigating } from "$app/state";
   import Github from "../lib/components/github.svelte";
 
-  let { data } = $props();
+  let {
+    data,
+  }: { data: { repo: string; forks_count: number; stargazers_count: number } } =
+    $props();
 
   let showMenu = $state(false);
   $effect(() => {

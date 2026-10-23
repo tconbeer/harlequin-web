@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const port = 4317;
+const port = Number(process.env.E2E_PORT) || 4317;
 // CI builds in a step of its own, so the smoke tests serve that build rather
 // than paying for a second one.
 const serve = `vite preview --port ${port} --strictPort`;

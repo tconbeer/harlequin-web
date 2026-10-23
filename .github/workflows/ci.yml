@@ -42,6 +42,8 @@ jobs:
 
       - run: pnpm lint
 
+      - run: pnpm check
+
       - run: pnpm test
 
       # Not redundant with Vercel's: this one fails the check rather than only

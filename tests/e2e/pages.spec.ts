@@ -13,6 +13,10 @@ test("home page renders its sections", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "Join the Flock." }),
   ).toBeAttached();
+  // The header badge links to the repo whether or not GitHub's API answered.
+  await expect(
+    page.getByRole("navigation").first().getByTitle("Go to repository"),
+  ).toHaveAttribute("href", "https://github.com/tconbeer/harlequin");
 });
 
 test("header links reach docs, blog and about", async ({ page }) => {
