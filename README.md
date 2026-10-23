@@ -8,7 +8,7 @@ It was created and is maintained by [Ted Conbeer](https://tedconbeer.com).
 
 ## Contributing
 
-Use Node v22 with pnpm to install deps and build the site:
+Use Node v24 (the version in `.nvmrc`) with pnpm to install deps and build the site:
 
 ```bash
 pnpm i

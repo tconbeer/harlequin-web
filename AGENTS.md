@@ -26,7 +26,7 @@ pnpm themes      # re-optimize the SVG theme screenshots in src/lib/assets/theme
 
 The tests are vitest, and they cover the markdown corpus (below), the routes that publish it, and nothing else — they run under Vite rather than bare Node because they read the docs through `import.meta.glob`. There is no component test runner; what is testable about a component belongs in a module beside it, the way `src/lib/markdown_actions.ts` holds the URLs the copy and view buttons build.
 
-`.npmrc` sets `engine-strict=true`, but `package.json` declares no `engines`, so nothing is actually pinned. The README and CI both say Node 22, which is what Vercel builds on.
+**Node is pinned in three places that must agree:** `engines.node` in `package.json` (a patch floor on the 24 LTS line, enforced locally by `engine-strict=true` in `.npmrc`, and the field Vercel reads to pick its build image), `.nvmrc` (which CI's `setup-node` reads), and `runtime` in the adapter options in `svelte.config.js` (the Node line the ISR pages and `/api/blog` run on as Vercel functions). Vercel owns the patch level of both its build image and its function runtime.
 
 ## Content architecture
 

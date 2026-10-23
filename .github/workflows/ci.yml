@@ -28,11 +28,12 @@ jobs:
         with:
           version: 10
 
-      # 22 because that is what Vercel builds the site on. CI that passes on a
-      # version the deploy does not use is testing the wrong thing.
+      # .nvmrc is the same line `engines.node` pins and Vercel builds and serves
+      # on. CI that passes on a version the deploy does not use is testing the
+      # wrong thing.
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
 
       # Frozen: a lockfile that disagrees with package.json is a failure to
