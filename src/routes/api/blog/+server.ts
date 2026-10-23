@@ -1,5 +1,4 @@
 import type { BlogPage } from "#lib/types.js";
-import { json } from "@sveltejs/kit";
 
 async function getPosts() {
   const pages: BlogPage[] = [];
@@ -30,5 +29,5 @@ async function getPosts() {
 
 export async function GET() {
   const pages = await getPosts();
-  return json(pages);
+  return Response.json(pages);
 }

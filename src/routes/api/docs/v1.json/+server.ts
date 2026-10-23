@@ -27,7 +27,6 @@
 import { canonicalUrl } from "#lib/config.js";
 import { docsPages, docsRepo, docsTopics } from "#lib/docs_menu.js";
 import { buildCorpus } from "#lib/server/docs.js";
-import { json } from "@sveltejs/kit";
 
 // Static: the corpus only changes when the repo does, so this is a file on the
 // CDN with no cold start and no way to fail at request time.
@@ -167,7 +166,7 @@ export function GET() {
     pages,
   };
 
-  return json(index, {
+  return Response.json(index, {
     headers: {
       // Public and unauthenticated; a browser-based agent is a real consumer.
       "Access-Control-Allow-Origin": "*",

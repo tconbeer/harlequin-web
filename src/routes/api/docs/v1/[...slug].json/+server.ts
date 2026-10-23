@@ -16,7 +16,7 @@
  */
 
 import { buildCorpus, type CorpusPage } from "#lib/server/docs.js";
-import { error, json } from "@sveltejs/kit";
+import { error } from "@sveltejs/kit";
 import type { EntryGenerator, RequestHandler } from "./$types";
 
 // Static: the corpus changes only when the repo does, so each page is a file on
@@ -48,7 +48,7 @@ export const GET: RequestHandler = ({ params }) => {
 
   const { title, topic, slug, url, description, markdown } = page;
 
-  return json(
+  return Response.json(
     { version: 1, title, topic, slug, url, description, markdown },
     {
       headers: {
