@@ -1,5 +1,5 @@
 <script lang="ts">
-  import exclamation from "$lib/assets/icons/icons8-exclamation-50.png";
+  import exclamation from "#lib/assets/icons/icons8-exclamation-50.png";
 
   const issueUrl = "https://github.com/tconbeer/harlequin/issues/1119";
 </script>

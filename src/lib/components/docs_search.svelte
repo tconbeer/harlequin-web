@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { resultHref, type SearchResult } from "$lib/search";
-  import { loadEngine } from "$lib/search_client";
+  import { resultHref, type SearchResult } from "#lib/search.js";
+  import { loadEngine } from "#lib/search_client.js";
   import { untrack } from "svelte";
   import SearchExcerpt from "./search_excerpt.svelte";
 

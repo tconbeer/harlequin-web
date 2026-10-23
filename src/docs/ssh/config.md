@@ -4,7 +4,7 @@ description: "How to configure both simple and complex SSH tunnels with Harlequi
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
+    import Tip from "#lib/components/tip.svelte"
 </script>
 
 To open a tunnel, Harlequin needs two things: an SSH destination (the address of the SSH server, or bastion), and instructions for the bastion on how to forward connections (what is known as a local forward). You can configure these elements directly in Harlequin, or Harlequin can use configurations found in your SSH config file.

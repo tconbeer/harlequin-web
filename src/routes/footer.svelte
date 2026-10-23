@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as config from "$lib/config";
+  import * as config from "#lib/config.js";
 </script>
 
 <footer class="mt-6 border-t border-t-pink">

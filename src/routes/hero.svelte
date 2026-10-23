@@ -1,7 +1,7 @@
 <script lang="ts">
-  import screenshot from "$lib/assets/themes/harlequin.svg?raw";
-  import Terminal from "$lib/components/terminal.svelte";
-  import type { TerminalLine } from "$lib/types";
+  import screenshot from "#lib/assets/themes/harlequin.svg?raw";
+  import Terminal from "#lib/components/terminal.svelte";
+  import type { TerminalLine } from "#lib/types.js";
 
   const FLIP_MS = 8000;
 

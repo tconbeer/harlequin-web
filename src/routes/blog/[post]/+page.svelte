@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data;
-  import { title, url } from "$lib/config";
-  import ted from "$lib/assets/blog/ted_100.jpg";
+  import { title, url } from "#lib/config.js";
+  import ted from "#lib/assets/blog/ted_100.jpg";
 
   $: postUrl = `${url}blog/${data.slug}`;
   const imageUrl = `${url}harlequin.png`;

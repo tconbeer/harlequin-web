@@ -1,12 +1,12 @@
 <script lang="ts">
   import Feature from "./feature.svelte";
-  import catalog from "$lib/assets/features/catalog.png";
-  import editor from "$lib/assets/features/editor.png";
-  import results from "$lib/assets/features/results.png";
-  import full_screen from "$lib/assets/features/full_screen.webp";
-  import exporter from "$lib/assets/features/export.png";
-  import history from "$lib/assets/features/history.webp";
-  import tokyo_night from "$lib/assets/themes/tokyo-night.svg";
+  import catalog from "#lib/assets/features/catalog.png";
+  import editor from "#lib/assets/features/editor.png";
+  import results from "#lib/assets/features/results.png";
+  import full_screen from "#lib/assets/features/full_screen.webp";
+  import exporter from "#lib/assets/features/export.png";
+  import history from "#lib/assets/features/history.webp";
+  import tokyo_night from "#lib/assets/themes/tokyo-night.svg";
 </script>
 
 <p class="text-center">

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { title, subtitle } from "$lib/config";
-  import hamburger from "$lib/assets/icons/icons8-database-50.png";
+  import { title, subtitle } from "#lib/config.js";
+  import hamburger from "#lib/assets/icons/icons8-database-50.png";
   import { navigating } from "$app/state";
   import Github from "../lib/components/github.svelte";
 

@@ -19,8 +19,8 @@
  * gets what it came for in one GET.
  */
 
-import { canonicalUrl, description, overview, title } from "$lib/config";
-import { buildCorpus, type CorpusPage } from "$lib/server/docs";
+import { canonicalUrl, description, overview, title } from "#lib/config.js";
+import { buildCorpus, type CorpusPage } from "#lib/server/docs.js";
 
 // Static: the corpus changes only when the repo does, so this is a file on the
 // CDN with no cold start and no way to fail at request time.

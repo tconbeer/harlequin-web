@@ -1,7 +1,7 @@
 <script lang="ts">
   import Footer from "./footer.svelte";
   import Header from "./header.svelte";
-  import { title, subtitle, description } from "$lib/config";
+  import { title, subtitle, description } from "#lib/config.js";
   import "../app.css";
 
   let { data, children } = $props();

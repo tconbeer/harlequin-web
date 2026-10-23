@@ -152,7 +152,7 @@ describe("the vendored CLI reference", () => {
 describe("figures", () => {
   const page = (body: string) =>
     sanitize(
-      `---\ntitle: T\n---\n\n<script>\n  import init from "$lib/assets/docs/getting-started/init.png"\n</script>\n\n${body}\n`,
+      `---\ntitle: T\n---\n\n<script>\n  import init from "#lib/assets/docs/getting-started/init.png"\n</script>\n\n${body}\n`,
       "a/b",
     ).markdown;
 
@@ -192,7 +192,7 @@ describe("figures", () => {
   it("refuses an import that names no file", () => {
     expect(() =>
       sanitize(
-        `---\ntitle: T\n---\n\n<script>\n  import gone from "$lib/assets/docs/gone.png"\n</script>\n\n<Figure src={gone}></Figure>\n`,
+        `---\ntitle: T\n---\n\n<script>\n  import gone from "#lib/assets/docs/gone.png"\n</script>\n\n<Figure src={gone}></Figure>\n`,
         "a/b",
       ),
     ).toThrow(/no such file under src\/lib\/assets/);

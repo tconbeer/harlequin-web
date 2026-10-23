@@ -4,7 +4,7 @@ description: "Install the Snowflake adapter and connect Harlequin to a Snowflake
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
+    import Key from "#lib/components/key.svelte"
 </script>
 
 The Snowflake adapter is built on the official [snowflake-connector-python](https://docs.snowflake.com/en/developer-guide/python-connector/python-connector) driver, so everything the connector can do, the adapter can do: every authenticator, `connections.toml`, session parameters, proxies, and Arrow result sets.

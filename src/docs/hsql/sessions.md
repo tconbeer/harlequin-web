@@ -4,9 +4,9 @@ description: "`--serve` and `--session` (the hsql server)"
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
-    import Tip from "$lib/components/tip.svelte"
-    import Warning from "$lib/components/warning.svelte"
+    import Note from "#lib/components/note.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 By default, every invocation of hsql starts a new process and

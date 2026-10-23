@@ -1,7 +1,7 @@
 <script lang="ts">
-  import octocat from "$lib/assets/icons/icons8-github-30.png";
-  import star from "$lib/assets/icons/icons8-star-16.png";
-  import fork from "$lib/assets/icons/icons8-code-fork-16.png";
+  import octocat from "#lib/assets/icons/icons8-github-30.png";
+  import star from "#lib/assets/icons/icons8-star-16.png";
+  import fork from "#lib/assets/icons/icons8-code-fork-16.png";
   interface Props {
     repo: string;
     forks_count: number;

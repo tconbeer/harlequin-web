@@ -13,8 +13,8 @@
  * calling it at all rather than by a test of their own.
  */
 
-import { docsPages, docsTopics } from "$lib/docs_menu";
-import { buildCorpus } from "$lib/server/docs";
+import { docsPages, docsTopics } from "#lib/docs_menu.js";
+import { buildCorpus } from "#lib/server/docs.js";
 import { describe, expect, it } from "vitest";
 import { GET, prerender, type ApiIndex } from "./+server";
 

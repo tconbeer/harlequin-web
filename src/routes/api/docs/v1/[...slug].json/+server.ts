@@ -15,7 +15,7 @@
  * that would rather parse JSON than guess where a document ends.
  */
 
-import { buildCorpus, type CorpusPage } from "$lib/server/docs";
+import { buildCorpus, type CorpusPage } from "#lib/server/docs.js";
 import { error, json } from "@sveltejs/kit";
 import type { EntryGenerator, RequestHandler } from "./$types";
 

@@ -5,9 +5,9 @@ lede: Harlequin isn't just for DuckDB anymore! 🎉
 ---
 
 <script>
-    import hn_comment from "$lib/assets/blog/hn_comment.png"
-    import wizard from "$lib/assets/docs/config-wizard.png"
-    import harlequin_help from "$lib/assets/blog/harlequin_help.png"
+    import hn_comment from "#lib/assets/blog/hn_comment.png"
+    import wizard from "#lib/assets/docs/config-wizard.png"
+    import harlequin_help from "#lib/assets/blog/harlequin_help.png"
 </script>
 
 When I released Harlequin v1.0 at the end of September, I was surprised and excited by the response. I knew I had created something that _I_ wanted to use, but it was amazing to see how many others were interested: Harlequin was submitted to [Hacker News](https://news.ycombinator.com/item?id=37588526), where it quickly shot to #2 on the Front Page. The Harlequin repo gained hundreds of stars overnight, and thousands of people downloaded the package over the next week.

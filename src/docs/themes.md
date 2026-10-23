@@ -3,7 +3,7 @@ title: Choosing a Theme
 ---
 
 <script>
-    import ThemeGallery from "$lib/components/theme_gallery.svelte"
+    import ThemeGallery from "#lib/components/theme_gallery.svelte"
 </script>
 
 You can set a theme for Harlequin, passing the name of any Textual Theme to the `--theme` or `-t` option.

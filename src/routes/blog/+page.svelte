@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { title } from "$lib/config";
+  import { title } from "#lib/config.js";
   export let data;
 </script>
 

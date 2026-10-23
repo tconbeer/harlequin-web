@@ -3,10 +3,10 @@ title: Creating a Keymap
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Tip from "$lib/components/tip.svelte"
-    import keys_app from "$lib/assets/docs/keys-app.png"
-    import keys_app_edit from "$lib/assets/docs/keys-app-edit.png"
+    import Key from "#lib/components/key.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import keys_app from "#lib/assets/docs/keys-app.png"
+    import keys_app_edit from "#lib/assets/docs/keys-app-edit.png"
 </script>
 
 Keymaps can be defined in Harlequin [config files](/docs/config-file), under the `keymaps` key. You can create these keymaps manually in a text editor, or by using the [Harlequin Keys App](#keys-app).

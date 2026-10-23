@@ -4,7 +4,7 @@ description: What hsql's Agent Skill teaches an agent, and three ways to install
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 hsql ships an [Agent Skill](https://agentskills.io): a markdown file an agent

@@ -15,7 +15,7 @@
  * are coordinated.
  */
 
-import { buildSearchIndex } from "$lib/server/search_index";
+import { buildSearchIndex } from "#lib/server/search_index.js";
 import { json } from "@sveltejs/kit";
 
 export const prerender = true;

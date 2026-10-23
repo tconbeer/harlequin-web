@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TerminalLine } from "$lib/types";
+  import type { TerminalLine } from "#lib/types.js";
 
   let {
     lines = [] as TerminalLine[],

@@ -1,4 +1,4 @@
-import type { BlogPage } from "$lib/types";
+import type { BlogPage } from "#lib/types.js";
 import { json } from "@sveltejs/kit";
 
 async function getPosts() {

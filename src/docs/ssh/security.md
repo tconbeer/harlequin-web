@@ -4,8 +4,8 @@ description: "The security model of Harlequin's SSH integration."
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
-    import Warning from "$lib/components/warning.svelte"
+    import Note from "#lib/components/note.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 Harlequin's SSH integration is small on purpose. It runs the `ssh` client you already have, hands it a destination and a forward, and leaves authentication, host keys, and everything else to `ssh` and to the SSH config file you control.

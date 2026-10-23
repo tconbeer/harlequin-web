@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { slugify } from "$lib/slugify";
+  import { slugify } from "#lib/slugify.js";
   let slotValue: HTMLElement;
 </script>
 

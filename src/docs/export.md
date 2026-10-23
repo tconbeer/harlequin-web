@@ -4,11 +4,11 @@ description: "Copy results to the clipboard, or export them as CSV, Parquet, JSO
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Tip from "$lib/components/tip.svelte"
-    import Figure from "$lib/components/figure.svelte"
-    import Link from "$lib/components/link.svelte"
-    import export_csv from "$lib/assets/docs/export-csv.png"
+    import Key from "#lib/components/key.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Figure from "#lib/components/figure.svelte"
+    import Link from "#lib/components/link.svelte"
+    import export_csv from "#lib/assets/docs/export-csv.png"
 </script>
 
 Harlequin's Results Viewer is a great way to see query results, but sometimes you need to export data to use it in a different tool. Harlequin provides two easy options for this.

@@ -1,10 +1,10 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { canonicalUrl, title, url } from "$lib/config";
-  import Github from "$lib/components/github.svelte";
-  import MarkdownActions from "$lib/components/markdown_actions.svelte";
-  import SearchHighlight from "$lib/components/search_highlight.svelte";
-  import { docsSlug } from "$lib/markdown_actions";
+  import { canonicalUrl, title, url } from "#lib/config.js";
+  import Github from "#lib/components/github.svelte";
+  import MarkdownActions from "#lib/components/markdown_actions.svelte";
+  import SearchHighlight from "#lib/components/search_highlight.svelte";
+  import { docsSlug } from "#lib/markdown_actions.js";
 
   let { data } = $props();
   const Content = $derived(data.content);

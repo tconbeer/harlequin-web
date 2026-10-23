@@ -3,7 +3,7 @@ title: Copying and Pasting
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
+    import Key from "#lib/components/key.svelte"
 </script>
 
 Harlequin's Query Editor, Data Catalog, and Results Viewer support cut and copy, and its Query Editor supports paste. However, this is more complex than it seems. If these features are not working for you, there could be a number of root causes. This section walks through how copy-paste works in Harlequin, and offers some solutions for common problems.

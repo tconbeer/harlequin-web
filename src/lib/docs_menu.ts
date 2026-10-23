@@ -1,4 +1,4 @@
-import type { DocsMenuItem, DocsPage, DocsTopic } from "$lib/types";
+import type { DocsMenuItem, DocsPage, DocsTopic } from "#lib/types.js";
 
 /**
  * The docs sidebar, declared by hand.

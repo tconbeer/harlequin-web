@@ -4,7 +4,7 @@ description: "Pin the DuckDB version Harlequin installs when it cannot open a da
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 Harlequin depends on DuckDB, and installing it in an isolated environment (e.g., using `pipx` or in a fresh virtual environment) will cause it to install DuckDB. If you have DuckDB installed elsewhere (e.g., if you already installed DuckDB with `pipx` or Homebrew), you may want to pin the version of DuckDB that Harlequin uses. For example, attempting to open a DuckDB database file with different versions of DuckDB will result in an error that looks like this:

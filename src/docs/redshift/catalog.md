@@ -4,7 +4,7 @@ description: "Browse, search, and act on Redshift databases, schemas, relations,
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
+    import Tip from "#lib/components/tip.svelte"
 </script>
 
 The catalog is four levels deep: database, schema, relation, column. Each level is loaded only when you open the one above it, so a cluster with thousands of relations costs nothing until you go looking for one.

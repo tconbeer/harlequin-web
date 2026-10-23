@@ -11,7 +11,7 @@
  * two binary searches over the dictionary rather than a scan of every token in
  * the docs.
  *
- * `tokenize` lives here rather than beside the builder in `$lib/server` because
+ * `tokenize` lives here rather than beside the builder in `#lib/server` because
  * both sides must use the same one. A dictionary built by a tokenizer the query
  * does not share is a dictionary full of terms no query can reach, and the
  * symptom is not an error — it is a result that quietly never appears.
@@ -135,7 +135,7 @@ export function decodePostings(encoded: string): Posting[] {
 /**
  * Pages and sections, as an index: the dictionary and its postings.
  *
- * Pure, and separate from the builder in `$lib/server/search_index.ts`, which
+ * Pure, and separate from the builder in `#lib/server/search_index.ts`, which
  * only knows how to turn markdown into sections. Keeping the assembly here means
  * a test can index a handful of made-up pages and search them with the same code
  * that indexes the real corpus.
