@@ -114,7 +114,7 @@ It's a long query, but you can use <Key>ctrl+f</Key> to find a keyword or <Key>c
 
 When you're finished editing the query, you can use <Key>ctrl+s</Key> to save it back to disk.
 
-Close a buffer with <Key>ctrl+w</Key> and reopen it with <Key>ctrl+shift+t</Key>, or choose **Closed Buffers** from the command palette to find an older one. Closed buffers remain available after restarting Harlequin; to delete one permanently, empty its text and close it.
+Close a buffer with <Key>ctrl+w</Key> and reopen it with <Key>ctrl+f2</Key>, or choose **Closed Buffers** from the command palette to find an older one. Buffers are saved separately for each connection, including the latest 1,000 closed buffers, and remain available after restarting Harlequin; to delete one permanently, empty its text and close it.
 
 Now you know the basics, but there is One More Thing: you quit Harlequin using <Key>ctrl+q</Key>.
 

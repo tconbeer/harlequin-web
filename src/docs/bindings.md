@@ -36,7 +36,7 @@ In the app, press <Key>F7</Key> to open the Keys panel, which lists the bindings
 
 - <Key>ctrl+n</Key> Create a new buffer (editor tab).
 - <Key>ctrl+w</Key> Close the current buffer, retaining it if it contains text.
-- <Key>ctrl+shift+t</Key> Reopen the most recently closed buffer.
+- <Key>ctrl+f2</Key> Reopen the most recently closed buffer.
 - <Key>ctrl+k</Key> View the next buffer (editor tab).
 
 - <Key>ctrl+g</Key> Go to line
