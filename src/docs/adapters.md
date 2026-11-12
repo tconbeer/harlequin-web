@@ -33,6 +33,7 @@ Community adapters are created and maintained by other members of the Harlequin 
 - [Databricks](/docs/databricks), contributed by [Zach Shirah](https://github.com/zashirah) and [Alex Malins](https://github.com/alexmalins)
 - [ADBC](/docs/adbc), contributed by [Tyler Hillery](https://github.com/TylerHillery). Supports any database with an Arrow Database Connectivity driver.
 - [chDB](/docs/chdb), contributed by the [chDB team](https://github.com/chdb-io)
+- [ClickHouse](/docs/clickhouse), contributed by [John DaCosta](https://github.com/johndacosta). Connects to a ClickHouse server over HTTP or the native protocol. This is not the chDB adapter.
 - [RisingWave](/docs/risingwave), contributed by [ZhengYu Xu](https://github.com/zen-xu)
 - [Wherobots](/docs/wherobots), contributed by [Wherobots](https://github.com/wherobots)
 - [Cassandra](/docs/cassandra), contributed by [Vadim Khitrin](https://github.com/vkhitrin)
