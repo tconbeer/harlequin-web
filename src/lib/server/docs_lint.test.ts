@@ -14,7 +14,7 @@
  * over and a machine trips on.
  */
 
-import { docsPages } from "$lib/docs_menu";
+import { docsPages } from "#lib/docs_menu.js";
 import { describe, expect, it } from "vitest";
 import { buildCorpus } from "./docs";
 
@@ -125,6 +125,25 @@ describe("every description", () => {
     (slug, page) => {
       expect(page.description, slug).not.toContain("\n");
       expect(page.description.length, slug).toBeLessThanOrEqual(LIMIT);
+    },
+  );
+});
+
+describe("every page, as the route imports it", () => {
+  // Two readers, one frontmatter block. `docs.ts` splits it with a regex, and
+  // the route renders `metadata.title` off mdsvex's YAML parse. A value YAML
+  // rejects — a description opening with a backtick, which is a reserved
+  // indicator — leaves the corpus above intact and makes the page itself a 500,
+  // so nothing here catches it except reading the page the way the route does.
+  const modules = import.meta.glob<{ metadata?: { title?: string } }>(
+    "/src/docs/**/*.md",
+  );
+
+  it.each(Object.keys(modules))(
+    "%s has parseable frontmatter",
+    async (path) => {
+      const { metadata } = await modules[path]();
+      expect(metadata?.title, path).toBeTruthy();
     },
   );
 });

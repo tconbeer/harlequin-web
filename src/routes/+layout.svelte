@@ -1,7 +1,7 @@
 <script lang="ts">
   import Footer from "./footer.svelte";
   import Header from "./header.svelte";
-  import { title, subtitle, description } from "$lib/config";
+  import { title, subtitle, description } from "#lib/config.js";
   import "../app.css";
 
   let { data, children } = $props();
@@ -12,7 +12,7 @@
   <meta name="description" content={description} />
 </svelte:head>
 
-<div class="mx-auto max-w-screen-lg px-6 selection:bg-pink">
+<div class="mx-auto max-w-(--breakpoint-lg) px-6 selection:bg-pink">
   <Header {data} />
 
   <main>

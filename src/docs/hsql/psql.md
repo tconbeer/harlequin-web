@@ -4,7 +4,7 @@ description: What carries over from psql to hsql — -c, -f, -t, -A, -x — and 
 ---
 
 <script>
-    import Warning from "$lib/components/warning.svelte"
+    import Warning from "#lib/components/warning.svelte"
 </script>
 
 `-c`, `-f`, `-t`, `-A` and `-x` mean what they mean in psql, so this prints a
@@ -53,8 +53,18 @@ hsql has no meta-commands. What they do, options do:
 - `\set` — the profile, or the command line. One invocation, no session
   variables.
 
-## No Interactive Session
+## Sessions: Keeping Connections Open
 
-hsql executes what it was passed and exits; there is no prompt. For an
-interactive session, [Harlequin](/docs/getting-started/usage) uses the same
-adapters, config files and profiles: `harlequin -P prod`.
+By default, hsql executes what it was passed and exits. Every invocation starts
+a process, connects, runs its SQL and drops the connection, so nothing it did —
+a temp table, a `SET`, an open transaction — reaches the next one. That is the
+right default for a script or an agent, and it is what every example above
+assumes.
+
+`hsql --serve prod -P prod` holds a connection open the way a psql prompt does,
+and `hsql --session prod -c "..."` runs against it. There is still no
+interactive prompt — for that, [Harlequin](/docs/getting-started/usage) uses the
+same adapters, config files and profiles: `harlequin -P prod` — but an
+invocation served that way answers in milliseconds instead of reconnecting, and
+finds the temp tables, settings and transactions the one before it left, exactly
+as a psql session would. See [Warm Sessions](/docs/hsql/sessions).

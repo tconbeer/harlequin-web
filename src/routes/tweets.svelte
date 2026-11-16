@@ -1,19 +1,19 @@
 <script lang="ts">
-  import TweetCard from "$lib/components/tweet_card.svelte";
-  import type { Tweet } from "$lib/types";
-  import AlexVianaPro from "$lib/assets/tweets/AlexVianaPro.jpg";
-  import pdrmnvd from "$lib/assets/tweets/pdrmnvd.jpg";
-  import matsonj from "$lib/assets/tweets/matsonj.jpg";
-  import nletcher from "$lib/assets/tweets/nletcher.jpg";
-  import willmcgugan from "$lib/assets/tweets/willmcgugan.jpg";
-  import _TylerHillery from "$lib/assets/tweets/_TylerHillery.jpg";
-  import archieemwood from "$lib/assets/tweets/archieemwood.jpg";
-  import _WaylonWalker from "$lib/assets/tweets/_WaylonWalker.jpg";
-  import KhuyenTran16 from "$lib/assets/tweets/KhuyenTran16.jpg";
-  import joshptemple from "$lib/assets/tweets/joshptemple.png";
-  import adrianmg from "$lib/assets/tweets/adrianmg.jpg";
-  import TanelPoder from "$lib/assets/tweets/TanelPoder.jpg";
-  import DataSuperNerd from "$lib/assets/tweets/DataSuperNerd.jpg";
+  import TweetCard from "#lib/components/tweet_card.svelte";
+  import type { Tweet } from "#lib/types.js";
+  import AlexVianaPro from "#lib/assets/tweets/AlexVianaPro.jpg";
+  import pdrmnvd from "#lib/assets/tweets/pdrmnvd.jpg";
+  import matsonj from "#lib/assets/tweets/matsonj.jpg";
+  import nletcher from "#lib/assets/tweets/nletcher.jpg";
+  import willmcgugan from "#lib/assets/tweets/willmcgugan.jpg";
+  import _TylerHillery from "#lib/assets/tweets/_TylerHillery.jpg";
+  import archieemwood from "#lib/assets/tweets/archieemwood.jpg";
+  import _WaylonWalker from "#lib/assets/tweets/_WaylonWalker.jpg";
+  import KhuyenTran16 from "#lib/assets/tweets/KhuyenTran16.jpg";
+  import joshptemple from "#lib/assets/tweets/joshptemple.png";
+  import adrianmg from "#lib/assets/tweets/adrianmg.jpg";
+  import TanelPoder from "#lib/assets/tweets/TanelPoder.jpg";
+  import DataSuperNerd from "#lib/assets/tweets/DataSuperNerd.jpg";
 
   const tweets: Tweet[] = [
     {
@@ -189,8 +189,7 @@
 <ul
   class="relative mt-4 flex gap-2 motion-safe:overflow-x-hidden motion-reduce:overflow-x-scroll"
 >
-  {#each { length: 2 } as _}
-    <!-- eslint-disable-line -->
+  {#each { length: 2 }}
     {#each tweets as tweet}
       <li
         class="shrink-0 overflow-hidden motion-safe:animate-horizontal-scroll"

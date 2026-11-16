@@ -3,8 +3,8 @@ title: Managing Transactions
 ---
 
 <script>
-    import tx_auto from "$lib/assets/docs/tx-auto.png"
-    import tx_manual from "$lib/assets/docs/tx-manual.png"
+    import tx_auto from "#lib/assets/docs/tx-auto.png"
+    import tx_manual from "#lib/assets/docs/tx-manual.png"
 </script>
 
 Different adapters handle transactions differently; many choose to auto-commit each executed query. However, some adapters define multiple Transaction Modes that allow you to fine-tune the transaction handling of the commands you run in Harlequin.

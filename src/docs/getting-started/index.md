@@ -3,8 +3,8 @@ title: Installing Harlequin
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Tip from "$lib/components/tip.svelte"
+    import Key from "#lib/components/key.svelte"
+    import Tip from "#lib/components/tip.svelte"
 </script>
 
 ## Installing Harlequin

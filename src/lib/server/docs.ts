@@ -19,8 +19,8 @@
  * is silent, so it has to be made loud here.
  */
 
-import { canonicalUrl } from "$lib/config";
-import { docsPages, docsTopicLabel } from "$lib/docs_menu";
+import { canonicalUrl } from "#lib/config.js";
+import { docsPages, docsTopicLabel } from "#lib/docs_menu.js";
 import { artifact, manifest } from "./artifacts";
 
 // Raw sources, not the compiled Svelte components: the point is to read what
@@ -206,7 +206,7 @@ function assetUrl(
         `not import it`,
     );
   }
-  const resolved = assets[path.replace(/^\$lib\//, "/src/lib/")];
+  const resolved = assets[path.replace(/^#lib\//, "/src/lib/")];
   if (resolved === undefined) {
     throw new Error(
       `src/docs/${slug}.md imports ${path} as ${identifier}, but there is no ` +

@@ -3,7 +3,7 @@ title: "Postgres Basic Usage"
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 ## Installation

@@ -4,8 +4,8 @@ description: "Install the Wherobots adapter and query WherobotsDB with the Whero
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
-    import Link from "$lib/components/link.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Link from "#lib/components/link.svelte"
     </script>
 
 _This documentation is Copyright Wherobots, reproduced here under an [Apache 2.0 License](https://github.com/wherobots/harlequin-wherobots/blob/main/LICENSE). See the [repository](https://github.com/wherobots/harlequin-wherobots) for the most up-to-date documentation._

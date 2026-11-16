@@ -4,7 +4,7 @@ description: hsql's five --config modes — list-profiles, show, validate, schem
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
+    import Tip from "#lib/components/tip.svelte"
 </script>
 
 hsql reads the same config files as Harlequin, and

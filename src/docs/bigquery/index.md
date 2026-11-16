@@ -4,8 +4,8 @@ description: "Install the BigQuery adapter and connect Harlequin to a GCP projec
 ---
 
 <script>
-    import Tip from "$lib/components/tip.svelte"
-    import Link from "$lib/components/link.svelte"
+    import Tip from "#lib/components/tip.svelte"
+    import Link from "#lib/components/link.svelte"
 </script>
 
 The BigQuery adapter was contributed by community member Josh Temple.

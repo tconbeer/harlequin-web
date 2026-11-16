@@ -4,7 +4,7 @@ description: Every hsql option, argument, format and exit code, generated from h
 ---
 
 <script>
-    import HsqlReference from "$lib/components/hsql_reference.svelte"
+    import HsqlReference from "#lib/components/hsql_reference.svelte"
 </script>
 
 This page is generated from `hsql --spec` with no adapters loaded, in

@@ -8,8 +8,8 @@
  * `llms-full.txt`'s bytes differ for a page, one of them is a second sanitizer.
  */
 
-import { docsPages } from "$lib/docs_menu";
-import { buildCorpus } from "$lib/server/docs";
+import { docsPages } from "#lib/docs_menu.js";
+import { buildCorpus } from "#lib/server/docs.js";
 import type { HttpError } from "@sveltejs/kit";
 import { describe, expect, it } from "vitest";
 import { GET, entries, prerender } from "./+server";

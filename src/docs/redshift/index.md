@@ -4,8 +4,8 @@ description: "Install the Redshift adapter and connect Harlequin to an Amazon Re
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
-    import Note from "$lib/components/note.svelte"
+    import Key from "#lib/components/key.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 The Redshift adapter is built on [`redshift_connector`](https://github.com/aws/amazon-redshift-python-driver), Amazon's own Python driver.

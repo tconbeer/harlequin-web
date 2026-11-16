@@ -1,4 +1,7 @@
-import { artifact, assertArtifactsMatchManifest } from "$lib/server/artifacts";
+import {
+  artifact,
+  assertArtifactsMatchManifest,
+} from "#lib/server/artifacts.js";
 
 // Static: the schema only changes when a harlequin release vendors a new copy,
 // so this is a file on the CDN with no cold start and no way to fail at request

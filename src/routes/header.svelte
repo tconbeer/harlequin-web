@@ -1,10 +1,13 @@
 <script lang="ts">
-  import { title, subtitle } from "$lib/config";
-  import hamburger from "$lib/assets/icons/icons8-database-50.png";
+  import { title, subtitle } from "#lib/config.js";
+  import hamburger from "#lib/assets/icons/icons8-database-50.png";
   import { navigating } from "$app/state";
   import Github from "../lib/components/github.svelte";
 
-  let { data } = $props();
+  let {
+    data,
+  }: { data: { repo: string; forks_count: number; stargazers_count: number } } =
+    $props();
 
   let showMenu = $state(false);
   $effect(() => {
@@ -57,7 +60,7 @@
   <ul
     class="mt-4 md:mt-0 {showMenu
       ? 'block md:flex'
-      : 'hidden md:flex'} mx-0 border-b border-t border-purple md:gap-8 md:border-none md:pt-2"
+      : 'hidden md:flex'} mx-0 border-t border-b border-purple md:gap-8 md:border-none md:pt-2"
   >
     <li class="hidden lg:my-auto lg:block">
       <a

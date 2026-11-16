@@ -3,7 +3,7 @@
   export let body = "";
   export let src = "";
 
-  import LazyImage from "$lib/components/lazy_image.svelte";
+  import LazyImage from "#lib/components/lazy_image.svelte";
 </script>
 
 <div
@@ -18,7 +18,7 @@
       <LazyImage
         {src}
         alt="A screenshot showing {title} functionality."
-        className="max-h-96 w-full object-cover object-left-top rounded-lg border-4 border-yellow"
+        className="max-h-96 w-full object-cover object-top-left rounded-lg border-4 border-yellow"
       />
     </div>
   {:else}

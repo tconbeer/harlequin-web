@@ -3,8 +3,8 @@ title: Creating Config Files
 ---
 
 <script>
-    import wizard from "$lib/assets/docs/config-wizard.png"
-    import Figure from "$lib/components/figure.svelte"
+    import wizard from "#lib/assets/docs/config-wizard.png"
+    import Figure from "#lib/components/figure.svelte"
 </script>
 
 You can create config files manually, using any text editor. However, Harlequin can help make that process easier with its config wizard. To launch the wizard, run Harlequin with the `--config` option:

@@ -24,10 +24,9 @@
  * a search we cannot evaluate is a worse answer than the list itself.
  */
 
-import { canonicalUrl } from "$lib/config";
-import { docsPages, docsRepo, docsTopics } from "$lib/docs_menu";
-import { buildCorpus } from "$lib/server/docs";
-import { json } from "@sveltejs/kit";
+import { canonicalUrl } from "#lib/config.js";
+import { docsPages, docsRepo, docsTopics } from "#lib/docs_menu.js";
+import { buildCorpus } from "#lib/server/docs.js";
 
 // Static: the corpus only changes when the repo does, so this is a file on the
 // CDN with no cold start and no way to fail at request time.
@@ -105,7 +104,7 @@ function assertLinksResolve() {
  * The site root, without a trailing slash: "https://harlequin.sh".
  *
  * The canonical origin, not the one serving the request, for the reason
- * `$lib/config` gives: a payload published for someone else to read is read
+ * `#lib/config.js` gives: a payload published for someone else to read is read
  * away from the origin that served it, and a localhost URL in it is wrong even
  * when localhost is what answered. It is also what the corpus absolutizes
  * against, so the URLs here and the URLs in `llms.txt` are the same URLs.
@@ -167,7 +166,7 @@ export function GET() {
     pages,
   };
 
-  return json(index, {
+  return Response.json(index, {
     headers: {
       // Public and unauthenticated; a browser-based agent is a real consumer.
       "Access-Control-Allow-Origin": "*",

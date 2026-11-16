@@ -4,10 +4,10 @@ description: "Fix colors, fonts and rendering by configuring your terminal for t
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
-    import Link from "$lib/components/link.svelte"
-    import nord_256 from "$lib/assets/docs/nord-256.png"
-    import nord from "$lib/assets/docs/nord.png"
+    import Note from "#lib/components/note.svelte"
+    import Link from "#lib/components/link.svelte"
+    import nord_256 from "#lib/assets/docs/nord-256.png"
+    import nord from "#lib/assets/docs/nord.png"
 </script>
 
 Harlequin should look great in your terminal. If it doesn't, it may be because we depend on your terminal and shell for rendering, and those may require some configuration on your machine.

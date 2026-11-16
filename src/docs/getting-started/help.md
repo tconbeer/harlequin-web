@@ -4,7 +4,7 @@ description: "Where to find help: harlequin --help, the in-app help screen, GitH
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
+    import Key from "#lib/components/key.svelte"
 </script>
 
 To view all command-line options for Harlequin and all installed adapters, after installation, simply type:

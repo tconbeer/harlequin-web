@@ -7,7 +7,7 @@
  * reader that gets the wrong answer has no way to tell.
  */
 
-import { buildCorpus } from "$lib/server/docs";
+import { buildCorpus } from "#lib/server/docs.js";
 import { describe, expect, it } from "vitest";
 import { GET as page } from "../docs/[...slug].md/+server";
 import { GET, prerender } from "./+server";

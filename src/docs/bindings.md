@@ -3,10 +3,12 @@ title: "Reference: Default Bindings"
 ---
 
 <script>
-    import Key from "$lib/components/key.svelte"
+    import Key from "#lib/components/key.svelte"
 </script>
 
 Harlequin uses keymaps to define sets of key bindings in the app. Below is a reference for the bindings from the default keymap (called `vscode`). For more information on customizing key bindings, see the [keymaps](/docs/keymaps) page.
+
+In the app, press <Key>F7</Key> to open the Keys panel, which lists the bindings for the focused widget.
 
 ## General Bindings
 
@@ -15,6 +17,7 @@ Harlequin uses keymaps to define sets of key bindings in the app. Below is a ref
 - <Key>F2</Key> Focus on the Query Editor.
 - <Key>F5</Key> Focus on the Results Viewer.
 - <Key>F6</Key> Focus on the Data Catalog.
+- <Key>F7</Key> Show or hide the Keys panel, which lists the bindings for the focused widget.
 - <Key>F8</Key> Show the Query History Viewer.
 - <Key>F9</Key>, <Key>ctrl+b</Key> Toggle the sidebar.
 - <Key>F10</Key> Toggle full screen mode for the current widget.
@@ -47,7 +50,6 @@ Harlequin uses keymaps to define sets of key bindings in the app. Below is a ref
 - <Key>ctrl+v</Key>, <Key>ctrl+u</Key>, <Key>shift+insert</Key>, <Key>Right Click</Key> Paste selected text.
 - <Key>ctrl+z</Key> Undo.
 - <Key>ctrl+y</Key> Redo.
-<!-- prettier-ignore -->
 - <Key>ctrl+/</Key>, <Key>ctrl+\_</Key> Toggle comments on selected line(s).
 - <Key>tab</Key> Insert spaces at cursor to move the cursor to the next tab stop, or indent the selected line(s) to the next tab stop.
 - <Key>shift+tab</Key> Dedent the selected line(s) to the next tab stop.
@@ -90,6 +92,7 @@ _With the autocomplete list open:_
 ### Moving the Cursor
 
 - <Key>up</Key>,<Key>down</Key>,<Key>left</Key>,<Key>right</Key> Move the cursor one cell.
+- <Key>ctrl+g</Key> Jump to a column by name while keeping the current row.
 - <Key>home</Key> Move the cursor to the top of the current column.
 - <Key>end</Key> Move the cursor to the bottom of the current column.
 - <Key>ctrl+home</Key> Move the cursor to the first cell.

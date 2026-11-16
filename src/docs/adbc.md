@@ -4,9 +4,9 @@ description: "Install the ADBC adapter and connect Harlequin to any database wit
 ---
 
 <script lang="ts">
-  import Tip from "$lib/components/tip.svelte"
-  import Note from "$lib/components/note.svelte"
-  import Link from "$lib/components/link.svelte"
+  import Tip from "#lib/components/tip.svelte"
+  import Note from "#lib/components/note.svelte"
+  import Link from "#lib/components/link.svelte"
 </script>
 
 The ADBC adapter was contributed by community member Tyler Hillery.

@@ -1,6 +1,6 @@
 <script lang="ts">
   import HsqlFeature from "./hsql_feature.svelte";
-  import type { TerminalLine } from "$lib/types";
+  import type { TerminalLine } from "#lib/types.js";
 
   const inputs: TerminalLine[] = [
     { text: 'hsql -P dev -tAc "select 1"', kind: "command" },

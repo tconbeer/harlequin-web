@@ -168,11 +168,11 @@
         },
         "profile": {
           "type": "string",
-          "description": "Load a profile from an available config file. Options passed here take precedence over the profile's. Use the profile named None for Harlequin's defaults instead of the config file's default profile."
+          "description": "Select a profile from an available config file to load its values. Other options passed here will take precedence over those loaded from the profile. Use the special profile named None to use Harlequin's defaults, instead of the default profile specified in the config file."
         },
         "adapter": {
           "type": "string",
-          "description": "The installed adapter plug-in to connect with.",
+          "description": "The name of an installed database adapter plug-in to use to connect to the database at CONN_STR.",
           "default": "duckdb"
         },
         "read_only": {
@@ -184,9 +184,36 @@
           "type": "number",
           "description": "Cancel the run after SECONDS and exit 4. Refused if the adapter cannot cancel a query; to check, use --info."
         },
+        "ssh_host": {
+          "type": "string",
+          "description": "Open an SSH tunnel to this destination first, and connect through it. A Host alias, host, user@host or ssh://user@host:port, passed to ssh verbatim."
+        },
+        "ssh_forward": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "description": "A local forward, spelled as ssh -L takes one: LOCAL:HOST:REMOTE. Repeat this option for more than one. Omit it when your ssh config already has the LocalForward."
+        },
+        "ssh_batch_mode": {
+          "type": "boolean",
+          "description": "Fail rather than prompt for a passphrase, a password or a host key. ssh's own BatchMode.",
+          "default": false
+        },
+        "ssh_timeout": {
+          "type": "number",
+          "description": "Seconds to wait for the tunnel's forwards. Default is 60."
+        },
         "config_path": {
           "type": "string",
-          "description": "Use this config file instead of the ones hsql discovers."
+          "description": "By default, Harlequin finds files named .harlequin.toml in the current directory and the home directory (~) and merges them. Use this option to specify the full path to a config file at a different location."
         },
         "config_mode": {
           "type": "string",
@@ -212,6 +239,15 @@
           "type": "string",
           "description": "Where in the catalog --catalog looks, and what --catalog-search searches under. Dotted segments, named by the adapter; the top of the catalog by default. A trailing * filters a --catalog listing."
         },
+        "history": {
+          "type": "boolean",
+          "description": "List the queries harlequin and hsql have run, newest first, and exit without running SQL. --limit says how many; -P, -a or a CONN_STR narrows it to one database.",
+          "default": false
+        },
+        "history_search": {
+          "type": "string",
+          "description": "List the logged queries whose SQL contains TERM, newest first, and exit without running SQL. Scoped like --history."
+        },
         "spec": {
           "type": "boolean",
           "description": "Every option here, plus every installed adapter's, as JSON. -a narrows it to one adapter.",
@@ -226,6 +262,25 @@
           "type": "boolean",
           "description": "Write the Agent Skill for driving hsql, as markdown. -o installs it: 'hsql --skill -o ~/.claude/skills/hsql/'.",
           "default": false
+        },
+        "session_reset": {
+          "type": "boolean",
+          "description": "Ask the session to close its connection and open a fresh one, and exit without running SQL. Temp tables, settings and an open transaction are gone. Needs --session.",
+          "default": false
+        },
+        "queue_timeout": {
+          "type": "number",
+          "description": "With --serve: a request waits at most SECONDS for the one before it, then exits 4 without reaching the database. [default: no limit]"
+        },
+        "idle_timeout": {
+          "type": "number",
+          "description": "With --serve: stop the session once it has gone SECONDS with no request. 0 for a session that waits as long as it takes.",
+          "default": 1800.0
+        },
+        "max_lifetime": {
+          "type": "number",
+          "description": "With --serve: stop the session SECONDS after it connected, whatever it is doing; a request already running finishes first. 0 for a session that runs until something stops it.",
+          "default": 28800.0
         },
         "limit": {
           "type": "integer",
@@ -250,6 +305,11 @@
           "description": "What to do when a statement fails.",
           "default": "stop"
         },
+        "no_write_history": {
+          "type": "boolean",
+          "description": "Do not record this run's queries in the query history that Harlequin and hsql share.",
+          "default": false
+        },
         "stats": {
           "type": "boolean",
           "description": "Write a one-line JSON summary to stderr.",
@@ -268,7 +328,7 @@
         "theme": {
           "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
         },
-        "keymap_name": {
+        "viewer_max_rows": {
           "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
         },
         "show_files": {
@@ -277,13 +337,13 @@
         "show_s3": {
           "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
         },
+        "keymap_name": {
+          "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
+        },
         "locale": {
           "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
         },
         "no_download_tzdata": {
-          "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
-        },
-        "viewer_max_rows": {
           "description": "Read by the harlequin IDE; hsql ignores it. See `harlequin --help`."
         }
       }

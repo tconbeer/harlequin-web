@@ -1,4 +1,4 @@
-import { dev } from "$app/environment";
+import { dev } from "$app/env";
 
 export const title = "Harlequin";
 export const subtitle = "The SQL IDE for Your Terminal.";

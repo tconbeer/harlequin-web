@@ -4,7 +4,7 @@ description: "Choose a Snowflake authenticator, from password and SSO to key pai
 ---
 
 <script>
-    import Note from "$lib/components/note.svelte"
+    import Note from "#lib/components/note.svelte"
 </script>
 
 Set `--authenticator` (or `authenticator` in `connections.toml`, or in a Harlequin profile) to any of the values the Snowflake connector supports:

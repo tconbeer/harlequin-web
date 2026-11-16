@@ -1,4 +1,4 @@
-import type { DocsMenuItem, DocsPage, DocsTopic } from "$lib/types";
+import type { DocsMenuItem, DocsPage, DocsTopic } from "#lib/types.js";
 
 /**
  * The docs sidebar, declared by hand.
@@ -38,6 +38,7 @@ export const docsMenu: DocsMenuItem[] = [
       { title: "Formats and Layouts", slug: "hsql/formats" },
       { title: "Config Modes", slug: "hsql/config" },
       { title: "Running Safely", slug: "hsql/safety" },
+      { title: "Warm Sessions", slug: "hsql/sessions" },
       { title: "Differences from psql", slug: "hsql/psql" },
       { title: "Reference: hsql CLI", slug: "hsql/reference" },
       { title: "The hsql Agent Skill", slug: "hsql/skill" },
@@ -147,6 +148,11 @@ export const docsMenu: DocsMenuItem[] = [
         repo: "TylerHillery/harlequin-adbc",
       },
       {
+        title: "Adapter: chDB",
+        slug: "chdb",
+        repo: "chdb-io/harlequin-chdb",
+      },
+      {
         title: "Adapter: RisingWave",
         slug: "risingwave",
         repo: "zen-xu/harlequin-risingwave",
@@ -186,6 +192,16 @@ export const docsMenu: DocsMenuItem[] = [
       { title: "Creating Config Files", slug: "config-file/creating-config" },
       { title: "Discovering Config Files", slug: "config-file/discovery" },
       { title: "Selecting a Profile", slug: "config-file/profiles" },
+    ],
+  },
+  {
+    topic: "SSH Tunnels",
+    slug: "ssh",
+    items: [
+      { title: "SSH Tunnels Overview", slug: "ssh" },
+      { title: "SSH Configuration", slug: "ssh/config" },
+      { title: "SSH Security", slug: "ssh/security" },
+      { title: "Troubleshooting SSH", slug: "ssh/troubleshooting" },
     ],
   },
   {

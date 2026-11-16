@@ -5,8 +5,8 @@ lede: Less typing, more awesome.
 ---
 
 <script>
-    import autocomplete from '$lib/assets/blog/autocomplete.mp4'
-    import arch from '$lib/assets/blog/autocomplete-arch.png'
+    import autocomplete from '#lib/assets/blog/autocomplete.mp4'
+    import arch from '#lib/assets/blog/autocomplete-arch.png'
 </script>
 
 You've been asking for it, and now you've got it: Harlequin v1.7.0 ships with a powerful autocomplete system for paths, words, and namespace members.
