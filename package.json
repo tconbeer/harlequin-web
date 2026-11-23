@@ -36,7 +36,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.23.1",
     "globals": "^17.13.0",
-    "mdsvex": "^0.12.8",
+    "mdsvex": "^1.0.0",
     "prettier": "^3.9.10",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-svelte": "^4.1.1",
