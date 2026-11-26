@@ -148,6 +148,11 @@ export const docsMenu: DocsMenuItem[] = [
         repo: "chdb-io/harlequin-chdb",
       },
       {
+        title: "Adapter: ClickHouse",
+        slug: "clickhouse",
+        repo: "johndacosta/harlequin-clickhouse",
+      },
+      {
         title: "Adapter: RisingWave",
         slug: "risingwave",
         repo: "zen-xu/harlequin-risingwave",
